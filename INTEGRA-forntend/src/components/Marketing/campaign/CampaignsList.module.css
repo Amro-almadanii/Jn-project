@@ -1,0 +1,31 @@
+.campList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  width: calc(100vw - 250px);
+}
+
+th {
+  width: 100px;
+  background-color: var(--secound-color);
+  padding-top: 9px;
+  padding-bottom: 9px;
+  color: var(--text-color);
+  letter-spacing: 0.5px;
+}
+td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: var(--therd-color);
+}
+tr {
+  border: 1px solid var(--text-color);
+}
+h1 {
+  color: var(--secound-color);
+}
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+}

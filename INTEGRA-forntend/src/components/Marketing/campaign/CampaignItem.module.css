@@ -1,0 +1,18 @@
+label {
+  color: var(--text-color);
+  margin: 8px;
+}
+p {
+  color: var(--therd-color);
+  margin: 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.but {
+  margin: 5px;
+  background-color: var(--therd-color);
+}

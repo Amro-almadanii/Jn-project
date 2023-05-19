@@ -1,0 +1,6 @@
+.wrapper {
+  display: flex;
+  background-color: var(--text-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+}

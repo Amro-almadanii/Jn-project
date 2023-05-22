@@ -64,48 +64,44 @@ function SideBar() {
           Events
         </NavLink>
       </div>
-      <ul>
-        <li onClick={handleDropdownClick} className={classes.item}>
-          Create new ‿
-        </li>
-      </ul>
+      <div onClick={handleDropdownClick} className={classes.box}>
+        Create new :
+      </div>
       <div
         className={` ${
           showDropdown ? classes.dropdown.show : classes.dropdown
         }`}
       >
-        <NavLink
-          to="/marketing/campaigns/new/branch/tv"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-        >
-          <span className={classes.p}>new TV</span>
-        </NavLink>
-      </div>
-      <div
-        className={` ${showDropdown ? classes.dropdownshow : classes.dropdown}`}
-      >
-        <NavLink
-          to="/marketing/campaigns/new/branch/socialMedia"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-        >
-          <span className={classes.p}>new SocialMedia</span>
-        </NavLink>
-      </div>
-      <div
-        className={` ${showDropdown ? classes.dropdownshow : classes.dropdown}`}
-      >
-        <NavLink
-          to="/marketing/campaigns/new/branch/event"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-        >
-          <span className={classes.p}>new Event</span>
-        </NavLink>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/tv"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            new TV
+          </NavLink>
+        </div>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/socialMedia"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            new SocialMedia
+          </NavLink>
+        </div>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/event"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            new Event
+          </NavLink>
+        </div>
       </div>
 
       <div className={classes.item}>

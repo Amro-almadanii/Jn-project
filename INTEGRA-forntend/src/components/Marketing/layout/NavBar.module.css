@@ -1,0 +1,39 @@
+.box {
+  width: calc(100vw - 250px);
+  margin: 10px;
+  background-color: var(--secound-color);
+  border-radius: 4px;
+  border: 4px solid;
+  border-color: var(--secound-color);
+  border-radius: 4px;
+}
+
+.containar {
+  display: flex;
+  background-color: var(--therd-color);
+}
+
+.item {
+  text-decoration: none;
+  background-color: var(--therd-color);
+  color: var(--text-color);
+  border: 1px solid var(--therd-color);
+  text-align: center;
+  padding: 8px;
+  margin: 2px;
+  width: 400px;
+  transition: 0.5s;
+  border-style: none;
+}
+.active {
+  text-decoration: none;
+  background-color: var(--secound-color);
+  border: 1px solid;
+  border-radius: 4px;
+  border-style: none;
+  color: var(--text-color);
+  text-align: center;
+  padding: 4px;
+  margin: 2px;
+  width: 400px;
+}

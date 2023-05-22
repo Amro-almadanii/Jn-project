@@ -1,47 +1,83 @@
 import { Form, NavLink, Outlet } from 'react-router-dom';
-import classes from './SideBar.module.css';
+import classes from './NavBar.module.css';
 import { Fragment } from 'react';
 
 function NavBar() {
   return (
-    <Fragment>
-      <nav className={classes['sidebar-nav']}>
-        <ul>
-          <li>
-            <NavLink
-              to="/marketing/campaigns/new/branch/tv"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              new TV
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/marketing/campaigns/new/branch/socialMedia"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              new SocialMedia
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/marketing/campaigns/new/branch/event"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              new Event
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+    <div className={classes.box}>
+      <div className={classes.containar}>
+        <div className={classes.item}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/tv"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.item
+            }
+          >
+            new tv
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/socialMedia"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.item
+            }
+          >
+            new socialMedia
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            to="/marketing/campaigns/new/branch/event"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.item
+            }
+          >
+            new Event
+          </NavLink>
+        </div>
+      </div>
       <Outlet />
-    </Fragment>
+    </div>
   );
 }
 
 export default NavBar;
+
+/*<Fragment>
+<nav>
+  <ul className={classes.list}>
+    <li>
+      <NavLink
+        to="/marketing/campaigns/new/branch/tv"
+        className={({ isActive }) =>
+          isActive ? classes.active : classes.item
+        }
+      >
+        new TV
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/marketing/campaigns/new/branch/socialMedia"
+        className={({ isActive }) =>
+          isActive ? classes.active : classes.item
+        }
+      >
+        new SocialMedia
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/marketing/campaigns/new/branch/event"
+        className={({ isActive }) =>
+          isActive ? classes.active : classes.item
+        }
+      >
+        new Event
+      </NavLink>
+    </li>
+  </ul>
+</nav>
+<Outlet />
+</Fragment>*/

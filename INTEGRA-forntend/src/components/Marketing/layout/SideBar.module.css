@@ -14,9 +14,10 @@
 }
 
 .item {
-  padding: 10px;
+  padding: 14px;
   color: var(--text-color);
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .navlink {
@@ -33,14 +34,40 @@
   justify-content: center;
 }
 
+.dropdownItem {
+  cursor: pointer;
+  margin-bottom: 4px;
+  margin-left: 16px;
+  padding: 5px;
+  transition: 0.2s;
+  border: 1px solid;
+  border-radius: 8px;
+  border-style: none;
+}
+.dropdownItem:hover {
+  background-color: var(--therd-color);
+}
 .active {
   color: var(--text-color);
   background-color: var(--therd-color);
   padding: 10px;
-  padding-right: 110px;
   text-decoration: none;
+  border: 1px solid;
+  border-radius: 8px;
+  border-style: none;
+  transition: 0.2s;
 }
-
+.activeDropdown {
+  color: var(--text-color);
+  background-color: var(--therd-color);
+  padding: 6px;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 8px;
+  border-style: none;
+  text-decoration: none;
+  transition: 0.2s;
+}
 .button {
   padding: 4px;
   width: 70px;
@@ -67,22 +94,29 @@
   display: block;
   position: absolute;
   background-color: var(--therd-color);
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
 }
-
+.box {
+  color: var(--text-color);
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 1px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.box:hover {
+  background-color: var(--therd-color);
+}
 .dropdown.show {
   opacity: 1;
   pointer-events: auto;
+  margin-top: 2px;
 }
-.p {
-  margin: 20px;
-  padding: 10px;
-}
+
 .downicon.rotation {
   transform: rotate(180deg);
   transition: transform 0.4s;

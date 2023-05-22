@@ -40,7 +40,7 @@ const RootLayout = () => {
         <Outlet />
       </div>
 
-      <main>{nav.state === 'loading' && <p>Loading...</p>}</main>
+      {/* <main>{nav.state === 'loading' && <p>Loading...</p>}</main> */}
     </>
   );
 };

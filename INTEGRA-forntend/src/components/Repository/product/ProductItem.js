@@ -1,6 +1,6 @@
 import { Link, useSubmit } from 'react-router-dom';
-import './CampaignItem.module.css';
-const CampaignItem = ({ campaign }) => {
+import './ProductItem.module.css';
+const ProductItem = ({ product }) => {
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -20,22 +20,10 @@ const CampaignItem = ({ campaign }) => {
         borderRadius: '4px',
       }}
     >
-      <h1 style={{ color: 'var(--text-color)' }}> Campaign Item:</h1>
+      <h1 style={{ color: 'var(--text-color)' }}> Product Item:</h1>
       <div>
-        <label>Name of Campaign:</label>
-        <p className="p"> {campaign.name} </p>
-        <label>Description of Campaign:</label>
-        <p className="p"> {campaign.description} </p>
-        <label>Start Date of Campaign:</label>
-        <p className="p"> {campaign.start_date} </p>
-        <label>End Date of Campaign:</label>
-        <p className="p"> {campaign.end_date} </p>
-        <label>Budget of Campaign:</label>
-        <p className="p"> {campaign.budget} </p>
-        <label>Expected Revenue of Campaign:</label>
-        <p className="p"> {campaign.expected_revenue} </p>
-        <label>Actual Revenue of Campaign:</label>
-        <p className="p"> {campaign.actual_revenue} </p>
+        <label>Name of Product:</label>
+        <p className="p"> {product.name} </p>
       </div>
       <div
         style={{
@@ -45,15 +33,15 @@ const CampaignItem = ({ campaign }) => {
         }}
       >
         <Link
-          to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+          to={`/repository/products/product-detail/edit/${product.id}`}
           style={{
             textDecoration: 'none',
             color: 'var(--text-color)',
             backgroundColor: 'var(--therd-color)',
+            padding: '6px',
             borderRadius: '4px',
             margin: '10px',
             borderStyle: 'none',
-            padding: '10px',
           }}
         >
           Edit
@@ -78,4 +66,4 @@ const CampaignItem = ({ campaign }) => {
   );
 };
 
-export default CampaignItem;
+export default ProductItem;

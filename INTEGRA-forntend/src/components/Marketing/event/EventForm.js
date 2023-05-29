@@ -1,6 +1,12 @@
-import { Form, json, redirect, useActionData, useNavigate, useNavigation } from 'react-router-dom';
+import {
+  Form,
+  json,
+  redirect,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
 import classes from './EventForm.module.css';
-
 
 const EventForm = ({ method, event }) => {
   //const data = useActionData();
@@ -15,56 +21,51 @@ const EventForm = ({ method, event }) => {
 
   return (
     <Form method={method} className={classes.form}>
-      <p>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          required
-          defaultValue={event ? event.name : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          rows="5"
-          required
-          defaultValue={event ? event.description : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="place">Place</label>
-        <input
-          id="place"
-          type="text"
-          name="place"
-          required
-          defaultValue={event ? event.place : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="type">Type</label>
-        <input
-          id="type"
-          type="text"
-          name="type"
-          required
-          defaultValue={event ? event.type : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="cost">Cost</label>
-        <input
-          id="cost"
-          type="number"
-          name="cost"
-          required
-          defaultValue={event ? event.cost : ''}
-        />
-      </p>
+      <label htmlFor="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        required
+        defaultValue={event ? event.name : ''}
+      />
+
+      <label htmlFor="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="5"
+        required
+        defaultValue={event ? event.description : ''}
+      />
+
+      <label htmlFor="place">Place</label>
+      <input
+        id="place"
+        type="text"
+        name="place"
+        required
+        defaultValue={event ? event.place : ''}
+      />
+
+      <label htmlFor="type">Type</label>
+      <input
+        id="type"
+        type="text"
+        name="type"
+        required
+        defaultValue={event ? event.type : ''}
+      />
+
+      <label htmlFor="cost">Cost</label>
+      <input
+        id="cost"
+        type="number"
+        name="cost"
+        required
+        defaultValue={event ? event.cost : ''}
+      />
+
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
           Cancel
@@ -90,7 +91,7 @@ export async function action({ request, params }) {
     type: data.get('type'),
     place: data.get('place'),
     campaign_id: 1,
-    };
+  };
 
   let url;
 

@@ -10,13 +10,17 @@
 .input {
   border-style: none;
   border-radius: 5px;
-  margin: 8px;
-  padding: 4px;
+  margin: 10px;
+  padding: 8px;
   outline: none;
   color: var(--therd-color);
+  width: 200px;
   background-color: var(--text-color);
 }
-
+.h1 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
 .form {
   display: flex;
   justify-content: center;
@@ -24,7 +28,7 @@
   flex-direction: column;
   background-color: var(--secound-color);
   width: 600px;
-  height: 200px;
+  height: 300px;
   border-radius: 4px;
   box-shadow: 0 0 6px var(--text-color);
 }
@@ -33,7 +37,7 @@
   background-color: var(--therd-color);
   color: var(--text-color);
   margin: 6px;
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
   border-style: none;
   font-size: 13px;

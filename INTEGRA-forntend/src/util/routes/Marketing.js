@@ -52,14 +52,12 @@ import PDFDetailPage, {
   action as deletePDFAction,
   loader as PDFDetailLoader,
 } from '../../pages/Marketing/PDF/PDFDetail';
-import NavBar from '../../components/Marketing/layout/NavBar';
+import NavBar from '../../components/layout/NavBar';
 
 export const marketingRoute = {
   path: '/marketing',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
-  id: 'root',
-  loader: tokenLoader,
   children: [
     {
       path: '/marketing/campaigns',

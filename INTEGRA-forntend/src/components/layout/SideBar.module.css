@@ -25,13 +25,12 @@
   padding: 10px;
   text-decoration: none;
 }
-
 .footer {
-  color: darkgrey;
   display: flex;
-  padding: 30px;
-  align-items: center;
   justify-content: center;
+  align-items: end;
+  color: var(--text-color);
+  height: 150px;
 }
 
 .dropdownItem {

@@ -12,8 +12,8 @@
 
 .form input,
 .form textarea {
-  font: inherit;
   padding: 0.25rem;
+  outline: none;
 }
 
 .actions {

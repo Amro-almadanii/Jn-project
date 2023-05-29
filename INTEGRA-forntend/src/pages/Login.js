@@ -7,6 +7,9 @@ const LoginPage = () => {
       <h2 className="integra">I N T E G R A</h2>
       <div className="containar">
         <Form method="post" className="form">
+          <div>
+            <h1 className="h1">Login</h1>
+          </div>
           <input
             type="text"
             name="email"

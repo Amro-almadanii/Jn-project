@@ -114,14 +114,107 @@ function SideBar() {
           PDFs
         </NavLink>
       </div>
-      <div className={classes.butContainar}>
-        <Form action="/logout" method="post">
-          <button className={classes.button}>Logout</button>
-        </Form>
+
+      <div onClick={handleDropdownClick} className={classes.box}>
+        Suppliers
+      </div>
+      <div
+        className={` ${
+          showDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/suppliers"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            Suppliers List
+          </NavLink>
+        </div>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/suppliers/new"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            New Supplier
+          </NavLink>
+        </div>
       </div>
 
-      <div className={classes.footer}>
-        <p>Marketing Department</p>
+
+      <div onClick={handleDropdownClick} className={classes.box}>
+        Categories
+      </div>
+      <div
+        className={` ${
+          showDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/categories"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            Categories List
+          </NavLink>
+        </div>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/categories/new"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            New Category
+          </NavLink>
+        </div>
+      </div>
+
+
+      <div onClick={handleDropdownClick} className={classes.box}>
+        Products
+      </div>
+      <div
+        className={` ${
+          showDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/products"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            Products List
+          </NavLink>
+        </div>
+        <div className={classes.dropdownItem}>
+          <NavLink
+            to="/repository/products/new"
+            className={({ isActive }) =>
+              isActive ? classes.activeDropdown : classes.navlink
+            }
+          >
+            New Product
+          </NavLink>
+        </div>
+      </div>
+
+
+
+
+
+      <div className={classes.butContainar}>
+        <Form action="/src/pages/Logout" method="post">
+          <button className={classes.button}>Logout</button>
+        </Form>
       </div>
     </aside>
   );

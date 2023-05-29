@@ -209,10 +209,8 @@ function SideBar() {
 
 
 
-
-
       <div className={classes.butContainar}>
-        <Form action="/src/pages/Logout" method="post">
+        <Form action="/Logout" method="post">
           <button className={classes.button}>Logout</button>
         </Form>
       </div>

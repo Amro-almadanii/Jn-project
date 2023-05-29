@@ -3,12 +3,12 @@ label {
   margin: 45px;
 }
 .p {
-  color: var(--therd-color);
+  color: var(--third-color);
   margin: 10px;
   margin-left: 50px;
 }
 
 .but {
   margin: 5px;
-  background-color: var(--therd-color);
+  background-color: var(--third-color);
 }

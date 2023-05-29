@@ -23,7 +23,7 @@ const ProductForm = ({ method, product }) => {
   return (
     <div className={classes.containar}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--secound-color)' }}>Create product:</h1>
+        <h1 style={{ color: 'var(--second-color)' }}>Create product:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

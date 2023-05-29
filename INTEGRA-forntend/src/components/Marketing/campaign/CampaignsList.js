@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './CampaignsList.module.css';
+import classes from './CampaignsList.module.css';
 const CampaignsList = ({ campaigns }) => {
   return (
     <div
@@ -9,17 +9,16 @@ const CampaignsList = ({ campaigns }) => {
         margin: '20px',
       }}
     >
-      <h1>All Campaigns</h1>
+      <h1>Marketing > Campaigns</h1>
       <table
         style={{
           textAlign: 'center',
-          backgroundColor: 'var(--secound-color)',
-          color: 'var(--text-color)',
-          bordercollapse: 'collapse',
+          backgroundColor: 'whitesmoke',
+          borderCollapse: 'collapse',
           borderRadius: '4px',
         }}
       >
-        <thead className="thead">
+        <thead>
           <tr>
             <th>Campaign Id</th>
             <th>Name</th>
@@ -36,11 +35,7 @@ const CampaignsList = ({ campaigns }) => {
           {campaigns.map((campaign) => (
             <tr key={campaign.id}>
               <td>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'var(--therd-color)',
-                  }}
+                <Link className={classes.link}
                   to={`/marketing/campaigns/campaign-detail/${campaign.id}`}
                 >
                   {campaign.id}

@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import ProductsList from '../../../components/Repository/product/ProductsList';
 import { getAuthToken } from '../../../util/auth';
 import './Products.css';
 const ProductsPage = () => {
-  const { products: products } = useLoaderData();
+  const { products } = useLoaderData();
 
   return (
     <div className="categories">

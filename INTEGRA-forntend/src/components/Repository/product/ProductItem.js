@@ -15,7 +15,7 @@ const ProductItem = ({ product }) => {
     <div
       style={{
         margin: '10px',
-        backgroundColor: 'var(--secound-color)',
+        backgroundColor: 'var(--second-color)',
         width: 'calc(100vw - 270px)',
         borderRadius: '4px',
       }}

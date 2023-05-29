@@ -29,23 +29,23 @@
   margin: 30px;
   border-radius: 4px;
   background-color: var(--color-secound);
-  color: var(--therd-color);
+  color: var(--third-color);
   border: none;
   transition: 0.4s;
 }
 
 .actions button[type='button'] {
   background-color: transparent;
-  color: var(--therd-color);
+  color: var(--third-color);
   transition: 0.4s;
 }
 
 .actions button:hover {
-  background-color: var(--therd-color);
+  background-color: var(--third-color);
   color: var(--text-color);
 }
 
 .actions button[type='button']:hover {
-  background-color: var(--therd-color);
+  background-color: var(--third-color);
   color: var(--text-color);
 }

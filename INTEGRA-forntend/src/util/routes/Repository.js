@@ -1,6 +1,6 @@
 import RootLayout from '../../pages/Repository/Root';
 import ErrorPage from '../../pages/Repository/Error';
-import { checkAuthLoader, tokenLoader } from '../auth';
+import { checkAuthLoader } from '../auth';
 
 import SuppliersPage , { loader as SuppliersLoader }from '../../pages/Repository/supplier/Suppliers';
 import SupplierDetailPage , {

@@ -21,9 +21,9 @@ const CampaignForm = ({ method, campaign }) => {
   };
 
   return (
-    <div className={classes.containar}>
+    <div className={classes.container}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--secound-color)' }}>Create campaign:</h1>
+        <h1 style={{ color: 'var(--second-color)' }}>Create campaign:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

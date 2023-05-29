@@ -13,7 +13,7 @@ const ProductsList = ({ products }) => {
       <table
         style={{
           textAlign: 'center',
-          backgroundColor: 'var(--secound-color)',
+          backgroundColor: 'var(--second-color)',
           color: 'var(--text-color)',
           bordercollapse: 'collapse',
           borderRadius: '4px',

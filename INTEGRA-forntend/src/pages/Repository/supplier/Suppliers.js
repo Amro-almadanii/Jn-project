@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import SuppliersList from '../../../components/Repository/supplier/SuppliersList';
 import { getAuthToken } from '../../../util/auth';

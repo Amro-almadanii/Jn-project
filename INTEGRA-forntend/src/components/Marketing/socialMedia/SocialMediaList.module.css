@@ -1,5 +1,5 @@
 th {
-  background-color: var(--secound-color);
+  background-color: var(--second-color);
   padding-top: 9px;
   padding-bottom: 9px;
   color: var(--text-color);
@@ -8,5 +8,5 @@ th {
 td {
   padding-top: 12px;
   padding-bottom: 12px;
-  color: var(--therd-color);
+  color: var(--third-color);
 }

@@ -23,7 +23,7 @@ const SupplierForm = ({ method, supplier }) => {
   return (
     <div className={classes.containar}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--secound-color)' }}>Create supplier:</h1>
+        <h1 style={{ color: 'var(--second-color)' }}>Create supplier:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

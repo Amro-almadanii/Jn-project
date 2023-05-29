@@ -3,7 +3,7 @@ import React from 'react';
 import RootLayout from '../../pages/Marketing/Root';
 
 import ErrorPage from '../../pages/Marketing/Error';
-import { checkAuthLoader, tokenLoader } from '../auth';
+import { checkAuthLoader } from '../auth';
 
 import CampaignsPage, {
   loader as CampaignsLoader,

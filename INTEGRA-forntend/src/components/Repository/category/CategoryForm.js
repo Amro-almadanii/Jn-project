@@ -23,7 +23,7 @@ const CategoryForm = ({ method, category }) => {
   return (
     <div className={classes.containar}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--secound-color)' }}>Create category:</h1>
+        <h1 style={{ color: 'var(--second-color)' }}>Create category:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

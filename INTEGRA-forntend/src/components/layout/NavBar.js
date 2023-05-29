@@ -1,6 +1,5 @@
-import { Form, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import classes from './NavBar.module.css';
-import { Fragment } from 'react';
 
 function NavBar() {
   return (
@@ -43,41 +42,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-/*<Fragment>
-<nav>
-  <ul className={classes.list}>
-    <li>
-      <NavLink
-        to="/marketing/campaigns/new/branch/tv"
-        className={({ isActive }) =>
-          isActive ? classes.active : classes.item
-        }
-      >
-        new TV
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/marketing/campaigns/new/branch/socialMedia"
-        className={({ isActive }) =>
-          isActive ? classes.active : classes.item
-        }
-      >
-        new SocialMedia
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/marketing/campaigns/new/branch/event"
-        className={({ isActive }) =>
-          isActive ? classes.active : classes.item
-        }
-      >
-        new Event
-      </NavLink>
-    </li>
-  </ul>
-</nav>
-<Outlet />
-</Fragment>*/

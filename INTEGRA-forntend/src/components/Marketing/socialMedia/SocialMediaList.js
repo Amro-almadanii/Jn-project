@@ -3,12 +3,12 @@ import './SocialMediaList.module.css';
 const SocialMediasList = ({ socialMedia }) => {
   return (
     <div className="socialmedialist">
-      <h1 style={{ color: 'var(--secound-color)' }}>All SocialMedias</h1>
+      <h1 style={{ color: 'var(--second-color)' }}>All SocialMedias</h1>
       <table
         style={{
           border: '2px solid black',
           textAlign: 'center',
-          backgroundColor: 'var(--secound-color)',
+          backgroundColor: 'var(--second-color)',
           color: 'var(--text-color)',
           bordercollapse: 'collapse',
           borderRadius: '4px',

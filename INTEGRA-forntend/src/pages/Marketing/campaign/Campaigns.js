@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import CampaignsList from '../../../components/Marketing/campaign/CampaignsList';
 import { getAuthToken } from '../../../util/auth';
@@ -8,7 +7,6 @@ const CampaignsPage = () => {
 
   return (
     <div className="campaigns">
-      <h1>Campaigns Page</h1>
       <CampaignsList campaigns={campaigns} />
     </div>
   );

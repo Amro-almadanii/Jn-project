@@ -1,25 +1,21 @@
-import { Link } from 'react-router-dom';
-import classes from './CampaignsList.module.css';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import classes from './CampaignsList.module.scss';
 const CampaignsList = ({ campaigns }) => {
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '20px',
-      }}
-    >
+    <div className={classes.campaignsList}>
       <h1>Marketing > Campaigns</h1>
-      <table
-        style={{
-          textAlign: 'center',
-          backgroundColor: 'whitesmoke',
-          borderCollapse: 'collapse',
-          borderRadius: '4px',
-        }}
-      >
+      <div className={classes.add_campaign}>
+        <Link className={classes.add_campaign_link}
+          to="/marketing/campaigns/new"
+        >
+          Add New Campaign
+        </Link>
+      </div>
+      <table>
         <thead>
-          <tr>
+          <tr style={{cursor: 'auto'}}>
             <th>Campaign Id</th>
             <th>Name</th>
             <th>Description</th>
@@ -33,14 +29,9 @@ const CampaignsList = ({ campaigns }) => {
         </thead>
         <tbody>
           {campaigns.map((campaign) => (
-            <tr key={campaign.id}>
-              <td>
-                <Link className={classes.link}
-                  to={`/marketing/campaigns/campaign-detail/${campaign.id}`}
-                >
-                  {campaign.id}
-                </Link>
-              </td>
+
+            <tr key={campaign.id}  onClick={ () => navigate( '/marketing/campaigns/campaign-detail/1' ) } >
+              <td>{campaign.id}</td>
               <td>{campaign.name}</td>
               <td>{campaign.description}</td>
               <td>{campaign.start_date}</td>
@@ -53,7 +44,7 @@ const CampaignsList = ({ campaigns }) => {
           ))}
         </tbody>
         <tfoot>
-          <tr>
+          <tr  style={{cursor: 'auto'}}>
             <th>Campaign Id</th>
             <th>Name</th>
             <th>Description</th>

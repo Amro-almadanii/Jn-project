@@ -1,0 +1,52 @@
+.campaignItem {
+  margin: 10px;
+  width: calc(100vw - 270px);
+  border-radius: 4px;
+}
+
+.campaignItem {
+  label {
+    margin: 45px;
+    color: var(--second-color);
+    font-size: 20px;
+    padding-left: 600px;
+  }
+
+  p {
+    margin: 10px;
+    margin-left: 50px;
+    padding-left: 600px;
+  }
+
+  .btn {
+    margin-left: 50px;
+    margin-top: 40px;
+    display: flex;
+  }
+
+  .link {
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--third-color);
+    border-radius: 4px;
+    margin: 10px;
+    border-style: none;
+    padding: 10px;
+  }
+
+  button {
+    margin: 10px;
+    background-color: var(--third-color);
+    border-style: none;
+    padding: 6px;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    width: 70px;
+  }
+
+  h1 {
+    color: var(--second-color);
+  }
+}
+

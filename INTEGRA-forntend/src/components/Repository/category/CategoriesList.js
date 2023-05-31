@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './CategoriesList.module.css';
+import classes from './CategoriesList.module.css';
 const CategoriesList = ({ categories }) => {
   return (
     <div

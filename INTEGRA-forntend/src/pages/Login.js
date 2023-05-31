@@ -1,14 +1,14 @@
 import { Form, json, redirect } from 'react-router-dom';
-import './Login.css';
+import classes from './Login.module.scss';
 
 const LoginPage = () => {
   return (
-    <>
-      <h2 className="integra">I N T E G R A</h2>
-      <div className="containar">
-        <Form method="post" className="form">
+    <div className={classes.login}>
+      <h2 className={classes.integra}>I N T E G R A</h2>
+      <div className={classes.loginForm}>
+        <Form method="post" className={classes.form}>
           <div>
-            <h1 className="h1">Login</h1>
+            <h1 className={classes.h1}>Login</h1>
           </div>
           <input
             type="text"
@@ -22,10 +22,10 @@ const LoginPage = () => {
             className="input"
             placeholder="Password"
           />
-          <button className="button">Login</button>
+          <button className={classes.button}>Login</button>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 

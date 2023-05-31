@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import './ProductsList.module.css';
+import classes from './ProductsList.module.css';
+
 const ProductsList = ({ products }) => {
   return (
     <div

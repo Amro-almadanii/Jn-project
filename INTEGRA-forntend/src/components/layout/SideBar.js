@@ -23,16 +23,6 @@ function SideBar() {
       </div>
       <div className={classes.item}>
         <NavLink
-          to="/marketing/campaigns/new"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-        >
-          new Campaign
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
           className={({ isActive }) =>
             isActive ? classes.active : classes.navlink
           }

@@ -6,7 +6,7 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './CampaignForm.module.css';
+import classes from './CampaignForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
 
 const CampaignForm = ({ method, campaign }) => {
@@ -21,9 +21,10 @@ const CampaignForm = ({ method, campaign }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.campaignForm}>
+
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--second-color)' }}>Create campaign:</h1>
+        <h1>Marketing > Campaign > Create New Campaign:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -98,7 +99,7 @@ const CampaignForm = ({ method, campaign }) => {
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
-          <button disabled={isSubmitting}>
+          <button type="button" disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>

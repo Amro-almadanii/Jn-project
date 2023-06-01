@@ -1,7 +1,13 @@
-import { Form, json, redirect, useActionData, useNavigate, useNavigation } from 'react-router-dom';
-import classes from './SocialMediaForm.module.css';
+import {
+  Form,
+  json,
+  redirect,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
+import classes from './SocialMediaForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
-
 
 const SocialMediaForm = ({ method, socialMedia }) => {
   //const data = useActionData();
@@ -16,8 +22,8 @@ const SocialMediaForm = ({ method, socialMedia }) => {
 
   return (
     <Form method={method} className={classes.form}>
-      <p>
-        <label htmlFor="blogger">Blogger</label>
+      <div>
+        <label htmlFor="blogger">Blogger :</label>
         <input
           id="blogger"
           type="text"
@@ -25,9 +31,8 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.blogger : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="type">Type</label>
+
+        <label htmlFor="type">Type :</label>
         <input
           id="type"
           type="text"
@@ -35,9 +40,8 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.type : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="way">Way</label>
+
+        <label htmlFor="way">Way :</label>
         <input
           id="way"
           type="text"
@@ -45,9 +49,8 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.way : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="cost">Cost</label>
+
+        <label htmlFor="cost">Cost :</label>
         <input
           id="cost"
           type="number"
@@ -55,14 +58,15 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.cost : ''}
         />
-      </p>
-      <div className={classes.actions}>
-        <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
-          Cancel
-        </button>
-        <button disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Save'}
-        </button>
+
+        <div className={classes.actions}>
+          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+            Cancel
+          </button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Save'}
+          </button>
+        </div>
       </div>
     </Form>
   );
@@ -86,7 +90,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/marketing/socialMedia/update/' + params.socialMediaId;
+    url =
+      'http://localhost:8000/marketing/socialMedia/update/' +
+      params.socialMediaId;
   } else {
     url = 'http://localhost:8000/marketing/socialMedia/store';
   }
@@ -95,7 +101,7 @@ export async function action({ request, params }) {
     method: method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'bearer' + token,
+      Authorization: 'bearer' + token,
     },
     body: JSON.stringify(socialMediaData),
   });

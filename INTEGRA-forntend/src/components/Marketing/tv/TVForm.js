@@ -1,7 +1,13 @@
-import { Form, json, redirect, useActionData, useNavigate, useNavigation } from 'react-router-dom';
-import classes from './TVForm.module.css';
+import {
+  Form,
+  json,
+  redirect,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
+import classes from './TVForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
-
 
 const TVForm = ({ method, tv }) => {
   //const data = useActionData();
@@ -16,8 +22,8 @@ const TVForm = ({ method, tv }) => {
 
   return (
     <Form method={method} className={classes.form}>
-      <p>
-        <label htmlFor="channel">Channel Name</label>
+      <div className={classes.box}>
+        <label className={classes.label}>Channel Name :</label>
         <input
           id="channel"
           type="text"
@@ -25,9 +31,8 @@ const TVForm = ({ method, tv }) => {
           required
           defaultValue={tv ? tv.channel : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="time">Time</label>
+
+        <label>Time :</label>
         <input
           id="time"
           name="time"
@@ -35,9 +40,8 @@ const TVForm = ({ method, tv }) => {
           required
           defaultValue={tv ? tv.time : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="cost">Cost</label>
+
+        <label>Cost :</label>
         <input
           id="cost"
           type="number"
@@ -45,9 +49,8 @@ const TVForm = ({ method, tv }) => {
           required
           defaultValue={tv ? tv.cost : ''}
         />
-      </p>
-      <p>
-        <label htmlFor="advertising_period">Advertising Period</label>
+
+        <label>Advertising Period :</label>
         <input
           id="advertising_period"
           type="number"
@@ -55,14 +58,15 @@ const TVForm = ({ method, tv }) => {
           required
           defaultValue={tv ? tv.advertising_period : ''}
         />
-      </p>
-      <div className={classes.actions}>
-        <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
-          Cancel
-        </button>
-        <button disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Save'}
-        </button>
+
+        <div className={classes.actions}>
+          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+            Cancel
+          </button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Save'}
+          </button>
+        </div>
       </div>
     </Form>
   );
@@ -95,7 +99,7 @@ export async function action({ request, params }) {
     method: method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'bearer' + token,
+      Authorization: 'bearer' + token,
     },
     body: JSON.stringify(tvData),
   });

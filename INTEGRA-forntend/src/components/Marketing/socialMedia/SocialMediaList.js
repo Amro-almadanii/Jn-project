@@ -1,22 +1,18 @@
 import { Link } from 'react-router-dom';
-import './SocialMediaList.module.css';
+import classes from './SocialMediaList.module.scss';
 const SocialMediasList = ({ socialMedia }) => {
   return (
-    <div className="socialmedialist">
-      <h1 style={{ color: 'var(--second-color)' }}>All SocialMedias</h1>
-      <table
-        style={{
-          border: '2px solid black',
-          textAlign: 'center',
-          backgroundColor: 'var(--second-color)',
-          color: 'var(--text-color)',
-          bordercollapse: 'collapse',
-          borderRadius: '4px',
-          margin: '10px',
-          borderStyle: 'none',
-          width: '80%',
-        }}
-      >
+    <div className={classes.socialMediaList}>
+      <h1>All SocialMedias</h1>
+      <div className={classes.addNewSocialMedia}>
+        <Link
+          className={classes.socialMediaList_link}
+          to="/marketing/campaigns/new"
+        >
+          Add New SocialMedia
+        </Link>
+      </div>
+      <table>
         <thead>
           <tr>
             <th>SocialMedia Id</th>

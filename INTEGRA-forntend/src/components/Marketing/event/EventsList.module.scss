@@ -1,4 +1,4 @@
-.campaignsList {
+.eventList {
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -31,7 +31,7 @@
     color: var(--second-color);
   }
 
-  .add_campaign {
+  .addNewEvent {
     text-decoration: none;
     display: flex;
     justify-content: end;
@@ -42,7 +42,7 @@
     color: var(--second-color);
   }
 
-  .add_campaign_link {
+  .eventList_link {
     text-decoration: none;
     background-color: var(--second-color);
     color: white;
@@ -54,7 +54,7 @@
     transition: 0.2s;
   }
 
-  .add_campaign_link:hover {
+  .eventList_link:hover {
     background-color: var(--third-color);
     padding: 8px;
   }

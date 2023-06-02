@@ -1,7 +1,7 @@
 import { json, useLoaderData } from 'react-router-dom';
 import CampaignsList from '../../../components/Marketing/campaign/CampaignsList';
 import { getAuthToken } from '../../../util/auth';
-import './Campaigns.css';
+import './Campaigns.scss';
 const CampaignsPage = () => {
   const { data: campaigns } = useLoaderData();
 

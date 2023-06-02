@@ -25,7 +25,10 @@ const EventsList = ({ events }) => {
           {events.map((event) => (
             <tr key={event.id}>
               <td>
-                <Link to={`/marketing/events/event-detail/${event.id}`}>
+                <Link
+                  className={classes.link}
+                  to={`/marketing/events/event-detail/${event.id}`}
+                >
                   {event.id}
                 </Link>
               </td>
@@ -36,6 +39,7 @@ const EventsList = ({ events }) => {
               <td>{event.type}</td>
               <td>
                 <Link
+                  className={classes.link}
                   to={`/marketing/campaigns/campaign-detail/${event.campaign_id}`}
                 >
                   {event.campaign_id}

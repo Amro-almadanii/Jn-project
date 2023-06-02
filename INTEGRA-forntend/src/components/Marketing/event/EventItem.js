@@ -1,5 +1,6 @@
 import { Link, useSubmit } from 'react-router-dom';
-
+import { Card } from '@mui/material';
+import classes from './EventItem.module.scss';
 const EventItem = ({ event }) => {
   const submit = useSubmit();
 
@@ -12,34 +13,47 @@ const EventItem = ({ event }) => {
   };
 
   return (
-    <article>
-      <h1> Event Item</h1>
-      <div>
-        <label>Name of Event</label>
-        <p style={{ marginLeft: '20px' }}> {event.name} </p>
-        <label>Description of Event</label>
-        <p style={{ marginLeft: '20px' }}> {event.description} </p>
-        <label>Place of Event :</label>
-        <p style={{ marginLeft: '20px' }}> {event.place} </p>
-        <label>Type of Event :</label>
-        <p style={{ marginLeft: '20px' }}> {event.type} </p>
-        <label>Cost of Event :</label>
-        <p style={{ marginLeft: '20px' }}> {event.cost} </p>
-        <label>Event for Campaign:</label>
-        <p style={{ marginLeft: '20px' }}>
-          {' '}
-          <Link
-            to={`/marketing/campaigns/campaign-detail/${event.campaign_id}`}
-          >
-            {event.campaign_id}{' '}
-          </Link>
-        </p>
+    <div className={classes.eventItem}>
+      <h1> Marketing > Event Item > {event.name}</h1>
+      <div className={classes.box}>
+        <Card className={classes.card}>
+          <div className={classes.cardItems}>
+            <label>Name of Event</label>
+            <p> {event.name} </p>
+            <label>Description of Event</label>
+            <p> {event.description} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Place of Event :</label>
+            <p> {event.place} </p>
+            <label>Type of Event :</label>
+            <p> {event.type} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Cost of Event :</label>
+            <p> {event.cost} </p>
+            <label>Event for Campaign:</label>
+            <p>
+              {' '}
+              <Link
+                to={`/marketing/campaigns/campaign-detail/${event.campaign_id}`}
+              >
+                {event.campaign_id}{' '}
+              </Link>
+            </p>
+          </div>
+        </Card>
       </div>
-      <menu>
-        <Link to={`/marketing/events/event-detail/edit/${event.id}`}>Edit</Link>
+      <div className={classes.btn}>
+        <Link
+          className={classes.link}
+          to={`/marketing/events/event-detail/edit/${event.id}`}
+        >
+          Edit
+        </Link>
         <button onClick={deleteHandler}>Delete</button>
-      </menu>
-    </article>
+      </div>
+    </div>
   );
 };
 

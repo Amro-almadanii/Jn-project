@@ -1,11 +1,11 @@
-.campaignItem {
+.tvItem {
   width: calc(100vw - 270px);
   height: calc(100vh - 70px);
   overflow-y: auto;
   overflow-x: auto;
 }
 
-.campaignItem {
+.tvItem {
   label {
     color: var(--second-color);
     font-size: 20px;
@@ -16,9 +16,6 @@
     margin-right: 20px;
   }
 
-  h2 {
-    margin: 10px;
-  }
   .cardItems {
     display: flex;
   }
@@ -26,10 +23,6 @@
   .box {
     width: calc(100vw - 300px);
     margin-left: 10px;
-  }
-
-  .cardBox {
-    margin: 8px;
   }
   .btn {
     margin-left: 50px;
@@ -45,28 +38,6 @@
     margin: 10px;
     border-style: none;
     padding: 10px;
-  }
-  .card {
-    border: 2px solid var(--third-color);
-  }
-
-  .cardChildren {
-    border: 2px solid var(--third-color);
-    margin: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  .cardChildren {
-    p {
-      margin: 0;
-      padding: 0;
-      margin-left: 10px;
-    }
-    label {
-      margin: 10px;
-      padding: 0;
-    }
   }
 
   button {

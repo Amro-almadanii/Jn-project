@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import './TVsList.module.css';
+import classes from './TVsList.module.scss';
 const TVsList = ({ tvs }) => {
   return (
-    <div style={{ overflowy: 'auto', overflowx: 'hidden', width: '800px' }}>
+    <div className={classes.tvList}>
       <h1>All TVs</h1>
-      <table
-        style={{
-          border: '2px solid black',
-          textAlign: 'center',
-        }}
-      >
+      <div className={classes.addNewTv}>
+        <Link className={classes.tvList_link} to="/marketing/campaigns/new">
+          Add New TV
+        </Link>
+      </div>
+      <table>
         <thead>
           <tr>
             <th>TV Id</th>
@@ -24,7 +24,12 @@ const TVsList = ({ tvs }) => {
           {tvs.map((tv) => (
             <tr key={tv.id}>
               <td>
-                <Link to={`/marketing/tvs/tv-detail/${tv.id}`}>{tv.id}</Link>
+                <Link
+                  className={classes.link}
+                  to={`/marketing/tvs/tv-detail/${tv.id}`}
+                >
+                  {tv.id}
+                </Link>
               </td>
               <td>{tv.channel}</td>
               <td>{tv.time}</td>
@@ -32,6 +37,7 @@ const TVsList = ({ tvs }) => {
               <td>{tv.advertising_period}</td>
               <td>
                 <Link
+                  className={classes.link}
                   to={`/marketing/campaigns/campaign-detail/${tv.campaign_id}`}
                 >
                   {' '}

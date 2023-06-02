@@ -24,8 +24,6 @@ export async function loader() {
     },
   });
 
-
-
   if (!response.ok) {
     throw json({ message: 'Could not fetch products.' }, { status: 500 });
   } else {

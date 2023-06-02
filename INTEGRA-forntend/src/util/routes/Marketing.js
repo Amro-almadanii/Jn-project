@@ -15,6 +15,7 @@ import CampaignDetailPage, {
 } from '../../pages/Marketing/campaign/CampaignDetail';
 import EditCampaignPage from '../../pages/Marketing/campaign/EditCampaign';
 import { action as manipulateCampaignAction } from '../../components/Marketing/campaign/CampaignForm';
+import NavBar from '../../components/layout/NavBar';
 
 import TVsPage, { loader as TVsLoader } from '../../pages/Marketing/tv/TVs';
 import NewTVPage from '../../pages/Marketing/tv/NewTV';
@@ -52,7 +53,19 @@ import PDFDetailPage, {
   action as deletePDFAction,
   loader as PDFDetailLoader,
 } from '../../pages/Marketing/PDF/PDFDetail';
-import NavBar from '../../components/layout/NavBar';
+
+
+import LeadsPage, {
+  loader as LeadsLoader,
+} from '../../pages/Marketing/lead/Leads';
+import NewLeadPage from '../../pages/Marketing/lead/NewLead';
+import LeadDetailPage, {
+  loader as LeadDetailLoader,
+  action as deleteLeadAction,
+} from '../../pages/Marketing/lead/LeadDetail';
+import EditLeadPage from '../../pages/Marketing/lead/EditLead';
+import { action as manipulateLeadAction } from '../../components/Marketing/lead/LeadForm';
+
 
 export const marketingRoute = {
   path: '/marketing',
@@ -227,6 +240,46 @@ export const marketingRoute = {
               path: '/marketing/pdfs/pdf-detail/:pdfId',
               element: <PDFDetailPage />,
               action: deletePDFAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: '/marketing/leads',
+      children: [
+        {
+          index: true,
+          element: <LeadsPage />,
+          loader: LeadsLoader,
+        },
+        {
+          path: '/marketing/leads/new',
+          children: [
+            {
+              index: true,
+              element: <NewLeadPage />,
+              action: manipulateLeadAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+        {
+          path: '/marketing/leads/lead-detail',
+          id: 'lead-detail',
+          loader: LeadDetailLoader,
+          children: [
+            {
+              path: '/marketing/leads/lead-detail/:leadId',
+              element: <LeadDetailPage />,
+              action: deleteLeadAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/marketing/leads/lead-detail/edit/:leadId',
+              element: <EditLeadPage />,
+              action: manipulateLeadAction,
               loader: checkAuthLoader,
             },
           ],

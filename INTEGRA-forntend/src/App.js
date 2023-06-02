@@ -4,7 +4,7 @@ import LoginPage, { action as loginUser } from './pages/Login';
 import { action as logoutUser } from './pages/Logout';
 
 import { marketingRoute } from './util/routes/Marketing';
-import { repositoryRoute } from './util/routes/Repository';
+import { repositoryRoute } from './util/routes/Repository/Repository';
 
 import { checkAuthLoader } from './util/auth';
 import React from 'react';

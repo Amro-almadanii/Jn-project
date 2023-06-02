@@ -10,7 +10,7 @@ import classes from './CampaignForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
 
 const CampaignForm = ({ method, campaign }) => {
-  //const data = useActionData();
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -22,7 +22,6 @@ const CampaignForm = ({ method, campaign }) => {
 
   return (
     <div className={classes.campaignForm}>
-
       <Form method={method} className={classes.form}>
         <h1>Marketing > Campaign > Create New Campaign:</h1>
         <p>
@@ -96,10 +95,10 @@ const CampaignForm = ({ method, campaign }) => {
           />
         </p>
         <div className={classes.actions}>
-          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+          <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
-          <button type="button" disabled={isSubmitting}>
+          <button disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>

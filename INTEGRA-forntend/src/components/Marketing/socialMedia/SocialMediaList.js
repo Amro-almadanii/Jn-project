@@ -7,7 +7,7 @@ const SocialMediasList = ({ socialMedia }) => {
       <div className={classes.addNewSocialMedia}>
         <Link
           className={classes.socialMediaList_link}
-          to="/marketing/campaigns/new"
+          to="/marketing/campaigns/new/branch/socialMedia"
         >
           Add New SocialMedia
         </Link>
@@ -28,7 +28,7 @@ const SocialMediasList = ({ socialMedia }) => {
             <tr key={socialMedia.id}>
               <td>
                 <Link
-                 className={classes.link}
+                  className={classes.link}
                   to={`/marketing/socialMedia/socialMedia-detail/${socialMedia.id}`}
                 >
                   {socialMedia.id}
@@ -39,7 +39,8 @@ const SocialMediasList = ({ socialMedia }) => {
               <td>{socialMedia.way}</td>
               <td>{socialMedia.cost}</td>
               <td>
-                <Link className={classes.link}
+                <Link
+                  className={classes.link}
                   to={`/marketing/campaigns/campaign-detail/${socialMedia.campaign_id}`}
                 >
                   {socialMedia.campaign_id}

@@ -28,10 +28,7 @@ const SocialMediasList = ({ socialMedia }) => {
             <tr key={socialMedia.id}>
               <td>
                 <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'var(--therd-color)',
-                  }}
+                 className={classes.link}
                   to={`/marketing/socialMedia/socialMedia-detail/${socialMedia.id}`}
                 >
                   {socialMedia.id}
@@ -42,7 +39,7 @@ const SocialMediasList = ({ socialMedia }) => {
               <td>{socialMedia.way}</td>
               <td>{socialMedia.cost}</td>
               <td>
-                <Link
+                <Link className={classes.link}
                   to={`/marketing/campaigns/campaign-detail/${socialMedia.campaign_id}`}
                 >
                   {socialMedia.campaign_id}

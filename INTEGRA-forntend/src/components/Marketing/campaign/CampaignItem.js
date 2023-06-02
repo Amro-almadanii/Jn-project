@@ -37,7 +37,7 @@ const CampaignItem = ({ campaign }) => {
     <div className={classes.campaignItem}>
       <h1> Marketing > Campaign Item > {campaign.name} :</h1>
       <div className={classes.box}>
-        <Card variant="outlined">
+        <Card className={classes.card}>
           <div className={classes.cardItems}>
             <label>Name of Campaign :</label>
             <p> {campaign.name} </p>
@@ -61,16 +61,16 @@ const CampaignItem = ({ campaign }) => {
             <p> {campaign.actual_revenue} </p>
           </div>
         </Card>
+
         <div className={classes.cardBox}>
-          <Card>
+          <Card className={classes.cardChildren}>
             <h2> Social media :</h2>
             <label>Start Date of Campaign :</label>
             <p> {campaign.start_date} </p>
             <label>End Date of Campaign :</label>
             <p> {campaign.end_date} </p>
           </Card>
-
-          <Card>
+          <Card className={classes.cardChildren}>
             <h2> TV :</h2>
             <label>Start Date of Campaign :</label>
             <p> {campaign.start_date} </p>
@@ -78,7 +78,7 @@ const CampaignItem = ({ campaign }) => {
             <p> {campaign.end_date} </p>
           </Card>
 
-          <Card>
+          <Card className={classes.cardChildren}>
             <h2> Event :</h2>
             <label>Start Date of Campaign :</label>
             <p> {campaign.start_date} </p>

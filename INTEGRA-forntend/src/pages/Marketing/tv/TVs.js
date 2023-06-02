@@ -1,13 +1,13 @@
 import { json, useLoaderData } from 'react-router-dom';
 import TVsList from '../../../components/Marketing/tv/TVsList';
 import { getAuthToken } from '../../../util/auth';
-import './tv.css';
+import classes from './tv.module.scss';
 const TVsPage = () => {
   const data = useLoaderData();
 
   const tvs = data.data;
   return (
-    <div className="tv">
+    <div className={classes.tv}>
       <h1>TVs Page</h1>
       <TVsList tvs={tvs} />
     </div>

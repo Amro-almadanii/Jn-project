@@ -1,36 +1,57 @@
 import { Link, useSubmit } from 'react-router-dom';
-
+import classes from './TVItem.module.scss';
+import { Card } from '@mui/material';
 const TVItem = ({ tv }) => {
   const submit = useSubmit();
 
-  const deleteHandler = () =>{
-      const proceed= window.confirm('Are you sure?');
+  const deleteHandler = () => {
+    const proceed = window.confirm('Are you sure?');
 
-      if(proceed) {
-          submit(null, {method: 'delete'});
-      }
+    if (proceed) {
+      submit(null, { method: 'delete' });
+    }
   };
 
   return (
-    <article>
-      <h1> TV Item</h1>
-      <div>
-        <label>Channel of TV</label>
-          <p style={{marginLeft: "20px"}}> {tv.channel} </p>
-        <label>Time to show on TV</label>
-          <p style={{marginLeft: "20px"}}> {tv.time} </p>
-        <label>Cost:</label>
-          <p style={{marginLeft: "20px"}}> {tv.cost} </p>
-        <label>Advertising Period:</label>
-          <p style={{marginLeft: "20px"}}> {tv.advertising_period} </p>
-        <label>For Campaign </label>
-          <p style={{marginLeft: "20px"}}><Link to={`/marketing/campaigns/campaign-detail/${tv.campaign_id}`}> {tv.campaign_id} </Link></p>
+    <div className={classes.tvItem}>
+      <h1> Marketing > TV Item > {tv.channel} </h1>
+      <div className={classes.box}>
+        <Card className={classes.card}>
+          <div className={classes.cardItems}>
+            <label>Channel of TV</label>
+            <p> {tv.channel} </p>
+            <label>Time to show on TV</label>
+            <p> {tv.time} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Cost:</label>
+            <p> {tv.cost} </p>
+            <label>Advertising Period:</label>
+            <p> {tv.advertising_period} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>For Campaign </label>
+            <p>
+              <Link
+                to={`/marketing/campaigns/campaign-detail/${tv.campaign_id}`}
+              >
+                {' '}
+                {tv.campaign_id}{' '}
+              </Link>
+            </p>
+          </div>
+        </Card>
       </div>
-      <menu>
-        <Link to={`/marketing/tvs/tv-detail/edit/${tv.id}`}>Edit</Link>
+      <div className={classes.btn}>
+        <Link
+          className={classes.link}
+          to={`/marketing/tvs/tv-detail/edit/${tv.id}`}
+        >
+          Edit
+        </Link>
         <button onClick={deleteHandler}>Delete</button>
-      </menu>
-    </article>
+      </div>
+    </div>
   );
 };
 

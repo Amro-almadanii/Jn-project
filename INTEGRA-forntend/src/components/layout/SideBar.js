@@ -1,5 +1,5 @@
 import { Form, NavLink } from 'react-router-dom';
-import classes from './SideBar.module.css';
+import classes from './SideBar.module.scss';
 import { useState } from 'react';
 
 function SideBar() {
@@ -54,7 +54,7 @@ function SideBar() {
           Events
         </NavLink>
       </div>
-      <div onClick={handleDropdownClick} className={classes.box}>
+      {/* <div onClick={handleDropdownClick} className={classes.box}>
         Create new :
       </div>
       <div
@@ -92,7 +92,7 @@ function SideBar() {
             new Event
           </NavLink>
         </div>
-      </div>
+      </div> */}
 
       <div className={classes.item}>
         <NavLink
@@ -135,7 +135,6 @@ function SideBar() {
         </div>
       </div>
 
-
       <div onClick={handleDropdownClick} className={classes.box}>
         Categories
       </div>
@@ -166,7 +165,6 @@ function SideBar() {
         </div>
       </div>
 
-
       <div onClick={handleDropdownClick} className={classes.box}>
         Products
       </div>
@@ -196,8 +194,6 @@ function SideBar() {
           </NavLink>
         </div>
       </div>
-
-
 
       <div className={classes.butContainar}>
         <Form action="/Logout" method="post">

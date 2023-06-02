@@ -5,7 +5,10 @@ const EventsList = ({ events }) => {
     <div className={classes.eventList}>
       <h1>All Events</h1>
       <div className={classes.addNewEvent}>
-        <Link className={classes.eventList_link} to="/marketing/campaigns/new">
+        <Link
+          className={classes.eventList_link}
+          to="/marketing/campaigns/new/branch/event"
+        >
           Add New Event
         </Link>
       </div>

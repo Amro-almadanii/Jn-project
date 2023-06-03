@@ -1,5 +1,6 @@
 import { Link, useSubmit } from 'react-router-dom';
-
+import classes from './LeadItem.module.scss';
+import { Card } from '@mui/material';
 const LeadItem = ({ lead }) => {
   const submit = useSubmit();
 
@@ -12,16 +13,17 @@ const LeadItem = ({ lead }) => {
   };
 
   return (
-    <article>
-      <h1> Lead Item</h1>
-      <div>
-        <label>Name of Lead</label>
-      </div>
-      <menu>
-        <Link to={`/marketing/leads/lead-detail/edit/${lead.id}`}>Edit</Link>
-        <button onClick={deleteHandler}>Delete</button>
-      </menu>
-    </article>
+    <div className={classes.leadItem}>
+        <h1> Lead Item </h1>
+        <div className={classes.box}>
+          <Card className={classes.card}>
+            <div className={classes.cardItems}>
+              <label>Name of Lead</label>
+              <p> {lead.type} </p>
+            </div>
+          </Card>
+        </div>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
-import EmailForm from '../../../components/Marketing/email/EmailForm';
+import CustomerForm from '../../../components/Marketing/customer/CustomerForm';
 
-const NewEmailPage = () => {
-  return <EmailForm method="post" />;
+const NewCustomerPage = () => {
+  return <CustomerForm method="post" />;
 };
 
-export default NewEmailPage;
+export default NewCustomerPage;

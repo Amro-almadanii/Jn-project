@@ -1,20 +1,20 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-import EmailItem from '../../../components/Marketing/email/EmailItem';
+import CustomerItem from '../../../components/Marketing/customer/CustomerItem';
 import { getAuthToken } from '../../../util/auth';
 
-const EmailDetailPage = () => {
-  const {data:email} = useRouteLoaderData('email-detail');
+const CustomerDetailPage = () => {
+  const {data:customer} = useRouteLoaderData('customer-detail');
 
-  return <EmailItem email={email} />;
+  return <CustomerItem customer={customer} />;
 };
 
-export default EmailDetailPage;
+export default CustomerDetailPage;
 
 export async function loader({ request, params }) {
-  const id = params.emailId;
+  const id = params.customerId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/emails'+ id, {
+  const response = await fetch('http://localhost:8000/marketing/customers'+ id, {
     headers:{
       'Authorization': 'bearer' + token,
     }
@@ -22,7 +22,7 @@ export async function loader({ request, params }) {
 
   if (!response.ok) {
     throw json(
-      { message: 'Could not fetch details for selected email' },
+      { message: 'Could not fetch details for selected customer' },
       { status: 500 }
     );
   } else {
@@ -31,10 +31,10 @@ export async function loader({ request, params }) {
 }
 
 export async function action ({request, params}) {
-  const id = params.emailId;
+  const id = params.customerId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/emails' + id, {
+  const response = await fetch('http://localhost:8000/marketing/customers' + id, {
     method: request.method,
     headers:{
       'Authorization' : 'bearer' + token,
@@ -42,8 +42,8 @@ export async function action ({request, params}) {
   });
 
   if(!response.ok) {
-    throw json({message: "Could not delete Email."}, {status: 500});
+    throw json({message: "Could not delete Customer."}, {status: 500});
   }
 
-  return redirect('/marketing/emails');
+  return redirect('/marketing/customers');
 }

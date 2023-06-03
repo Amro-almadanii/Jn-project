@@ -1,15 +1,15 @@
-import EmailForm from '../../../components/Marketing/email/EmailForm';
+import CustomerForm from '../../../components/Marketing/customer/CustomerForm';
 import { useRouteLoaderData } from 'react-router-dom';
 
-const EditEmailPage = () => {
-  const { data:email }= useRouteLoaderData('email-detail');
+const EditCustomerPage = () => {
+  const { data:customer }= useRouteLoaderData('customer-detail');
 
   return (
     <>
       <h1>Edit Page</h1>
-      <EmailForm method="put"  email={email}/>
+      <CustomerForm method="put"  customer={customer}/>
     </>
   );
 };
 
-export default EditEmailPage;
+export default EditCustomerPage;

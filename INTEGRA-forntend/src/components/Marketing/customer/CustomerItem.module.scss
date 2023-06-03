@@ -1,11 +1,11 @@
-.leadItem {
+.customerItem {
   width: calc(100vw - 270px);
   height: calc(100vh - 70px);
   overflow-y: auto;
   overflow-x: auto;
 }
 
-.leadItem {
+.customerItem {
   label {
     color: var(--second-color);
     font-size: 20px;

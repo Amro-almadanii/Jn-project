@@ -1,7 +1,7 @@
 import { Link, useSubmit } from 'react-router-dom';
-import classes from './LeadItem.module.scss';
+import classes from './EmailItem.module.scss';
 import { Card } from '@mui/material';
-const LeadItem = ({ lead }) => {
+const EmailItem = ({ email }) => {
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -13,13 +13,13 @@ const LeadItem = ({ lead }) => {
   };
 
   return (
-    <div className={classes.leadItem}>
-        <h1> Lead Item </h1>
+    <div className={classes.emailItem}>
+        <h1> Email Item </h1>
         <div className={classes.box}>
           <Card className={classes.card}>
             <div className={classes.cardItems}>
-              <label>Name of Lead</label>
-              <p> {lead.type} </p>
+              <label>Name of Email</label>
+              <p> {email.type} </p>
             </div>
           </Card>
         </div>
@@ -27,4 +27,4 @@ const LeadItem = ({ lead }) => {
   );
 };
 
-export default LeadItem;
+export default EmailItem;

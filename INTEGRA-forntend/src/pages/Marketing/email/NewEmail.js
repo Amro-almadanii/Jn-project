@@ -1,7 +1,7 @@
-import LeadForm from '../../../components/Marketing/lead/LeadForm';
+import EmailForm from '../../../components/Marketing/email/EmailForm';
 
-const NewLeadPage = () => {
-  return <LeadForm method="post" />;
+const NewEmailPage = () => {
+  return <EmailForm method="post" />;
 };
 
-export default NewLeadPage;
+export default NewEmailPage;

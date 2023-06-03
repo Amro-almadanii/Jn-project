@@ -7,9 +7,8 @@ const SocialMediasList = ({ pdfs }) => {
       <table>
         <thead>
           <tr>
-            <th>SocialMedia Id</th>
+            <th>PDF Id</th>
             <th>Name</th>
-            <th>Campaign id</th>
           </tr>
         </thead>
         <tbody>
@@ -21,13 +20,6 @@ const SocialMediasList = ({ pdfs }) => {
                 </Link>
               </td>
               <td>{pdf.name}</td>
-              <td>
-                <Link
-                  to={`/marketing/campaigns/campaign-detail/${pdf.campaign_id}`}
-                >
-                  {pdf.campaign_id}
-                </Link>
-              </td>
             </tr>
           ))}
         </tbody>
@@ -35,7 +27,6 @@ const SocialMediasList = ({ pdfs }) => {
           <tr>
             <th>PDF Id</th>
             <th>Name</th>
-            <th>Campaign id</th>
           </tr>
         </tfoot>
       </table>

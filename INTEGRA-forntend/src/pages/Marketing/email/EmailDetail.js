@@ -1,20 +1,20 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-import LeadItem from '../../../components/Marketing/lead/LeadItem';
+import EmailItem from '../../../components/Marketing/email/EmailItem';
 import { getAuthToken } from '../../../util/auth';
 
-const LeadDetailPage = () => {
-  const {data:lead} = useRouteLoaderData('lead-detail');
+const EmailDetailPage = () => {
+  const {data:email} = useRouteLoaderData('email-detail');
 
-  return <LeadItem lead={lead} />;
+  return <EmailItem email={email} />;
 };
 
-export default LeadDetailPage;
+export default EmailDetailPage;
 
 export async function loader({ request, params }) {
-  const id = params.leadId;
+  const id = params.emailId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/leads'+ id, {
+  const response = await fetch('http://localhost:8000/marketing/emails'+ id, {
     headers:{
       'Authorization': 'bearer' + token,
     }
@@ -22,7 +22,7 @@ export async function loader({ request, params }) {
 
   if (!response.ok) {
     throw json(
-      { message: 'Could not fetch details for selected lead' },
+      { message: 'Could not fetch details for selected email' },
       { status: 500 }
     );
   } else {
@@ -31,10 +31,10 @@ export async function loader({ request, params }) {
 }
 
 export async function action ({request, params}) {
-  const id = params.leadId;
+  const id = params.emailId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/leads' + id, {
+  const response = await fetch('http://localhost:8000/marketing/emails' + id, {
     method: request.method,
     headers:{
       'Authorization' : 'bearer' + token,
@@ -42,8 +42,8 @@ export async function action ({request, params}) {
   });
 
   if(!response.ok) {
-    throw json({message: "Could not delete Lead."}, {status: 500});
+    throw json({message: "Could not delete Email."}, {status: 500});
   }
 
-  return redirect('/marketing/leads');
+  return redirect('/marketing/emails');
 }

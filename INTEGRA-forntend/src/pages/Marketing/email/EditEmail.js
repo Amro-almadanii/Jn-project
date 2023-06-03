@@ -1,15 +1,15 @@
-import LeadForm from '../../../components/Marketing/lead/LeadForm';
+import EmailForm from '../../../components/Marketing/email/EmailForm';
 import { useRouteLoaderData } from 'react-router-dom';
 
-const EditLeadPage = () => {
-  const { data:lead }= useRouteLoaderData('lead-detail');
+const EditEmailPage = () => {
+  const { data:email }= useRouteLoaderData('email-detail');
 
   return (
     <>
       <h1>Edit Page</h1>
-      <LeadForm method="put"  lead={lead}/>
+      <EmailForm method="put"  email={email}/>
     </>
   );
 };
 
-export default EditLeadPage;
+export default EditEmailPage;

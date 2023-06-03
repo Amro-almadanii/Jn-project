@@ -20,11 +20,7 @@ const LeadsList = ({ leads }) => {
         <tbody>
           {leads.map((lead) => (
             <tr key={lead.id} onClick={ () => navigate( '/marketing/leads/lead-detail/1' ) }>
-              <td>
-                <Link to={`/marketing/leads/lead-detail/${lead.id}`}>
-                  {lead.id}
-                </Link>
-              </td>
+              <td>{lead.id}</td>
               <td>{lead.type}</td>
             </tr>
           ))}

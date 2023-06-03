@@ -66,6 +66,28 @@ import LeadDetailPage, {
 import EditLeadPage from '../../pages/Marketing/lead/EditLead';
 import { action as manipulateLeadAction } from '../../components/Marketing/lead/LeadForm';
 
+import EmailsPage, {
+  loader as EmailsLoader,
+} from '../../pages/Marketing/email/Emails';
+import NewEmailPage from '../../pages/Marketing/email/NewEmail';
+import EmailDetailPage, {
+  loader as EmailDetailLoader,
+  action as deleteEmailAction,
+} from '../../pages/Marketing/email/EmailDetail';
+import EditEmailPage from '../../pages/Marketing/email/EditEmail';
+import { action as manipulateEmailAction } from '../../components/Marketing/email/EmailForm';
+
+import CustomersPage, {
+  loader as CustomersLoader,
+} from '../../pages/Marketing/customer/Customers';
+import NewCustomerPage from '../../pages/Marketing/customer/NewCustomer';
+import CustomerDetailPage, {
+  loader as CustomerDetailLoader,
+  action as deleteCustomerAction,
+} from '../../pages/Marketing/customer/CustomerDetail';
+import EditCustomerPage from '../../pages/Marketing/customer/EditCustomer';
+import { action as manipulateCustomerAction } from '../../components/Marketing/customer/CustomerForm';
+
 
 export const marketingRoute = {
   path: '/marketing',
@@ -280,6 +302,87 @@ export const marketingRoute = {
               path: '/marketing/leads/lead-detail/edit/:leadId',
               element: <EditLeadPage />,
               action: manipulateLeadAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: '/marketing/emails',
+      children: [
+        {
+          index: true,
+          element: <EmailsPage />,
+          loader: EmailsLoader,
+        },
+        {
+          path: '/marketing/emails/new',
+          children: [
+            {
+              index: true,
+              element: <NewEmailPage />,
+              action: manipulateEmailAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+        {
+          path: '/marketing/emails/email-detail',
+          id: 'email-detail',
+          loader: EmailDetailLoader,
+          children: [
+            {
+              path: '/marketing/emails/email-detail/:emailId',
+              element: <EmailDetailPage />,
+              action: deleteEmailAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/marketing/emails/email-detail/edit/:emailId',
+              element: <EditEmailPage />,
+              action: manipulateEmailAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      path: '/marketing/customers',
+      children: [
+        {
+          index: true,
+          element: <CustomersPage />,
+          loader: CustomersLoader,
+        },
+        {
+          path: '/marketing/customers/new',
+          children: [
+            {
+              index: true,
+              element: <NewCustomerPage />,
+              action: manipulateCustomerAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+        {
+          path: '/marketing/customers/customer-detail',
+          id: 'customer-detail',
+          loader: CustomerDetailLoader,
+          children: [
+            {
+              path: '/marketing/customers/customer-detail/:customerId',
+              element: <CustomerDetailPage />,
+              action: deleteCustomerAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/marketing/customers/customer-detail/edit/:customerId',
+              element: <EditCustomerPage />,
+              action: manipulateCustomerAction,
               loader: checkAuthLoader,
             },
           ],

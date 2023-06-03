@@ -105,6 +105,42 @@ function SideBar() {
         </NavLink>
       </div>
 
+      <div className={classes.item}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? classes.active : classes.navlink
+          }
+          to="/marketing/customers"
+          end
+        >
+          Customers
+        </NavLink>
+      </div>
+
+      <div className={classes.item}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? classes.active : classes.navlink
+          }
+          to="/marketing/emails"
+          end
+        >
+          Emails
+        </NavLink>
+      </div>
+
+      <div className={classes.item}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? classes.active : classes.navlink
+          }
+          to="/marketing/leads"
+          end
+        >
+          Leads
+        </NavLink>
+      </div>
+
       <div onClick={handleDropdownClick} className={classes.box}>
         Suppliers
       </div>

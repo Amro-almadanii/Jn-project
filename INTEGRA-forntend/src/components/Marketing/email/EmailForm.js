@@ -6,9 +6,9 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './LeadForm.module.scss';
+import classes from './EmailForm.module.scss';
 
-const LeadForm = ({ method, lead }) => {
+const EmailForm = ({ method, email }) => {
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -16,11 +16,11 @@ const LeadForm = ({ method, lead }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + lead.id);
+    navigate('../' + email.id);
   };
 
   return (
-    <Form method={method} className={classes.leadForm}>
+    <Form method={method} className={classes.emailForm}>
       <div>
         <label htmlFor="type">Name :</label>
         <input
@@ -28,7 +28,7 @@ const LeadForm = ({ method, lead }) => {
           type="text"
           name="type"
           required
-          defaultValue={lead ? lead.type : ''}
+          defaultValue={email ? email.type : ''}
         />
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -43,7 +43,7 @@ const LeadForm = ({ method, lead }) => {
   );
 };
 
-export default LeadForm;
+export default EmailForm;
 
 export async function action({ request, params }) {
   const method = request.method;
@@ -56,9 +56,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/marketing/leads/' + params.leadId;
+    url = 'http://localhost:8000/marketing/emails/' + params.emailId;
   } else {
-    url = 'http://localhost:8000/marketing/leads';
+    url = 'http://localhost:8000/marketing/emails';
   }
 
   const response = await fetch(url, {
@@ -70,8 +70,8 @@ export async function action({ request, params }) {
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save lead.' }, { status: 500 });
+    throw json({ message: 'Could not save email.' }, { status: 500 });
   }
 
-  return redirect('/marketing/leads');
+  return redirect('/marketing/emails');
 }

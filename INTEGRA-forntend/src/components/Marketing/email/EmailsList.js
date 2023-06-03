@@ -1,33 +1,33 @@
 import { Link, useNavigate } from 'react-router-dom';
-import classes from './LeadsList.module.scss';
-const LeadsList = ({ leads }) => {
+import classes from './EmailsList.module.scss';
+const EmailsList = ({ emails }) => {
   const navigate = useNavigate();
   return (
-    <div className={classes.leadsList}>
-      <h1>All Leads</h1>
-      <div className={classes.addNewLead}>
-        <Link className={classes.leadsList_link} to="/marketing/leads/new">
-          Add New Lead
+    <div className={classes.emailsList}>
+      <h1>All Emails</h1>
+      <div className={classes.addNewEmail}>
+        <Link className={classes.emailsList_link} to="/marketing/emails/new">
+          Add New Email
         </Link>
       </div>
       <table>
         <thead>
           <tr>
-            <th>Lead Id</th>
+            <th>Email Id</th>
             <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          {leads.map((lead) => (
-            <tr key={lead.id} onClick={ () => navigate( '/marketing/leads/lead-detail/1' ) }>
-              <td>{lead.id}</td>
-              <td>{lead.type}</td>
+          {emails.map((email) => (
+            <tr key={email.id} onClick={ () => navigate( '/marketing/emails/email-detail/1' ) }>
+              <td>{email.id}</td>
+              <td>{email.type}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
-            <th>Lead Id</th>
+            <th>Email Id</th>
             <th>Name</th>
           </tr>
         </tfoot>
@@ -36,4 +36,4 @@ const LeadsList = ({ leads }) => {
   );
 };
 
-export default LeadsList;
+export default EmailsList;

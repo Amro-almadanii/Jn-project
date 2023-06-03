@@ -1,31 +1,30 @@
 import { json, useLoaderData } from 'react-router-dom';
-import EmailsList from '../../../components/Marketing/email/EmailsList';
+import CustomersList from '../../../components/Marketing/customer/CustomersList';
 import { getAuthToken } from '../../../util/auth';
-import './Emails.css';
-const EmailsPage = () => {
-  const { data: emails } = useLoaderData();
-console.log(emails);
+import './Customers.css';
+const CustomersPage = () => {
+  const { data: customers } = useLoaderData();
   return (
-    <div className="email">
-      <h1>Email Page</h1>
-      <EmailsList emails={emails} />
+    <div className="customer">
+      <h1>Customer Page</h1>
+      <CustomersList customers={customers} />
     </div>
   );
 };
 
-export default EmailsPage;
+export default CustomersPage;
 
 export async function loader() {
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/emails', {
+  const response = await fetch('http://localhost:8000/marketing/customers', {
     headers: {
       Authorization: 'bearer' + token,
     },
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not fetch Emails.' }, { status: 500 });
+    throw json({ message: 'Could not fetch Customers.' }, { status: 500 });
   } else {
     return response;
   }

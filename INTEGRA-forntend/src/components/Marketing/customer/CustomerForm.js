@@ -6,9 +6,9 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './LeadForm.module.scss';
+import classes from './CustomerForm.module.scss';
 
-const LeadForm = ({ method, lead }) => {
+const CustomerForm = ({ method, customer }) => {
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -16,19 +16,56 @@ const LeadForm = ({ method, lead }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + lead.id);
+    navigate('../' + customer.id);
   };
 
   return (
-    <Form method={method} className={classes.leadForm}>
+    <Form method={method} className={classes.customerForm}>
       <div>
-        <label htmlFor="type">Name :</label>
+        <label htmlFor="name">Name:</label>
         <input
-          id="type"
+          id="name"
           type="text"
-          name="type"
+          name="name"
           required
-          defaultValue={lead ? lead.type : ''}
+          defaultValue={customer ? customer.name : ''}
+        />
+        <label htmlFor="gender">Gender:</label>
+        <select name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <label htmlFor="age">Age:</label>
+        <input
+          id="age"
+          type="number"
+          name="age"
+          required
+          defaultValue={customer ? customer.age : ''}
+        />
+        <label htmlFor="address">Address:</label>
+        <input
+          id="address"
+          type="text"
+          name="address"
+          required
+          defaultValue={customer ? customer.address : ''}
+        />
+        <label htmlFor="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+          defaultValue={customer ? customer.email : ''}
+        />
+        <label htmlFor="phone">Phone Number:</label>
+        <input
+          id="phone"
+          type="number"
+          name="phone"
+          required
+          defaultValue={customer ? customer.phone : ''}
         />
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -43,22 +80,26 @@ const LeadForm = ({ method, lead }) => {
   );
 };
 
-export default LeadForm;
+export default CustomerForm;
 
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
 
   const eventData = {
-    type: data.get('type'),
+    name: data.get('name'),
+    gender: data.get('gender'),
+    age: data.get('age'),
+    email: data.get('email'),
+    phone: data.get('phone'),
   };
 
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/marketing/leads/' + params.leadId;
+    url = 'http://localhost:8000/marketing/customers/' + params.customerId;
   } else {
-    url = 'http://localhost:8000/marketing/leads';
+    url = 'http://localhost:8000/marketing/customers';
   }
 
   const response = await fetch(url, {
@@ -70,8 +111,8 @@ export async function action({ request, params }) {
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save lead.' }, { status: 500 });
+    throw json({ message: 'Could not save customer.' }, { status: 500 });
   }
 
-  return redirect('/marketing/leads');
+  return redirect('/marketing/customers');
 }

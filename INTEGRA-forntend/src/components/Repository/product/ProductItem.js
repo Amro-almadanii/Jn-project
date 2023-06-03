@@ -1,5 +1,5 @@
 import { Link, useSubmit } from 'react-router-dom';
-import './ProductItem.module.css';
+import './ProductItem.module.scss';
 const ProductItem = ({ product }) => {
   const submit = useSubmit();
 

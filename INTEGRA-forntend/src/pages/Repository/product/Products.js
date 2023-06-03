@@ -1,12 +1,12 @@
 import { json, useLoaderData } from 'react-router-dom';
 import ProductsList from '../../../components/Repository/product/ProductsList';
 import { getAuthToken } from '../../../util/auth';
-import './Products.css';
+import './Products.scss';
 const ProductsPage = () => {
-  const { products } = useLoaderData();
+  const { data : products } = useLoaderData();
 
   return (
-    <div className="categories">
+    <div className="products">
       <h1>Products Page</h1>
       <ProductsList products={products} />
     </div>

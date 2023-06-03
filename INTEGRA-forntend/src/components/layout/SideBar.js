@@ -114,8 +114,6 @@ function SideBar() {
         </div>
       </div>
 
-
-
       <div onClick={handleRepositoryDropdownClick} className={classes.item}>
         Repository
       </div>

@@ -1,53 +1,44 @@
-import { Link } from 'react-router-dom';
-import classes from './CategoriesList.module.css';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import classes from './CategoriesList.module.scss';
 const CategoriesList = ({ categories }) => {
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '20px',
-      }}
-    >
-      <h1>All Categories</h1>
-      <table
-        style={{
-          textAlign: 'center',
-          backgroundColor: 'var(--second-color)',
-          color: 'var(--text-color)',
-          bordercollapse: 'collapse',
-          borderRadius: '4px',
-        }}
-      >
-        <thead className="thead">
-          <tr>
-            <th>Category Id</th>
-            <th>Name</th>
-          </tr>
+    <div className={classes.categoriesList}>
+      <h1>Marketing > Categories</h1>
+      <div className={classes.add_category}>
+        <Link
+          className={classes.add_category_link}
+          to="/repository/categories/new"
+        >
+          Add New Category
+        </Link>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Category Id</th>
+          <th>Name</th>
+        </tr>
         </thead>
         <tbody>
-          {categories.map((category) => (
-            <tr key={category.id}>
-              <td>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'var(--therd-color)',
-                  }}
-                  to={`/repository/categories/category-detail/${category.id}`}
-                >
-                  {category.id}
-                </Link>
-              </td>
-              <td>{category.name}</td>
-            </tr>
-          ))}
+        {categories.map((category) => (
+          <tr
+            key={category.id}
+            onClick={() =>
+              navigate(`/repository/categories/category-detail/${category.id}`)
+            }
+          >
+            <td>{category.id}</td>
+            <td>{category.name}</td>
+          </tr>
+        ))}
         </tbody>
         <tfoot>
-          <tr>
-            <th>Category Id</th>
-            <th>Name</th>
-          </tr>
+        <tr>
+          <th>Category Id</th>
+          <th>Name</th>
+        </tr>
         </tfoot>
       </table>
     </div>

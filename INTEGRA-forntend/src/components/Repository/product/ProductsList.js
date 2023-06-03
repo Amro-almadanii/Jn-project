@@ -1,54 +1,56 @@
-import { Link } from 'react-router-dom';
-import classes from './ProductsList.module.css';
-
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import classes from './ProductsList.module.scss';
 const ProductsList = ({ products }) => {
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '20px',
-      }}
-    >
-      <h1>All Products</h1>
-      <table
-        style={{
-          textAlign: 'center',
-          backgroundColor: 'var(--second-color)',
-          color: 'var(--text-color)',
-          bordercollapse: 'collapse',
-          borderRadius: '4px',
-        }}
-      >
-        <thead className="thead">
-          <tr>
-            <th>Product Id</th>
-            <th>Name</th>
-          </tr>
+    <div className={classes.productsList}>
+      <h1>Marketing > Products</h1>
+      <div className={classes.add_product}>
+        <Link
+          className={classes.add_product_link}
+          to="/repository/products/new"
+        >
+          Add New Product
+        </Link>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Product Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Category Id</th>
+          <th>Supplier ID</th>
+        </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'var(--therd-color)',
-                  }}
-                  to={`/repository/products/product-detail/${product.id}`}
-                >
-                  {product.id}
-                </Link>
-              </td>
-              <td>{product.name}</td>
-            </tr>
-          ))}
+        {products.map((product) => (
+          <tr
+            key={product.id}
+            onClick={() =>
+              navigate(`/repository/products/product-detail/${product.id}`)
+            }
+          >
+            <td>{product.id}</td>
+            <td>{product.name}</td>
+            <td>{product.price}</td>
+            <td>{product.quantity_in_stock}</td>
+            <td>{product.category_id}</td>
+            <td>{product.supplier_id}</td>
+          </tr>
+        ))}
         </tbody>
         <tfoot>
-          <tr>
-            <th>Product Id</th>
-            <th>Name</th>
-          </tr>
+        <tr>
+          <th>Product Id</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Category Id</th>
+          <th>Supplier ID</th>
+        </tr>
         </tfoot>
       </table>
     </div>

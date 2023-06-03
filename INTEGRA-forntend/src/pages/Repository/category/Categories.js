@@ -1,7 +1,7 @@
 import { json, useLoaderData } from 'react-router-dom';
 import CategoriesList from '../../../components/Repository/category/CategoriesList';
 import { getAuthToken } from '../../../util/auth';
-import './Categories.css';
+import './Categories.scss';
 const CategoriesPage = () => {
   const { data: categories } = useLoaderData();
 

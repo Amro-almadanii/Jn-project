@@ -1,62 +1,50 @@
-import { Link } from 'react-router-dom';
-import './SuppliersList.module.css';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import classes from './SuppliersList.module.scss';
 const SuppliersList = ({ suppliers }) => {
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '20px',
-      }}
-    >
-      <h1>All Suppliers</h1>
-      <table
-        style={{
-          textAlign: 'center',
-          backgroundColor: 'var(--second-color)',
-          color: 'var(--text-color)',
-          bordercollapse: 'collapse',
-          borderRadius: '4px',
-        }}
-      >
-        <thead className="thead">
-          <tr>
-            <th>Supplier Id</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-          </tr>
+    <div className={classes.suppliersList}>
+      <h1>Marketing > Suppliers</h1>
+      <div className={classes.add_supplier}>
+        <Link
+          className={classes.add_supplier_link}
+          to="/repository/suppliers/new"
+        >
+          Add New Supplier
+        </Link>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Supplier Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+        </tr>
         </thead>
         <tbody>
-          {suppliers.map((supplier) => (
-            <tr key={supplier.id}>
-              <td>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'var(--therd-color)',
-                  }}
-                  to={`/repository/suppliers/supplier-detail/${supplier.id}`}
-                >
-                  {supplier.id}
-                </Link>
-              </td>
-              <td>{supplier.name}</td>
-              <td>{supplier.address}</td>
-              <td>{supplier.email}</td>
-              <td>{supplier.phone_number}</td>
-            </tr>
-          ))}
+        {suppliers.map((supplier) => (
+          <tr
+            key={supplier.id}
+            onClick={() =>
+              navigate(`/repository/suppliers/supplier-detail/${supplier.id}`)
+            }
+          >
+            <td>{supplier.id}</td>
+            <td>{supplier.name}</td>
+            <td>{supplier.address}</td>
+            <td>{supplier.phone_number}</td>
+          </tr>
+        ))}
         </tbody>
         <tfoot>
-          <tr>
-            <th>Supplier Id</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-          </tr>
+        <tr>
+          <th>Supplier Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+        </tr>
         </tfoot>
       </table>
     </div>

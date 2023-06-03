@@ -6,11 +6,11 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './SupplierForm.module.css';
+import classes from './SupplierForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
 
 const SupplierForm = ({ method, supplier }) => {
-  //const data = useActionData();
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -21,9 +21,9 @@ const SupplierForm = ({ method, supplier }) => {
   };
 
   return (
-    <div className={classes.containar}>
+    <div className={classes.supplierForm}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--second-color)' }}>Create supplier:</h1>
+        <h1>Marketing > Supplier > Create New Supplier:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -65,7 +65,7 @@ const SupplierForm = ({ method, supplier }) => {
           />
         </p>
         <div className={classes.actions}>
-          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+          <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
           <button disabled={isSubmitting}>
@@ -85,11 +85,10 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const supplierData = {
-    name: data.get('name'),
-    address: data.get('address'),
-    email: data.get('email'),
-    phone_number: data.get('phone_number'),
-
+      name: data.get('name'),
+      address: data.get('address'),
+      email: data.get('email'),
+      phone_number: data.get('phone_number'),
   };
 
   let url;

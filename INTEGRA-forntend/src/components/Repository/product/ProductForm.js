@@ -6,11 +6,11 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './ProductForm.module.css';
+import classes from './ProductForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
 
 const ProductForm = ({ method, product }) => {
-  //const data = useActionData();
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -21,9 +21,9 @@ const ProductForm = ({ method, product }) => {
   };
 
   return (
-    <div className={classes.containar}>
+    <div className={classes.productForm}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--second-color)' }}>Create product:</h1>
+        <h1>Marketing > Product > Create New Product:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -34,9 +34,38 @@ const ProductForm = ({ method, product }) => {
             defaultValue={product ? product.name : ''}
           />
         </p>
-
+        <p>
+          <label htmlFor="address">Address</label>
+          <input
+            id="address"
+            type="text"
+            name="address"
+            required
+            defaultValue={product ? product.address : ''}
+          />
+        </p>
+        <p>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            defaultValue={product ? product.email : ''}
+          />
+        </p>
+        <p>
+          <label htmlFor="phone_number">Phone Number</label>
+          <input
+            id="phone_number"
+            type="number"
+            name="phone_number"
+            required
+            defaultValue={product ? product.phone_number : ''}
+          />
+        </p>
         <div className={classes.actions}>
-          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+          <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
           <button disabled={isSubmitting}>
@@ -57,6 +86,9 @@ export async function action({ request, params }) {
 
   const productData = {
     name: data.get('name'),
+    address: data.get('address'),
+    email: data.get('email'),
+    phone_number: data.get('phone_number'),
   };
 
   let url;

@@ -6,11 +6,11 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './CategoryForm.module.css';
+import classes from './CategoryForm.module.scss';
 import { getAuthToken } from '../../../util/auth';
 
 const CategoryForm = ({ method, category }) => {
-  //const data = useActionData();
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -21,9 +21,9 @@ const CategoryForm = ({ method, category }) => {
   };
 
   return (
-    <div className={classes.containar}>
+    <div className={classes.categoryForm}>
       <Form method={method} className={classes.form}>
-        <h1 style={{ color: 'var(--second-color)' }}>Create category:</h1>
+        <h1>Marketing > Category > Create New Category:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -36,7 +36,7 @@ const CategoryForm = ({ method, category }) => {
         </p>
 
         <div className={classes.actions}>
-          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+          <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
           <button disabled={isSubmitting}>

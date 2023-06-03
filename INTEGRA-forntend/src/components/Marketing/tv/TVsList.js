@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './TVsList.module.scss';
 const TVsList = ({ tvs }) => {
+  const navigate = useNavigate();
   return (
     <div className={classes.tvList}>
       <h1>All TVs</h1>
@@ -25,15 +26,11 @@ const TVsList = ({ tvs }) => {
         </thead>
         <tbody>
           {tvs.map((tv) => (
-            <tr key={tv.id}>
-              <td>
-                <Link
-                  className={classes.link}
-                  to={`/marketing/tvs/tv-detail/${tv.id}`}
-                >
-                  {tv.id}
-                </Link>
-              </td>
+            <tr
+              onClick={() => navigate(`/marketing/tvs/tv-detail/${tv.id}`)}
+              key={tv.id}
+            >
+              <td>{tv.id}</td>
               <td>{tv.channel}</td>
               <td>{tv.time}</td>
               <td>{tv.cost}</td>

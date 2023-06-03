@@ -20,12 +20,16 @@ const SocialMediaItem = ({ socialMedia }) => {
           <div className={classes.cardItems}>
             <label>Blogger Name:</label>
             <p> {socialMedia.blogger} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Type:</label>
             <p> {socialMedia.type} </p>
           </div>
           <div className={classes.cardItems}>
             <label>way of SocialMedia:</label>
             <p> {socialMedia.way} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Cost of SocialMedia:</label>
             <p> {socialMedia.cost} </p>
           </div>
@@ -40,16 +44,16 @@ const SocialMediaItem = ({ socialMedia }) => {
               </Link>{' '}
             </p>
           </div>
+          <div className={classes.btn}>
+            <Link
+              className={classes.link}
+              to={`/marketing/socialMedia/socialMedia-detail/edit/${socialMedia.id}`}
+            >
+              Edit
+            </Link>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
         </Card>
-      </div>
-      <div className={classes.btn}>
-        <Link
-          className={classes.link}
-          to={`/marketing/socialMedia/socialMedia-detail/edit/${socialMedia.id}`}
-        >
-          Edit
-        </Link>
-        <button onClick={deleteHandler}>Delete</button>
       </div>
     </div>
   );

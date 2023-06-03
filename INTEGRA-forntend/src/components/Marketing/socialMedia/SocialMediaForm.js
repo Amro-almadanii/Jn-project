@@ -58,6 +58,22 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.cost : ''}
         />
+        <label>expected_revenue :</label>
+        <input
+          id="expected_revenue"
+          type="text"
+          name="expected_revenue"
+          required
+          defaultValue={socialMedia ? socialMedia.expected_revenue : ''}
+        />
+        <label>Actual Revenue :</label>
+        <input
+          id="actual_revenue  "
+          type="text"
+          name="actual_revenue"
+          required
+          defaultValue={socialMedia ? socialMedia.actual_revenue : ''}
+        />
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -84,6 +100,8 @@ export async function action({ request, params }) {
     type: data.get('type'),
     way: data.get('way'),
     cost: data.get('cost'),
+    expected_revenue: data.get('expected_revenue'),
+    actual_revenue: data.get('actual_revenue'),
     campaign_id: 1,
   };
 

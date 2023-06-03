@@ -4,57 +4,73 @@ import { useState } from 'react';
 
 function SideBar() {
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
+  const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
+  const handleMarketingDropdownClick = () => {
+    setShowMarketingDropdown(!showMarketingDropdown);
+  };
+  const handleRepositoryDropdownClick = () => {
+    setShowRepositoryDropdown(!showRepositoryDropdown);
+  };
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
   return (
     <aside className={classes.sidebar}>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/campaigns"
-          end
-        >
-          Campaigns
-        </NavLink>
+      {' '}
+      <div onClick={handleMarketingDropdownClick} className={classes.item}>
+        Marketing
       </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/tvs"
-          end
-        >
-          TVs
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/socialMedia"
-          end
-        >
-          SocialMedia
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/events"
-          end
-        >
-          Events
-        </NavLink>
-      </div>
-      {/* <div onClick={handleDropdownClick} className={classes.box}>
+      <div
+        className={` ${
+          showMarketingDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/campaigns"
+            end
+          >
+            Campaigns
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/tvs"
+            end
+          >
+            TVs
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/socialMedia"
+            end
+          >
+            SocialMedia
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/events"
+            end
+          >
+            Events
+          </NavLink>
+        </div>
+        {/* <div onClick={handleDropdownClick} className={classes.box}>
         Create new :
       </div>
       <div
@@ -94,107 +110,113 @@ function SideBar() {
         </div>
       </div> */}
 
-      <div className={classes.item}>
-        <NavLink
-          to="/marketing/pdfs"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
+        <div className={classes.item}>
+          <NavLink
+            to="/marketing/pdfs"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+          >
+            PDFs
+          </NavLink>
+        </div>
+      </div>
+      <div onClick={handleRepositoryDropdownClick} className={classes.item}>
+        Repository
+      </div>
+      <div
+        className={` ${
+          showRepositoryDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div onClick={handleDropdownClick} className={classes.box}>
+          Suppliers
+        </div>
+        <div
+          className={` ${
+            showDropdown ? classes.dropdown.show : classes.dropdown
+          }`}
         >
-          PDFs
-        </NavLink>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Suppliers
-      </div>
-      <div
-        className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/suppliers"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            Suppliers List
-          </NavLink>
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/suppliers"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              Suppliers List
+            </NavLink>
+          </div>
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/suppliers/new"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              New Supplier
+            </NavLink>
+          </div>
         </div>
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/suppliers/new"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            New Supplier
-          </NavLink>
+        <div onClick={handleDropdownClick} className={classes.box}>
+          Categories
         </div>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Categories
-      </div>
-      <div
-        className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/categories"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            Categories List
-          </NavLink>
+        <div
+          className={` ${
+            showDropdown ? classes.dropdown.show : classes.dropdown
+          }`}
+        >
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/categories"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              Categories List
+            </NavLink>
+          </div>
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/categories/new"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              New Category
+            </NavLink>
+          </div>
         </div>
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/categories/new"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            New Category
-          </NavLink>
+        <div onClick={handleDropdownClick} className={classes.box}>
+          Products
         </div>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Products
-      </div>
-      <div
-        className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/products"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            Products List
-          </NavLink>
-        </div>
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/products/new"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            New Product
-          </NavLink>
+        <div
+          className={` ${
+            showDropdown ? classes.dropdown.show : classes.dropdown
+          }`}
+        >
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/products"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              Products List
+            </NavLink>
+          </div>
+          <div className={classes.dropdownItem}>
+            <NavLink
+              to="/repository/products/new"
+              className={({ isActive }) =>
+                isActive ? classes.activeDropdown : classes.navlink
+              }
+            >
+              New Product
+            </NavLink>
+          </div>
         </div>
       </div>
-
       <div className={classes.butContainar}>
         <Form action="/Logout" method="post">
           <button className={classes.button}>Logout</button>

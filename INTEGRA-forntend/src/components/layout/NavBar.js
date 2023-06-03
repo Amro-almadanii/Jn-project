@@ -35,7 +35,7 @@ function NavBar() {
         >
           <NavLink
             to="/marketing/campaigns/new/branch/tv"
-            onChange={({ isActive }) => (isActive ? '' : newTv())}
+            className={classes.link}
           >
             new tv
           </NavLink>
@@ -49,7 +49,7 @@ function NavBar() {
         >
           <NavLink
             to="/marketing/campaigns/new/branch/socialMedia"
-            className={({ isActive }) => (isActive ? '' : '')}
+            className={classes.link}
           >
             new socialMedia
           </NavLink>
@@ -61,7 +61,10 @@ function NavBar() {
           }}
           className={bar3 ? classes.active : classes.item}
         >
-          <NavLink to="/marketing/campaigns/new/branch/event">
+          <NavLink
+            className={classes.link}
+            to="/marketing/campaigns/new/branch/event"
+          >
             new Event
           </NavLink>
         </div>

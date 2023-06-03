@@ -35,67 +35,104 @@ const CampaignItem = ({ campaign }) => {
 
   return (
     <div className={classes.campaignItem}>
-      <h1> Marketing > Campaign Item > {campaign.name} :</h1>
+      <h1> Marketing > Campaign Item > {campaign.name}:</h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
             <label>Name of Campaign :</label>
             <p> {campaign.name} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Description of Campaign :</label>
             <p> {campaign.description} </p>
           </div>
           <div className={classes.cardItems}>
             <label>Start Date of Campaign :</label>
             <p> {campaign.start_date} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>End Date of Campaign :</label>
             <p> {campaign.end_date} </p>
           </div>
           <div className={classes.cardItems}>
             <label>Budget of Campaign :</label>
             <p> {campaign.budget} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Expected Revenue of Campaign :</label>
-            <p> {campaign.expected_revenue} </p>
+            <p> {campaign.expected_revenue} </p>]
           </div>
           <div className={classes.cardItems}>
             <label>Actual Revenue of Campaign :</label>
             <p> {campaign.actual_revenue} </p>
           </div>
+          <div className={classes.btn}>
+            <Link
+              className={classes.link}
+              to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+            >
+              Edit
+            </Link>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
         </Card>
 
         <div className={classes.cardBox}>
           <Card className={classes.cardChildren}>
-            <h2> Social media :</h2>
-            <label>Start Date of Campaign :</label>
-            <p> {campaign.start_date} </p>
-            <label>End Date of Campaign :</label>
-            <p> {campaign.end_date} </p>
+            <h2> Socialmedia :</h2>
+            <Card className={classes.cardChildren}>
+              <label>Start Date of Campaign :</label>
+              <p> {campaign.start_date} </p>
+              <label>End Date of Campaign :</label>
+              <p> {campaign.end_date} </p>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.link}
+                  to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+                >
+                  Edit
+                </Link>
+                <button onClick={deleteHandler}>Delete</button>
+              </div>
+            </Card>
           </Card>
           <Card className={classes.cardChildren}>
-            <h2> TV :</h2>
-            <label>Start Date of Campaign :</label>
-            <p> {campaign.start_date} </p>
-            <label>End Date of Campaign :</label>
-            <p> {campaign.end_date} </p>
+            <h2> TVs :</h2>
+            <Card className={classes.cardChildren}>
+              <label>Start Date of Campaign :</label>
+              <p> {campaign.start_date} </p>
+              <label>End Date of Campaign :</label>
+              <p> {campaign.end_date} </p>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.link}
+                  to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+                >
+                  Edit
+                </Link>
+                <button onClick={deleteHandler}>Delete</button>
+              </div>
+            </Card>
           </Card>
-
           <Card className={classes.cardChildren}>
-            <h2> Event :</h2>
-            <label>Start Date of Campaign :</label>
-            <p> {campaign.start_date} </p>
-            <label>End Date of Campaign :</label>
-            <p> {campaign.end_date} </p>
+            <h2> Events :</h2>
+            <Card className={classes.cardChildren}>
+              <label>Start Date of Campaign :</label>
+              <p> {campaign.start_date} </p>
+              <label>End Date of Campaign :</label>
+              <p> {campaign.end_date} </p>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.link}
+                  to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+                >
+                  Edit
+                </Link>
+                <button onClick={deleteHandler}>Delete</button>
+              </div>
+            </Card>
           </Card>
         </div>
-      </div>
-      <div className={classes.btn}>
-        <Link
-          className={classes.link}
-          to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
-        >
-          Edit
-        </Link>
-
-        <button onClick={deleteHandler}>Delete</button>
       </div>
       {/*<EventsList events={events}/>*/}
     </div>

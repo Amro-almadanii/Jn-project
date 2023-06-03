@@ -58,6 +58,22 @@ const TVForm = ({ method, tv }) => {
           required
           defaultValue={tv ? tv.advertising_period : ''}
         />
+        <label>expected_revenue :</label>
+        <input
+          id="expected_revenue"
+          type="text"
+          name="expected_revenue"
+          required
+          defaultValue={tv ? tv.expected_revenue : ''}
+        />
+        <label>Actual Revenue :</label>
+        <input
+          id="actual_revenue  "
+          type="text"
+          name="actual_revenue"
+          required
+          defaultValue={tv ? tv.actual_revenue : ''}
+        />
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -84,6 +100,8 @@ export async function action({ request, params }) {
     time: data.get('time'),
     cost: data.get('cost'),
     advertising_period: data.get('advertising_period'),
+    expected_revenue: data.get('expected_revenue'),
+    actual_revenue: data.get('actual_revenue'),
     campaign_id: '1',
   };
 

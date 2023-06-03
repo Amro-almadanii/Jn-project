@@ -42,13 +42,26 @@ const SocialMediaForm = ({ method, socialMedia }) => {
         />
 
         <label htmlFor="way">Way :</label>
-        <input
-          id="way"
-          type="text"
-          name="way"
-          required
-          defaultValue={socialMedia ? socialMedia.way : ''}
-        />
+        <select required>
+          <option value="Instagram" name="Instagram">
+            Instagram
+          </option>
+          <option value="Facebook" name="Facebook">
+            Facebook
+          </option>
+          <option value="Snapchat" name="Snapchat">
+            Snapchat
+          </option>
+          <option value="Whatsapp" name="Whatsapp">
+            Whatsapp
+          </option>
+          <option value="Telegram" name="Telegram">
+            Telegram
+          </option>
+          <option value="TikTok" name="TikTok">
+            TikTok
+          </option>
+        </select>
 
         <label htmlFor="cost">Cost :</label>
         <input
@@ -66,15 +79,6 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           required
           defaultValue={socialMedia ? socialMedia.expected_revenue : ''}
         />
-        <label>Actual Revenue :</label>
-        <input
-          id="actual_revenue  "
-          type="text"
-          name="actual_revenue"
-          required
-          defaultValue={socialMedia ? socialMedia.actual_revenue : ''}
-        />
-
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
@@ -101,7 +105,6 @@ export async function action({ request, params }) {
     way: data.get('way'),
     cost: data.get('cost'),
     expected_revenue: data.get('expected_revenue'),
-    actual_revenue: data.get('actual_revenue'),
     campaign_id: 1,
   };
 

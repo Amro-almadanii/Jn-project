@@ -7,6 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './LeadForm.module.scss';
+import { getAuthToken } from '../../../util/auth';
 
 const LeadForm = ({ method, lead }) => {
   //const data = useActionData();
@@ -48,6 +49,7 @@ export default LeadForm;
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
+  const token = getAuthToken();
 
   const eventData = {
     type: data.get('type'),
@@ -65,6 +67,7 @@ export async function action({ request, params }) {
     method: method,
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'bearer' + token,
     },
     body: JSON.stringify(eventData),
   });

@@ -7,6 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './CustomerForm.module.scss';
+import { getAuthToken } from '../../../util/auth';
 
 const CustomerForm = ({ method, customer }) => {
   //const data = useActionData();
@@ -85,6 +86,7 @@ export default CustomerForm;
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
+  const token = getAuthToken();
 
   const eventData = {
     name: data.get('name'),
@@ -106,6 +108,7 @@ export async function action({ request, params }) {
     method: method,
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'bearer' + token,
     },
     body: JSON.stringify(eventData),
   });

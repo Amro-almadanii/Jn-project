@@ -7,7 +7,8 @@ const CampaignsList = ({ campaigns }) => {
     <div className={classes.campaignsList}>
       <h1>Marketing > Campaigns</h1>
       <div className={classes.add_campaign}>
-        <Link className={classes.add_campaign_link}
+        <Link
+          className={classes.add_campaign_link}
           to="/marketing/campaigns/new"
         >
           Add New Campaign
@@ -15,7 +16,7 @@ const CampaignsList = ({ campaigns }) => {
       </div>
       <table>
         <thead>
-          <tr style={{cursor: 'auto'}}>
+          <tr>
             <th>Campaign Id</th>
             <th>Name</th>
             <th>Description</th>
@@ -29,8 +30,12 @@ const CampaignsList = ({ campaigns }) => {
         </thead>
         <tbody>
           {campaigns.map((campaign) => (
-
-            <tr key={campaign.id}  onClick={ () => navigate( '/marketing/campaigns/campaign-detail/1' ) } >
+            <tr
+              key={campaign.id}
+              onClick={() =>
+                navigate(`/marketing/campaigns/campaign-detail/${campaign.id}`)
+              }
+            >
               <td>{campaign.id}</td>
               <td>{campaign.name}</td>
               <td>{campaign.description}</td>
@@ -44,7 +49,7 @@ const CampaignsList = ({ campaigns }) => {
           ))}
         </tbody>
         <tfoot>
-          <tr  style={{cursor: 'auto'}}>
+          <tr>
             <th>Campaign Id</th>
             <th>Name</th>
             <th>Description</th>

@@ -20,18 +20,24 @@ const EventItem = ({ event }) => {
           <div className={classes.cardItems}>
             <label>Name of Event</label>
             <p> {event.name} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Description of Event</label>
             <p> {event.description} </p>
           </div>
           <div className={classes.cardItems}>
             <label>Place of Event :</label>
             <p> {event.place} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Type of Event :</label>
             <p> {event.type} </p>
           </div>
           <div className={classes.cardItems}>
             <label>Cost of Event :</label>
             <p> {event.cost} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Event for Campaign:</label>
             <p>
               {' '}
@@ -42,16 +48,16 @@ const EventItem = ({ event }) => {
               </Link>
             </p>
           </div>
+          <div className={classes.btn}>
+            <Link
+              className={classes.link}
+              to={`/marketing/events/event-detail/edit/${event.id}`}
+            >
+              Edit
+            </Link>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
         </Card>
-      </div>
-      <div className={classes.btn}>
-        <Link
-          className={classes.link}
-          to={`/marketing/events/event-detail/edit/${event.id}`}
-        >
-          Edit
-        </Link>
-        <button onClick={deleteHandler}>Delete</button>
       </div>
     </div>
   );

@@ -20,15 +20,19 @@ const TVItem = ({ tv }) => {
           <div className={classes.cardItems}>
             <label>Channel of TV</label>
             <p> {tv.channel} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Time to show on TV</label>
             <p> {tv.time} </p>
-          </div>
+            </div>
           <div className={classes.cardItems}>
             <label>Cost:</label>
             <p> {tv.cost} </p>
+          </div>
+          <div className={classes.cardItems}>
             <label>Advertising Period:</label>
             <p> {tv.advertising_period} </p>
-          </div>
+            </div>
           <div className={classes.cardItems}>
             <label>For Campaign </label>
             <p>
@@ -40,8 +44,6 @@ const TVItem = ({ tv }) => {
               </Link>
             </p>
           </div>
-        </Card>
-      </div>
       <div className={classes.btn}>
         <Link
           className={classes.link}
@@ -50,6 +52,8 @@ const TVItem = ({ tv }) => {
           Edit
         </Link>
         <button onClick={deleteHandler}>Delete</button>
+      </div>
+        </Card>
       </div>
     </div>
   );

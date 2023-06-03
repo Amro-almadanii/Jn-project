@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './SocialMediaList.module.scss';
 const SocialMediasList = ({ socialMedia }) => {
+  const navigate = useNavigate();
   return (
     <div className={classes.socialMediaList}>
       <h1>All SocialMedias</h1>
@@ -25,15 +26,15 @@ const SocialMediasList = ({ socialMedia }) => {
         </thead>
         <tbody>
           {socialMedia.map((socialMedia) => (
-            <tr key={socialMedia.id}>
-              <td>
-                <Link
-                  className={classes.link}
-                  to={`/marketing/socialMedia/socialMedia-detail/${socialMedia.id}`}
-                >
-                  {socialMedia.id}
-                </Link>
-              </td>
+            <tr
+              onClick={() =>
+                navigate(
+                  `/marketing/socialMedia/socialMedia-detail/${socialMedia.id}`
+                )
+              }
+              key={socialMedia.id}
+            >
+              <td>{socialMedia.id}</td>
               <td>{socialMedia.blogger}</td>
               <td>{socialMedia.type}</td>
               <td>{socialMedia.way}</td>

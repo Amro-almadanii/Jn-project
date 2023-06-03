@@ -4,238 +4,167 @@ import { useState } from 'react';
 
 function SideBar() {
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
+  const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
+  const handleMarketingDropdownClick = () => {
+    setShowMarketingDropdown(!showMarketingDropdown);
+  };
+  const handleRepositoryDropdownClick = () => {
+    setShowRepositoryDropdown(!showRepositoryDropdown);
+  };
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
   return (
     <aside className={classes.sidebar}>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/campaigns"
-          end
-        >
-          Campaigns
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/tvs"
-          end
-        >
-          TVs
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/socialMedia"
-          end
-        >
-          SocialMedia
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/events"
-          end
-        >
-          Events
-        </NavLink>
-      </div>
-      {/* <div onClick={handleDropdownClick} className={classes.box}>
-        Create new :
+      <div onClick={handleMarketingDropdownClick} className={classes.item}>
+        Marketing
       </div>
       <div
         className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
+          showMarketingDropdown ? classes.dropdown.show : classes.dropdown
         }`}
       >
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
-            to="/marketing/campaigns/new/branch/tv"
             className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
+              isActive ? classes.active : classes.navlink
             }
+            to="/marketing/campaigns"
+            end
           >
-            new TV
+            Campaigns
           </NavLink>
         </div>
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
-            to="/marketing/campaigns/new/branch/socialMedia"
             className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
+              isActive ? classes.active : classes.navlink
             }
+            to="/marketing/tvs"
+            end
           >
-            new SocialMedia
+            TVs
           </NavLink>
         </div>
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
-            to="/marketing/campaigns/new/branch/event"
             className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
+              isActive ? classes.active : classes.navlink
             }
+            to="/marketing/socialMedia"
+            end
           >
-            new Event
+            SocialMedia
           </NavLink>
         </div>
-      </div> */}
-
-      <div className={classes.item}>
-        <NavLink
-          to="/marketing/pdfs"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-        >
-          PDFs
-        </NavLink>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/events"
+            end
+          >
+            Events
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            to="/marketing/pdfs"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+          >
+            PDFs
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/emails"
+            end
+          >
+            Emails
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/customers"
+            end
+          >
+            Customers
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/marketing/leads"
+            end
+          >
+            Leads
+          </NavLink>
+        </div>
       </div>
 
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/customers"
-          end
-        >
-          Customers
-        </NavLink>
-      </div>
 
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/emails"
-          end
-        >
-          Emails
-        </NavLink>
-      </div>
 
-      <div className={classes.item}>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.navlink
-          }
-          to="/marketing/leads"
-          end
-        >
-          Leads
-        </NavLink>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Suppliers
+      <div onClick={handleRepositoryDropdownClick} className={classes.item}>
+        Repository
       </div>
       <div
         className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
+          showRepositoryDropdown ? classes.dropdown.show : classes.dropdown
         }`}
       >
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
             to="/repository/suppliers"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
+            end
           >
-            Suppliers List
+            Suppliers
           </NavLink>
         </div>
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
-            to="/repository/suppliers/new"
             className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
+              isActive ? classes.active : classes.navlink
             }
-          >
-            New Supplier
-          </NavLink>
-        </div>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Categories
-      </div>
-      <div
-        className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
-        <div className={classes.dropdownItem}>
-          <NavLink
             to="/repository/categories"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
+            end
           >
-            Categories List
+            Categories
           </NavLink>
         </div>
-        <div className={classes.dropdownItem}>
+        <div className={classes.item}>
           <NavLink
-            to="/repository/categories/new"
             className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
+              isActive ? classes.active : classes.navlink
             }
-          >
-            New Category
-          </NavLink>
-        </div>
-      </div>
-
-      <div onClick={handleDropdownClick} className={classes.box}>
-        Products
-      </div>
-      <div
-        className={` ${
-          showDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
-        <div className={classes.dropdownItem}>
-          <NavLink
             to="/repository/products"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
+            end
           >
-            Products List
+            Products
           </NavLink>
         </div>
-        <div className={classes.dropdownItem}>
-          <NavLink
-            to="/repository/products/new"
-            className={({ isActive }) =>
-              isActive ? classes.activeDropdown : classes.navlink
-            }
-          >
-            New Product
-          </NavLink>
-        </div>
-      </div>
 
-      <div className={classes.butContainar}>
-        <Form action="/Logout" method="post">
-          <button className={classes.button}>Logout</button>
-        </Form>
+
       </div>
+       <div className={classes.butContainar}>
+         <Form action="/Logout" method="post">
+           <button className={classes.button}>Logout</button>
+         </Form>
+       </div>
     </aside>
   );
 }

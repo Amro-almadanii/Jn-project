@@ -66,6 +66,22 @@ const EventForm = ({ method, event }) => {
           required
           defaultValue={event ? event.cost : ''}
         />
+        <label>expected_revenue :</label>
+        <input
+          id="expected_revenue"
+          type="text"
+          name="expected_revenue"
+          required
+          defaultValue={event ? event.expected_revenue : ''}
+        />
+        <label>Actual Revenue :</label>
+        <input
+          id="actual_revenue  "
+          type="text"
+          name="actual_revenue"
+          required
+          defaultValue={event ? event.actual_revenue : ''}
+        />
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -92,6 +108,8 @@ export async function action({ request, params }) {
     cost: data.get('cost'),
     type: data.get('type'),
     place: data.get('place'),
+    expected_revenue: data.get('expected_revenue'),
+    actual_revenue: data.get('actual_revenue'),
     campaign_id: 1,
   };
 

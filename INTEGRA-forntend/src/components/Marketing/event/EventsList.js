@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './EventsList.module.scss';
 const EventsList = ({ events }) => {
+  const navigate = useNavigate();
   return (
     <div className={classes.eventList}>
       <h1>All Events</h1>
@@ -26,15 +27,13 @@ const EventsList = ({ events }) => {
         </thead>
         <tbody>
           {events.map((event) => (
-            <tr key={event.id}>
-              <td>
-                <Link
-                  className={classes.link}
-                  to={`/marketing/events/event-detail/${event.id}`}
-                >
-                  {event.id}
-                </Link>
-              </td>
+            <tr
+              onClick={() =>
+                navigate(`/marketing/events/event-detail/${event.id}`)
+              }
+              key={event.id}
+            >
+              <td>{event.id}</td>
               <td>{event.name}</td>
               <td>{event.description}</td>
               <td>{event.place}</td>

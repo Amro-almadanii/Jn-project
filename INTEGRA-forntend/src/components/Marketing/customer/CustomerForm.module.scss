@@ -20,6 +20,16 @@
     margin: 24px;
   }
 
+  select {
+    display: block;
+    width: 90%;
+    padding: 5px;
+    outline: none;
+    margin: 24px;
+    color: var(--second-color);
+    transition: 0.4s;
+  }
+
   .actions {
     display: flex;
     justify-content: flex-end;

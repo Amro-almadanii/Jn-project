@@ -6,7 +6,7 @@ const EmailsPage = () => {
   const { data: emails } = useLoaderData();
   return (
     <div className="email">
-      <h1>Email Page</h1>
+      <h1> Repository > Emails </h1>
       <EmailsList emails={emails} />
     </div>
   );

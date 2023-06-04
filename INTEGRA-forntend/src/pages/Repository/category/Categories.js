@@ -7,7 +7,6 @@ const CategoriesPage = () => {
 
   return (
     <div className="categories">
-      <h1>Categories Page</h1>
       <CategoriesList categories={categories} />
     </div>
   );

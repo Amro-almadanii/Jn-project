@@ -4,7 +4,7 @@ const SocialMediasList = ({ socialMedia }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.socialMediaList}>
-      <h1>All SocialMedias</h1>
+      <h1> Marketing > SocialMedia </h1>
       <div className={classes.addNewSocialMedia}>
         <Link
           className={classes.socialMediaList_link}

@@ -40,7 +40,7 @@ import { action as manipulateSocialMediaAction } from '../../components/Marketin
 import EventsPage, {
   loader as EventsLoader,
 } from '../../pages/Marketing/event/Events';
-import NewEventPage from '../../pages/Marketing/event/NewCampaign';
+import NewEventPage from '../../pages/Marketing/event/NewEvent';
 import EventDetailPage, {
   loader as EventDetailLoader,
   action as deleteEventAction,

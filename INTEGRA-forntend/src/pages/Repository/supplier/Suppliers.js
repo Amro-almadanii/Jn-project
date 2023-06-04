@@ -7,7 +7,6 @@ const SuppliersPage = () => {
 
   return (
     <div className="suppliers">
-      <h1>Suppliers Page</h1>
       <SuppliersList suppliers={suppliers} />
     </div>
   );

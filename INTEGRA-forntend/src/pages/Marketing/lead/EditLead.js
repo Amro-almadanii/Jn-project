@@ -6,7 +6,7 @@ const EditLeadPage = () => {
 
   return (
     <div className={classes.editLead}>
-      <h1>Edit Page</h1>
+      <h1> Marketing > Leads > Edit {lead.name} </h1>
       <LeadForm method="put" lead={lead} />
     </div>
   );

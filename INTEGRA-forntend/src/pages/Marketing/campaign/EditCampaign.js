@@ -6,7 +6,7 @@ const EditCampaignPage = () => {
 
   return (
     <div className={classes.editCampaign}>
-      <h1>Edit Page</h1>
+      <h1> Marketing > Campaigns > Edit {campaign.name} </h1>
       <CampaignForm method="put" campaign={campaign} />
     </div>
   );

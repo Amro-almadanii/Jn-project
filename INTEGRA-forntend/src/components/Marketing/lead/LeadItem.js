@@ -14,7 +14,7 @@ const LeadItem = ({ lead }) => {
 
   return (
     <div className={classes.leadItem}>
-      <h1> Lead Item </h1>
+      <h1> Marketing > Lead Item > {lead.type} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>

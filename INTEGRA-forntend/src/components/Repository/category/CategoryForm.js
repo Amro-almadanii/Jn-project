@@ -23,7 +23,6 @@ const CategoryForm = ({ method, category }) => {
   return (
     <div className={classes.categoryForm}>
       <Form method={method} className={classes.form}>
-        <h1>Marketing > Category > Create New Category:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

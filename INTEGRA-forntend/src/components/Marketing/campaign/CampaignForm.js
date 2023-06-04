@@ -23,7 +23,6 @@ const CampaignForm = ({ method, campaign }) => {
   return (
     <div className={classes.campaignForm}>
       <Form method={method} className={classes.form}>
-        <h1>Marketing > Campaign > Create New Campaign:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

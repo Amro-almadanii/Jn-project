@@ -8,7 +8,6 @@ const TVsPage = () => {
   const tvs = data.data;
   return (
     <div className={classes.tv}>
-      <h1>TVs Page</h1>
       <TVsList tvs={tvs} />
     </div>
   );

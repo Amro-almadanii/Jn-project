@@ -23,7 +23,6 @@ const SupplierForm = ({ method, supplier }) => {
   return (
     <div className={classes.supplierForm}>
       <Form method={method} className={classes.form}>
-        <h1>Marketing > Supplier > Create New Supplier:</h1>
         <p>
           <label htmlFor="name">Name</label>
           <input

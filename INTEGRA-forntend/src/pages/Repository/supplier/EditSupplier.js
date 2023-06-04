@@ -6,7 +6,7 @@ const EditSupplierPage = () => {
 
   return (
     <>
-      <h1>Edit Page</h1>
+      <h1> Repository > Suppliers > Edit {supplier.name} </h1>
       <SupplierForm method="put" supplier={supplier} />
     </>
   );

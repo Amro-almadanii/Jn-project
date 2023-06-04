@@ -4,7 +4,7 @@ const LeadsList = ({ leads }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.leadsList}>
-      <h1>All Leads</h1>
+      <h1> Marketing > Leads </h1>
       <div className={classes.add_lead}>
         <Link className={classes.add_lead_link} to="/marketing/leads/new">
           Add New Lead

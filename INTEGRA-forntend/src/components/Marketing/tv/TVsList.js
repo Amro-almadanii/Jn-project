@@ -4,7 +4,7 @@ const TVsList = ({ tvs }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.tvList}>
-      <h1>All TVs</h1>
+      <h1> Marketing > TVs </h1>
       <div className={classes.addNewTv}>
         <Link
           className={classes.tvList_link}

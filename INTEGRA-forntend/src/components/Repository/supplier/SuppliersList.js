@@ -5,7 +5,7 @@ const SuppliersList = ({ suppliers }) => {
 
   return (
     <div className={classes.suppliersList}>
-      <h1>Marketing > Suppliers</h1>
+      <h1> Repository > Suppliers </h1>
       <div className={classes.add_supplier}>
         <Link
           className={classes.add_supplier_link}

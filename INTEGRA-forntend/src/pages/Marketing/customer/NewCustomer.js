@@ -3,7 +3,7 @@ import classes from './newCutomer.module.scss';
 const NewCustomerPage = () => {
   return (
     <div className={classes.newcustomer}>
-      <h1> Marketing > Customers > New Customer</h1>
+      <h1> Marketing > Customers > Create New Customer </h1>
       <CustomerForm method="post" />
     </div>
   );

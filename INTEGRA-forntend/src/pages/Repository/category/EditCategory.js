@@ -6,7 +6,7 @@ const EditCategoryPage = () => {
 
   return (
     <>
-      <h1>Edit Page</h1>
+      <h1> Repository > Categories > Edit {category.name} </h1>
       <CategoryForm method="put" category={category} />
     </>
   );

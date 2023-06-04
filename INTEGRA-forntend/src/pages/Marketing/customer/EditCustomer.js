@@ -6,7 +6,7 @@ const EditCustomerPage = () => {
 
   return (
     <div className={classes.editCustomer}>
-      <h1> Marketing > Customers > Create New Customer</h1>
+      <h1> Marketing > Customers > Edit {customer.name} </h1>
       <CustomerForm method="put" customer={customer} />
     </div>
   );

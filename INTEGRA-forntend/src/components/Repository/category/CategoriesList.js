@@ -5,7 +5,7 @@ const CategoriesList = ({ categories }) => {
 
   return (
     <div className={classes.categoriesList}>
-      <h1>Marketing > Categories</h1>
+      <h1> Repository > Categories </h1>
       <div className={classes.add_category}>
         <Link
           className={classes.add_category_link}

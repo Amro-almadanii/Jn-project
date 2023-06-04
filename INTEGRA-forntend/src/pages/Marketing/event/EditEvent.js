@@ -6,7 +6,7 @@ const EditEventPage = () => {
 
   return (
     <div className={classes.editEvent}>
-      <h1>Edit Page</h1>
+      <h1> Marketing > Events > Edit {event.name} </h1>
       <EventForm method="put" event={event} />
     </div>
   );

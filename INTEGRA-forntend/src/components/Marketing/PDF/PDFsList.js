@@ -5,6 +5,7 @@ const PDFsList = ({ pdfs }) => {
 
   return (
     <div className={classes.pdfsList}>
+      <h1> Marketing > PDFs</h1>
       <table>
         <thead>
         <tr>

@@ -7,7 +7,7 @@ const EditTVPage = () => {
 
   return (
     <div className={classes.editTv}>
-      <h1>Edit Page</h1>
+      <h1> Marketing > TV > Edit {tv.data.channel} </h1>
       <TVForm method="put" tv={tv.data} />
     </div>
   );

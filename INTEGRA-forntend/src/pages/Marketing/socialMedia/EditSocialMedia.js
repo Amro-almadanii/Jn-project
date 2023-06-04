@@ -6,7 +6,7 @@ const EditSocialMediaPage = () => {
 
   return (
     <div className={classes.editsocialmedia}>
-      <h1>Edit Page</h1>
+      <h1> Marketing > SocialMedia > Edit {socialMedia.name} </h1>
       <SocialMediaForm method="put" socialMedia={socialMedia} />
     </div>
   );

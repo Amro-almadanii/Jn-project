@@ -8,7 +8,6 @@ const SocialMediaPage = () => {
 
   return (
     <div className={classes.socialmedia}>
-      <h1>SocialMedia Page</h1>
       <SocialMediaList socialMedia={socialMedia} />
     </div>
   );

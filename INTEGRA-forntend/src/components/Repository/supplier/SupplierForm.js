@@ -95,9 +95,9 @@ export async function action({ request, params }) {
 
   if (method === 'PUT') {
     url =
-      'http://localhost:8000/repository/supplier/update/' + params.supplierId;
+      'http://localhost:8000/repository/suppliers/' + params.supplierId;
   } else {
-    url = 'http://localhost:8000/repository/supplier/store';
+    url = 'http://localhost:8000/repository/suppliers';
   }
 
   const response = await fetch(url, {

@@ -118,9 +118,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/marketing/event/update/' + params.eventId;
+    url = 'http://localhost:8000/marketing/events/' + params.eventId;
   } else {
-    url = 'http://localhost:8000/marketing/event/store';
+    url = 'http://localhost:8000/marketing/events';
   }
 
   const response = await fetch(url, {

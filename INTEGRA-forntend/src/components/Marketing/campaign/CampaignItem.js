@@ -20,7 +20,7 @@ const CampaignItem = ({ campaign }) => {
   // useEffect(  (events) => {
   //   const token = getAuthToken();
   //
-  //   fetch('http://localhost:8000/marketing/event/show/1', {
+  //   fetch('http://localhost:8000/marketing/events/1', {
   //     headers:{
   //       'Authorization': 'bearer' + token,
   //     }

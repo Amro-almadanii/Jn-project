@@ -128,9 +128,9 @@ export async function action({ request, params }) {
 
   if (method === 'PUT') {
     url =
-      'http://localhost:8000/marketing/campaign/update/' + params.campaignId;
+      'http://localhost:8000/marketing/campaigns/' + params.campaignId;
   } else {
-    url = 'http://localhost:8000/marketing/campaign/store';
+    url = 'http://localhost:8000/marketing/campaigns';
   }
 
   const response = await fetch(url, {

@@ -15,7 +15,7 @@ export async function loader({ request, params }) {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/repository/product/show/' + id,
+    'http://localhost:8000/repository/products/' + id,
     {
       headers: {
         Authorization: 'bearer' + token,
@@ -38,7 +38,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/repository/product/destroy/' + id,
+    'http://localhost:8000/repository/products/' + id,
     {
       method: request.method,
       headers: {

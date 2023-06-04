@@ -14,7 +14,7 @@ export async function loader({ request, params }) {
   const id = params.socialMediaId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/socialMedia/show/'+ id, {
+  const response = await fetch('http://localhost:8000/marketing/socialMedia/'+ id, {
     headers:{
       'Authorization': 'bearer' + token,
     }
@@ -34,7 +34,7 @@ export async function action ({request, params}) {
   const id = params.socialMediaId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/socialMedia/destroy/' + id, {
+  const response = await fetch('http://localhost:8000/marketing/socialMedia/' + id, {
     method: request.method,
     headers:{
       'Authorization' : 'bearer' + token,

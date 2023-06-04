@@ -63,9 +63,9 @@ export async function action({ request, params }) {
 
   if (method === 'PUT') {
     url =
-      'http://localhost:8000/repository/category/update/' + params.categoryId;
+      'http://localhost:8000/repository/categories/' + params.categoryId;
   } else {
-    url = 'http://localhost:8000/repository/category/store';
+    url = 'http://localhost:8000/repository/categories';
   }
 
   const response = await fetch(url, {

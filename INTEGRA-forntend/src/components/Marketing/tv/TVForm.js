@@ -108,9 +108,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/marketing/tv/update/' + params.tvId;
+    url = 'http://localhost:8000/marketing/tvs/' + params.tvId;
   } else {
-    url = 'http://localhost:8000/marketing/tv/store';
+    url = 'http://localhost:8000/marketing/tvs';
   }
 
   const response = await fetch(url, {

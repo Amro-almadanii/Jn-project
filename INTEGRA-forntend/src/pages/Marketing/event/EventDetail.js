@@ -14,7 +14,7 @@ export async function loader({ request, params }) {
   const id = params.eventId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/event/show/'+ id, {
+  const response = await fetch('http://localhost:8000/marketing/events/'+ id, {
     headers:{
       'Authorization': 'bearer' + token,
     }
@@ -34,7 +34,7 @@ export async function action ({request, params}) {
   const id = params.eventId;
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/marketing/event/destroy/' + id, {
+  const response = await fetch('http://localhost:8000/marketing/events/' + id, {
     method: request.method,
     headers:{
       'Authorization' : 'bearer' + token,

@@ -32,33 +32,33 @@ const SocialMediaForm = ({ method, socialMedia }) => {
           defaultValue={socialMedia ? socialMedia.blogger : ''}
         />
 
-        <label htmlFor="type">Type :</label>
+        <label htmlFor="way">Way :</label>
         <input
-          id="type"
+          id="way"
           type="text"
-          name="type"
+          name="way"
           required
-          defaultValue={socialMedia ? socialMedia.type : ''}
+          defaultValue={socialMedia ? socialMedia.way : ''}
         />
 
-        <label htmlFor="way">Way :</label>
-        <select required>
-          <option value="Instagram" name="Instagram">
+        <label htmlFor="type">Type :</label>
+        <select required name="type">
+          <option value="Instagram" name="type">
             Instagram
           </option>
-          <option value="Facebook" name="Facebook">
+          <option value="Facebook" name="type">
             Facebook
           </option>
-          <option value="Snapchat" name="Snapchat">
+          <option value="Snapchat" name="type">
             Snapchat
           </option>
-          <option value="Whatsapp" name="Whatsapp">
+          <option value="Whatsapp" name="type">
             Whatsapp
           </option>
-          <option value="Telegram" name="Telegram">
+          <option value="Telegram" name="type">
             Telegram
           </option>
-          <option value="TikTok" name="TikTok">
+          <option value="TikTok" name="type">
             TikTok
           </option>
         </select>
@@ -107,15 +107,15 @@ export async function action({ request, params }) {
     expected_revenue: data.get('expected_revenue'),
     campaign_id: 1,
   };
-
+console.log(socialMediaData);
   let url;
 
   if (method === 'PUT') {
     url =
-      'http://localhost:8000/marketing/socialMedia/update/' +
+      'http://localhost:8000/marketing/socialMedia/' +
       params.socialMediaId;
   } else {
-    url = 'http://localhost:8000/marketing/socialMedia/store';
+    url = 'http://localhost:8000/marketing/socialMedia';
   }
 
   const response = await fetch(url, {

@@ -21,6 +21,8 @@ const TVsList = ({ tvs }) => {
             <th>Time</th>
             <th>Cost</th>
             <th>Advertising Period</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
             <th>Campaign Id</th>
           </tr>
         </thead>
@@ -35,6 +37,8 @@ const TVsList = ({ tvs }) => {
               <td>{tv.time}</td>
               <td>{tv.cost}</td>
               <td>{tv.advertising_period}</td>
+              <td>{tv.expected_revenue}</td>
+              <td>{tv.actual_revenue}</td>
               <td>
                 <Link
                   className={classes.link}
@@ -54,6 +58,8 @@ const TVsList = ({ tvs }) => {
             <th>Time</th>
             <th>Cost</th>
             <th>Advertising Period</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
             <th>Campaign Id</th>
           </tr>
         </tfoot>

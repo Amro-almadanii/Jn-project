@@ -21,6 +21,8 @@ const SocialMediasList = ({ socialMedia }) => {
             <th>Type</th>
             <th>Way</th>
             <th>Cost</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
             <th>Campaign id</th>
           </tr>
         </thead>
@@ -39,6 +41,8 @@ const SocialMediasList = ({ socialMedia }) => {
               <td>{socialMedia.type}</td>
               <td>{socialMedia.way}</td>
               <td>{socialMedia.cost}</td>
+              <td>{socialMedia.expected_revenue}</td>
+              <td>{socialMedia.actual_revenue}</td>
               <td>
                 <Link
                   className={classes.link}
@@ -57,6 +61,8 @@ const SocialMediasList = ({ socialMedia }) => {
             <th>Type</th>
             <th>Way</th>
             <th>Cost</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
             <th>Campaign id</th>
           </tr>
         </tfoot>

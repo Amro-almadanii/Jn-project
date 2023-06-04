@@ -22,7 +22,9 @@ const EventsList = ({ events }) => {
             <th>Place</th>
             <th>Cost</th>
             <th>Type</th>
-            <th>Campaign</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
+            <th>Campaign Id</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +41,8 @@ const EventsList = ({ events }) => {
               <td>{event.place}</td>
               <td>{event.cost}</td>
               <td>{event.type}</td>
+              <td>{event.expected_revenue}</td>
+              <td>{event.actual_revenue}</td>
               <td>
                 <Link
                   className={classes.link}
@@ -58,7 +62,9 @@ const EventsList = ({ events }) => {
             <th>Place</th>
             <th>Cost</th>
             <th>Type</th>
-            <th>Campaign</th>
+            <th>Expected Revenue</th>
+            <th>Actual Revenue</th>
+            <th>Campaign Id</th>
           </tr>
         </tfoot>
       </table>

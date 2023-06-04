@@ -20,6 +20,13 @@
   transition: 0.2s;
 }
 
+.itemBold {
+  background-color: var(--third-color);
+  padding: 14px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.2s;
+}
 .navlink {
   color: var(--text-color);
   padding: 10px;
@@ -97,7 +104,6 @@
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
 }
 .box {
   color: var(--text-color);

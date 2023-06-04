@@ -37,6 +37,7 @@ const SocialMediaItem = ({ socialMedia }) => {
             <label>campaign of SocialMedia:</label>
             <p>
               <Link
+                className={classes.link}
                 to={`/marketing/campaigns/campaign-detail/${socialMedia.campaign_id}`}
               >
                 {' '}
@@ -46,7 +47,7 @@ const SocialMediaItem = ({ socialMedia }) => {
           </div>
           <div className={classes.btn}>
             <Link
-              className={classes.link}
+              className={classes.linkbtn}
               to={`/marketing/socialMedia/socialMedia-detail/edit/${socialMedia.id}`}
             >
               Edit

@@ -3,9 +3,17 @@ import classes from './SideBar.module.scss';
 import { useState } from 'react';
 
 function SideBar() {
+  const [marketing, setMarketing] = useState(false);
+  const [repository, setRepository] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
   const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
+  const handleMarketing = () => {
+    setMarketing(!marketing);
+  };
+  const handleRepository = () => {
+    setRepository(!repository);
+  };
   const handleMarketingDropdownClick = () => {
     setShowMarketingDropdown(!showMarketingDropdown);
   };
@@ -17,7 +25,15 @@ function SideBar() {
   };
   return (
     <aside className={classes.sidebar}>
-      <div onClick={handleMarketingDropdownClick} className={classes.item}>
+      <div
+        onClick={() => {
+          {
+            handleMarketingDropdownClick();
+            handleMarketing();
+          }
+        }}
+        className={` ${marketing ? classes.itemBold : classes.item}`}
+      >
         Marketing
       </div>
       <div
@@ -114,7 +130,13 @@ function SideBar() {
         </div>
       </div>
 
-      <div onClick={handleRepositoryDropdownClick} className={classes.item}>
+      <div
+        onClick={() => {
+          handleRepositoryDropdownClick();
+          handleRepository();
+        }}
+        className={` ${repository ? classes.itemBold : classes.item}`}
+      >
         Repository
       </div>
       <div
@@ -155,14 +177,12 @@ function SideBar() {
             Products
           </NavLink>
         </div>
-
-
       </div>
-       <div className={classes.butContainar}>
-         <Form action="/Logout" method="post">
-           <button className={classes.button}>Logout</button>
-         </Form>
-       </div>
+      <div className={classes.butContainar}>
+        <Form action="/Logout" method="post">
+          <button className={classes.button}>Logout</button>
+        </Form>
+      </div>
     </aside>
   );
 }

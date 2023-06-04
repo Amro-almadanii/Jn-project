@@ -42,6 +42,7 @@ const EventItem = ({ event }) => {
             <p>
               {' '}
               <Link
+                className={classes.link}
                 to={`/marketing/campaigns/campaign-detail/${event.campaign_id}`}
               >
                 {event.campaign_id}{' '}
@@ -50,7 +51,7 @@ const EventItem = ({ event }) => {
           </div>
           <div className={classes.btn}>
             <Link
-              className={classes.link}
+              className={classes.linkbtn}
               to={`/marketing/events/event-detail/edit/${event.id}`}
             >
               Edit

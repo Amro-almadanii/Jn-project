@@ -32,6 +32,10 @@
     width: calc(100vw - 300px);
     margin-left: 10px;
   }
+  .link {
+    text-decoration: none;
+    color: var(--second-color);
+  }
   .btn {
     display: flex;
     justify-content: flex-end;
@@ -50,7 +54,7 @@
     }
   }
 
-  .link {
+  .linkbtn {
     text-decoration: none;
     color: var(--text-color);
     background-color: var(--second-color);
@@ -60,8 +64,12 @@
     margin-right: 10px;
     transition: 0.4s;
   }
+  .linkbtn:hover {
+    background-color: var(--third-color);
+  }
 
   h1 {
     color: var(--second-color);
+    margin: 10px;
   }
 }

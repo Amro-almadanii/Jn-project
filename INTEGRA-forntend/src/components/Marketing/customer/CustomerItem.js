@@ -14,10 +14,44 @@ const CustomerItem = ({ customer }) => {
 
   return (
     <div className={classes.customerItem}>
-        <h1> Marketing > Customer > {customer.name} </h1>
-        <div className={classes.box}>
-          <p>customer</p>
-        </div>
+      <h1> Marketing > Customer > {customer.name} </h1>
+      <div className={classes.box}>
+        <Card className={classes.card}>
+          <div className={classes.cardItems}>
+            <label>Name of Customer :</label>
+            <p> {customer.name} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Gender :</label>
+            <p> {customer.gender} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Age :</label>
+            <p> {customer.age} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Address :</label>
+            <p> {customer.address} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Email :</label>
+            <p> {customer.email} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Phone :</label>
+            <p> {customer.phone} </p>
+          </div>
+          <div className={classes.btn}>
+            <Link
+              className={classes.link}
+              to={`/marketing/campaigns/campaign-detail/edit/${customer.id}`}
+            >
+              Edit
+            </Link>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };

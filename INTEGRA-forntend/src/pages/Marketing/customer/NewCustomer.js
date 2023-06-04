@@ -1,12 +1,11 @@
 import CustomerForm from '../../../components/Marketing/customer/CustomerForm';
-
+import classes from './newCutomer.module.scss';
 const NewCustomerPage = () => {
-
   return (
-    <>
-      <h1 style={{margin:"20px"}}> Marketing > Customers > Edit New Customer</h1>
+    <div className={classes.newcustomer}>
+      <h1> Marketing > Customers > New Customer</h1>
       <CustomerForm method="post" />
-    </>
+    </div>
   );
 };
 

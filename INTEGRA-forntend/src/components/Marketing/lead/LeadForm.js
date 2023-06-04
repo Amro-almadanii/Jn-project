@@ -23,6 +23,7 @@ const LeadForm = ({ method, lead }) => {
   return (
     <Form method={method} className={classes.leadForm}>
       <div>
+        <h1> Add New Lead</h1>
         <label htmlFor="type">Name :</label>
         <input
           id="type"

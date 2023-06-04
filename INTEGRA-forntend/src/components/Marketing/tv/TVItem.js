@@ -40,8 +40,7 @@ const TVItem = ({ tv }) => {
                 className={classes.link}
                 to={`/marketing/campaigns/campaign-detail/${tv.campaign_id}`}
               >
-                {' '}
-                {tv.campaign_id}{' '}
+                {tv.campaign_id}
               </Link>
             </p>
           </div>

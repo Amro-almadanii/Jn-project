@@ -5,8 +5,8 @@ const LeadsList = ({ leads }) => {
   return (
     <div className={classes.leadsList}>
       <h1>All Leads</h1>
-      <div className={classes.addNewLead}>
-        <Link className={classes.leadsList_link} to="/marketing/leads/new">
+      <div className={classes.add_lead}>
+        <Link className={classes.add_lead_link} to="/marketing/leads/new">
           Add New Lead
         </Link>
       </div>
@@ -19,7 +19,10 @@ const LeadsList = ({ leads }) => {
         </thead>
         <tbody>
           {leads.map((lead) => (
-            <tr key={lead.id} onClick={ () => navigate( '/marketing/leads/lead-detail/1' ) }>
+            <tr
+              key={lead.id}
+              onClick={() => navigate('/marketing/leads/lead-detail/1')}
+            >
               <td>{lead.id}</td>
               <td>{lead.type}</td>
             </tr>

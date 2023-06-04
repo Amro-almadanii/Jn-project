@@ -1,14 +1,14 @@
 import EventForm from '../../../components/Marketing/event/EventForm';
 import { useRouteLoaderData } from 'react-router-dom';
-
+import classes from './editEvent.module.scss';
 const EditEventPage = () => {
-  const { data:event } = useRouteLoaderData('event-detail');
+  const { data: event } = useRouteLoaderData('event-detail');
 
   return (
-    <>
+    <div className={classes.editEvent}>
       <h1>Edit Page</h1>
-      <EventForm method="put"  event={event}/>
-    </>
+      <EventForm method="put" event={event} />
+    </div>
   );
 };
 

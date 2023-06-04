@@ -4,7 +4,6 @@ const EmailsList = ({ emails }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.emailsList}>
-      <h1>All Emails</h1>
       <div className={classes.addNewEmail}>
         <Link className={classes.emailsList_link} to="/marketing/emails/new">
           Add New Email

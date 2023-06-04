@@ -14,14 +14,9 @@ const CustomerItem = ({ customer }) => {
 
   return (
     <div className={classes.customerItem}>
-        <h1> Customer Item </h1>
+        <h1> Marketing > Customer > {customer.name} </h1>
         <div className={classes.box}>
-          <Card className={classes.card}>
-            <div className={classes.cardItems}>
-              <label>Name of Customer</label>
-              <p> {customer.type} </p>
-            </div>
-          </Card>
+          <p>customer</p>
         </div>
     </div>
   );

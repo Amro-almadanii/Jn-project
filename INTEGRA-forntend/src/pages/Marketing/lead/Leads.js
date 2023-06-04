@@ -7,7 +7,7 @@ const LeadsPage = () => {
 
   return (
     <div className="lead">
-      <h1>Lead Page</h1>
+      <h1> Repository > Leads </h1>
       <LeadsList leads={leads} />
     </div>
   );

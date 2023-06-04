@@ -92,6 +92,7 @@ export async function action({ request, params }) {
     name: data.get('name'),
     gender: data.get('gender'),
     age: data.get('age'),
+    address: data.get('address'),
     email: data.get('email'),
     phone: data.get('phone'),
   };

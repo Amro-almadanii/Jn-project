@@ -6,7 +6,7 @@ const EditCustomerPage = () => {
 
   return (
     <>
-      <h1>Edit Page</h1>
+      <h1 style={{margin:"20px"}} > Marketing > Customers > Create New Customer</h1>
       <CustomerForm method="put"  customer={customer}/>
     </>
   );

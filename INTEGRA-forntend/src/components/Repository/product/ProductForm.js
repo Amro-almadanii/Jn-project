@@ -23,47 +23,7 @@ const ProductForm = ({ method, product }) => {
   return (
     <div className={classes.productForm}>
       <Form method={method} className={classes.form}>
-        <h1>Marketing > Product > Create New Product:</h1>
-        <p>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            required
-            defaultValue={product ? product.name : ''}
-          />
-        </p>
-        <p>
-          <label htmlFor="address">Address</label>
-          <input
-            id="address"
-            type="text"
-            name="address"
-            required
-            defaultValue={product ? product.address : ''}
-          />
-        </p>
-        <p>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            defaultValue={product ? product.email : ''}
-          />
-        </p>
-        <p>
-          <label htmlFor="phone_number">Phone Number</label>
-          <input
-            id="phone_number"
-            type="number"
-            name="phone_number"
-            required
-            defaultValue={product ? product.phone_number : ''}
-          />
-        </p>
+
         <div className={classes.actions}>
           <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel

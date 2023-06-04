@@ -6,7 +6,7 @@ const CustomersPage = () => {
   const { data: customers } = useLoaderData();
   return (
     <div className="customer">
-      <h1>Customer Page</h1>
+      <h1> Marketing > Customers </h1>
       <CustomersList customers={customers} />
     </div>
   );

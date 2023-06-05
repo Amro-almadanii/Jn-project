@@ -73,13 +73,7 @@ const CampaignItem = ({ campaign }) => {
             >
               Edit
             </Link>
-
-            <Link className={classes.link} to="/marketing/campaigns/new">
-              Add New Campaign
-            </Link>
-            <div className={classes.l}>
-              <button onClick={deleteHandler}>Delete</button>
-            </div>
+            <button onClick={deleteHandler}>Delete</button>
           </div>
         </Card>
 

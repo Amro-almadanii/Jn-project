@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './EventForm.module.scss';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const EventForm = ({ method, event }) => {
   //const data = useActionData();

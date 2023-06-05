@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import PDFsList from '../../../components/Marketing/PDF/PDFsList';
 import classes from './pdfs.module.scss';
 const PDFsPage = () => {

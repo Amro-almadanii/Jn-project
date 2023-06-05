@@ -1,6 +1,6 @@
 import { json, useLoaderData } from 'react-router-dom';
 import EmailsList from '../../../components/Marketing/email/EmailsList';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import './Emails.scss';
 const EmailsPage = () => {
   const { data: emails } = useLoaderData();

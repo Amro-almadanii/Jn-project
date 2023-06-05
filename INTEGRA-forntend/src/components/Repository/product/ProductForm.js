@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './ProductForm.module.scss';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const ProductForm = ({ method, product }) => {
   // const data = useActionData();

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import SocialMediaList from '../../../components/Marketing/socialMedia/SocialMediaList';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import classes from './Socialmedia.module.scss';
 const SocialMediaPage = () => {
   const { data: socialMedia } = useLoaderData();

@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import PDFItem from '../../../components/Marketing/event/EventItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const PDFDetailPage = () => {
   const { data:pdf } = useRouteLoaderData('pdf-detail');

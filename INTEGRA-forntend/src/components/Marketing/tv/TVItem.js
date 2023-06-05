@@ -18,11 +18,11 @@ const TVItem = ({ tv }) => {
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
-            <label>Channel of TV</label>
+            <label>Channel of TV:</label>
             <p> {tv.channel} </p>
           </div>
           <div className={classes.cardItems}>
-            <label>Time to show on TV</label>
+            <label>Time to show on TV:</label>
             <p> {tv.time} </p>
           </div>
           <div className={classes.cardItems}>
@@ -32,17 +32,6 @@ const TVItem = ({ tv }) => {
           <div className={classes.cardItems}>
             <label>Advertising Period:</label>
             <p> {tv.advertising_period} </p>
-          </div>
-          <div className={classes.cardItems}>
-            <label>For Campaign </label>
-            <p>
-              <Link
-                className={classes.link}
-                to={`/marketing/campaigns/campaign-detail/${tv.campaign_id}`}
-              >
-                {tv.campaign_id}
-              </Link>
-            </p>
           </div>
           <div className={classes.btn}>
             <Link

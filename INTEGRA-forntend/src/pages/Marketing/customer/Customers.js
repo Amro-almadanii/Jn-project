@@ -1,6 +1,6 @@
 import { json, useLoaderData } from 'react-router-dom';
 import CustomersList from '../../../components/Marketing/customer/CustomersList';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import './Customers.scss';
 const CustomersPage = () => {
   const { data: customers } = useLoaderData();

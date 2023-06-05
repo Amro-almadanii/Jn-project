@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import ProductItem from '../../../components/Repository/product/ProductItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const ProductDetailPage = () => {
   const { data } = useRouteLoaderData('product-detail');

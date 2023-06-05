@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import EventItem from '../../../components/Marketing/event/EventItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const EventDetailPage = () => {
   const { data:event } = useRouteLoaderData('event-detail');

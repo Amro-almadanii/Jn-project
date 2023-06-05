@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import SocialMediaItem from '../../../components/Marketing/socialMedia/SocialMediaItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const SocialMediaDetailPage = () => {
   const {data:socialMedia} = useRouteLoaderData('socialMedia-detail');

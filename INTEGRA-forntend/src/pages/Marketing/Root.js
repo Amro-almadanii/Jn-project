@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Header from '../../components/layout/Header';
 import SideBar from '../../components/layout/SideBar';
-import { getTokenDuration } from '../../util/auth';
+import { getTokenDuration } from '../../hooks/auth';
 import './root.css';
 const RootLayout = () => {
   const nav = useNavigation();

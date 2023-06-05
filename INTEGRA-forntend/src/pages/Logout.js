@@ -1,5 +1,5 @@
 import { json, redirect } from 'react-router-dom';
-import { getAuthToken } from '../util/auth';
+import { getAuthToken } from '../hooks/auth';
 
 export async function action () {
   const token = getAuthToken();

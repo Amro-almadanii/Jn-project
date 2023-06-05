@@ -1,6 +1,6 @@
 import { json, useLoaderData } from 'react-router-dom';
 import LeadsList from '../../../components/Marketing/lead/LeadsList';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import './Leads.scss';
 const LeadsPage = () => {
   const { data: leads } = useLoaderData();

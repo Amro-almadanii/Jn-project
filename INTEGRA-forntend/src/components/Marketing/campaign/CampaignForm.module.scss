@@ -1,23 +1,18 @@
 .campaignForm {
-  width: calc(100vw - 250px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: calc(100vh - 70px);
   align-items: center;
   display: flex;
 }
 
 .campaignForm {
   .form {
-    padding-top: 200px;
     margin: 0 auto;
     overflow-y: auto;
     overflow-x: hidden;
     max-width: 70%;
   }
 
-  .form input,
-  .form textarea {
+  input,
+  textarea {
     width: 90%;
     color: var(--second-color);
     margin: 4px;
@@ -27,7 +22,7 @@
     outline: none;
   }
 
-  .form label {
+  label {
     color: var(--second-color);
     padding: 10px;
     margin: 4px;
@@ -36,29 +31,20 @@
 
   .actions {
     display: flex;
-    justify-content: flex-end;
-    color: var(--text-color);
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    justify-content: center;
+    margin: 4px;
   }
 
   .actions button {
-    font-weight: 700;
     cursor: pointer;
     padding: 0.5rem 1.5rem;
     border-radius: 4px;
     color: white;
     border: none;
+    margin: 30px;
     transition-duration: 0.2s;
     font-size: 18px;
     background-color: var(--second-color);
-  }
-
-  .actions button {
-    color: white;
-    background-color: var(--second-color);
-    margin: 4px;
   }
 
   .actions button:hover {

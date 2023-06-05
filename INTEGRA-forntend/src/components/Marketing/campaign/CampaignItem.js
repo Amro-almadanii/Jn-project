@@ -60,7 +60,7 @@ const CampaignItem = ({ campaign }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Expected Revenue of Campaign :</label>
-            <p> {campaign.expected_revenue} </p>]
+            <p> {campaign.expected_revenue} </p>
           </div>
           <div className={classes.cardItems}>
             <label>Actual Revenue of Campaign :</label>
@@ -73,7 +73,13 @@ const CampaignItem = ({ campaign }) => {
             >
               Edit
             </Link>
-            <button onClick={deleteHandler}>Delete</button>
+
+            <Link className={classes.link} to="/marketing/campaigns/new">
+              Add New Campaign
+            </Link>
+            <div className={classes.l}>
+              <button onClick={deleteHandler}>Delete</button>
+            </div>
           </div>
         </Card>
 

@@ -21,8 +21,8 @@ const CustomerForm = ({ method, customer }) => {
   };
 
   return (
-    <Form method={method} className={classes.customerForm}>
-      <div>
+    <div className={classes.customerForm}>
+      <Form method={method} className={classes.form}>
         <label htmlFor="name">Name:</label>
         <input
           id="name"
@@ -76,8 +76,8 @@ const CustomerForm = ({ method, customer }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
-      </div>
-    </Form>
+      </Form>
+    </div>
   );
 };
 

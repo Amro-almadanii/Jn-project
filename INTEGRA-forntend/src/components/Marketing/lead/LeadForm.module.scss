@@ -5,6 +5,12 @@
 }
 
 .leadForm {
+  .form {
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 70%;
+  }
   label {
     margin: 25px;
     color: var(--second-color);
@@ -24,6 +30,7 @@
   .actions {
     display: flex;
     justify-content: flex-end;
+    margin: 4px;
   }
 
   .actions button {

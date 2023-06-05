@@ -21,8 +21,8 @@ const LeadForm = ({ method, lead }) => {
   };
 
   return (
-    <Form method={method} className={classes.leadForm}>
-      <div>
+    <div className={classes.leadForm}>
+      <Form method={method} className={classes.form}>
         <label htmlFor="type">Name :</label>
         <input
           id="type"
@@ -39,8 +39,8 @@ const LeadForm = ({ method, lead }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
-      </div>
-    </Form>
+      </Form>
+    </div>
   );
 };
 

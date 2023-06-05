@@ -5,9 +5,14 @@
 }
 
 .customerForm {
+  .form {
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 70%;
+  }
   label {
     margin: 25px;
-
     color: var(--second-color);
     font-size: 18px;
   }
@@ -33,6 +38,7 @@
   .actions {
     display: flex;
     justify-content: flex-end;
+    margin: 4px;
   }
 
   .actions button {

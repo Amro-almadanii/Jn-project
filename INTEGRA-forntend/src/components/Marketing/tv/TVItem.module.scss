@@ -22,10 +22,6 @@
     display: flex;
   }
 
-  .link {
-    text-decoration: none;
-    color: var(--second-color);
-  }
   .card {
     border: 2px solid var(--third-color);
     overflow-y: auto;
@@ -54,7 +50,7 @@
     }
   }
 
-  .linkbtn {
+  .link {
     text-decoration: none;
     color: var(--text-color);
     background-color: var(--second-color);
@@ -64,7 +60,7 @@
     margin-right: 10px;
     transition: 0.4s;
   }
-  .linkbtn:hover {
+  .link:hover {
     background-color: var(--third-color);
   }
   h1 {

@@ -6,6 +6,7 @@ function NavBar() {
   const [bar1, setBar1] = useState(false);
   const [bar2, setBar2] = useState(false);
   const [bar3, setBar3] = useState(false);
+  const [x, setx] = useState(false);
   const navigate = useNavigate();
   const newEvent = () => {
     setBar1(false);

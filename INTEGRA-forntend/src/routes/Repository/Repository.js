@@ -1,34 +1,34 @@
-import RootLayout from '../../../pages/Repository/Root';
-import ErrorPage from '../../../pages/Repository/Error';
-import { checkAuthLoader } from '../../auth';
+import RootLayout from '../../pages/Repository/Root';
+import ErrorPage from '../../pages/Repository/Error';
+import { checkAuthLoader } from '../../hooks/auth';
 
-import SuppliersPage , { loader as SuppliersLoader }from '../../../pages/Repository/supplier/Suppliers';
+import SuppliersPage , { loader as SuppliersLoader }from '../../pages/Repository/supplier/Suppliers';
 import SupplierDetailPage , {
   loader as SupplierDetailLoader,
   action as deleteSupplierAction
-} from '../../../pages/Repository/supplier/SupplierDetail';
-import EditSupplierPage from '../../../pages/Repository/supplier/EditSupplier';
-import { action as manipulateSupplierAction } from '../../../components/Repository/supplier/SupplierForm';
-import NewSupplierPage from '../../../pages/Repository/supplier/NewSupplier';
+} from '../../pages/Repository/supplier/SupplierDetail';
+import EditSupplierPage from '../../pages/Repository/supplier/EditSupplier';
+import { action as manipulateSupplierAction } from '../../components/Repository/supplier/SupplierForm';
+import NewSupplierPage from '../../pages/Repository/supplier/NewSupplier';
 
 
-import CategoriesPage , { loader as CategoriesLoader } from '../../../pages/Repository/category/Categories';
-import NewCategoryPage from '../../../pages/Repository/category/NewCategory';
+import CategoriesPage , { loader as CategoriesLoader } from '../../pages/Repository/category/Categories';
+import NewCategoryPage from '../../pages/Repository/category/NewCategory';
 import CategoryDetailPage , {
   loader as CategoryDetailLoader,
   action as deleteCategoryAction
-} from '../../../pages/Repository/category/CategoryDetail';
-import EditCategoryPage from '../../../pages/Repository/category/EditCategory';
-import { action as manipulateCategoryAction } from '../../../components/Repository/category/CategoryForm';
+} from '../../pages/Repository/category/CategoryDetail';
+import EditCategoryPage from '../../pages/Repository/category/EditCategory';
+import { action as manipulateCategoryAction } from '../../components/Repository/category/CategoryForm';
 
-import NewProductPage from '../../../pages/Repository/product/NewProduct';
-import ProductsPage , { loader as ProductsLoader } from '../../../pages/Repository/product/Products';
+import NewProductPage from '../../pages/Repository/product/NewProduct';
+import ProductsPage , { loader as ProductsLoader } from '../../pages/Repository/product/Products';
 import ProductDetailPage , {
   loader as ProductDetailLoader,
   action as deleteProductAction
-} from '../../../pages/Repository/product/ProductDetail';
-import EditProductPage from '../../../pages/Repository/product/EditProduct';
-import { action as manipulateProductAction } from '../../../components/Repository/product/ProductForm';
+} from '../../pages/Repository/product/ProductDetail';
+import EditProductPage from '../../pages/Repository/product/EditProduct';
+import { action as manipulateProductAction } from '../../components/Repository/product/ProductForm';
 
 import { productAttribute } from './productAttribute';
 

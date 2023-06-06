@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './TVForm.module.scss';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const TVForm = ({ method, tv }) => {
   //const data = useActionData();

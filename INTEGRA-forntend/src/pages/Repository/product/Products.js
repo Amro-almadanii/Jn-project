@@ -1,6 +1,6 @@
 import { json, useLoaderData } from 'react-router-dom';
 import ProductsList from '../../../components/Repository/product/ProductsList';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 import './Products.scss';
 const ProductsPage = () => {
   const { data : products } = useLoaderData();

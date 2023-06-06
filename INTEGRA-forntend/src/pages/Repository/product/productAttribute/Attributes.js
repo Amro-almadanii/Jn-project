@@ -1,5 +1,5 @@
 import AttributesList from '../../../../components/Repository/product/productAttribute/AttributesList';
-import { getAuthToken } from '../../../../util/auth';
+import { getAuthToken } from '../../../../hooks/auth';
 import { json, useLoaderData } from 'react-router-dom';
 
 const AttributesPage = () => {

@@ -1,92 +1,92 @@
 import React from 'react';
 
-import RootLayout from '../../pages/Marketing/Root';
+import RootLayout from '../pages/Marketing/Root';
 
-import ErrorPage from '../../pages/Marketing/Error';
-import { checkAuthLoader } from '../auth';
+import ErrorPage from '../pages/Marketing/Error';
+import { checkAuthLoader } from '../hooks/auth';
 
 import CampaignsPage, {
   loader as CampaignsLoader,
-} from '../../pages/Marketing/campaign/Campaigns';
-import NewCampaignPage from '../../pages/Marketing/campaign/NewCampaign';
+} from '../pages/Marketing/campaign/Campaigns';
+import NewCampaignPage from '../pages/Marketing/campaign/NewCampaign';
 import CampaignDetailPage, {
   loader as CampaignDetailLoader,
   action as deleteCampaignAction,
-} from '../../pages/Marketing/campaign/CampaignDetail';
-import EditCampaignPage from '../../pages/Marketing/campaign/EditCampaign';
-import { action as manipulateCampaignAction } from '../../components/Marketing/campaign/CampaignForm';
-import NavBar from '../../components/layout/NavBar';
+} from '../pages/Marketing/campaign/CampaignDetail';
+import EditCampaignPage from '../pages/Marketing/campaign/EditCampaign';
+import { action as manipulateCampaignAction } from '../components/Marketing/campaign/CampaignForm';
+import NavBar from '../components/layout/NavBar';
 
-import TVsPage, { loader as TVsLoader } from '../../pages/Marketing/tv/TVs';
-import NewTVPage from '../../pages/Marketing/tv/NewTV';
+import TVsPage, { loader as TVsLoader } from '../pages/Marketing/tv/TVs';
+import NewTVPage from '../pages/Marketing/tv/NewTV';
 import TVDetailPage, {
   loader as TVDetailLoader,
   action as deleteTVAction,
-} from '../../pages/Marketing/tv/TVDetail';
-import EditTVPage from '../../pages/Marketing/tv/EditTV';
-import { action as manipulateTVAction } from '../../components/Marketing/tv/TVForm';
+} from '../pages/Marketing/tv/TVDetail';
+import EditTVPage from '../pages/Marketing/tv/EditTV';
+import { action as manipulateTVAction } from '../components/Marketing/tv/TVForm';
 
 import SocialMediaPage, {
   loader as SocialMediaLoader,
-} from '../../pages/Marketing/socialMedia/SocialMedia';
-import NewSocialMediaPage from '../../pages/Marketing/socialMedia/NewSocialMedia';
+} from '../pages/Marketing/socialMedia/SocialMedia';
+import NewSocialMediaPage from '../pages/Marketing/socialMedia/NewSocialMedia';
 import SocialMediaDetailPage, {
   loader as SocialMediaDetailLoader,
   action as deleteSocialMediaAction,
-} from '../../pages/Marketing/socialMedia/SocialMediaDetail';
-import EditSocialMediaPage from '../../pages/Marketing/socialMedia/EditSocialMedia';
-import { action as manipulateSocialMediaAction } from '../../components/Marketing/socialMedia/SocialMediaForm';
+} from '../pages/Marketing/socialMedia/SocialMediaDetail';
+import EditSocialMediaPage from '../pages/Marketing/socialMedia/EditSocialMedia';
+import { action as manipulateSocialMediaAction } from '../components/Marketing/socialMedia/SocialMediaForm';
 
 import EventsPage, {
   loader as EventsLoader,
-} from '../../pages/Marketing/event/Events';
-import NewEventPage from '../../pages/Marketing/event/NewEvent';
+} from '../pages/Marketing/event/Events';
+import NewEventPage from '../pages/Marketing/event/NewEvent';
 import EventDetailPage, {
   loader as EventDetailLoader,
   action as deleteEventAction,
-} from '../../pages/Marketing/event/EventDetail';
-import EditEventPage from '../../pages/Marketing/event/EditEvent';
-import { action as manipulateEventAction } from '../../components/Marketing/event/EventForm';
+} from '../pages/Marketing/event/EventDetail';
+import EditEventPage from '../pages/Marketing/event/EditEvent';
+import { action as manipulateEventAction } from '../components/Marketing/event/EventForm';
 
-import PDFsPage, { loader as PDFsLoader } from '../../pages/Marketing/PDF/PDFs';
+import PDFsPage, { loader as PDFsLoader } from '../pages/Marketing/PDF/PDFs';
 import PDFDetailPage, {
   action as deletePDFAction,
   loader as PDFDetailLoader,
-} from '../../pages/Marketing/PDF/PDFDetail';
+} from '../pages/Marketing/PDF/PDFDetail';
 
 
 import LeadsPage, {
   loader as LeadsLoader,
-} from '../../pages/Marketing/lead/Leads';
-import NewLeadPage from '../../pages/Marketing/lead/NewLead';
+} from '../pages/Marketing/lead/Leads';
+import NewLeadPage from '../pages/Marketing/lead/NewLead';
 import LeadDetailPage, {
   loader as LeadDetailLoader,
   action as deleteLeadAction,
-} from '../../pages/Marketing/lead/LeadDetail';
-import EditLeadPage from '../../pages/Marketing/lead/EditLead';
-import { action as manipulateLeadAction } from '../../components/Marketing/lead/LeadForm';
+} from '../pages/Marketing/lead/LeadDetail';
+import EditLeadPage from '../pages/Marketing/lead/EditLead';
+import { action as manipulateLeadAction } from '../components/Marketing/lead/LeadForm';
 
 import EmailsPage, {
   loader as EmailsLoader,
-} from '../../pages/Marketing/email/Emails';
-import NewEmailPage from '../../pages/Marketing/email/NewEmail';
+} from '../pages/Marketing/email/Emails';
+import NewEmailPage from '../pages/Marketing/email/NewEmail';
 import EmailDetailPage, {
   loader as EmailDetailLoader,
   action as deleteEmailAction,
-} from '../../pages/Marketing/email/EmailDetail';
-import EditEmailPage from '../../pages/Marketing/email/EditEmail';
-import { action as manipulateEmailAction } from '../../components/Marketing/email/EmailForm';
+} from '../pages/Marketing/email/EmailDetail';
+import EditEmailPage from '../pages/Marketing/email/EditEmail';
+import { action as manipulateEmailAction } from '../components/Marketing/email/EmailForm';
 
 import CustomersPage, {
   loader as CustomersLoader,
-} from '../../pages/Marketing/customer/Customers';
-import NewCustomerPage from '../../pages/Marketing/customer/NewCustomer';
+} from '../pages/Marketing/customer/Customers';
+import NewCustomerPage from '../pages/Marketing/customer/NewCustomer';
 import CustomerDetailPage, {
   loader as CustomerDetailLoader,
   action as deleteCustomerAction,
-} from '../../pages/Marketing/customer/CustomerDetail';
-import EditCustomerPage from '../../pages/Marketing/customer/EditCustomer';
-import { action as manipulateCustomerAction } from '../../components/Marketing/customer/CustomerForm';
+} from '../pages/Marketing/customer/CustomerDetail';
+import EditCustomerPage from '../pages/Marketing/customer/EditCustomer';
+import { action as manipulateCustomerAction } from '../components/Marketing/customer/CustomerForm';
 
 
 export const marketingRoute = {

@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import LeadItem from '../../../components/Marketing/lead/LeadItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const LeadDetailPage = () => {
   const { data: lead } = useRouteLoaderData('lead-detail');

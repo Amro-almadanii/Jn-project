@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import TVItem from '../../../components/Marketing/tv/TVItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 
 const TVDetailPage = () => {

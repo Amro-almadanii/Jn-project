@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import CategoryItem from '../../../components/Repository/category/CategoryItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const CategoryDetailPage = () => {
   const { data } = useRouteLoaderData('category-detail');

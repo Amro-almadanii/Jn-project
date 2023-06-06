@@ -1,35 +1,35 @@
 import { Form, NavLink } from 'react-router-dom';
 import classes from './SideBar.module.scss';
-import { useState } from 'react';
-
+import { useContext, useState } from 'react';
+import { marketingCtx } from './SideBarContext';
 function SideBar() {
-  const [marketing, setMarketing] = useState(false);
   const [repository, setRepository] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
+  // const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
   const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
-  const handleMarketing = () => {
-    setMarketing(!marketing);
-  };
+  // const handleMarketing = () => {
+  //   setMarketing(!marketing);
+  // };
   const handleRepository = () => {
     setRepository(!repository);
   };
-  const handleMarketingDropdownClick = () => {
-    setShowMarketingDropdown(!showMarketingDropdown);
-  };
+  // const handleMarketingDropdownClick = () => {
+  //   setShowMarketingDropdown(!showMarketingDropdown);
+  // };
   const handleRepositoryDropdownClick = () => {
     setShowRepositoryDropdown(!showRepositoryDropdown);
   };
   const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
   };
+
+  let marketing;
   return (
     <aside className={classes.sidebar}>
       <div
         onClick={() => {
           {
-            handleMarketingDropdownClick();
-            handleMarketing();
+            marketing = marketingCtx;
           }
         }}
         className={` ${marketing ? classes.itemBold : classes.item}`}
@@ -37,9 +37,7 @@ function SideBar() {
         Marketing
       </div>
       <div
-        className={` ${
-          showMarketingDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
+        className={` ${marketing ? classes.dropdown.show : classes.dropdown}`}
       >
         <div className={classes.item}>
           <NavLink

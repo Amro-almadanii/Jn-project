@@ -1,6 +1,6 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import CampaignItem from '../../../components/Marketing/campaign/CampaignItem';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const CampaignDetailPage = () => {
   const { data } = useRouteLoaderData('campaign-detail');

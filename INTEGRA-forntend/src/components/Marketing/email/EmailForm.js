@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 import classes from './EmailForm.module.scss';
-import { getAuthToken } from '../../../util/auth';
+import { getAuthToken } from '../../../hooks/auth';
 
 const EmailForm = ({ method, email }) => {
   //const data = useActionData();

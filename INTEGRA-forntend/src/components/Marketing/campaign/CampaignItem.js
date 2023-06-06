@@ -5,9 +5,16 @@ import { useEffect, useState } from 'react';
 import { getAuthToken } from '../../../hooks/auth';
 import { useEvents, useLeadsOfCampaign, useSocialMedia, useTvs } from '../../../hooks/useApi';
 
-
 const CampaignItem = ({ campaign }) => {
+<<<<<<< HEAD
   const [campaignDetail, setCampaignDetail] = useState({ events: [], tvs: [], socialMedia: [], leads: [] });
+=======
+  const [campaignDetail, setCampaignDetail] = useState({
+    events: [],
+    tvs: [],
+    socialMedia: [],
+  });
+>>>>>>> 0e1c8f89afbde03a802871df1a445c2a1a9e80f9
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -37,7 +44,6 @@ const CampaignItem = ({ campaign }) => {
   useEffect(() => {
     setCampaignDetail({ ...campaignDetail, leads: leadResponse });
   }, [leadResponse]);
-
 
   return (
     <div className={classes.campaignItem}>
@@ -85,12 +91,7 @@ const CampaignItem = ({ campaign }) => {
               Edit
             </Link>
 
-            <Link className={classes.link} to='/marketing/campaigns/new'>
-              Add New Campaign
-            </Link>
-            <div className={classes.l}>
-              <button onClick={deleteHandler}>Delete</button>
-            </div>
+            <button onClick={deleteHandler}>Delete</button>
           </div>
         </Card>
 

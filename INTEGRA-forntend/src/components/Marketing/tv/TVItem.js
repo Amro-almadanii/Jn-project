@@ -53,7 +53,7 @@ const TVItem = ({ tv }) => {
           </div>
           <div className={classes.btn}>
             <Link
-              className={classes.linkbtn}
+              className={classes.link}
               to={`/marketing/tvs/tv-detail/edit/${tv.id}`}
             >
               Edit

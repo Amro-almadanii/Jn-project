@@ -1,7 +1,10 @@
 import { Link, useSubmit } from 'react-router-dom';
 import classes from './CustomerItem.module.scss';
 import { Card } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useLeadsOfCustomer } from '../../../hooks/useApi';
 const CustomerItem = ({ customer }) => {
+  const [leads, setLeads] = useState([]);
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -11,6 +14,12 @@ const CustomerItem = ({ customer }) => {
       submit(null, { method: 'delete' });
     }
   };
+
+  const leadResponse = useLeadsOfCustomer(customer.id);
+
+  useEffect(() => {
+    setLeads(leadResponse);
+  }, [leadResponse]);
 
   return (
     <div className={classes.customerItem}>
@@ -40,6 +49,11 @@ const CustomerItem = ({ customer }) => {
           <div className={classes.cardItems}>
             <label>Phone :</label>
             <p> {customer.phone} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Leads of Customer:</label>
+            <p> {leads.map((lead) => (
+              <Link key={lead.id} className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}> {lead.type} </Link>))} </p>
           </div>
           <div className={classes.btn}>
             <Link

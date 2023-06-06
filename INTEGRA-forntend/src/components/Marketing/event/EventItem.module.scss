@@ -32,6 +32,13 @@
     overflow-x: auto;
   }
 
+  .cardChildren {
+    margin: 20px;
+    border: 2px solid var(--third-color);
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
   .box {
     width: calc(100vw - 300px);
     margin-left: 10px;

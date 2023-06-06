@@ -21,7 +21,7 @@ const LeadsList = ({ leads }) => {
           {leads.map((lead) => (
             <tr
               key={lead.id}
-              onClick={() => navigate('/marketing/leads/lead-detail/1')}
+              onClick={() => navigate(`/marketing/leads/lead-detail/${lead.id}`)}
             >
               <td>{lead.id}</td>
               <td>{lead.type}</td>

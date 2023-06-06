@@ -3,11 +3,11 @@ import classes from './CampaignItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getAuthToken } from '../../../hooks/auth';
-import { useEvents, useSocialMedia, useTvs } from '../../../hooks/useApi';
+import { useEvents, useLeadsOfCampaign, useSocialMedia, useTvs } from '../../../hooks/useApi';
 
 
 const CampaignItem = ({ campaign }) => {
-  const [campaignDetail, setCampaignDetail] = useState({ events: [], tvs: [], socialMedia: [] });
+  const [campaignDetail, setCampaignDetail] = useState({ events: [], tvs: [], socialMedia: [], leads: [] });
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -17,9 +17,10 @@ const CampaignItem = ({ campaign }) => {
       submit(null, { method: 'delete' });
     }
   };
-  const eventResponse = useEvents();
-  const tvResponse = useTvs();
-  const socialMediaResponse = useSocialMedia();
+  const eventResponse = useEvents(campaign.id);
+  const tvResponse = useTvs(campaign.id);
+  const socialMediaResponse = useSocialMedia(campaign.id);
+  const leadResponse = useLeadsOfCampaign(campaign.id);
 
   useEffect(() => {
     setCampaignDetail({ ...campaignDetail, events: eventResponse });
@@ -33,8 +34,9 @@ const CampaignItem = ({ campaign }) => {
     setCampaignDetail({ ...campaignDetail, socialMedia: socialMediaResponse });
   }, [socialMediaResponse]);
 
-  // console.log(socialMediaResponse);
-  console.log(tvResponse);
+  useEffect(() => {
+    setCampaignDetail({ ...campaignDetail, leads: leadResponse });
+  }, [leadResponse]);
 
 
   return (
@@ -69,6 +71,11 @@ const CampaignItem = ({ campaign }) => {
           <div className={classes.cardItems}>
             <label>Actual Revenue of Campaign :</label>
             <p> {campaign.actual_revenue} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Leads of Campaign :</label>
+            <p> {campaignDetail.leads.map((lead) => (
+              <Link key={lead.id} className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}> {lead.type} </Link>))} </p>
           </div>
           <div className={classes.btn}>
             <Link

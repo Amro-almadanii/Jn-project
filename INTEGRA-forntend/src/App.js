@@ -6,17 +6,24 @@ import { action as logoutUser } from './pages/Logout';
 import { marketingRoute } from './routes/Marketing';
 import { repositoryRoute } from './routes/Repository/Repository';
 
-import { checkAuthLoader } from './hooks/auth';
+import { checkLoginLoader, tokenLoader } from './hooks/auth';
 import React from 'react';
 import { systemManagmentRoute } from './routes/SystemManagment';
 import { HrRoute } from './routes/HR';
+
+import { action as redirectLoginLoader } from './pages/Root';
+
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
       id: 'root',
-      loader: checkAuthLoader,
+      loader: tokenLoader,
       children: [
+        {
+          index: true,
+          loader: redirectLoginLoader,
+        },
         marketingRoute,
         repositoryRoute,
         systemManagmentRoute,
@@ -27,6 +34,7 @@ function App() {
       path: '/login',
       element: <LoginPage />,
       action: loginUser,
+      loader: checkLoginLoader,
     },
     {
       path: '/logout',

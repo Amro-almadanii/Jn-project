@@ -1,4 +1,4 @@
-import AttributesList from '../../../../components/Repository/product/productAttribute/AttributesList';
+import AttributesList from '../../../../components/Repository/product/productAttribute/attribute/AttributesList';
 import { getAuthToken } from '../../../../hooks/auth';
 import { json, useLoaderData } from 'react-router-dom';
 

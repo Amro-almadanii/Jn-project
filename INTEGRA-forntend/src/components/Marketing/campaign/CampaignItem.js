@@ -27,6 +27,10 @@ const CampaignItem = ({ campaign }) => {
       submit(null, { method: 'delete' });
     }
   };
+
+  const updateLeadHandler = () => {
+    setEditLeadCampaign(!editLeadCampaign);
+  };
   const eventResponse = useEvents(campaign.id);
   const tvResponse = useTvs(campaign.id);
   const socialMediaResponse = useSocialMedia(campaign.id);
@@ -98,6 +102,7 @@ const CampaignItem = ({ campaign }) => {
             </p>
           </div>
           <div className={classes.btn}>
+            <button onClick={updateLeadHandler}>Update leads</button>
             <Link
               className={classes.link}
               to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
@@ -109,94 +114,99 @@ const CampaignItem = ({ campaign }) => {
           </div>
         </Card>
 
-        <div className={classes.cardBox}>
-          <Card className={classes.cardChildren}>
-            <h2> Events:</h2>
-            {campaignDetail.events.map((event) => (
-              <Card className={classes.cardChildren} key={event.id}>
-                <label>Name of Event</label>
-                <p> {event.name} </p>
-                <label>Description of Event</label>
-                <p> {event.description} </p>
-                <label>Place of Event :</label>
-                <p> {event.place} </p>
-                <label>Type of Event :</label>
-                <p> {event.type} </p>
-                <label>Cost of Event :</label>
-                <p> {event.cost} </p>
-                <label>Expected Revenue of Event:</label>
-                <p> {event.expected_revenue} </p>
-                <label>Actual Revenue of Event:</label>
-                <p> {event.actual_revenue} </p>
-                <div className={classes.btn}>
-                  <Link
-                    className={classes.link}
-                    to={`/marketing/events/event-detail/edit/${event.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button onClick={deleteHandler}>Delete</button>
-                </div>
-              </Card>
-            ))}
-          </Card>
+        {!editLeadCampaign && (
+          <div className={classes.cardBox}>
+            <Card className={classes.cardChildren}>
+              <h2> Events:</h2>
+              {campaignDetail.events.map((event) => (
+                <Card className={classes.cardChildren} key={event.id}>
+                  <label>Name of Event</label>
+                  <p> {event.name} </p>
+                  <label>Description of Event</label>
+                  <p> {event.description} </p>
+                  <label>Place of Event :</label>
+                  <p> {event.place} </p>
+                  <label>Type of Event :</label>
+                  <p> {event.type} </p>
+                  <label>Cost of Event :</label>
+                  <p> {event.cost} </p>
+                  <label>Expected Revenue of Event:</label>
+                  <p> {event.expected_revenue} </p>
+                  <label>Actual Revenue of Event:</label>
+                  <p> {event.actual_revenue} </p>
+                  <div className={classes.btn}>
+                    <Link
+                      className={classes.link}
+                      to={`/marketing/events/event-detail/edit/${event.id}`}
+                    >
+                      Edit
+                    </Link>
+                    <button onClick={deleteHandler}>Delete</button>
+                  </div>
+                </Card>
+              ))}
+            </Card>
 
-          <Card className={classes.cardChildren}>
-            <h2> TVs :</h2>
-            {campaignDetail.tvs.map((tv) => (
-              <Card className={classes.cardChildren} key={tv.id}>
-                <label>Channel of TV:</label>
-                <p> {tv.channel} </p>
-                <label>Time to show on TV</label>
-                <p> {tv.time} </p>
-                <label>Cost:</label>
-                <p> {tv.cost} </p>
-                <label>Advertising Period:</label>
-                <p> {tv.advertising_period} </p>
-                <label>Expected Revenue of TV:</label>
-                <p> {tv.expected_revenue} </p>
-                <label>Actual Revenue of Tv:</label>
-                <p> {tv.actual_revenue} </p>
-                <div className={classes.btn}>
-                  <Link
-                    className={classes.link}
-                    to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button onClick={deleteHandler}>Delete</button>
-                </div>
-              </Card>
-            ))}
-          </Card>
+            <Card className={classes.cardChildren}>
+              <h2> TVs :</h2>
+              {campaignDetail.tvs.map((tv) => (
+                <Card className={classes.cardChildren} key={tv.id}>
+                  <label>Channel of TV:</label>
+                  <p> {tv.channel} </p>
+                  <label>Time to show on TV</label>
+                  <p> {tv.time} </p>
+                  <label>Cost:</label>
+                  <p> {tv.cost} </p>
+                  <label>Advertising Period:</label>
+                  <p> {tv.advertising_period} </p>
+                  <label>Expected Revenue of TV:</label>
+                  <p> {tv.expected_revenue} </p>
+                  <label>Actual Revenue of Tv:</label>
+                  <p> {tv.actual_revenue} </p>
+                  <div className={classes.btn}>
+                    <Link
+                      className={classes.link}
+                      to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+                    >
+                      Edit
+                    </Link>
+                    <button onClick={deleteHandler}>Delete</button>
+                  </div>
+                </Card>
+              ))}
+            </Card>
 
-          <Card className={classes.cardChildren}>
-            <h2> SocialMedia: </h2>
-            {campaignDetail.socialMedia.map((socialmedia) => (
-              <Card className={classes.cardChildren} key={socialmedia.id}>
-                <label>Type:</label>
-                <p> {socialmedia.type} </p>
-                <label>way of SocialMedia:</label>
-                <p> {socialmedia.way} </p>
-                <label>Cost of SocialMedia:</label>
-                <p> {socialmedia.cost} </p>
-                <label>Expected Revenue of SocialMedia:</label>
-                <p> {socialmedia.expected_revenue} </p>
-                <label>Actual Revenue of SocialMedia:</label>
-                <p> {socialmedia.actual_revenue} </p>
-                <div className={classes.btn}>
-                  <Link
-                    className={classes.link}
-                    to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button onClick={deleteHandler}>Delete</button>
-                </div>
-              </Card>
-            ))}
-          </Card>
-        </div>
+            <Card className={classes.cardChildren}>
+              <h2> SocialMedia: </h2>
+              {campaignDetail.socialMedia.map((socialmedia) => (
+                <Card className={classes.cardChildren} key={socialmedia.id}>
+                  <label>Type:</label>
+                  <p> {socialmedia.type} </p>
+                  <label>way of SocialMedia:</label>
+                  <p> {socialmedia.way} </p>
+                  <label>Cost of SocialMedia:</label>
+                  <p> {socialmedia.cost} </p>
+                  <label>Expected Revenue of SocialMedia:</label>
+                  <p> {socialmedia.expected_revenue} </p>
+                  <label>Actual Revenue of SocialMedia:</label>
+                  <p> {socialmedia.actual_revenue} </p>
+                  <div className={classes.btn}>
+                    <Link
+                      className={classes.link}
+                      to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}
+                    >
+                      Edit
+                    </Link>
+                    <button onClick={deleteHandler}>Delete</button>
+                  </div>
+                </Card>
+              ))}
+            </Card>
+          </div>
+        )}
+        {editLeadCampaign && (
+          <UpdateLeadsOfCampaign leadsOfCampaign={campaignDetail.leads} />
+        )}
       </div>
     </div>
   );

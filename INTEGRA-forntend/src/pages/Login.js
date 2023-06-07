@@ -1,5 +1,6 @@
 import { Form, json, redirect } from 'react-router-dom';
 import classes from './Login.module.scss';
+import { getTokenDuration } from '../hooks/auth';
 
 const LoginPage = () => {
   return (
@@ -57,8 +58,7 @@ export async function action({ request }) {
 
   localStorage.setItem('token', token);
   const expiration = new Date();
-  expiration.setHours(expiration.getHours() + 8);
+  expiration.getHours(expiration.getHours() + 8);
   localStorage.setItem('expiration', expiration.toISOString());
-
   return redirect('/marketing');
 }

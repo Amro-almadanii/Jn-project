@@ -258,3 +258,35 @@ export const useCampaignsOfLead = (id) => {
 
   return campaigns;
 };
+
+export const useLeads = () => {
+  const [leads, setLeads] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/marketing/leads', {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setLeads(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Leads.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return leads;
+};

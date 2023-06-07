@@ -1,6 +1,6 @@
 import Profile from '../pages/SystemManagment/Profile';
-import RootLayout from '../pages/Marketing/Root';
-import ErrorPage from '../pages/Marketing/Error';
+import RootLayout from '../pages/Root';
+import ErrorPage from '../pages/Error';
 
 export const systemManagmentRoute = {
   path: '/systemmanagment',

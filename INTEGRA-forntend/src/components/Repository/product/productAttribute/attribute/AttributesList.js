@@ -1,5 +1,5 @@
 import { Card } from '@mui/material';
-import AttributeCard from './UI/AttributeCard';
+import AttributeCard from '../UI/AttributeCard';
 
 const AttributesList = ({attributes}) => {
   return (

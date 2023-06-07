@@ -50,7 +50,7 @@ const LeadItem = ({ lead }) => {
           <div className={classes.btn}>
             <Link
               className={classes.link}
-              to={`/marketing/campaigns/campaign-detail/edit/${lead.id}`}
+              to={`/marketing/leads/lead-detail/edit/${lead.id}`}
             >
               Edit
             </Link>

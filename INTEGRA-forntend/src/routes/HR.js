@@ -28,8 +28,8 @@ import EmployeeVacationControllersPage, {
 
 import { action as manipulateBenefitAction } from '../components/HR/Benefit/BenefitForm';
 import NewBenefitPage from '../pages/HR/Benefit/NewBenefit';
-import RootLayout from '../pages/Marketing/Root';
-import ErrorPage from '../pages/Marketing/Error';
+import RootLayout from '../pages/Root';
+import ErrorPage from '../pages/Error';
 import { checkAuthLoader } from '../hooks/auth';
 export const HrRoute = {
   path: '/hr',

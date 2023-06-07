@@ -54,7 +54,6 @@ import PDFDetailPage, {
   loader as PDFDetailLoader,
 } from '../pages/Marketing/PDF/PDFDetail';
 
-
 import LeadsPage, {
   loader as LeadsLoader,
 } from '../pages/Marketing/lead/Leads';
@@ -87,7 +86,6 @@ import CustomerDetailPage, {
 } from '../pages/Marketing/customer/CustomerDetail';
 import EditCustomerPage from '../pages/Marketing/customer/EditCustomer';
 import { action as manipulateCustomerAction } from '../components/Marketing/customer/CustomerForm';
-
 
 export const marketingRoute = {
   path: '/marketing',

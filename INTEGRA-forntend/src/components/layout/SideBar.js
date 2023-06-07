@@ -3,41 +3,75 @@ import classes from './SideBar.module.scss';
 import { useContext, useState } from 'react';
 import { marketingCtx } from './SideBarContext';
 function SideBar() {
-  const [repository, setRepository] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  // const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
+  const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
   const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
-  // const handleMarketing = () => {
-  //   setMarketing(!marketing);
-  // };
-  const handleRepository = () => {
-    setRepository(!repository);
+  const [showSystemManagmentDropdown, setSystemManagmentDropdown] =
+    useState(false);
+  const [showHrDropdown, setShowHrDropdown] = useState(false);
+
+  const handleMarketingDropdownClick = () => {
+    setShowMarketingDropdown(!showMarketingDropdown);
   };
-  // const handleMarketingDropdownClick = () => {
-  //   setShowMarketingDropdown(!showMarketingDropdown);
-  // };
   const handleRepositoryDropdownClick = () => {
     setShowRepositoryDropdown(!showRepositoryDropdown);
   };
-  const handleDropdownClick = () => {
-    setShowDropdown(!showDropdown);
+  const handleSystemManagmentDropdownClick = () => {
+    setSystemManagmentDropdown(!showSystemManagmentDropdown);
   };
+  const handleHrDropdownClick = () => {
+    setShowHrDropdown(!showHrDropdown);
+  };
+  // const handleDropdownClick = () => {
+  //   setShowDropdown(!showDropdown);
+  // };
 
-  let marketing;
   return (
     <aside className={classes.sidebar}>
       <div
         onClick={() => {
           {
-            marketing = marketingCtx;
+            handleSystemManagmentDropdownClick();
           }
         }}
-        className={` ${marketing ? classes.itemBold : classes.item}`}
+        className={` ${
+          showSystemManagmentDropdown ? classes.itemBold : classes.item
+        }`}
+      >
+        System Managment
+      </div>
+      <div
+        className={` ${
+          showSystemManagmentDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/systemmanagment/profile"
+            end
+          >
+            Profile
+          </NavLink>
+        </div>
+      </div>
+      <div
+        onClick={() => {
+          {
+            handleMarketingDropdownClick();
+          }
+        }}
+        className={` ${
+          showMarketingDropdown ? classes.itemBold : classes.item
+        }`}
       >
         Marketing
       </div>
       <div
-        className={` ${marketing ? classes.dropdown.show : classes.dropdown}`}
+        className={` ${
+          showMarketingDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
       >
         <div className={classes.item}>
           <NavLink
@@ -131,9 +165,10 @@ function SideBar() {
       <div
         onClick={() => {
           handleRepositoryDropdownClick();
-          handleRepository();
         }}
-        className={` ${repository ? classes.itemBold : classes.item}`}
+        className={` ${
+          showRepositoryDropdown ? classes.itemBold : classes.item
+        }`}
       >
         Repository
       </div>
@@ -173,6 +208,97 @@ function SideBar() {
             end
           >
             Products
+          </NavLink>
+        </div>
+      </div>
+      <div
+        onClick={() => {
+          handleHrDropdownClick();
+        }}
+        className={` ${showHrDropdown ? classes.itemBold : classes.item}`}
+      >
+        HR
+      </div>
+      <div
+        className={` ${
+          showHrDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/benefit"
+            end
+          >
+            Benefit
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/department"
+            end
+          >
+            Departments
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/employeecertificate"
+            end
+          >
+            Employee Certificate
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/employee"
+            end
+          >
+            Employee
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/employeeeducation"
+            end
+          >
+            Employee Education
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/employeeperformances"
+            end
+          >
+            Employee Performances
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/hr/employeevacations"
+            end
+          >
+            Employee Vacations
           </NavLink>
         </div>
       </div>

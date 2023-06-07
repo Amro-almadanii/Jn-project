@@ -8,7 +8,8 @@ import { repositoryRoute } from './routes/Repository/Repository';
 
 import { checkAuthLoader } from './hooks/auth';
 import React from 'react';
-
+import { systemManagmentRoute } from './routes/SystemManagment';
+import { HrRoute } from './routes/HR';
 function App() {
   const router = createBrowserRouter([
     {
@@ -18,7 +19,9 @@ function App() {
       children: [
         marketingRoute,
         repositoryRoute,
-      ]
+        systemManagmentRoute,
+        HrRoute,
+      ],
     },
     {
       path: '/login',

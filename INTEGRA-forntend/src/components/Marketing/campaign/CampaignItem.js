@@ -3,18 +3,21 @@ import classes from './CampaignItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getAuthToken } from '../../../hooks/auth';
-import { useEvents, useLeadsOfCampaign, useSocialMedia, useTvs } from '../../../hooks/useApi';
+import {
+  useEvents,
+  useLeadsOfCampaign,
+  useSocialMedia,
+  useTvs,
+} from '../../../hooks/useApi';
 
 const CampaignItem = ({ campaign }) => {
-<<<<<<< HEAD
-  const [campaignDetail, setCampaignDetail] = useState({ events: [], tvs: [], socialMedia: [], leads: [] });
-=======
   const [campaignDetail, setCampaignDetail] = useState({
     events: [],
     tvs: [],
     socialMedia: [],
+    leads: [],
   });
->>>>>>> 0e1c8f89afbde03a802871df1a445c2a1a9e80f9
+
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -80,8 +83,19 @@ const CampaignItem = ({ campaign }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Leads of Campaign :</label>
-            <p> {campaignDetail.leads.map((lead) => (
-              <Link key={lead.id} className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}> {lead.type} </Link>))} </p>
+            <p>
+              {' '}
+              {campaignDetail.leads.map((lead) => (
+                <Link
+                  key={lead.id}
+                  className={classes.leadLink}
+                  to={`/marketing/leads/lead-detail/${lead.id}`}
+                >
+                  {' '}
+                  {lead.type}{' '}
+                </Link>
+              ))}{' '}
+            </p>
           </div>
           <div className={classes.btn}>
             <Link

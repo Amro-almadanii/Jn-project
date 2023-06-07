@@ -1,6 +1,6 @@
 import RootLayout from '../../pages/Root';
 import ErrorPage from '../../pages/Error';
-import { checkAuthLoader, tokenLoader } from '../../hooks/auth';
+import { checkAuthLoader } from '../../hooks/auth';
 
 import SuppliersPage , { loader as SuppliersLoader }from '../../pages/Repository/supplier/Suppliers';
 import SupplierDetailPage , {
@@ -31,10 +31,12 @@ import EditProductPage from '../../pages/Repository/product/EditProduct';
 import { action as manipulateProductAction } from '../../components/Repository/product/ProductForm';
 
 import { productAttribute } from './productAttribute';
+import React from 'react';
 
 export const repositoryRoute = {
   path: '/repository',
   element: <RootLayout />,
+  errorElement: <ErrorPage />,
   loader:checkAuthLoader,
   children: [
     {

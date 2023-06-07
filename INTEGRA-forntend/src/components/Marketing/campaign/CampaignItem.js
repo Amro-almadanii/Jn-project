@@ -9,6 +9,7 @@ import {
   useSocialMedia,
   useTvs,
 } from '../../../hooks/useApi';
+import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
 import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 

@@ -6,10 +6,10 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './BenefitForm.module.scss';
+import classes from './DepartmentForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
 
-const BenefitForm = ({ method, benefit }) => {
+const DepartmentForm = ({ method, department }) => {
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -17,7 +17,7 @@ const BenefitForm = ({ method, benefit }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + benefit.id);
+    navigate('../' + department.id);
   };
 
   return (
@@ -29,16 +29,7 @@ const BenefitForm = ({ method, benefit }) => {
           type="text"
           name="name"
           required
-          defaultValue={benefit ? benefit.name : ''}
-        />
-
-        <label htmlFor="cost">Cost :</label>
-        <input
-          id="cost"
-          type="text"
-          name="cost"
-          required
-          defaultValue={benefit ? benefit.cost : ''}
+          defaultValue={department ? department.name : ''}
         />
 
         <div className={classes.actions}>
@@ -54,25 +45,24 @@ const BenefitForm = ({ method, benefit }) => {
   );
 };
 
-export default BenefitForm;
+export default DepartmentForm;
 
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
 
-  const benefitData = {
+  const departmentData = {
     name: data.get('name'),
-    cost: data.get('cost'),
     campaign_id: 1,
   };
-  console.log(benefitData);
+  console.log(departmentData);
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/hr/benefit/' + params.benefitId;
+    url = 'http://localhost:8000/hr/department/' + params.departmentId;
   } else {
-    url = 'http://localhost:8000/hr/benefit';
+    url = 'http://localhost:8000/hr/department';
   }
 
   const response = await fetch(url, {
@@ -81,12 +71,12 @@ export async function action({ request, params }) {
       'Content-Type': 'application/json',
       Authorization: 'bearer' + token,
     },
-    body: JSON.stringify(benefitData),
+    body: JSON.stringify(departmentData),
   });
 
   if (!response.ok) {
     throw json({ message: 'Could not save SocialMedia.' }, { status: 500 });
   }
 
-  return redirect('/marketing/benefit');
+  return redirect('/marketing/department');
 }

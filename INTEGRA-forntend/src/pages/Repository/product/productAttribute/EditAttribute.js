@@ -1,4 +1,4 @@
-import AttributeForm from '../../../../components/Repository/product/productAttribute/AttributeForm';
+import AttributeForm from '../../../../components/Repository/product/productAttribute/attribute/AttributeForm';
 import { useRouteLoaderData } from 'react-router-dom';
 
 const EditAttributePage = () => {

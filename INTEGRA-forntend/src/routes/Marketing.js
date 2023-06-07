@@ -1,9 +1,9 @@
 import React from 'react';
 
-import RootLayout from '../pages/Marketing/Root';
+import RootLayout from '../pages/Root';
 
-import ErrorPage from '../pages/Marketing/Error';
-import { checkAuthLoader } from '../hooks/auth';
+import ErrorPage from '../pages/Error';
+import { checkAuthLoader, tokenLoader } from '../hooks/auth';
 
 import CampaignsPage, {
   loader as CampaignsLoader,
@@ -93,6 +93,7 @@ export const marketingRoute = {
   path: '/marketing',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
+  loader: checkAuthLoader,
   children: [
     {
       path: '/marketing/campaigns',

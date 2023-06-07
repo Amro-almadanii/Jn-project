@@ -1,14 +1,15 @@
 import { Fragment, useEffect } from 'react';
 import {
-  Outlet,
+  Outlet, redirect,
   useLoaderData,
   useNavigation,
-  useSubmit,
+  useSubmit
 } from 'react-router-dom';
-import Header from '../../components/layout/Header';
-import SideBar from '../../components/layout/SideBar';
-import { getTokenDuration } from '../../hooks/auth';
+import Header from '../components/layout/Header';
+import SideBar from '../components/layout/SideBar';
+import { getTokenDuration } from '../hooks/auth';
 import './root.css';
+
 const RootLayout = () => {
   const nav = useNavigation();
   const token = useLoaderData();
@@ -18,7 +19,6 @@ const RootLayout = () => {
     if (!token) {
       return;
     }
-
     if (token === 'EXPIRED') {
       submit(null, { action: '/logout', method: 'post' });
       return;
@@ -45,3 +45,7 @@ const RootLayout = () => {
 };
 
 export default RootLayout;
+
+export function action () {
+  return redirect('/login');
+}

@@ -1,6 +1,6 @@
-import RootLayout from '../../pages/Repository/Root';
-import ErrorPage from '../../pages/Repository/Error';
-import { checkAuthLoader } from '../../hooks/auth';
+import RootLayout from '../../pages/Root';
+import ErrorPage from '../../pages/Error';
+import { checkAuthLoader, tokenLoader } from '../../hooks/auth';
 
 import SuppliersPage , { loader as SuppliersLoader }from '../../pages/Repository/supplier/Suppliers';
 import SupplierDetailPage , {
@@ -35,6 +35,7 @@ import { productAttribute } from './productAttribute';
 export const repositoryRoute = {
   path: '/repository',
   element: <RootLayout />,
+  loader:checkAuthLoader,
   children: [
     {
       path: '/repository/suppliers',

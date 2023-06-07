@@ -37,3 +37,7 @@ export function checkAuthLoader() {
 
   return null;
 }
+
+export function checkLoginLoader () {
+  return redirect('/marketing');
+}

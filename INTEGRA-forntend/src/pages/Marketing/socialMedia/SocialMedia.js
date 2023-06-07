@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import SocialMediaList from '../../../components/Marketing/socialMedia/SocialMediaList';
 import { getAuthToken } from '../../../hooks/auth';

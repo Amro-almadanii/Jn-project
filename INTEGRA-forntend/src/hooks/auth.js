@@ -39,5 +39,8 @@ export function checkAuthLoader() {
 }
 
 export function checkLoginLoader () {
+  if (!getAuthToken()) {
+    return null;
+  }
   return redirect('/marketing');
 }

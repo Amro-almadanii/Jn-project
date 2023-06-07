@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import EventsList from '../../../components/Marketing/event/EventsList';
 import { getAuthToken } from '../../../hooks/auth';

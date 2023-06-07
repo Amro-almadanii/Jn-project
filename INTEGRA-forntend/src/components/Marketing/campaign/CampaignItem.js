@@ -9,6 +9,7 @@ import {
   useSocialMedia,
   useTvs,
 } from '../../../hooks/useApi';
+import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
 const CampaignItem = ({ campaign }) => {
   const [campaignDetail, setCampaignDetail] = useState({
@@ -17,6 +18,8 @@ const CampaignItem = ({ campaign }) => {
     socialMedia: [],
     leads: [],
   });
+
+  const [editLeadCampaign, setEditLeadCampaign] = useState(false);
 
   const submit = useSubmit();
 

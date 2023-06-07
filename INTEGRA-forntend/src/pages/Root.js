@@ -46,6 +46,6 @@ const RootLayout = () => {
 
 export default RootLayout;
 
-export function action () {
+export function loader () {
   return redirect('/login');
 }

@@ -11,7 +11,7 @@ import React from 'react';
 import { systemManagmentRoute } from './routes/SystemManagment';
 import { HrRoute } from './routes/HR';
 
-import { action as redirectLoginLoader } from './pages/Root';
+import { loader as redirectLoginLoader } from './pages/Root';
 
 function App() {
   const router = createBrowserRouter([

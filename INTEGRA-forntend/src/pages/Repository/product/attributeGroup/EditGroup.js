@@ -6,7 +6,7 @@ import { getAuthToken } from '../../../../hooks/auth';
 const EditGroupPage = () => {
   const { data } = useRouteLoaderData('group-detail');
   return (
-    <div>
+    <div className={classes.editGroup}>
       <h1>Repository > Product > Edit Group Of Attribute</h1>
       <GroupForm method='put' group={data}/>
     </div>

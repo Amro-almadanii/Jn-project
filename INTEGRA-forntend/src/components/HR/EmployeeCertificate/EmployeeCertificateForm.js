@@ -6,46 +6,50 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
-import classes from './BenefitForm.module.scss';
+import classes from './EmployeeCertificateForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
 
-const BenefitForm = ({ method, benefit }) => {
-  const data = useActionData();
+const EmployeeCertificateForm = ({ method, employeeCertificate }) => {
+  //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + benefit.id);
+    navigate('../' + employeeCertificate.id);
   };
 
   return (
     <Form method={method} className={classes.form}>
       <div>
-        {data && data.errors && (
-          <ul>
-            {Object.values(data.errors).map((err) => (
-              <li key={err}> {err} </li>
-            ))}
-          </ul>
-        )}
+        <label htmlFor="name">Employee id :</label>
+        <input
+          id="employee_id"
+          type="number"
+          name="employee_id"
+          required
+          defaultValue={
+            employeeCertificate ? employeeCertificate.employee_id : ''
+          }
+        />
+
         <label htmlFor="name">Name :</label>
         <input
           id="name"
           type="text"
           name="name"
           required
-          defaultValue={benefit ? benefit.name : ''}
+          defaultValue={employeeCertificate ? employeeCertificate.name : ''}
         />
 
-        <label htmlFor="cost">Cost :</label>
+        <label htmlFor="name">Level :</label>
         <input
-          id="cost"
-          type="number"
-          name="cost"
+          id="level"
+          type="text"
+          name="level"
           required
-          defaultValue={benefit ? benefit.cost : ''}
+          defaultValue={employeeCertificate ? employeeCertificate.level : ''}
         />
 
         <div className={classes.actions}>
@@ -61,24 +65,27 @@ const BenefitForm = ({ method, benefit }) => {
   );
 };
 
-export default BenefitForm;
+export default EmployeeCertificateForm;
 
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
 
-  const benefitData = {
+  const employeeCertificateData = {
+    employee_id: data.get('employee_id'),
     name: data.get('name'),
-    cost: data.get('cost'),
+    level: data.get('level'),
   };
-  console.log(benefitData);
+  console.log(employeeCertificateData);
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/hr/benefits/' + params.benefitId;
+    url =
+      'http://localhost:8000/hr/employeeCertificates/' +
+      params.employeeCertificateId;
   } else {
-    url = 'http://localhost:8000/hr/benefits';
+    url = 'http://localhost:8000/hr/employeeCertificates';
   }
 
   const response = await fetch(url, {
@@ -87,12 +94,15 @@ export async function action({ request, params }) {
       'Content-Type': 'application/json',
       Authorization: 'bearer' + token,
     },
-    body: JSON.stringify(benefitData),
+    body: JSON.stringify(employeeCertificateData),
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save Benefits.' }, { status: 500 });
+    throw json(
+      { message: 'Could not save EmployeeCertificates.' },
+      { status: 500 }
+    );
   }
 
-  return redirect('/hr/benefits');
+  return redirect('/hr/employeeCertificates');
 }

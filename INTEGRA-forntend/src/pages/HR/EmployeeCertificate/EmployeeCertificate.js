@@ -28,7 +28,7 @@ export async function loader() {
   console.log(response);
   if (!response.ok) {
     throw json(
-      { message: 'Could not fetch EmployeeCertificate.' },
+      { message: 'Could not fetch Employee Certificate.' },
       { status: 500 }
     );
   } else {

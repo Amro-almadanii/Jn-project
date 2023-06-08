@@ -26,8 +26,43 @@ import EmployeeVacationControllersPage, {
   loader as EmployeeVacationControllerLoader,
 } from '../pages/HR/EmployeeVacation/EmployeeVacationController';
 
-import { action as manipulateBenefitAction } from '../components/HR/Benefit/BenefitForm';
+import BenefitDetailPage, {
+  loader as BenefitsDetailLoader,
+} from '../pages/HR/Benefit/BenefitDetail';
+
+import NewDepartmentPage from '../pages/HR/Department/NewDeparment';
 import NewBenefitPage from '../pages/HR/Benefit/NewBenefit';
+
+import { action as manipulateBenefitAction } from '../components/HR/Benefit/BenefitForm';
+import { action as manipulateDepartmentAction } from '../components/HR/Department/DepartmentForm';
+import { action as manipulateEmployeeCertificateAction } from '../components/HR/EmployeeCertificate/EmployeeCertificateForm';
+
+import NewEmployeeCertificatePage from '../pages/HR/EmployeeCertificate/NewEmployeeCertificate';
+import NewEmployeeControllerPage from '../pages/HR/EmployeeController/NewEmployeeController';
+
+import { action as manipulateEmployeeControllerAction } from '../components/HR/EmployeeController/EmployeeControllerForm';
+
+import NewEmployeeEducationPage from '../pages/HR/EmployeeEducationController/NewEmployeeEducationController';
+
+import { action as manipulateEmployeeEducationAction } from '../components/HR/EmployeeEducationController/EmployeeEducationForm';
+
+import NewEmployeePerformancePage from '../pages/HR/EmployeePerformance/NewEmployeePerformance';
+
+import { action as manipulateEmployeePerformanceAction } from '../components/HR/EmployeePerformanceController/EmployeePerformanceForm';
+
+import NewEmployeeVacationPage from '../pages/HR/EmployeeVacation/NewEmployeeVacation';
+
+import EditBenefitPage from '../pages/HR/Benefit/EditBenefit';
+import EditDepartmentPage from '../pages/HR/Department/EditDepartment';
+import EditEmployeeCertificatePage from '../pages/HR/EmployeeCertificate/EditEmployeeCertificate';
+import EditEmployeePage from '../pages/HR/EmployeeController/EditEmployee';
+import EditEmployeeEducationPage from '../pages/HR/EmployeeEducationController/EditEmployeeEducation';
+
+import EditEmployeePerformancePage from '../pages/HR/EmployeePerformance/EdirEmployeePerformance';
+
+import EditEmployeeVacationPage from '../pages/HR/EmployeeVacation/EditEmployeeVacation';
+
+import { action as manipulateEmployeeVacationAction } from '../components/HR/EmployeeVacationController/EmployeeVacationForm';
 import RootLayout from '../pages/Root';
 import ErrorPage from '../pages/Error';
 import { checkAuthLoader } from '../hooks/auth';
@@ -50,37 +85,194 @@ export const HrRoute = {
           action: manipulateBenefitAction,
           loader: checkAuthLoader,
         },
+        {
+          path: '/hr/benefits/benefit-detail',
+          id: 'benefit-detail',
+          loader: BenefitsDetailLoader,
+          children: [
+            //     {
+            //       path: '/marketing/tvs/tv-detail/:tvId',
+            //       element: <TVDetailPage />,
+            //       action: deleteTVAction,
+            //       loader: checkAuthLoader,
+            //     },
+            {
+              path: '/hr/benefits/benefit-detail/edit/:benefitId',
+              element: <EditBenefitPage />,
+              action: manipulateBenefitAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        },
+
+        // {
+        //   path: '/hr/benefits/new',
+        //   element: <NewBenefitPage />,
+        //   action: manipulateBenefitAction,
+        //   loader: checkAuthLoader,
+        // },
+        // {
+        //   path: '/hr/benefits/edit',
+        //   element: <EditBenefitPage />,
+        //   action: manipulateBenefitAction,
+        //   loader: BenefitsDetailLoader,
+        // },
       ],
     },
     {
       path: '/hr/departments',
-      element: <DepartmentsPage />,
-      loader: DepartmentLoader,
+      children: [
+        {
+          index: true,
+          element: <DepartmentsPage />,
+          loader: DepartmentLoader,
+        },
+        // {
+        //   path: '/marketing/tvs/tv-detail',
+        //   id: 'tv-detail',
+        //   loader: TVDetailLoader,
+        //   children: [
+        //     {
+        //       path: '/marketing/tvs/tv-detail/:tvId',
+        //       element: <TVDetailPage />,
+        //       action: deleteTVAction,
+        //       loader: checkAuthLoader,
+        //     },
+        //     {
+        //       path: '/marketing/tvs/tv-detail/edit/:tvId',
+        //       element: <EditTVPage />,
+        //       action: manipulateTVAction,
+        //       loader: checkAuthLoader,
+        //     },
+        {
+          path: '/hr/departments/new',
+          element: <NewDepartmentPage />,
+          action: manipulateDepartmentAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/departments/edit',
+          element: <EditDepartmentPage />,
+          action: manipulateDepartmentAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
     {
-      path: '/hr/employeeCertificate',
-      element: <EmployeeCertificatesPage />,
-      loader: EmployeeCertificateLoader,
+      path: '/hr/employeeCertificates',
+      children: [
+        {
+          index: true,
+          element: <EmployeeCertificatesPage />,
+          loader: EmployeeCertificateLoader,
+        },
+        {
+          path: '/hr/employeeCertificates/new',
+          element: <NewEmployeeCertificatePage />,
+          action: manipulateEmployeeCertificateAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employeeCertificates/edit',
+          element: <EditEmployeeCertificatePage />,
+          action: manipulateEmployeeCertificateAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
     {
       path: '/hr/employees',
-      element: <EmployeeControllersPage />,
-      loader: EmployeeControllerLoader,
+      children: [
+        {
+          index: true,
+          element: <EmployeeControllersPage />,
+          loader: EmployeeControllerLoader,
+        },
+        {
+          path: '/hr/employees/new',
+          element: <NewEmployeeControllerPage />,
+          action: manipulateEmployeeControllerAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employees/edit',
+          element: <EditEmployeePage />,
+          action: manipulateEmployeeControllerAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
     {
       path: '/hr/employeeEducations',
-      element: <EmployeeEducationControllersPage />,
-      loader: EmployeeEducationControllerLoader,
+      children: [
+        {
+          index: true,
+          element: <EmployeeEducationControllersPage />,
+          loader: EmployeeEducationControllerLoader,
+        },
+        {
+          path: '/hr/employeeEducations/new',
+          element: <NewEmployeeEducationPage />,
+          action: manipulateEmployeePerformanceAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employeeEducations/edit',
+          element: <EditEmployeeEducationPage />,
+          action: manipulateEmployeePerformanceAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
     {
       path: '/hr/employeePerformances',
-      element: <EmployeePerformanceControllersPage />,
-      loader: EmployeePerformanceControllerLoader,
+      children: [
+        {
+          index: true,
+          element: <EmployeePerformanceControllersPage />,
+          loader: EmployeePerformanceControllerLoader,
+        },
+        {
+          path: '/hr/employeePerformances/new',
+          element: <NewEmployeePerformancePage />,
+          action: manipulateEmployeeEducationAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employeePerformances/edit',
+          element: <EditEmployeePerformancePage />,
+          action: manipulateEmployeeEducationAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
     {
       path: '/hr/employeeVacations',
-      element: <EmployeeVacationControllersPage />,
-      loader: EmployeeVacationControllerLoader,
+      children: [
+        {
+          index: true,
+          element: <EmployeeVacationControllersPage />,
+          loader: EmployeeVacationControllerLoader,
+        },
+        {
+          path: '/hr/employeeVacations/new',
+          element: <NewEmployeeVacationPage />,
+          action: manipulateEmployeeVacationAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employeeVacations/new',
+          element: <NewEmployeeVacationPage />,
+          action: manipulateEmployeeVacationAction,
+          loader: checkAuthLoader,
+        },
+        {
+          path: '/hr/employeeVacations/edit',
+          element: <EditEmployeeVacationPage />,
+          action: manipulateEmployeeVacationAction,
+          loader: checkAuthLoader,
+        },
+      ],
     },
   ],
 };

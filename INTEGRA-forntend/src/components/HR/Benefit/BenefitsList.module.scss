@@ -32,31 +32,31 @@
     color: var(--second-color);
   }
 
-  // .add_campaign {
-  //   text-decoration: none;
-  //   display: flex;
-  //   justify-content: end;
-  // }
+  .add_benefit {
+    text-decoration: none;
+    display: flex;
+    justify-content: end;
+  }
 
-  // .link {
-  //   text-decoration: none;
-  //   color: var(--second-color);
-  // }
+  .link {
+    text-decoration: none;
+    color: var(--second-color);
+  }
 
-  // .add_campaign_link {
-  //   text-decoration: none;
-  //   background-color: var(--second-color);
-  //   color: white;
-  //   padding: 6px;
-  //   margin: 4px;
-  //   border: 1px solid;
-  //   border-radius: 6px;
-  //   cursor: pointer;
-  //   transition: 0.2s;
-  // }
+  .add_benefit_link {
+    text-decoration: none;
+    background-color: var(--second-color);
+    color: white;
+    padding: 6px;
+    margin: 4px;
+    border: 1px solid;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
 
-  // .add_campaign_link:hover {
-  //   background-color: var(--third-color);
-  //   padding: 8px;
-  // }
+  .add_benefit_link:hover {
+    background-color: var(--third-color);
+    padding: 8px;
+  }
 }

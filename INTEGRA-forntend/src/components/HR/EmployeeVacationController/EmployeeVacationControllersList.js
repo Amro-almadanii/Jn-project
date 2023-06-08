@@ -3,9 +3,16 @@ import classes from './EmployeeVacationControllersList.module.scss';
 const EmployeeVacationControllersList = ({ employeeVacationControllers }) => {
   const navigate = useNavigate();
   return (
-    <div className={classes.EmployeeVacationControllersList}>
+    <div className={classes.EmployeeVacationList}>
       <h1> HR > Employee Vacation </h1>
-
+      <div className={classes.add_EmployeeVacation}>
+        <Link
+          className={classes.add_EmployeeVacation_link}
+          to="/hr/employeeVacations/new"
+        >
+          Add New Employee Vacation
+        </Link>
+      </div>
       <table>
         <thead>
           <tr>

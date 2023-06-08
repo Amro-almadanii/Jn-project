@@ -5,11 +5,11 @@ const DepartmentsList = ({ departments }) => {
   return (
     <div className={classes.DepartmentsList}>
       <h1> HR > Departments </h1>
-      {/* <div className={classes.add_department}>
-        <Link className={classes.add_department_link} to="/marketing/departments/new">
-          Add New Benefit
+      <div className={classes.add_department}>
+        <Link className={classes.add_department_link} to="/hr/departments/new">
+          Add New Department
         </Link>
-      </div> */}
+      </div>
       <table>
         <thead>
           <tr>

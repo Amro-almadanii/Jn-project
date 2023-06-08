@@ -5,11 +5,11 @@ const BenefitsList = ({ benefits }) => {
   return (
     <div className={classes.benefitsList}>
       <h1> HR > Benefits </h1>
-      {/* <div className={classes.add_benefit}>
-        <Link className={classes.add_benefit_link} to="/marketing/benefits/new">
+      <div className={classes.add_benefit}>
+        <Link className={classes.add_benefit_link} to="/hr/benefits/new">
           Add New Benefit
         </Link>
-      </div> */}
+      </div>
       <table>
         <thead>
           <tr>

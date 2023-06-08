@@ -11,8 +11,6 @@ import {
 } from '../../../hooks/useApi';
 import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
-import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
-
 const CampaignItem = ({ campaign }) => {
   const [campaignDetail, setCampaignDetail] = useState({
     events: [],

@@ -10,7 +10,7 @@ import classes from './BenefitForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
 
 const BenefitForm = ({ method, benefit }) => {
-  //const data = useActionData();
+  const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -23,7 +23,14 @@ const BenefitForm = ({ method, benefit }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="blogger">Name :</label>
+        {data && data.errors && (
+          <ul>
+            {Object.values(data.errors).map((err) => (
+              <li key={err}> {err} </li>
+            ))}
+          </ul>
+        )}
+        <label htmlFor="name">Name :</label>
         <input
           id="name"
           type="text"
@@ -35,7 +42,7 @@ const BenefitForm = ({ method, benefit }) => {
         <label htmlFor="cost">Cost :</label>
         <input
           id="cost"
-          type="text"
+          type="number"
           name="cost"
           required
           defaultValue={benefit ? benefit.cost : ''}
@@ -64,15 +71,14 @@ export async function action({ request, params }) {
   const benefitData = {
     name: data.get('name'),
     cost: data.get('cost'),
-    campaign_id: 1,
   };
   console.log(benefitData);
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/hr/benefit/' + params.benefitId;
+    url = 'http://localhost:8000/hr/benefits/' + params.benefitId;
   } else {
-    url = 'http://localhost:8000/hr/benefit';
+    url = 'http://localhost:8000/hr/benefits';
   }
 
   const response = await fetch(url, {
@@ -85,8 +91,8 @@ export async function action({ request, params }) {
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save SocialMedia.' }, { status: 500 });
+    throw json({ message: 'Could not save Benefits.' }, { status: 500 });
   }
 
-  return redirect('/marketing/benefit');
+  return redirect('/hr/benefits');
 }

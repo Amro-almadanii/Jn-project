@@ -229,7 +229,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/benefit"
+            to="/hr/benefits"
             end
           >
             Benefit
@@ -240,7 +240,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/department"
+            to="/hr/departments"
             end
           >
             Departments
@@ -251,7 +251,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeecertificate"
+            to="/hr/employeeCertificates"
             end
           >
             Employee Certificate
@@ -262,7 +262,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employee"
+            to="/hr/employees"
             end
           >
             Employee
@@ -273,7 +273,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeeeducation"
+            to="/hr/employeeEducations"
             end
           >
             Employee Education
@@ -284,7 +284,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeeperformances"
+            to="/hr/employeePerformances"
             end
           >
             Employee Performances
@@ -295,7 +295,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeevacations"
+            to="/hr/employeeVacations"
             end
           >
             Employee Vacations

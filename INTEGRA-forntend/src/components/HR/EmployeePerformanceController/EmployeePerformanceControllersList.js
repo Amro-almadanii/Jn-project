@@ -5,9 +5,16 @@ const EmployeePerformanceControllersList = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div className={classes.EmployeePerformanceControllersList}>
+    <div className={classes.EmployeePerformanceList}>
       <h1> HR > Employee Performance </h1>
-
+      <div className={classes.add_EmployeePerformance}>
+        <Link
+          className={classes.add_EmployeePerformance_link}
+          to="/hr/employeePerformances/new"
+        >
+          Add New Employee Performance
+        </Link>
+      </div>
       <table>
         <thead>
           <tr>
@@ -20,7 +27,13 @@ const EmployeePerformanceControllersList = ({
         <tbody>
           {employeePerformanceControllers.map(
             (employeePerformanceController) => (
-              <tr>
+              <tr
+                onClick={() =>
+                  navigate(
+                    `/hr/employeePerformances/employeePerformance-detail/${employeePerformanceController.id}`
+                  )
+                }
+              >
                 <td>{employeePerformanceController.employee_id}</td>
                 <td>{employeePerformanceController.performanceRating}</td>
                 <td>{employeePerformanceController.comments}</td>

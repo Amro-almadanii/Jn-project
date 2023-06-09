@@ -5,7 +5,14 @@ const EmployeeEducationControllersList = ({ EmployeeEducationControllers }) => {
   return (
     <div className={classes.EmployeeEducationControllersList}>
       <h1> HR > Employee Education </h1>
-
+      <div className={classes.add_EmployeeEducation}>
+        <Link
+          className={classes.add_EmployeeEducation_link}
+          to="/hr/employeeEducations/new"
+        >
+          Add New Employee Education
+        </Link>
+      </div>
       <table>
         <thead>
           <tr>
@@ -18,7 +25,13 @@ const EmployeeEducationControllersList = ({ EmployeeEducationControllers }) => {
         </thead>
         <tbody>
           {EmployeeEducationControllers.map((EmployeeEducationController) => (
-            <tr>
+            <tr
+              onClick={() =>
+                navigate(
+                  `/hr/employeeEducations/employeeEducation-detail/${EmployeeEducationController.id}`
+                )
+              }
+            >
               <td>{EmployeeEducationController.employee_id}</td>
               <td>{EmployeeEducationController.specialization}</td>
               <td>{EmployeeEducationController.degree}</td>

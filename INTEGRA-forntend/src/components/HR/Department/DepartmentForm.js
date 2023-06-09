@@ -23,7 +23,7 @@ const DepartmentForm = ({ method, department }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="blogger">Name :</label>
+        <label htmlFor="name">Name :</label>
         <input
           id="name"
           type="text"
@@ -54,15 +54,14 @@ export async function action({ request, params }) {
 
   const departmentData = {
     name: data.get('name'),
-    campaign_id: 1,
   };
   console.log(departmentData);
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/hr/department/' + params.departmentId;
+    url = 'http://localhost:8000/hr/departments/' + params.departmentId;
   } else {
-    url = 'http://localhost:8000/hr/department';
+    url = 'http://localhost:8000/hr/departments';
   }
 
   const response = await fetch(url, {
@@ -75,8 +74,8 @@ export async function action({ request, params }) {
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save SocialMedia.' }, { status: 500 });
+    throw json({ message: 'Could not save Departments.' }, { status: 500 });
   }
 
-  return redirect('/marketing/department');
+  return redirect('/hr/departments');
 }

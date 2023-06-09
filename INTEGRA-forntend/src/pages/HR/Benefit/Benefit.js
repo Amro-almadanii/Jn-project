@@ -24,7 +24,7 @@ export async function loader() {
   });
   console.log(response);
   if (!response.ok) {
-    throw json({ message: 'Could not fetch hr.' }, { status: 500 });
+    throw json({ message: 'Could not fetch benefits.' }, { status: 500 });
   } else {
     return response;
   }

@@ -5,11 +5,14 @@ const EmployeeCertificatesList = ({ employeeCertificates }) => {
   return (
     <div className={classes.EmployeeCertificatesList}>
       <h1> HR > Employee Certificate </h1>
-      {/* <div className={classes.add_EmployeeCertificate}>
-        <Link className={classes.add_EmployeeCertificate_link} to="/marketing/EmployeeCertificates/new">
-          Add New Benefit
+      <div className={classes.add_EmployeeCertificate}>
+        <Link
+          className={classes.add_EmployeeCertificate_link}
+          to="/hr/EmployeeCertificates/new"
+        >
+          Add New Employee Certificate
         </Link>
-      </div> */}
+      </div>
       <table>
         <thead>
           <tr>
@@ -20,7 +23,14 @@ const EmployeeCertificatesList = ({ employeeCertificates }) => {
         </thead>
         <tbody>
           {employeeCertificates.map((employeeCertificate) => (
-            <tr key={employeeCertificate.id}>
+            <tr
+              key={employeeCertificate.id}
+              onClick={() =>
+                navigate(
+                  `/hr/employeeCertificates/employeeCertificate-detail/${employeeCertificate.id}`
+                )
+              }
+            >
               <td>{employeeCertificate.name}</td>
             </tr>
           ))}

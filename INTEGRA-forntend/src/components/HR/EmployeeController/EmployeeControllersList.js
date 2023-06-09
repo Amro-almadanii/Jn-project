@@ -3,13 +3,13 @@ import classes from './EmployeeControllersList.module.scss';
 const EmployeeControllersList = ({ employeeControllers }) => {
   const navigate = useNavigate();
   return (
-    <div className={classes.EmployeeControllersListList}>
+    <div className={classes.EmployeeList}>
       <h1> HR > Employee </h1>
-      {/* <div className={classes.add_EmployeeCertificate}>
-        <Link className={classes.add_EmployeeCertificate_link} to="/marketing/EmployeeControllersList/new">
-          Add New Benefit
+      <div className={classes.add_Employee}>
+        <Link className={classes.add_Employee_link} to="/hr/employees/new">
+          Add New Employee
         </Link>
-      </div> */}
+      </div>
       <table>
         <thead>
           <tr>
@@ -29,7 +29,13 @@ const EmployeeControllersList = ({ employeeControllers }) => {
         </thead>
         <tbody>
           {employeeControllers.map((employeeController) => (
-            <tr>
+            <tr
+              onClick={() =>
+                navigate(
+                  `/hr/employees/employee-detail/${employeeControllers.id}`
+                )
+              }
+            >
               <td>{employeeController.firstName}</td>
               <td>{employeeController.lastName}</td>
               <td>{employeeController.dateOfBrith}</td>

@@ -1,11 +1,11 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-//import CampaignItem from '../../../components/Marketing/campaign/CampaignItem';
+import BenefitItem from '../../../components/HR/Benefit/BenefitItem';
 import { getAuthToken } from '../../../hooks/auth';
 
 const BenefitDetailPage = () => {
   const { data } = useRouteLoaderData('benefit-detail');
 
-  //   return <CampaignItem campaign={data} />;
+  return <BenefitItem benefit={data} />;
 };
 
 export default BenefitDetailPage;
@@ -22,7 +22,7 @@ export async function loader({ request, params }) {
 
   if (!response.ok) {
     throw json(
-      { message: 'Could not fetch details for selected Benefits' },
+      { message: 'Could not fetch details for selected benefits' },
       { status: 500 }
     );
   } else {

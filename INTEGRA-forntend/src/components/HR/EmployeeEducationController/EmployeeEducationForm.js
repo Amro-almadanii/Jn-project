@@ -29,7 +29,7 @@ const EmployeeEducationForm = ({ method, employeeEducation }) => {
           type="text"
           name="employee_id"
           required
-          defaultValue={employeeEducation ? employeeEducation.name : ''}
+          defaultValue={employeeEducation ? employeeEducation.employee_id : ''}
         />
 
         <label htmlFor="specialization">Specialization :</label>

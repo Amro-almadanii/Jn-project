@@ -23,7 +23,14 @@ const EmployeeCertificatesList = ({ employeeCertificates }) => {
         </thead>
         <tbody>
           {employeeCertificates.map((employeeCertificate) => (
-            <tr key={employeeCertificate.id}>
+            <tr
+              key={employeeCertificate.id}
+              onClick={() =>
+                navigate(
+                  `/hr/employeeCertificates/employeeCertificate-detail/${employeeCertificate.id}`
+                )
+              }
+            >
               <td>{employeeCertificate.name}</td>
             </tr>
           ))}

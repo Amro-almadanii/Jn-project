@@ -27,7 +27,13 @@ const EmployeePerformanceControllersList = ({
         <tbody>
           {employeePerformanceControllers.map(
             (employeePerformanceController) => (
-              <tr>
+              <tr
+                onClick={() =>
+                  navigate(
+                    `/hr/employeePerformances/employeePerformance-detail/${employeePerformanceController.id}`
+                  )
+                }
+              >
                 <td>{employeePerformanceController.employee_id}</td>
                 <td>{employeePerformanceController.performanceRating}</td>
                 <td>{employeePerformanceController.comments}</td>

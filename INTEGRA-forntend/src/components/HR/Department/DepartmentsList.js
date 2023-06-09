@@ -19,12 +19,10 @@ const DepartmentsList = ({ departments }) => {
         <tbody>
           {departments.map((department) => (
             <tr
-            //   key={department.id}
-            //   onClick={() =>
-            //     navigate(
-            //       `/marketing/departments/department-detail/${department.id}`
-            //     )
-            //   }
+              key={department.id}
+              onClick={() =>
+                navigate(`/hr/departments/department-detail/${department.id}`)
+              }
             >
               <td>{department.name}</td>
             </tr>

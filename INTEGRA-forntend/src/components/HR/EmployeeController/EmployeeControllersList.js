@@ -29,7 +29,13 @@ const EmployeeControllersList = ({ employeeControllers }) => {
         </thead>
         <tbody>
           {employeeControllers.map((employeeController) => (
-            <tr>
+            <tr
+              onClick={() =>
+                navigate(
+                  `/hr/employees/employee-detail/${employeeControllers.id}`
+                )
+              }
+            >
               <td>{employeeController.firstName}</td>
               <td>{employeeController.lastName}</td>
               <td>{employeeController.dateOfBrith}</td>

@@ -26,7 +26,13 @@ const EmployeeVacationControllersList = ({ employeeVacationControllers }) => {
         </thead>
         <tbody>
           {employeeVacationControllers.map((employeeVacationController) => (
-            <tr>
+            <tr
+              onClick={() =>
+                navigate(
+                  `/hr/employeeVacations/employeeVacation-detail/${employeeVacationController.id}`
+                )
+              }
+            >
               <td>{employeeVacationController.employee_id}</td>
               <td>{employeeVacationController.startDate}</td>
               <td>{employeeVacationController.endDate}</td>

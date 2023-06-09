@@ -22,7 +22,7 @@ const BenefitsList = ({ benefits }) => {
             <tr
               key={benefit.id}
               onClick={() =>
-                navigate(`/marketing/benefits/benefit-detail/${benefit.id}`)
+                navigate(`/hr/benefits/benefit-detail/${benefit.id}`)
               }
             >
               <td>{benefit.name}</td>

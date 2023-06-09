@@ -26,10 +26,6 @@ import EmployeeVacationControllersPage, {
   loader as EmployeeVacationControllerLoader,
 } from '../pages/HR/EmployeeVacation/EmployeeVacationController';
 
-import BenefitDetailPage, {
-  loader as BenefitsDetailLoader,
-} from '../pages/HR/Benefit/BenefitDetail';
-
 import NewDepartmentPage from '../pages/HR/Department/NewDeparment';
 import NewBenefitPage from '../pages/HR/Benefit/NewBenefit';
 
@@ -63,6 +59,49 @@ import EditEmployeePerformancePage from '../pages/HR/EmployeePerformance/EdirEmp
 import EditEmployeeVacationPage from '../pages/HR/EmployeeVacation/EditEmployeeVacation';
 
 import { action as manipulateEmployeeVacationAction } from '../components/HR/EmployeeVacationController/EmployeeVacationForm';
+
+import BenefitDetailPage, {
+  loader as BenefitsDetailLoader,
+} from '../pages/HR/Benefit/BenefitDetail';
+
+import { action as deleteBenafitAction } from '../pages/HR/Benefit/BenefitDetail';
+
+import DepartmentDetailPage, {
+  loader as DepartmentsDetailLoader,
+} from '../pages/HR/Department/DepartmentDetail';
+
+import { action as deleteDepartmentAction } from '../pages/HR/Department/DepartmentDetail';
+
+import EmployeeCertificateDetailPage, {
+  loader as EmployeeCertificatesDetailLoader,
+} from '../pages/HR/EmployeeCertificate/EmployeeCertificateDetail';
+
+import { action as deleteEmployeeCertificateAction } from '../pages/HR/EmployeeCertificate/EmployeeCertificateDetail';
+
+import EmployeeDetailPage, {
+  loader as EmployeesDetailLoader,
+} from '../pages/HR/EmployeeController/EmployeeDetail';
+
+import { action as deleteEmployeeAction } from '../pages/HR/EmployeeController/EmployeeDetail';
+
+import EmployeeEducationDetailPage, {
+  loader as EmployeeEducationsDetailLoader,
+} from '../pages/HR/EmployeeEducationController/EmployeeEducationDetail';
+
+import { action as deleteEmployeeEducationsAction } from '../pages/HR/EmployeeEducationController/EmployeeEducationDetail';
+
+import EmployeePerformanceDetailPage, {
+  loader as EmployeePerformanceDetailLoader,
+} from '../pages/HR/EmployeePerformance/EmployeePerformanceDetail';
+
+import { action as deleteEmployeePerformanceAction } from '../pages/HR/EmployeePerformance/EmployeePerformanceDetail';
+
+import EmployeeVacationDetailPage, {
+  loader as EmployeeVacationDetailPageLoader,
+} from '../pages/HR/EmployeeVacation/EmployeeVacationDetail';
+
+import { action as deleteEmployeeVacationAction } from '../pages/HR/EmployeeVacation/EmployeeVacationDetail';
+
 import RootLayout from '../pages/Root';
 import ErrorPage from '../pages/Error';
 import { checkAuthLoader } from '../hooks/auth';
@@ -90,12 +129,12 @@ export const HrRoute = {
           id: 'benefit-detail',
           loader: BenefitsDetailLoader,
           children: [
-            //     {
-            //       path: '/marketing/tvs/tv-detail/:tvId',
-            //       element: <TVDetailPage />,
-            //       action: deleteTVAction,
-            //       loader: checkAuthLoader,
-            //     },
+            {
+              path: '/hr/benefits/benefit-detail/:benefitId',
+              element: <BenefitDetailPage />,
+              action: deleteBenafitAction,
+              loader: checkAuthLoader,
+            },
             {
               path: '/hr/benefits/benefit-detail/edit/:benefitId',
               element: <EditBenefitPage />,
@@ -104,19 +143,6 @@ export const HrRoute = {
             },
           ],
         },
-
-        // {
-        //   path: '/hr/benefits/new',
-        //   element: <NewBenefitPage />,
-        //   action: manipulateBenefitAction,
-        //   loader: checkAuthLoader,
-        // },
-        // {
-        //   path: '/hr/benefits/edit',
-        //   element: <EditBenefitPage />,
-        //   action: manipulateBenefitAction,
-        //   loader: BenefitsDetailLoader,
-        // },
       ],
     },
     {
@@ -127,23 +153,6 @@ export const HrRoute = {
           element: <DepartmentsPage />,
           loader: DepartmentLoader,
         },
-        // {
-        //   path: '/marketing/tvs/tv-detail',
-        //   id: 'tv-detail',
-        //   loader: TVDetailLoader,
-        //   children: [
-        //     {
-        //       path: '/marketing/tvs/tv-detail/:tvId',
-        //       element: <TVDetailPage />,
-        //       action: deleteTVAction,
-        //       loader: checkAuthLoader,
-        //     },
-        //     {
-        //       path: '/marketing/tvs/tv-detail/edit/:tvId',
-        //       element: <EditTVPage />,
-        //       action: manipulateTVAction,
-        //       loader: checkAuthLoader,
-        //     },
         {
           path: '/hr/departments/new',
           element: <NewDepartmentPage />,
@@ -151,10 +160,23 @@ export const HrRoute = {
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/departments/edit',
-          element: <EditDepartmentPage />,
-          action: manipulateDepartmentAction,
-          loader: checkAuthLoader,
+          path: '/hr/departments/department-detail',
+          id: 'department-detail',
+          loader: DepartmentsDetailLoader,
+          children: [
+            {
+              path: '/hr/departments/department-detail/:departmentId',
+              element: <DepartmentDetailPage />,
+              action: deleteDepartmentAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/departments/department-detail/edit/:tvId',
+              element: <EditDepartmentPage />,
+              action: manipulateDepartmentAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
@@ -173,10 +195,23 @@ export const HrRoute = {
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/employeeCertificates/edit',
-          element: <EditEmployeeCertificatePage />,
-          action: manipulateEmployeeCertificateAction,
-          loader: checkAuthLoader,
+          path: '/hr/employeeCertificates/employeeCertificate-detail',
+          id: 'employeeCertificate-detail',
+          loader: EmployeeCertificatesDetailLoader,
+          children: [
+            {
+              path: '/hr/employeeCertificates/employeeCertificate-detail/:employeeCertificateId',
+              element: <EmployeeCertificateDetailPage />,
+              action: deleteEmployeeCertificateAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/employeeCertificates/employeeCertificate-detail/edit/:employeeCertificateId',
+              element: <EditEmployeeCertificatePage />,
+              action: manipulateEmployeeCertificateAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
@@ -195,10 +230,23 @@ export const HrRoute = {
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/employees/edit',
-          element: <EditEmployeePage />,
-          action: manipulateEmployeeControllerAction,
-          loader: checkAuthLoader,
+          path: '/hr/employees/employee-detail',
+          id: 'employee-detail',
+          loader: EmployeesDetailLoader,
+          children: [
+            {
+              path: 'hr/employees/employee-detail/:employeeId',
+              element: <EmployeeDetailPage />,
+              action: deleteEmployeeAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/employees/employee-detail/edit/:employeeId',
+              element: <EditEmployeePage />,
+              action: manipulateEmployeeControllerAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
@@ -213,14 +261,27 @@ export const HrRoute = {
         {
           path: '/hr/employeeEducations/new',
           element: <NewEmployeeEducationPage />,
-          action: manipulateEmployeePerformanceAction,
+          action: manipulateEmployeeEducationAction,
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/employeeEducations/edit',
-          element: <EditEmployeeEducationPage />,
-          action: manipulateEmployeePerformanceAction,
-          loader: checkAuthLoader,
+          path: '/hr/employeeEducations/employeeEducation-detail',
+          id: 'employeeEducation-detail',
+          loader: EmployeeEducationsDetailLoader,
+          children: [
+            {
+              path: 'hr/employeeEducations/employeeEducation-detail/:employeeEducationId',
+              element: <EmployeeEducationDetailPage />,
+              action: deleteEmployeeEducationsAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/employeeEducations/employeeEducation-detail/edit/:employeeEducationId',
+              element: <EditEmployeeEducationPage />,
+              action: manipulateEmployeeEducationAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
@@ -235,14 +296,27 @@ export const HrRoute = {
         {
           path: '/hr/employeePerformances/new',
           element: <NewEmployeePerformancePage />,
-          action: manipulateEmployeeEducationAction,
+          action: manipulateEmployeePerformanceAction,
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/employeePerformances/edit',
-          element: <EditEmployeePerformancePage />,
-          action: manipulateEmployeeEducationAction,
-          loader: checkAuthLoader,
+          path: '/hr/employeePerformances/employeePerformance-detail',
+          id: 'employeePerformance-detail',
+          loader: EmployeePerformanceDetailLoader,
+          children: [
+            {
+              path: 'hr/employeePerformances/employeePerformance-detail/:employeePerformanceId',
+              element: <EmployeePerformanceDetailPage />,
+              action: deleteEmployeePerformanceAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/employeePerformances/employeePerformance-detail/edit/:employeePerformanceId',
+              element: <EditEmployeePerformancePage />,
+              action: manipulateEmployeePerformanceAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
@@ -261,313 +335,25 @@ export const HrRoute = {
           loader: checkAuthLoader,
         },
         {
-          path: '/hr/employeeVacations/new',
-          element: <NewEmployeeVacationPage />,
-          action: manipulateEmployeeVacationAction,
-          loader: checkAuthLoader,
-        },
-        {
-          path: '/hr/employeeVacations/edit',
-          element: <EditEmployeeVacationPage />,
-          action: manipulateEmployeeVacationAction,
-          loader: checkAuthLoader,
+          path: '/hr/employeeVacations/employeeVacation-detail',
+          id: 'employeeVacation-detail',
+          loader: EmployeeVacationDetailPageLoader,
+          children: [
+            {
+              path: 'hr/employeeVacations/employeeVacation-detail/:employeeVacationId',
+              element: <EmployeeVacationDetailPage />,
+              action: deleteEmployeeVacationAction,
+              loader: checkAuthLoader,
+            },
+            {
+              path: '/hr/employeeVacations/employeeVacation-detail/edit/:employeeVacationId',
+              element: <EditEmployeeVacationPage />,
+              action: manipulateEmployeeVacationAction,
+              loader: checkAuthLoader,
+            },
+          ],
         },
       ],
     },
   ],
 };
-// children: [
-//   {
-//     index: true,
-//     element: <CampaignsPage />,
-//     loader: CampaignsLoader,
-//   },
-//   {
-//             path: '/marketing/campaigns/new',
-//             children: [
-//               {
-//                 index: true,
-//                 element: <NewCampaignPage />,
-//                 action: manipulateCampaignAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/campaigns/new/branch',
-//                 element: <NavBar />,
-//                 children: [
-//                   {
-//                     path: '/marketing/campaigns/new/branch/tv',
-//                     element: <NewTVPage />,
-//                     action: manipulateTVAction,
-//                     loader: checkAuthLoader,
-//                   },
-//                   {
-//                     path: '/marketing/campaigns/new/branch/socialMedia',
-//                     element: <NewSocialMediaPage />,
-//                     action: manipulateSocialMediaAction,
-//                     loader: checkAuthLoader,
-//                   },
-//                   {
-//                     path: '/marketing/campaigns/new/branch/event',
-//                     element: <NewEventPage />,
-//                     action: manipulateEventAction,
-//                     loader: checkAuthLoader,
-//                   },
-//                 ],
-//               },
-//             ],
-//           },
-//           {
-//             path: '/marketing/campaigns/campaign-detail',
-//             id: 'campaign-detail',
-//             loader: CampaignDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/campaigns/campaign-detail/:campaignId',
-//                 element: <CampaignDetailPage />,
-//                 action: deleteCampaignAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/campaigns/campaign-detail/edit/:campaignId',
-//                 element: <EditCampaignPage />,
-//                 action: manipulateCampaignAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/tvs',
-//         children: [
-//           {
-//             index: true,
-//             element: <TVsPage />,
-//             loader: TVsLoader,
-//           },
-//           {
-//             path: '/marketing/tvs/tv-detail',
-//             id: 'tv-detail',
-//             loader: TVDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/tvs/tv-detail/:tvId',
-//                 element: <TVDetailPage />,
-//                 action: deleteTVAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/tvs/tv-detail/edit/:tvId',
-//                 element: <EditTVPage />,
-//                 action: manipulateTVAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/socialMedia',
-//         children: [
-//           {
-//             index: true,
-//             element: <SocialMediaPage />,
-//             loader: SocialMediaLoader,
-//           },
-//           {
-//             path: '/marketing/socialMedia/socialMedia-detail',
-//             id: 'socialMedia-detail',
-//             loader: SocialMediaDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/socialMedia/socialMedia-detail/:socialMediaId',
-//                 element: <SocialMediaDetailPage />,
-//                 action: deleteSocialMediaAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/socialMedia/socialMedia-detail/edit/:socialMediaId',
-//                 element: <EditSocialMediaPage />,
-//                 action: manipulateSocialMediaAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/events',
-//         children: [
-//           {
-//             index: true,
-//             element: <EventsPage />,
-//             loader: EventsLoader,
-//           },
-//           {
-//             path: '/marketing/events/event-detail',
-//             id: 'event-detail',
-//             loader: EventDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/events/event-detail/:eventId',
-//                 element: <EventDetailPage />,
-//                 action: deleteEventAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/events/event-detail/edit/:eventId',
-//                 element: <EditEventPage />,
-//                 action: manipulateEventAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/pdfs',
-//         children: [
-//           {
-//             index: true,
-//             element: <PDFsPage />,
-//             loader: PDFsLoader,
-//           },
-//           {
-//             path: '/marketing/pdfs/pdf-detail',
-//             id: 'pdf-detail',
-//             loader: PDFDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/pdfs/pdf-detail/:pdfId',
-//                 element: <PDFDetailPage />,
-//                 action: deletePDFAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/leads',
-//         children: [
-//           {
-//             index: true,
-//             element: <LeadsPage />,
-//             loader: LeadsLoader,
-//           },
-//           {
-//             path: '/marketing/leads/new',
-//             children: [
-//               {
-//                 index: true,
-//                 element: <NewLeadPage />,
-//                 action: manipulateLeadAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//           {
-//             path: '/marketing/leads/lead-detail',
-//             id: 'lead-detail',
-//             loader: LeadDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/leads/lead-detail/:leadId',
-//                 element: <LeadDetailPage />,
-//                 action: deleteLeadAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/leads/lead-detail/edit/:leadId',
-//                 element: <EditLeadPage />,
-//                 action: manipulateLeadAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//       {
-//         path: '/marketing/emails',
-//         children: [
-//           {
-//             index: true,
-//             element: <EmailsPage />,
-//             loader: EmailsLoader,
-//           },
-//           {
-//             path: '/marketing/emails/new',
-//             children: [
-//               {
-//                 index: true,
-//                 element: <NewEmailPage />,
-//                 action: manipulateEmailAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//           {
-//             path: '/marketing/emails/email-detail',
-//             id: 'email-detail',
-//             loader: EmailDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/emails/email-detail/:emailId',
-//                 element: <EmailDetailPage />,
-//                 action: deleteEmailAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/emails/email-detail/edit/:emailId',
-//                 element: <EditEmailPage />,
-//                 action: manipulateEmailAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-
-//       {
-//         path: '/marketing/customers',
-//         children: [
-//           {
-//             index: true,
-//             element: <CustomersPage />,
-//             loader: CustomersLoader,
-//           },
-//           {
-//             path: '/marketing/customers/new',
-//             children: [
-//               {
-//                 index: true,
-//                 element: <NewCustomerPage />,
-//                 action: manipulateCustomerAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//           {
-//             path: '/marketing/customers/customer-detail',
-//             id: 'customer-detail',
-//             loader: CustomerDetailLoader,
-//             children: [
-//               {
-//                 path: '/marketing/customers/customer-detail/:customerId',
-//                 element: <CustomerDetailPage />,
-//                 action: deleteCustomerAction,
-//                 loader: checkAuthLoader,
-//               },
-//               {
-//                 path: '/marketing/customers/customer-detail/edit/:customerId',
-//                 element: <EditCustomerPage />,
-//                 action: manipulateCustomerAction,
-//                 loader: checkAuthLoader,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//      ],
-//   };

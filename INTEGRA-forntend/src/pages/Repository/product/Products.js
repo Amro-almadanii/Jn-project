@@ -7,7 +7,7 @@ const ProductsPage = () => {
 
   return (
     <div className="products">
-      <h1>Products Page</h1>
+      <h1>Repository > Products</h1>
       <ProductsList products={products} />
     </div>
   );

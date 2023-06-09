@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { json } from 'react-router-dom';
 import { getAuthToken } from './auth';
+import groups from '../pages/Repository/product/attributeGroup/Groups';
+import suppliers from '../pages/Repository/supplier/Suppliers';
 
 export const useEvents = (id) => {
   const [events, setEvents] = useState([]);
@@ -289,4 +291,200 @@ export const useLeads = () => {
   }, []);
 
   return leads;
+};
+
+
+export const useSuppliers = () => {
+  const [suppliers, setSuppliers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/suppliers', {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setSuppliers(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Suppliers.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return suppliers;
+};
+
+export const useCategories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/categories', {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setCategories(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Categories.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return categories;
+};
+
+
+export const useGroups = () => {
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/products/attributeGroups', {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setGroups(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Groups.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return groups;
+};
+
+
+export const useAttributesGroup = (id) => {
+  const [attributesGroup, setAttributesGroup] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/products/attributeGroups/attributesOfGroup/' + id, {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setAttributesGroup(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Attributes of Group.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return attributesGroup;
+};
+
+export const useProductsByCategory = (id) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/categories/products/' + id, {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setProducts(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Products by Category.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return products;
+};
+
+export const useProductsBySupplier = (id) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/suppliers/products/' + id, {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setProducts(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Products by Supplier.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  console.log(products)
+  return products;
 };

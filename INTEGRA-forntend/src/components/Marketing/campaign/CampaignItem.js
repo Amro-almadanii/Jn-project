@@ -11,7 +11,6 @@ import {
 } from '../../../hooks/useApi';
 import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
-import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
 const CampaignItem = ({ campaign }) => {
   const [campaignDetail, setCampaignDetail] = useState({
@@ -36,6 +35,7 @@ const CampaignItem = ({ campaign }) => {
   const updateLeadHandler = () => {
     setEditLeadCampaign(!editLeadCampaign);
   };
+
   const eventResponse = useEvents(campaign.id);
   const tvResponse = useTvs(campaign.id);
   const socialMediaResponse = useSocialMedia(campaign.id);
@@ -93,17 +93,15 @@ const CampaignItem = ({ campaign }) => {
           <div className={classes.cardItems}>
             <label>Leads of Campaign :</label>
             <p>
-              {' '}
               {campaignDetail.leads.map((lead) => (
                 <Link
                   key={lead.id}
                   className={classes.leadLink}
                   to={`/marketing/leads/lead-detail/${lead.id}`}
                 >
-                  {' '}
-                  {lead.type}{' '}
+                  {lead.type}
                 </Link>
-              ))}{' '}
+              ))}
             </p>
           </div>
           <div className={classes.btn}>

@@ -1,18 +1,33 @@
-//label {
-//  color: var(--text-color);
-//  margin: 45px;
-//}
-//.p {
-//  color: var(--third-color);
-//  margin: 10px;
-//  margin-left: 50px;
-//}
-//
-//.but {
-//  margin: 5px;
-//  background-color: var(--third-color);
-//}
+.supplierItem {
+  width: calc(100vw - 270px);
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  overflow-x: auto;
+}
 
+.supplierItem {
+  h1 {
+    margin: 10px;
+  }
 
+  .btn {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px;
 
+    button {
+      background-color: var(--second-color);
+      border-style: none;
+      border-radius: 4px;
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 10px;
+      transition: 0.4s;
+      margin: 10px;
+    }
 
+    button:hover {
+      background-color: var(--third-color);
+    }
+  }
+}

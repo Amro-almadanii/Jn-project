@@ -19,6 +19,7 @@ const RootLayout = () => {
     if (!token) {
       return;
     }
+
     if (token === 'EXPIRED') {
       submit(null, { action: '/logout', method: 'post' });
       return;
@@ -37,8 +38,9 @@ const RootLayout = () => {
       <Header />
       <div className="wrapper">
         <SideBar />
-        <main>{nav.state === 'loading' && <p>Loading...</p>}</main>
+        <main>{nav.state === 'loading' && <p>Loading...</p>}
         <Outlet />
+        </main>
       </div>
     </>
   );

@@ -32,6 +32,8 @@ import { action as manipulateProductAction } from '../../components/Repository/p
 
 import { productAttribute } from './productAttribute';
 import React from 'react';
+import NewProductDetail from '../../pages/Repository/product/productDetail/NewProductDetail';
+import  { action as manipulateProductDetailAction } from '../../components/Repository/product/productDetail/ProductDetailForm';
 
 export const repositoryRoute = {
   path: '/repository',
@@ -119,9 +121,20 @@ export const repositoryRoute = {
         },
         {
           path: '/repository/products/new',
-          element: <NewProductPage />,
-          loader: checkAuthLoader,
-          action: manipulateProductAction,
+          children: [
+            {
+              index: true,
+              element: <NewProductPage />,
+              loader: checkAuthLoader,
+              action: manipulateProductAction,
+            },
+            {
+              path: '/repository/products/new/newDetail/:productId',
+              element: <NewProductDetail />,
+              loader: checkAuthLoader,
+              action: manipulateProductDetailAction,
+            },
+          ],
         },
         {
           path: '/repository/products/product-detail',

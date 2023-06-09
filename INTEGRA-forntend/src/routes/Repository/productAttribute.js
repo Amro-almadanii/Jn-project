@@ -31,7 +31,7 @@ export const productAttribute = {
           action: manipulateAttributeAction,
         },
         {
-          path: '/repository/products/attributes/attribute-detail/:attributeId',
+          path: '/repository/products/attributes/attribute-detail/:groupId/:attributeId',
           id: 'attribute-detail',
           element: <EditAttribute />,
           action: manipulateAttributeAction,

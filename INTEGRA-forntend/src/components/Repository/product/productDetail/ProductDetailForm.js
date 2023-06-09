@@ -1,0 +1,212 @@
+import { getAuthToken } from '../../../../hooks/auth';
+import { Form, json, redirect, useNavigate, useNavigation, useParams } from 'react-router-dom';
+import classes from './ProductDetailForm.module.scss';
+import { useEffect, useState } from 'react';
+import { useAttributesGroup, useGroups } from '../../../../hooks/useApi';
+import Input from './UI/Input';
+import CheckboxInput from './UI/CheckboxInput';
+import { Select } from '@mui/material';
+import SelectInput from './UI/SelectInput';
+import TextAreaInput from './UI/TextAreaInput';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import Wrapper from './Helpers/Wrapper';
+
+const ProductDetailForm = ({ method, attribute }) => {
+  const [groups, setGroups] = useState([]);
+  const [attributesGroup, setAttributesGroup] = useState([]);
+  const [numOfDetail, setNumOfDetail] = useState([0]);
+
+  const [idOfGroup, setIdOfGroup] = useState(0);
+
+  const { productId } = useParams('productId');
+
+  // const data = useActionData();
+  const navigate = useNavigate();
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === 'submitting';
+
+  const groupResponse = useGroups();
+
+  useEffect(() => {
+    setGroups(groupResponse);
+  }, [groupResponse]);
+
+  const cancelHandler = () => {
+    navigate('../' + attribute.id);
+  };
+
+  const choseGroupHandler = (event) => {
+    const id = event.target.value;
+    setIdOfGroup(id);
+
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/products/attributeGroups/attributesOfGroup/' + idOfGroup, {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setAttributesGroup(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Attributes of Group.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (idOfGroup > 0)
+      fetchData();
+  }, [idOfGroup]);
+
+  const generateArray = (num) => {
+    const arr = [];
+    for (let i = 0; i < num; i++) {
+      arr[i] = i;
+    }
+    return arr;
+  };
+
+  const addValueHandler = () => {
+    const value = generateArray(numOfDetail.length + 1);
+    setNumOfDetail(value);
+  };
+
+  const removeValueHandler = () => {
+    const value = generateArray(numOfDetail.length - 1);
+    setNumOfDetail(value);
+  };
+
+  return (
+    <div className={classes.productDetailForm}>
+      <p>
+        <label htmlFor='group'> Choose Group </label>
+        <select id='group' name='type' onChange={choseGroupHandler}>
+          <option value=''>--Choose an option--</option>
+          {groups.map((group) => (
+            <option key={group.id} value={group.id}>{group.name}</option>
+          ))}
+        </select>
+        <RemoveIcon className={classes.addIcon} onClick={removeValueHandler} />
+        <AddIcon className={classes.addIcon} onClick={addValueHandler} />
+      </p>
+      <Form method={method} className={classes.form}>
+        <table style={{ border: 'black solid 1px' }}>
+          <thead>
+          <tr>
+            <th>stock</th>
+            {
+              attributesGroup.map((attribute) => (
+                <th key={attribute.id}>{attribute.name}</th>
+              ))
+            }
+          </tr>
+          </thead>
+          <tbody>
+          {numOfDetail.map((num) => (
+            <tr key={num}>
+              <td><input type="number" name="stock" required/></td>
+              <td><input type="hidden" name="productId" value={productId}/></td>
+              {
+                attributesGroup.map((attribute) => (
+                  <Wrapper key={attribute.id}>
+                    {attribute.type == 'select' && <td><SelectInput props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'checkbox' && <td><CheckboxInput props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'radio' && <td><CheckboxInput props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'textArea' && <td><TextAreaInput props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'text' && <td><Input props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'number' && <td><Input props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'date' && <td><Input props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'time' && <td><Input props={attribute} key={attribute.id} /></td>}
+                    {attribute.type == 'date-time' && <td><Input props={attribute} key={attribute.id} /></td>}
+                  </Wrapper>
+                ))
+              }
+            </tr>
+          ))}
+          </tbody>
+        </table>
+        <div className={classes.actions}>
+          <button onClick={cancelHandler} disabled={isSubmitting}>
+            Cancel
+          </button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Save'}
+          </button>
+        </div>
+      </Form>
+    </div>
+  );
+};
+
+export default ProductDetailForm;
+
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  const token = getAuthToken();
+
+  const attributeData = {};
+  //let attributeData = [];
+
+  let currentGroup = 1;
+  let currentAttributes = {};
+
+  for (let pair of formData.entries()) {
+    const [fieldName, fieldValue] = pair;
+
+    if(Object.keys(currentAttributes).includes(fieldName)) {
+      attributeData[`group${currentGroup}`] = currentAttributes;
+      // attributeData = attributeData.concat(currentAttributes);
+      currentGroup ++;
+      currentAttributes = {};
+    }
+
+    if (fieldName.includes('name')) {
+      currentAttributes.name = fieldValue;
+    } else if (fieldName.includes('value')) {
+      attributeData[`group${currentGroup}`] = currentAttributes;
+      currentAttributes = { name: fieldValue };
+      currentGroup++;
+    } else {
+      const attributeName = fieldName.split('_')[0];
+      currentAttributes[attributeName] = fieldValue;
+    }
+  }
+
+  if (Object.keys(currentAttributes).length > 0) {
+    attributeData[`group${currentGroup}`] = currentAttributes;
+  }
+
+  console.log(attributeData);
+
+  const details = {
+    details: attributeData,
+  }
+
+  const response = await fetch('http://localhost:8000/repository/productDetails', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      Authorization: 'bearer' + token
+    },
+    body: JSON.stringify(details),
+  });
+
+  if (!response.ok) {
+    throw json({ message: 'Could not save Details of Product.' }, { status: 500 });
+  }
+
+   return redirect('/repository/products/new/newDetail/1');
+}

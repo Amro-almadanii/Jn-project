@@ -1,10 +1,22 @@
 import { Link, useSubmit } from 'react-router-dom';
-import './CategoryItem.module.scss';
+import classes from './CategoryItem.module.scss';
+import tableClasses from '../product/ProductsList.module.scss';
+import { useEffect, useState } from 'react';
+import { useProductsByCategory } from '../../../hooks/useApi';
+import ProductsTable from '../product/UI/ProductsTable';
 const CategoryItem = ({ category }) => {
+  const [products, setProducts] = useState([]);
   const submit = useSubmit();
 
+  const productResponse = useProductsByCategory(category.id);
+
+  useEffect(() => {
+    setProducts(productResponse);
+  }, [productResponse]);
+
   const deleteHandler = () => {
-    const proceed = window.confirm('Are you sure?');
+    const proceed = window.confirm('Are you sure?' +
+      'Deleting a category will also delete all associated products');
 
     if (proceed) {
       submit(null, { method: 'delete' });
@@ -12,55 +24,15 @@ const CategoryItem = ({ category }) => {
   };
 
   return (
-    <div
-      style={{
-        margin: '10px',
-        backgroundColor: 'var(--second-color)',
-        width: 'calc(100vw - 270px)',
-        borderRadius: '4px',
-      }}
-    >
-      <h1 style={{ color: 'var(--text-color)' }}> Category Item:</h1>
-      <div>
-        <label>Name of Category:</label>
-        <p className="p"> {category.name} </p>
+    <div className={classes.categoryItem}>
+      <h1>Repository > Categories > {category.name}</h1>
+      <div className={classes.btn}>
+      <button type="button"
+        onClick={deleteHandler}>Delete Category
+      </button>
       </div>
-      <div
-        style={{
-          marginLeft: '50px',
-          marginTop: '40px',
-          display: 'flex',
-        }}
-      >
-        <Link
-          to={`/repository/categories/category-detail/edit/${category.id}`}
-          style={{
-            textDecoration: 'none',
-            color: 'var(--text-color)',
-            backgroundColor: 'var(--therd-color)',
-            padding: '6px',
-            borderRadius: '4px',
-            margin: '10px',
-            borderStyle: 'none',
-          }}
-        >
-          Edit
-        </Link>
-        <button
-          onClick={deleteHandler}
-          style={{
-            margin: '10px',
-            backgroundColor: 'var(--therd-color)',
-            borderStyle: 'none',
-            padding: '6px',
-            borderRadius: '4px',
-            color: 'var(--text-color)',
-            cursor: 'pointer',
-            width: '70px',
-          }}
-        >
-          Delete
-        </button>
+      <div className={tableClasses.productsList}>
+        <ProductsTable products={products}/>
       </div>
     </div>
   );

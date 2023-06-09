@@ -23,6 +23,22 @@
     outline: none;
     margin: 24px;
   }
+
+  select {
+    display: block;
+    width: 90%;
+    padding: 5px;
+    outline: none;
+    margin: 24px;
+    color: var(--second-color);
+    font-size: 14px;
+  }
+  option {
+    background-color: var(--second-color);
+    color: var(--text-color);
+    font-size: 14px;
+  }
+
   h1 {
     margin: 20px;
     color: var(--second-color);
@@ -58,5 +74,15 @@
   .actions button[type='button']:hover {
     background-color: var(--third-color);
     color: var(--text-color);
+  }
+
+  .addIcon {
+    background-color: var(--second-color);
+    color: var(--text-color);
+    margin: 10px;
+  }
+
+  .addIcon:hover {
+    cursor: pointer;
   }
 }

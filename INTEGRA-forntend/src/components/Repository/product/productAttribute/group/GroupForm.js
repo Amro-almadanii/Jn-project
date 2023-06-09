@@ -23,11 +23,11 @@ const GroupForm = ({ method, group }) => {
   return (
     <div className={classes.groupForm}>
       <Form method={method} className={classes.form}>
-        <label htmlFor="type">Name :</label>
+        <label htmlFor="name">Name :</label>
         <input
-          id="type"
+          id="name"
           type="text"
-          name="type"
+          name="name"
           required
           defaultValue={group ? group.name : ''}
         />
@@ -54,7 +54,7 @@ export async function action({ request, params }) {
   const groupData = {
     name: data.get('name'),
   };
-
+  console.log(groupData);
   let url;
 
   if (method === 'PUT') {

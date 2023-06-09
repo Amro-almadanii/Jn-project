@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import classes from '../CustomersList.module.scss';
+
 const CustomersTable = ({customers}) => {
   const navigate = useNavigate();
   return (

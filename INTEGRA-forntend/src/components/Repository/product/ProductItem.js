@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 const ProductItem = ({ product }) => {
   const [keysOfDetail, setKeysOfDetail] = useState([]);
-  const [keysOfGroupsOfDetail, setKeysOfGroupsOfDetail] = useState([]);
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -20,32 +19,19 @@ const ProductItem = ({ product }) => {
   useEffect(() => {
     const getKeys = () => {
       const keys = [];
-      for (const key in product.details) {
-        const detail = product.details[key];
-        console.log(`${key}: ${product.details[key]}`);
-        for (const key in detail) {
+      if (product.details[0]) {
+        for (const key in product.details[0].details) {
           keys.push(key);
         }
-        break;
       }
       return keys;
     };
 
-    const getKeysOfGroups = () => {
-      const keysOfGroups = [];
-      for (const key in product.details) {
-        keysOfGroups.push(key);
-      }
-
-      return keysOfGroups;
-    };
-
     const keys = getKeys();
     setKeysOfDetail(keys);
-
-    const keysOfGroups = getKeysOfGroups();
-    setKeysOfGroupsOfDetail(keysOfGroups);
   }, []);
+
+  console.log(product.details)
 
   return (
     <div className={classes.productItem}>
@@ -85,6 +71,12 @@ const ProductItem = ({ product }) => {
             >
               Edit
             </Link>
+            <Link
+              className={classes.link}
+              to={`/repository/products/new/newDetail/${product.id}`}
+            >
+              Create new Detail
+            </Link>
             <button onClick={deleteHandler}>Delete</button>
           </div>
         </Card>
@@ -99,14 +91,20 @@ const ProductItem = ({ product }) => {
                 <th key={key}>{key}</th>
               ))
             }
+            {product.details[0] && <th>Stock</th>}
+            {product.details[0] && <th>Edit</th>}
+            {product.details[0] && <th>Delete</th>}
           </tr>
           </thead>
           <tbody>
-          {keysOfGroupsOfDetail.map((keyOfGroup) => (
-            <tr key={keyOfGroup}>
+          {product.details.map((detail) => (
+            <tr key={detail.id}>
               {keysOfDetail.map((key) => (
-                <td key={key}>{product.details[keyOfGroup][key]}</td>
+                <td key={key}>{detail.details[key]}</td>
               ))}
+              <td>{detail.stock}</td>
+              <td><Link to={`/repository/products/product-detail/editDetail/${detail.id}`} className={classes.link}>Edit</Link></td>
+              <td><button>Delete</button></td>
             </tr>
           ))}
           </tbody>

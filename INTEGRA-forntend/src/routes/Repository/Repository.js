@@ -1,6 +1,6 @@
 import RootLayout from '../../pages/Root';
 import ErrorPage from '../../pages/Error';
-import { checkAuthLoader } from '../../hooks/auth';
+import { checkAuthLoader, tokenLoader } from '../../hooks/auth';
 
 import SuppliersPage , { loader as SuppliersLoader }from '../../pages/Repository/supplier/Suppliers';
 import SupplierDetailPage , {
@@ -33,13 +33,18 @@ import { action as manipulateProductAction } from '../../components/Repository/p
 import { productAttribute } from './productAttribute';
 import React from 'react';
 import NewProductDetail from '../../pages/Repository/product/productDetail/NewProductDetail';
-import  { action as manipulateProductDetailAction } from '../../components/Repository/product/productDetail/ProductDetailForm';
+import  { action as manipulateProductDetailAction } from '../../components/Repository/product/productDetail/ProductDetailNewForm';
+
+import EditProductDetailPage, {
+  loader as DetailOfProductAttributeLoader
+} from '../../pages/Repository/product/productDetail/EditProductDetail';
+import { action as EditProductDetailAction } from '../../components/Repository/product/productDetail/ProductDetailEditForm';
 
 export const repositoryRoute = {
   path: '/repository',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
-  loader:checkAuthLoader,
+  loader:tokenLoader,
   children: [
     {
       path: '/repository/suppliers',
@@ -154,6 +159,12 @@ export const repositoryRoute = {
               loader: checkAuthLoader,
             },
           ],
+        },
+        {
+          path: '/repository/products/product-detail/editDetail/:detailId',
+          element: <EditProductDetailPage />,
+          action: EditProductDetailAction,
+          loader: DetailOfProductAttributeLoader,
         },
         productAttribute,
       ],

@@ -6,7 +6,7 @@ import { action as logoutUser } from './pages/Logout';
 import { marketingRoute } from './routes/Marketing';
 import { repositoryRoute } from './routes/Repository/Repository';
 
-import { checkLoginLoader, tokenLoader } from './hooks/auth';
+import { checkAuthLoader, checkLoginLoader, tokenLoader } from './hooks/auth';
 import React from 'react';
 import { systemManagmentRoute } from './routes/SystemManagment';
 import { HrRoute } from './routes/HR';
@@ -18,7 +18,7 @@ function App() {
     {
       path: '/',
       id: 'root',
-      loader: tokenLoader,
+      //loader: checkAuthLoader,
       children: [
         {
           index: true,

@@ -31,7 +31,7 @@ const RootLayout = () => {
     setTimeout(() => {
       submit(null, { action: '/logout', method: 'post' });
     }, tokenDuration);
-  }, [token, submit]);
+  }, []);
 
   return (
     <>

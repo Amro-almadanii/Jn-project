@@ -23,17 +23,6 @@ const EmployeePerformanceForm = ({ method, employeePerformance }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="employee_id">Employee id :</label>
-        <input
-          id="employee_id"
-          type="text"
-          name="employee_id"
-          required
-          defaultValue={
-            employeePerformance ? employeePerformance.employee_id : ''
-          }
-        />
-
         <label htmlFor="performanceRating">PerformanceRating :</label>
         <input
           id="performanceRating"

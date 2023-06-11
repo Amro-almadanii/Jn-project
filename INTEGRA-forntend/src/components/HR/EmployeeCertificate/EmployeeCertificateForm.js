@@ -23,17 +23,6 @@ const EmployeeCertificateForm = ({ method, employeeCertificate }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="name">Employee id :</label>
-        <input
-          id="employee_id"
-          type="number"
-          name="employee_id"
-          required
-          defaultValue={
-            employeeCertificate ? employeeCertificate.employee_id : ''
-          }
-        />
-
         <label htmlFor="name">Name :</label>
         <input
           id="name"
@@ -73,7 +62,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeCertificateData = {
-    employee_id: data.get('employee_id'),
+    employee_id: 1,
     name: data.get('name'),
     level: data.get('level'),
   };

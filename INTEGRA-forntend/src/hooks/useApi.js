@@ -10,25 +10,28 @@ export const useEvents = (id) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const token = getAuthToken();
+        const token = getAuthToken();
 
-          const response = await fetch('http://localhost:8000/marketing/campaigns/showCampaignEvents/' + id, {
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignEvents/' + id,
+          {
             headers: {
-              'Authorization': 'bearer ' + token,
+              Authorization: 'bearer ' + token,
             },
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            setEvents(data.data);
-          } else {
-            throw json({ message: 'Could not fetch Events.' }, { status: 500 });
           }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setEvents(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Events.' }, { status: 500 });
+        }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -44,11 +47,14 @@ export const useTvs = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/campaigns/showCampaignTvs/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignTvs/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -60,7 +66,7 @@ export const useTvs = (id) => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -76,23 +82,30 @@ export const useSocialMedia = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/campaigns/showCampaignSocialMedia/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignSocialMedia/' +
+            id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setSocialMedia(data.data);
         } else {
-          throw json({ message: 'Could not fetch social media.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch social media.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -108,11 +121,14 @@ export const useCampaign = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/campaigns/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -124,14 +140,13 @@ export const useCampaign = (id) => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return campaign;
 };
-
 
 export const useLeadsOfCampaign = (id) => {
   const [leads, setLeads] = useState([]);
@@ -141,11 +156,14 @@ export const useLeadsOfCampaign = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/campaigns/showCampaignLeads/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignLeads/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -157,7 +175,7 @@ export const useLeadsOfCampaign = (id) => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -173,11 +191,14 @@ export const useLeadsOfCustomer = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/customers/showCustomerLeads/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/customers/showCustomerLeads/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -189,12 +210,50 @@ export const useLeadsOfCustomer = (id) => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return leads;
+};
+
+export const useEmployeeBenefits = (id) => {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/hr/benefits/employeesBenefit/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setEmployees(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch employee benefits.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return employees;
 };
 
 export const useCustomersOfLead = (id) => {
@@ -205,23 +264,29 @@ export const useCustomersOfLead = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/leads/showLeadCustomers/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/leads/showLeadCustomers/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setCustomers(data.data);
         } else {
-          throw json({ message: 'Could not fetch Customers.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Customers.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -237,23 +302,29 @@ export const useCampaignsOfLead = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/marketing/leads/showLeadCampaigns/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/marketing/leads/showLeadCampaigns/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setCampaigns(data.data);
         } else {
-          throw json({ message: 'Could not fetch Campaigns.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Campaigns.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -271,7 +342,7 @@ export const useLeads = () => {
 
         const response = await fetch('http://localhost:8000/marketing/leads', {
           headers: {
-            'Authorization': 'bearer ' + token,
+            Authorization: 'bearer ' + token,
           },
         });
 
@@ -285,14 +356,13 @@ export const useLeads = () => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return leads;
 };
-
 
 export const useSuppliers = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -302,23 +372,29 @@ export const useSuppliers = () => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/suppliers', {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/suppliers',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setSuppliers(data.data);
         } else {
-          throw json({ message: 'Could not fetch Suppliers.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Suppliers.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -334,30 +410,35 @@ export const useCategories = () => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/categories', {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/categories',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setCategories(data.data);
         } else {
-          throw json({ message: 'Could not fetch Categories.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Categories.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return categories;
 };
-
 
 export const useGroups = () => {
   const [groups, setGroups] = useState([]);
@@ -367,11 +448,14 @@ export const useGroups = () => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/products/attributeGroups', {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/products/attributeGroups',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
@@ -383,14 +467,13 @@ export const useGroups = () => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
   return groups;
 };
-
 
 export const useAttributesGroup = (id) => {
   const [attributesGroup, setAttributesGroup] = useState([]);
@@ -400,23 +483,30 @@ export const useAttributesGroup = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/products/attributeGroups/attributesOfGroup/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/products/attributeGroups/attributesOfGroup/' +
+            id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setAttributesGroup(data.data);
         } else {
-          throw json({ message: 'Could not fetch Attributes of Group.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Attributes of Group.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -432,23 +522,29 @@ export const useProductsByCategory = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/categories/products/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/categories/products/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setProducts(data.data);
         } else {
-          throw json({ message: 'Could not fetch Products by Category.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Products by Category.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -464,23 +560,29 @@ export const useProductsBySupplier = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/suppliers/products/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/suppliers/products/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setProducts(data.data);
         } else {
-          throw json({ message: 'Could not fetch Products by Supplier.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Products by Supplier.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);

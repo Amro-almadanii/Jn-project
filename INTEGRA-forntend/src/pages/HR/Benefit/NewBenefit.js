@@ -1,4 +1,3 @@
-import SocialMediaForm from '../../../components/HR/Benefit/BenefitForm';
 import BenefitForm from '../../../components/HR/Benefit/BenefitForm';
 import classes from './NewBenefit.module.scss';
 const NewBenefitPage = () => {

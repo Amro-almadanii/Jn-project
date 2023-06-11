@@ -13,7 +13,8 @@ const BenefitForm = ({ method, benefit }) => {
   const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
-
+  console.log(benefit);
+  console.log(benefit);
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {

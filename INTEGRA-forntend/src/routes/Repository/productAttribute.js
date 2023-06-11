@@ -2,7 +2,8 @@ import AttributesPage,
 { loader as AttributesLoader }
   from '../../pages/Repository/product/productAttribute/Attributes';
 import GroupsPage, {
-  loader as GroupsLoader
+  loader as GroupsLoader,
+  action as deleteGroupAction
 } from '../../pages/Repository/product/attributeGroup/Groups';
 import NewGroup from '../../pages/Repository/product/attributeGroup/NewGroup';
 import { action as manipulateGroupAction } from '../../components/Repository/product/productAttribute/group/GroupForm';
@@ -45,6 +46,7 @@ export const productAttribute = {
           index: true,
           element: <GroupsPage />,
           loader: GroupsLoader,
+          action: deleteGroupAction,
         },
         {
           path: '/repository/products/attributes/groups/new',

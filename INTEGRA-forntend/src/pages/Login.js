@@ -53,12 +53,11 @@ export async function action({ request }) {
   }
 
   const resData = await response.json();
-  console.log(resData);
   const token = resData.authorisation.token;
 
   localStorage.setItem('token', token);
   const expiration = new Date();
-  expiration.setHours(expiration.getHours() + 8);
-  localStorage.setItem('expiration', expiration.toISOString());
+  expiration.setMinutes(expiration.getMinutes() + 10);
+  localStorage.setItem('expiration', expiration.getTime().toString());
   return redirect('/marketing');
 }

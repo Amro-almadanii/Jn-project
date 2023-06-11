@@ -1,6 +1,6 @@
-import { Form, NavLink } from 'react-router-dom';
+import { Form, NavLink, useLocation, useMatch } from 'react-router-dom';
 import classes from './SideBar.module.scss';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { marketingCtx } from './SideBarContext';
 function SideBar() {
   const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
@@ -21,10 +21,24 @@ function SideBar() {
   const handleHrDropdownClick = () => {
     setShowHrDropdown(!showHrDropdown);
   };
-  // const handleDropdownClick = () => {
-  //   setShowDropdown(!showDropdown);
-  // };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.includes('marketing'))
+      handleMarketingDropdownClick(true);
+
+    if (location.pathname.includes('hr'))
+      handleHrDropdownClick(true);
+
+    if (location.pathname.includes('repository'))
+      handleRepositoryDropdownClick(true);
+
+    if (location.pathname.includes('systemManagement'))
+      handleSystemManagmentDropdownClick(true);
+  }, []);
+
+  console.log('location', location.pathname);
   return (
     <aside className={classes.sidebar}>
       <div
@@ -37,7 +51,7 @@ function SideBar() {
           showSystemManagmentDropdown ? classes.itemBold : classes.item
         }`}
       >
-        System Managment
+        System Management
       </div>
       <div
         className={` ${
@@ -231,6 +245,17 @@ function SideBar() {
             end
           >
             Products
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/repository/products/attributes/groups"
+            end
+          >
+            Attributes Groups
           </NavLink>
         </div>
       </div>

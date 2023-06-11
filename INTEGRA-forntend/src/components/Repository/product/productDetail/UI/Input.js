@@ -1,11 +1,12 @@
-const Input = ({ props }) => {
+const Input = ({ props, value} ) => {
+  console.log(value)
   return (
       <input
         id={props.name}
         type={props.type}
         name={props.name}
         required
-        defaultValue={props.value ? props.value : ''}
+        defaultValue={value ? value : ''}
       />
   );
 };

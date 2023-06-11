@@ -1,10 +1,10 @@
-const TextAreaInput = ({ props }) => {
+const TextAreaInput = ({ props, value }) => {
   return (
       <textarea
         id={props.name}
         name={props.name}
         required
-        defaultValue={props.value ? props.value : ''}
+        defaultValue={value ? value : ''}
       >
       </textarea>
   );

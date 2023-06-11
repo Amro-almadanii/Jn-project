@@ -1,6 +1,7 @@
 import ProductForm from '../../../components/Repository/product/ProductForm';
-import { useRouteLoaderData } from 'react-router-dom';
+import { json, useRouteLoaderData } from 'react-router-dom';
 import classes from './newProduct.module.scss';
+import { getAuthToken } from '../../../hooks/auth';
 
 
 const EditProductPage = () => {

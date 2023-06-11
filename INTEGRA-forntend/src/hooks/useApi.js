@@ -622,6 +622,37 @@ export const useProductsBySupplier = (id) => {
     fetchData();
   }, []);
 
-  console.log(products);
   return products;
+};
+
+export const useProductStock = (id) => {
+  const [productStock, setProductStock] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/products/' + id, {
+          headers: {
+            'Authorization': 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setProductStock(data.data.quantity_in_stock);
+        } else {
+          throw json({ message: 'Could not fetch Products by Supplier.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return productStock;
 };

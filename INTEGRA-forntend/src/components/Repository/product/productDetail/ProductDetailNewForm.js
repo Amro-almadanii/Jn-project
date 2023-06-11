@@ -2,7 +2,7 @@ import { getAuthToken } from '../../../../hooks/auth';
 import { Form, json, redirect, useNavigate, useNavigation, useParams } from 'react-router-dom';
 import classes from './ProductDetailForm.module.scss';
 import { useEffect, useState } from 'react';
-import { useAttributesGroup, useGroups } from '../../../../hooks/useApi';
+import { useAttributesGroup, useGroups, useProductStock } from '../../../../hooks/useApi';
 import Input from './UI/Input';
 import CheckboxInput from './UI/CheckboxInput';
 import { Select } from '@mui/material';
@@ -12,12 +12,16 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import Wrapper from './Helpers/Wrapper';
 
-const ProductDetailForm = ({ method, attribute }) => {
+const ProductDetailNewForm = ({ method, attribute }) => {
   const [groups, setGroups] = useState([]);
   const [attributesGroup, setAttributesGroup] = useState([]);
   const [numOfDetail, setNumOfDetail] = useState([0]);
-
+  const [stockSum, setStockSum] = useState(0);
+  const [stock, setStock] = useState([]);
+  const [disableSubmit, setDisableSubmit] = useState(false);
   const [idOfGroup, setIdOfGroup] = useState(0);
+  const [productStock, setProductStock] = useState(0);
+
 
   const { productId } = useParams('productId');
 
@@ -28,6 +32,12 @@ const ProductDetailForm = ({ method, attribute }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const groupResponse = useGroups();
+  const productStockResponse = useProductStock(productId);
+
+  useEffect(() => {
+    setProductStock(productStockResponse);
+    console.log(productStockResponse);
+  }, [productStockResponse]);
 
   useEffect(() => {
     setGroups(groupResponse);
@@ -69,6 +79,32 @@ const ProductDetailForm = ({ method, attribute }) => {
     if (idOfGroup > 0)
       fetchData();
   }, [idOfGroup]);
+
+  const getMaxStock = (event) => {
+    const {value, id} = event.target;
+    const parsedId = parseInt(id);
+
+    setStock((prevStock) => {
+      const updatedStock = [...prevStock];
+      updatedStock[parsedId] = parseInt(value);
+      return updatedStock;
+    });
+  }
+
+  useEffect(() => {
+    const sum = stock.reduce((sum, element) => sum + element, 0);
+    setStockSum(sum);
+  }, [stock]);
+
+  useEffect(() => {
+    if (stockSum > productStock) {
+      setDisableSubmit(true);
+      console.log(stock);
+    } else {
+      setDisableSubmit(false);
+    }
+  }, [stockSum]);
+
 
   const generateArray = (num) => {
     const arr = [];
@@ -116,8 +152,9 @@ const ProductDetailForm = ({ method, attribute }) => {
           <tbody>
           {numOfDetail.map((num) => (
             <tr key={num}>
-              <td><input type="number" name="stock" required/></td>
+              <td><input type="number" name="stock" onChange={getMaxStock} required id={num} min="0"/></td>
               <td><input type="hidden" name="productId" value={productId}/></td>
+              <td><input type="hidden" name="groupId" value={idOfGroup}/></td>
               {
                 attributesGroup.map((attribute) => (
                   <Wrapper key={attribute.id}>
@@ -141,7 +178,8 @@ const ProductDetailForm = ({ method, attribute }) => {
           <button onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
           </button>
-          <button disabled={isSubmitting}>
+          {disableSubmit && <p>The number of stock of all details {stockSum} and the number of stock of product is smaller {productStock}</p>}
+          <button disabled={isSubmitting || disableSubmit}>
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
@@ -150,11 +188,12 @@ const ProductDetailForm = ({ method, attribute }) => {
   );
 };
 
-export default ProductDetailForm;
+export default ProductDetailNewForm;
 
 export async function action({ request, params }) {
   const formData = await request.formData();
   const token = getAuthToken();
+  const method = request.method;
 
   const attributeData = {};
   //let attributeData = [];
@@ -195,7 +234,7 @@ export async function action({ request, params }) {
   }
 
   const response = await fetch('http://localhost:8000/repository/productDetails', {
-    method: 'post',
+    method: method,
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

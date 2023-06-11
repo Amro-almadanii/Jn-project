@@ -104,11 +104,12 @@ import { action as deleteEmployeeVacationAction } from '../pages/HR/EmployeeVaca
 
 import RootLayout from '../pages/Root';
 import ErrorPage from '../pages/Error';
-import { checkAuthLoader } from '../hooks/auth';
+import { checkAuthLoader, tokenLoader } from '../hooks/auth';
 export const HrRoute = {
   path: '/hr',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
+  loader: tokenLoader,
   children: [
     {
       path: '/hr/benefits',

@@ -4,6 +4,7 @@ import tableClasses from '../product/ProductsList.module.scss';
 import { useEffect, useState } from 'react';
 import { useProductsBySupplier } from '../../../hooks/useApi';
 import ProductsTable from '../product/UI/ProductsTable';
+import { Card } from '@mui/material';
 
 const SupplierItem = ({ supplier }) => {
   const [products, setProducts] = useState([]);
@@ -27,13 +28,37 @@ const SupplierItem = ({ supplier }) => {
   return (
     <div className={classes.supplierItem}>
       <h1>Repository > Suppliers > {supplier.name}</h1>
-      <div className={classes.btn}>
-        <button type="button"
-                onClick={deleteHandler}>Delete Supplier
-        </button>
+      <div className={classes.box}>
+        <Card className={classes.card}>
+          <div className={classes.cardItems}>
+            <label>Name:</label>
+            <p> {supplier.name} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Address:</label>
+            <p> {supplier.address} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Email:</label>
+            <p> {supplier.email} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Phone Number:</label>
+            <p> {supplier.phone_number} </p>
+          </div>
+          <div className={classes.btn}>
+            <Link
+              className={classes.link}
+              to={`/repository/suppliers/supplier-detail/edit/${supplier.id}`}
+            >
+              Edit
+            </Link>
+            <button onClick={deleteHandler}>Delete</button>
+          </div>
+        </Card>
       </div>
       <div className={tableClasses.productsList}>
-        <ProductsTable products={products}/>
+        <ProductsTable products={products} />
       </div>
     </div>
   );

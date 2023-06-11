@@ -4,7 +4,7 @@ const EmployeeControllersList = ({ employeeControllers }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.EmployeeList}>
-      <h1> HR > Employee </h1>
+      <h1> HR > Employee</h1>
       <div className={classes.add_Employee}>
         <Link className={classes.add_Employee_link} to="/hr/employees/new">
           Add New Employee

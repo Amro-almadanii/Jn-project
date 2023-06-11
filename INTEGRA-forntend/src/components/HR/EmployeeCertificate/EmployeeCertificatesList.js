@@ -2,9 +2,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import classes from './EmployeeCertificateList.module.scss';
 const EmployeeCertificatesList = ({ employeeCertificates }) => {
   const navigate = useNavigate();
+  console.log(` the answer : ${employeeCertificates}`);
   return (
     <div className={classes.EmployeeCertificatesList}>
-      <h1> HR > Employee Certificate </h1>
+      <h1> HR > Employee Certificate</h1>
       <div className={classes.add_EmployeeCertificate}>
         <Link
           className={classes.add_EmployeeCertificate_link}
@@ -31,7 +32,9 @@ const EmployeeCertificatesList = ({ employeeCertificates }) => {
                 )
               }
             >
+              <td>{employeeCertificate.employee_id}</td>
               <td>{employeeCertificate.name}</td>
+              <td>{employeeCertificate.level}</td>
             </tr>
           ))}
         </tbody>

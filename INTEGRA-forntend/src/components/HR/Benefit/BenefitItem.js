@@ -2,9 +2,10 @@ import { Link, useSubmit } from 'react-router-dom';
 import classes from './BenefitItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
-// import { useLeadsOfCustomer } from '../../../hooks/useApi';
+import { useEmployeeBenefits } from '../../../hooks/useApi';
+import BenefitEmployeeShow from './BenefitEmployeeShow';
 const BenefitItem = ({ benefit }) => {
-  //   const [leads, setLeads] = useState([]);
+  const [employeesBenefit, setEmployeesBenefit] = useState([]);
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -15,11 +16,12 @@ const BenefitItem = ({ benefit }) => {
     }
   };
 
-  //   const leadResponse = useLeadsOfCustomer(benefit.id);
+  const employeesBenefitResponse = useEmployeeBenefits(benefit.id);
 
-  //   useEffect(() => {
-  //     setLeads(leadResponse);
-  //   }, [leadResponse]);
+  console.log(employeesBenefitResponse);
+  useEffect(() => {
+    setEmployeesBenefit(employeesBenefitResponse);
+  }, [employeesBenefitResponse]);
 
   return (
     <div className={classes.benefitItem}>
@@ -61,6 +63,7 @@ const BenefitItem = ({ benefit }) => {
           </div>
         </Card>
       </div>
+      <BenefitEmployeeShow data={employeesBenefit} />
     </div>
   );
 };

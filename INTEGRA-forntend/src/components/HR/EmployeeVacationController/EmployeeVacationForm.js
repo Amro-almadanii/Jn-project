@@ -23,15 +23,6 @@ const EmployeeVacationForm = ({ method, employeeVacation }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="employee_id">Employee id :</label>
-        <input
-          id="employee_id"
-          type="text"
-          name="employee_id"
-          required
-          defaultValue={employeeVacation ? employeeVacation.employee_id : ''}
-        />
-
         <label htmlFor="startDate">Start Date :</label>
         <input
           id="startDate"

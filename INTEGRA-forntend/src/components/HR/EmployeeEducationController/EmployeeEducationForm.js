@@ -23,15 +23,6 @@ const EmployeeEducationForm = ({ method, employeeEducation }) => {
   return (
     <Form method={method} className={classes.form}>
       <div>
-        <label htmlFor="employee_id">employee id :</label>
-        <input
-          id="employee_id"
-          type="text"
-          name="employee_id"
-          required
-          defaultValue={employeeEducation ? employeeEducation.employee_id : ''}
-        />
-
         <label htmlFor="specialization">Specialization :</label>
         <input
           id="specialization"
@@ -93,18 +84,11 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeEducationData = {
-    firstName: data.get('firstName'),
-    lastName: data.get('lastName'),
-    dateOfBrith: data.get('dateOfBrith'),
-    gender: data.get('gender'),
-    address: data.get('address'),
-    email: data.get('email'),
-    phone: data.get('phone'),
-    dateOfHire: data.get('dateOfHire'),
-    salary: data.get('salary'),
-    supervisorId: data.get('supervisorId'),
-    status: data.get('status'),
-    departmentId: data.get('departmentId'),
+    employee_id: data.get('employee_id'),
+    specialization: data.get('specialization'),
+    degree: data.get('degree'),
+    grantingBy: data.get('grantingBy'),
+    graduationDate: data.get('graduationDate'),
   };
   console.log(employeeEducationData);
   let url;

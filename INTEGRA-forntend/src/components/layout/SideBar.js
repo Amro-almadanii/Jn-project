@@ -52,10 +52,33 @@ function SideBar() {
             to="/systemmanagment/profile"
             end
           >
-            Profile
+            Marketing Info
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/systemmanagment/profile"
+            end
+          >
+            HR Info
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/systemmanagment/profile"
+            end
+          >
+            Repository Info
           </NavLink>
         </div>
       </div>
+
       <div
         onClick={() => {
           {

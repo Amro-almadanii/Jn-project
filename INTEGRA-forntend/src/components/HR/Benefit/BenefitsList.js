@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import classes from './BenefitsList.module.scss';
 const BenefitsList = ({ benefits }) => {
   const navigate = useNavigate();
+  console.log(benefits);
   return (
     <div className={classes.benefitsList}>
       <h1> HR > Benefits </h1>
@@ -13,6 +14,7 @@ const BenefitsList = ({ benefits }) => {
       <table>
         <thead>
           <tr>
+            <th>Benefit Id</th>
             <th>Name</th>
             <th>Cost</th>
           </tr>
@@ -25,6 +27,7 @@ const BenefitsList = ({ benefits }) => {
                 navigate(`/hr/benefits/benefit-detail/${benefit.id}`)
               }
             >
+              <td>{benefit.id}</td>
               <td>{benefit.name}</td>
               <td>{benefit.cost}</td>
             </tr>
@@ -32,6 +35,7 @@ const BenefitsList = ({ benefits }) => {
         </tbody>
         <tfoot>
           <tr>
+            <th>Benefit Id</th>
             <th>Name</th>
             <th>Cost</th>
           </tr>

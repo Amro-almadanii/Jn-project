@@ -101,15 +101,6 @@ const EmployeeControllerForm = ({ method, employee }) => {
           defaultValue={employee ? employee.salary : ''}
         />
 
-        <label htmlFor="supervisorId">Supervisor Id:</label>
-        <input
-          id="supervisorId"
-          type="number"
-          name="supervisorId"
-          required
-          defaultValue={employee ? employee.supervisorId : ''}
-        />
-
         <label htmlFor="status">Status :</label>
         <input
           id="status"
@@ -117,15 +108,6 @@ const EmployeeControllerForm = ({ method, employee }) => {
           name="status"
           required
           defaultValue={employee ? employee.status : ''}
-        />
-
-        <label htmlFor="status">Department Id :</label>
-        <input
-          id="departmentId"
-          type="number"
-          name="departmentId"
-          required
-          defaultValue={employee ? employee.departmentId : ''}
         />
 
         <div className={classes.actions}>
@@ -168,7 +150,7 @@ export async function action({ request, params }) {
   if (method === 'PUT') {
     url = 'http://localhost:8000/hr/employees/' + params.employeeId;
   } else {
-    url = 'http://localhost:8000/hr/emplyees';
+    url = 'http://localhost:8000/hr/employees';
   }
 
   const response = await fetch(url, {

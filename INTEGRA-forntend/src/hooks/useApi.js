@@ -475,6 +475,41 @@ export const useGroups = () => {
   return groups;
 };
 
+export const useDepartments = () => {
+  const [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/hr/departments/', {
+          headers: {
+            Authorization: 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setDepartments(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Departments.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return departments;
+};
+
 export const useAttributesGroup = (id) => {
   const [attributesGroup, setAttributesGroup] = useState([]);
 

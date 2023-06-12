@@ -57,7 +57,7 @@ export async function action({ request }) {
 
   localStorage.setItem('token', token);
   const expiration = new Date();
-  expiration.setMinutes(expiration.getMinutes() + 10);
+  expiration.setMinutes(expiration.getMinutes() + 100);
   localStorage.setItem('expiration', expiration.getTime().toString());
   return redirect('/marketing');
 }

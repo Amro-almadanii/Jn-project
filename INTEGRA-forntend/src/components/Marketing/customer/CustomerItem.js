@@ -1,7 +1,7 @@
 import { Link, useSubmit } from 'react-router-dom';
 import classes from './CustomerItem.module.scss';
 import { Card } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useLeadsOfCustomer } from '../../../hooks/useApi';
 const CustomerItem = ({ customer }) => {
   const [leads, setLeads] = useState([]);
@@ -52,8 +52,12 @@ const CustomerItem = ({ customer }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Leads of Customer:</label>
-            <p> {leads.map((lead) => (
-              <Link key={lead.id} className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}> {lead.type} </Link>))} </p>
+            <p> {leads.length > 0 && leads.map((lead, index) => (
+              <Fragment key={lead.id}>
+                {index > 0 && ' - '}
+                <Link className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}>{lead.type}</Link>
+              </Fragment>
+            ))} </p>
           </div>
           <div className={classes.btn}>
             <Link

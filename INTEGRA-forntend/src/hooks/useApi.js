@@ -294,6 +294,44 @@ export const useCustomersOfLead = (id) => {
   return customers;
 };
 
+export const useCustomers = () => {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/marketing/customers',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setCustomers(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Customers.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return customers;
+};
+
 export const useCampaignsOfLead = (id) => {
   const [campaigns, setCampaigns] = useState([]);
 
@@ -620,4 +658,41 @@ export const useProductStock = (id) => {
   }, []);
 
   return productStock;
+};
+
+export const useAttachDetachLeadToCampaign = (id, type) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        let url;
+        if(type == "attact") {
+          url = 'http://localhost:8000/marketing/campaigns/attachCampaignToLead/' + id;
+        } else {
+          url = 'http://localhost:8000/marketing/campaigns/detachCampaignToLead/' + id;
+        }
+        const response = await fetch(url, {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok)
+          throw json(
+            { message: 'Could not add lead to campaign.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return null;
 };

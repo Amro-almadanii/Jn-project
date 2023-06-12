@@ -38,7 +38,7 @@ function SideBar() {
       handleSystemManagmentDropdownClick(true);
   }, []);
 
-  console.log('location', location.pathname);
+
   return (
     <aside className={classes.sidebar}>
       <div

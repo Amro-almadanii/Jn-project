@@ -1,31 +1,88 @@
-import { useEffect, useState } from 'react';
-import { useLeads } from '../../../../hooks/useApi';
+import { useEffect, useMemo, useState } from 'react';
+import { useAttachDetachLeadToCampaign, useLeads } from '../../../../hooks/useApi';
 import classes from '../../lead/LeadsList.module.scss';
-const UpdateLeadsOfCampaign = ({leadsOfCampaign}) => {
+import { getAuthToken } from '../../../../hooks/auth';
+import { json, useNavigate, useParams } from 'react-router-dom';
+
+const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
   const [leads, setLeads] = useState([]);
-  const [isChecked, setIsChecked] = useState([{checked: false}]);
+  const [editLead, setEditLead] = useState({ id: 0, type: '' });
+  const [leadsOfCampaignState, setLeadsOfCampaignState] = useState(leadsOfCampaign);
+
+  const { campaignId } = useParams('campaignId');
   const responseLead = useLeads();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLeads(responseLead);
-    leads.map((lead) => {
-      leadsOfCampaign.map((leadCampaign) => {
-      if(lead.id === leadCampaign.id) {
-        setIsChecked(isChecked[lead.id] ={checked: true} );
-      }
-    })
-    })
-    console.log(isChecked[1].checked)
   }, [responseLead]);
 
-  const checkHandler = (id) => {
-    setIsChecked(isChecked[id].checked = !isChecked[id].checked);
-    if(isChecked) {
-      console.log('attach');
-    } else {
-      console.log('detach');
-    }
+  const removeById = (arr, id) => {
+    const requiredIndex = arr.findIndex(el => {
+      return el.id == id;
+    });
+    if(requiredIndex === -1){
+      return false;
+    };
+    return !!arr.splice(requiredIndex, 1);
+  };
+
+  const addById = (arr, id) => {
+    leads.map((lead) => {
+      if (lead.id == id) {
+        arr.push(lead);
+        return;
+      }
+    })
   }
+
+  const checkHandler = (event) => {
+    if (event.target.checked) {
+      addById(leadsOfCampaignState, event.target.value);
+      setEditLead({ id: event.target.value, type: 'attach' });
+    } else {
+      removeById(leadsOfCampaignState, event.target.value);
+      setEditLead({ id: event.target.value, type: 'detach' });
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+        const campaignData = {
+          lead_id: editLead.id
+        };
+
+        let url;
+        if (editLead.type == 'attach') {
+          url = 'http://localhost:8000/marketing/campaigns/attachCampaignToLead/' + campaignId;
+        } else {
+          url = 'http://localhost:8000/marketing/campaigns/detachCampaignToLead/' + campaignId;
+        }
+
+        console.log(url, JSON.stringify(campaignData))
+        const response = await fetch(url, {
+            method: 'post',
+            headers: {
+              Authorization: 'bearer ' + token,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(campaignData),
+          });
+
+        if (!response.ok)
+          throw json(
+            { message: 'Could not add lead to campaign.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (editLead.id > 0)
+      fetchData();
+  }, [editLead]);
 
   return (
     <div className={classes.leadsList}>
@@ -39,15 +96,20 @@ const UpdateLeadsOfCampaign = ({leadsOfCampaign}) => {
         </thead>
         <tbody>
         {leads.map((lead) => (
-          <tr key={lead.id} onClick={checkHandler.bind(lead.id)}>
+          <tr key={lead.id}
+              onClick={() =>
+                navigate(`/marketing/leads/lead-detail/${lead.id}`)
+              }
+          >
             <td>{lead.id}</td>
             <td>{lead.type}</td>
-            <td><input type='checkbox' value={lead.id}
-                    // checked={leadsOfCampaign.map((leadCampaign)=> { return (leadCampaign.id == lead.id); })}
-                    checked={true && isChecked[2].checked}
-              />
+            <td onClick={(event) => event.stopPropagation()}><input type='checkbox' value={lead.id}
+                       checked={JSON.stringify(leadsOfCampaignState).includes(JSON.stringify(lead))}
+                       onClick={checkHandler}
+            />
             </td>
-          </tr>))}
+          </tr>
+        ))}
         </tbody>
         <tfoot>
         <tr>

@@ -227,7 +227,6 @@ export async function action({ request, params }) {
     attributeData[`group${currentGroup}`] = currentAttributes;
   }
 
-  console.log(attributeData);
 
   const details = {
     details: attributeData,

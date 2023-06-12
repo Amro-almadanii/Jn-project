@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import classes from './EmployeeControllerForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
+import { useDepartments } from '../../../hooks/useApi';
 
 const EmployeeControllerForm = ({ method, employee }) => {
   const data = useActionData();
@@ -15,7 +16,7 @@ const EmployeeControllerForm = ({ method, employee }) => {
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === 'submitting';
-
+  const departments = useDepartments;
   const cancelHandler = () => {
     navigate('../' + employee.id);
   };
@@ -102,13 +103,34 @@ const EmployeeControllerForm = ({ method, employee }) => {
         />
 
         <label htmlFor="status">Status :</label>
-        <input
+        <select
+          id="status"
+          required
+          defaultValue={employee ? employee.status : ''}
+        >
+          <option value="rejected">Rejected</option>
+          <option value="resigned">Resigned</option>
+          <option value="actual">Actual</option>
+        </select>
+
+        <label htmlFor="status">Department :</label>
+        <select
+          id="status"
+          required
+          defaultValue={employee ? employee.status : ''}
+        >
+          <option value="rejected">Rejected</option>
+          <option value="resigned">Resigned</option>
+          <option value="actual">Actual</option>
+        </select>
+
+        {/* <input
           id="status"
           type="text"
           name="status"
           required
           defaultValue={employee ? employee.status : ''}
-        />
+        /> */}
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -129,7 +151,6 @@ export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
-
   const employeeData = {
     firstName: data.get('firstName'),
     lastName: data.get('lastName'),

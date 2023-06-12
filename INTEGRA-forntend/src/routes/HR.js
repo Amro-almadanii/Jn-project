@@ -236,7 +236,7 @@ export const HrRoute = {
           loader: EmployeesDetailLoader,
           children: [
             {
-              path: 'hr/employees/employee-detail/:employeeId',
+              path: '/hr/employees/employee-detail/:employeeId',
               element: <EmployeeDetailPage />,
               action: deleteEmployeeAction,
               loader: checkAuthLoader,
@@ -271,7 +271,7 @@ export const HrRoute = {
           loader: EmployeeEducationsDetailLoader,
           children: [
             {
-              path: 'hr/employeeEducations/employeeEducation-detail/:employeeEducationId',
+              path: '/hr/employeeEducations/employeeEducation-detail/:employeeEducationId',
               element: <EmployeeEducationDetailPage />,
               action: deleteEmployeeEducationsAction,
               loader: checkAuthLoader,
@@ -306,7 +306,7 @@ export const HrRoute = {
           loader: EmployeePerformanceDetailLoader,
           children: [
             {
-              path: 'hr/employeePerformances/employeePerformance-detail/:employeePerformanceId',
+              path: '/hr/employeePerformances/employeePerformance-detail/:employeePerformanceId',
               element: <EmployeePerformanceDetailPage />,
               action: deleteEmployeePerformanceAction,
               loader: checkAuthLoader,
@@ -341,7 +341,7 @@ export const HrRoute = {
           loader: EmployeeVacationDetailPageLoader,
           children: [
             {
-              path: 'hr/employeeVacations/employeeVacation-detail/:employeeVacationId',
+              path: '/hr/employeeVacations/employeeVacation-detail/:employeeVacationId',
               element: <EmployeeVacationDetailPage />,
               action: deleteEmployeeVacationAction,
               loader: checkAuthLoader,

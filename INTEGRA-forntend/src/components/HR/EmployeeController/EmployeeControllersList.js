@@ -32,7 +32,7 @@ const EmployeeControllersList = ({ employeeControllers }) => {
             <tr
               onClick={() =>
                 navigate(
-                  `/hr/employees/employee-detail/${employeeControllers.id}`
+                  `/hr/employees/employee-detail/${employeeController.id}`
                 )
               }
             >

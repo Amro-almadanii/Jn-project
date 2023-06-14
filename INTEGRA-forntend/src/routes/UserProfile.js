@@ -13,7 +13,7 @@ export const userProfileRoute = {
     {
       path: '/userProfile/user',
       element: <UserProfile />,
-      loader: userProfileLoader,
+  //    loader: userProfileLoader,
     },
   ],
 };

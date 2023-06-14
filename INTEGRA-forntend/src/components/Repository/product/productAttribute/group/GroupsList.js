@@ -18,6 +18,14 @@ const GroupsList = ({ groups }) => {
 
   return (
     <div className={classes.groupsList}>
+      <div className={classes.add_category}>
+        <Link
+          className={classes.add_category_link}
+          to="/repository/products/attributes/groups/new"
+        >
+          Add New Group
+        </Link>
+      </div>
       {groups.map((group) => (
         <Card className={classes.card} key={group.id}>
           <label>Name of Group:</label>

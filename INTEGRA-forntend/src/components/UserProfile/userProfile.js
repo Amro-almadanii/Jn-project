@@ -1,31 +1,12 @@
 import { Card } from '@mui/material';
 import classes from './UserProfile.module.scss';
 // import CountUp from 'react-countup';
-
+import { Chart } from 'react-google-charts';
 import { getAuthToken } from '../../hooks/auth';
 import React, { Component } from 'react';
 import { json } from 'react-router-dom';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 const UserProfile = () => {
-  let certificatesCounter = 1;
-  let educationsCounter = 1;
-  let performancesCounter = 1;
-  let vacationsCounter = 1;
-  const handleCertificatesCounter = () => {
-    certificatesCounter++;
-  };
-  const handleEducationsCounter = () => {
-    educationsCounter++;
-  };
-
-  const handlePerformancesCounter = () => {
-    performancesCounter++;
-  };
-
-  const handleVacationsCounter = () => {
-    vacationsCounter++;
-  };
-
   const [data] = useLoaderData();
   const userInfo = data;
   const navigate = useNavigate();
@@ -44,13 +25,10 @@ const UserProfile = () => {
             <button onClick={() => navigate(-1)}>Go Back</button>
           </div>
           <label>Certificate Info :</label>
-          {userInfo.certificates.map((Info) => (
+          {userInfo.certificates.map((Info, index) => (
             <Card className={classes.childCard}>
-              <label>Number Of Certificates :{certificatesCounter} </label>
-              <div
-                onLoad={handleCertificatesCounter()}
-                className={classes.cardItems}
-              >
+              <label>Number Of Certificates :{index + 1} </label>
+              <div className={classes.cardItems}>
                 <label>Certificates Name :</label>
                 <p>{Info.name}</p>
               </div>
@@ -62,9 +40,9 @@ const UserProfile = () => {
           ))}
 
           <label>Educations Info :</label>
-          {userInfo.educations.map((Info) => (
+          {userInfo.educations.map((Info, index) => (
             <Card className={classes.childCard}>
-              <label>Number Of Educations : {educationsCounter}</label>
+              <label>Number Of Educations : {index + 1}</label>
               <div className={classes.cardItems}>
                 <label>Educations Degree :</label>
                 <p>{Info.degree}</p>
@@ -73,10 +51,7 @@ const UserProfile = () => {
                 <label>Educations Graduation Date :</label>
                 <p>{Info.graduationDate}</p>
               </div>
-              <div
-                onLoad={handleEducationsCounter()}
-                className={classes.cardItems}
-              >
+              <div className={classes.cardItems}>
                 <label>Educations Granting By :</label>
                 <p>{Info.grantingBy}</p>
               </div>
@@ -88,17 +63,14 @@ const UserProfile = () => {
           ))}
 
           <label>Performances Info :</label>
-          {userInfo.performances.map((Info) => (
+          {userInfo.performances.map((Info, index) => (
             <Card className={classes.childCard}>
-              <label>Number Of Performances :{performancesCounter} </label>
+              <label>Number Of Performances :{index + 1} </label>
               <div className={classes.cardItems}>
                 <label>Performances Rating :</label>
                 <p>{Info.performanceRating}</p>
               </div>
-              <div
-                onLoad={handlePerformancesCounter()}
-                className={classes.cardItems}
-              >
+              <div className={classes.cardItems}>
                 <label>Performances Review Date :</label>
                 <p>{Info.reviewDate}</p>
               </div>
@@ -110,9 +82,9 @@ const UserProfile = () => {
           ))}
 
           <label>Vacations Info :</label>
-          {userInfo.vacations.map((Info) => (
+          {userInfo.vacations.map((Info, index) => (
             <Card className={classes.childCard}>
-              <label>Number Of Vacations : {vacationsCounter}</label>
+              <label>Number Of Vacations : {index + 1}</label>
               <div className={classes.cardItems}>
                 <label>Vacations Status :</label>
                 <p>{Info.status}</p>
@@ -125,10 +97,7 @@ const UserProfile = () => {
                 <label>Vacations Start Date :</label>
                 <p>{Info.startDate}</p>
               </div>
-              <div
-                onLoad={handleVacationsCounter}
-                className={classes.cardItems}
-              >
+              <div className={classes.cardItems}>
                 <label>Vacations End Date :</label>
                 <p>{Info.endDate}</p>
               </div>
@@ -169,4 +138,39 @@ export async function loader() {
   /* <div>
             <CountUp end={100} start={0} duration={3} />%
           </div> */
+}
+
+// const info = [
+//   ['Task', 'Hours per Day', 'style'],
+//   ['amro', 11],
+//   ['Eat', 2],
+//   ['Commute', 2],
+//   ['Watch TV', 2],
+// ];
+
+// const columns = [
+//   ['Element', 'Density', { role: 'style' }],
+//   ['amro', 8.94, '#b87333'],
+//   ['Silver', 10.49, 'silver'],
+//   ['Gold', 19.3, 'gold'],
+//   ['Platinum', 21.45, 'color: #e5e4e2'],
+// ];
+
+{
+  /* <Chart
+            chartType="PieChart"
+            data={info}
+            loader={<div>Loading Chart..</div>}
+            options={{ title: 'Motivation Level Throughout the Day' }}
+            width={'100%'}
+            height={'400px'}
+          /> */
+}
+{
+  /* <Chart
+            chartType="ColumnChart"
+            width="100%"
+            height="400px"
+            data={columns}
+          /> */
 }

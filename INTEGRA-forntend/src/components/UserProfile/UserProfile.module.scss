@@ -20,6 +20,9 @@
     border: 2px solid var(--third-color);
     box-shadow: none;
   }
+  .chart {
+    background-color: var(--second-color);
+  }
   .button {
     display: flex;
     justify-content: end;

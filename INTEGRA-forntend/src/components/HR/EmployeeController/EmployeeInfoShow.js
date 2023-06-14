@@ -34,119 +34,100 @@ const EmployeeInfoShow = ({ employeesInfo }) => {
   return (
     <div className={classes.EmployeeInfoShow}>
       <div className={classes.box}>
+        <label>Certificate Info :</label>
         <Card className={classes.card}>
-          <div className={classes.cardItems}>
-            <label>First name :</label>
-            <p>{employeesInfo.firstName}</p>
-          </div>
-          <div className={classes.cardItems}>
-            <label>Last name :</label>
-            <p>{employeesInfo.lastName}</p>
-          </div>
-          <Card className={classes.fatherCard}>
-            <label>Certificate Info :</label>
-            {employeesInfo.certificates.map((employeeInfo) => (
-              <Card className={classes.childCard}>
-                <label>Number Of Certificates :{certificatesCounter} </label>
-                <div
-                  onLoad={handleCertificatesCounter()}
-                  className={classes.cardItems}
-                >
-                  <label>Certificates Name :</label>
-                  <p>{employeeInfo.name}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Certificates Level :</label>
-                  <p>{employeeInfo.level}</p>
-                </div>
-              </Card>
-            ))}
-          </Card>
-
-          <Card className={classes.fatherCard}>
-            <label>Educations Info :</label>
-            {employeesInfo.educations.map((employeeInfo) => (
-              <Card className={classes.childCard}>
-                <label>Number Of Educations : {educationsCounter}</label>
-                <div className={classes.cardItems}>
-                  <label>Educations Degree :</label>
-                  <p>{employeeInfo.degree}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Educations Graduation Date :</label>
-                  <p>{employeeInfo.graduationDate}</p>
-                </div>
-                <div
-                  onLoad={handleEducationsCounter()}
-                  className={classes.cardItems}
-                >
-                  <label>Educations Granting By :</label>
-                  <p>{employeeInfo.grantingBy}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Educations Specialization :</label>
-                  <p>{employeeInfo.specialization}</p>
-                </div>
-              </Card>
-            ))}
-          </Card>
-
-          <Card className={classes.fatherCard}>
-            <label>Performances Info :</label>
-            {employeesInfo.performances.map((employeeInfo) => (
-              <Card className={classes.childCard}>
-                <label>Number Of Performances :{performancesCounter} </label>
-                <div className={classes.cardItems}>
-                  <label>Performances Rating :</label>
-                  <p>{employeeInfo.performanceRating}</p>
-                </div>
-                <div
-                  onLoad={handlePerformancesCounter()}
-                  className={classes.cardItems}
-                >
-                  <label>Performances Review Date :</label>
-                  <p>{employeeInfo.reviewDate}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Performances Comments :</label>
-                  <p>{employeeInfo.comments}</p>
-                </div>
-              </Card>
-            ))}
-          </Card>
-
-          <Card className={classes.fatherCard}>
-            <label>Vacations Info :</label>
-            {employeesInfo.vacations.map((employeeInfo) => (
-              <Card className={classes.childCard}>
-                <label>Number Of Vacations : {vacationsCounter}</label>
-                <div className={classes.cardItems}>
-                  <label>Vacations Status :</label>
-                  <p>{employeeInfo.status}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Vacations Type :</label>
-                  <p>{employeeInfo.typeOfVacation}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Vacations Start Date :</label>
-                  <p>{employeeInfo.startDate}</p>
-                </div>
-                <div
-                  onLoad={handleVacationsCounter}
-                  className={classes.cardItems}
-                >
-                  <label>Vacations End Date :</label>
-                  <p>{employeeInfo.endDate}</p>
-                </div>
-                <div className={classes.cardItems}>
-                  <label>Vacations Reason :</label>
-                  <p>{employeeInfo.reasonOfVacation}</p>
-                </div>
-              </Card>
-            ))}
-          </Card>
+          {employeesInfo.certificates.map((employeeInfo) => (
+            <Card className={classes.childCard}>
+              <label>Number Of Certificates :{certificatesCounter} </label>
+              <div
+                onLoad={handleCertificatesCounter()}
+                className={classes.cardItems}
+              >
+                <label>Certificates Name :</label>
+                <p>{employeeInfo.name}</p>
+              </div>
+              <div className={classes.cardItems}>
+                <label>Certificates Level :</label>
+                <p>{employeeInfo.level}</p>
+              </div>
+            </Card>
+          ))}
         </Card>
+
+        <label>Educations Info :</label>
+        {employeesInfo.educations.map((employeeInfo) => (
+          <Card className={classes.childCard}>
+            <label>Number Of Educations : {educationsCounter}</label>
+            <div className={classes.cardItems}>
+              <label>Educations Degree :</label>
+              <p>{employeeInfo.degree}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Educations Graduation Date :</label>
+              <p>{employeeInfo.graduationDate}</p>
+            </div>
+            <div
+              onLoad={handleEducationsCounter()}
+              className={classes.cardItems}
+            >
+              <label>Educations Granting By :</label>
+              <p>{employeeInfo.grantingBy}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Educations Specialization :</label>
+              <p>{employeeInfo.specialization}</p>
+            </div>
+          </Card>
+        ))}
+
+        <label>Performances Info :</label>
+        {employeesInfo.performances.map((employeeInfo) => (
+          <Card className={classes.childCard}>
+            <label>Number Of Performances :{performancesCounter} </label>
+            <div className={classes.cardItems}>
+              <label>Performances Rating :</label>
+              <p>{employeeInfo.performanceRating}</p>
+            </div>
+            <div
+              onLoad={handlePerformancesCounter()}
+              className={classes.cardItems}
+            >
+              <label>Performances Review Date :</label>
+              <p>{employeeInfo.reviewDate}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Performances Comments :</label>
+              <p>{employeeInfo.comments}</p>
+            </div>
+          </Card>
+        ))}
+
+        <label>Vacations Info :</label>
+        {employeesInfo.vacations.map((employeeInfo) => (
+          <Card className={classes.childCard}>
+            <label>Number Of Vacations : {vacationsCounter}</label>
+            <div className={classes.cardItems}>
+              <label>Vacations Status :</label>
+              <p>{employeeInfo.status}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Vacations Type :</label>
+              <p>{employeeInfo.typeOfVacation}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Vacations Start Date :</label>
+              <p>{employeeInfo.startDate}</p>
+            </div>
+            <div onLoad={handleVacationsCounter} className={classes.cardItems}>
+              <label>Vacations End Date :</label>
+              <p>{employeeInfo.endDate}</p>
+            </div>
+            <div className={classes.cardItems}>
+              <label>Vacations Reason :</label>
+              <p>{employeeInfo.reasonOfVacation}</p>
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );

@@ -4,13 +4,14 @@ import { Form, Link, useSubmit } from 'react-router-dom';
 
 const GroupsList = ({ groups }) => {
   const submit = useSubmit();
-  // const deleteHandler = () => {
-  //   const proceed = window.confirm('Are you sure?');
-  //
-  //   if (proceed) {
-  //     submit(null, { method: 'delete' });
-  //   }
-  // };
+  const deleteHandler = (event) => {
+    const proceed = window.confirm('Are you sure?');
+
+    const id = event.target.value;
+    if (proceed) {
+      submit(null, { method: 'delete', action: `/repository/products/attributes/groups/delete/${id}` });
+    }
+  };
 
   return (
     <div className={classes.groupsList}>
@@ -31,10 +32,7 @@ const GroupsList = ({ groups }) => {
             >
               Edit
             </Link>
-            <Form method="delete">
-              <input type="hidden" name="groupId" value={group.id}/>
-              <button type="submit">Delete</button>
-            </Form>
+              <button onClick={deleteHandler} value={group.id} type="submit">Delete</button>
           </div>
         </Card>
       ))}

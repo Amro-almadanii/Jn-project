@@ -46,6 +46,9 @@ export const productAttribute = {
           index: true,
           element: <GroupsPage />,
           loader: GroupsLoader,
+        },
+        {
+          path: '/repository/products/attributes/groups/delete/:groupId',
           action: deleteGroupAction,
         },
         {

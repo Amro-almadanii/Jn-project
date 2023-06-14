@@ -7,7 +7,6 @@ import { json, useNavigate, useParams } from 'react-router-dom';
 const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
   const [leads, setLeads] = useState([]);
   const [editLead, setEditLead] = useState({ id: 0, type: '' });
-  const [leadsOfCampaignState, setLeadsOfCampaignState] = useState(leadsOfCampaign);
 
   const { campaignId } = useParams('campaignId');
   const responseLead = useLeads();
@@ -38,10 +37,10 @@ const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
 
   const checkHandler = (event) => {
     if (event.target.checked) {
-      addById(leadsOfCampaignState, event.target.value);
+      addById(leadsOfCampaign, event.target.value);
       setEditLead({ id: event.target.value, type: 'attach' });
     } else {
-      removeById(leadsOfCampaignState, event.target.value);
+      removeById(leadsOfCampaign, event.target.value);
       setEditLead({ id: event.target.value, type: 'detach' });
     }
   };
@@ -61,7 +60,6 @@ const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
           url = 'http://localhost:8000/marketing/campaigns/detachCampaignToLead/' + campaignId;
         }
 
-        console.log(url, JSON.stringify(campaignData))
         const response = await fetch(url, {
             method: 'post',
             headers: {
@@ -104,8 +102,8 @@ const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
             <td>{lead.id}</td>
             <td>{lead.type}</td>
             <td onClick={(event) => event.stopPropagation()}><input type='checkbox' value={lead.id}
-                       checked={JSON.stringify(leadsOfCampaignState).includes(JSON.stringify(lead))}
-                       onClick={checkHandler}
+                       checked={JSON.stringify(leadsOfCampaign).includes(JSON.stringify(lead))}
+                       onChange={checkHandler}
             />
             </td>
           </tr>

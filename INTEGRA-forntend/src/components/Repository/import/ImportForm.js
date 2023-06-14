@@ -6,38 +6,31 @@ import {
   useNavigate,
   useNavigation
 } from 'react-router-dom';
-import classes from './ProductForm.module.scss';
+import classes from './ImportForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
 import { useEffect, useState } from 'react';
-import { useCategories, useSuppliers } from '../../../hooks/useApi';
+import { useSuppliers } from '../../../hooks/useApi';
 
-const ProductForm = ({ method, product }) => {
+const ImportForm = ({ method, importItem }) => {
   const [suppliers, setSuppliers] = useState([]);
-  const [categories, setCategories] = useState([]);
-
   // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === 'submitting';
 
-  const supplierResponse = useSuppliers();
-  const categoryResponse = useCategories();
 
-  useEffect(() => {
-    setCategories(categoryResponse);
-  }, [categoryResponse]);
+  const supplierResponse = useSuppliers();
 
   useEffect(() => {
     setSuppliers(supplierResponse);
   }, [supplierResponse]);
-
   const cancelHandler = () => {
-    navigate('../' + product.id);
+    navigate('../' + importItem.id);
   };
 
   return (
-    <div className={classes.productForm}>
+    <div className={classes.importForm}>
       <Form method={method} className={classes.form}>
         <p>
           <label htmlFor='name'>Name</label>
@@ -46,49 +39,28 @@ const ProductForm = ({ method, product }) => {
             type='text'
             name='name'
             required
-            defaultValue={product ? product.name : ''}
+            defaultValue={importItem ? importItem.name : ''}
           />
         </p>
         <p>
-          <label htmlFor='price'>Price</label>
+          <label htmlFor='date'>Address</label>
           <input
-            id='price'
-            type='number'
-            name='price'
+            id='date'
+            type='date'
+            name='date'
             required
-            defaultValue={product ? product.price : ''}
+            defaultValue={importItem ? importItem.date : ''}
           />
         </p>
         <p>
-          <label htmlFor='description'>Description</label>
-          <textarea
-            id='description'
-            name='description'
-            required
-            defaultValue={product ? product.description : ''}
-          >
-          </textarea>
-        </p>
-        <p>
-          <label htmlFor='quantityInStock'>Quantity in stock</label>
+          <label htmlFor='total_amount'>Total Amount</label>
           <input
-            id='quantityInStock'
+            id='total_amount'
             type='number'
-            name='quantityInStock'
+            name='total_amount'
             required
-            min="0"
-            defaultValue={product ? product.quantity_in_stock : ''}
+            defaultValue={importItem ? importItem.total_amount : ''}
           />
-        </p>
-        <p>
-          <label htmlFor='categoryId'> Category </label>
-          <select name='categoryId' id='categoryId'>
-            <option value=''>--Choose an option--</option>
-            {
-              categories.map((category) => (
-                <option key={category.id} value={category.id}>{category.name}</option>
-              ))}
-          </select>
         </p>
         <p>
           <label htmlFor='supplierId'> Supplier </label>
@@ -113,29 +85,29 @@ const ProductForm = ({ method, product }) => {
   );
 };
 
-export default ProductForm;
+export default ImportForm;
 
 export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
 
-  const productData = {
+  const importData = {
     name: data.get('name'),
-    description: data.get('description'),
-    price: data.get('price'),
-    quantity_in_stock: data.get('quantityInStock'),
     supplier_id: data.get('supplierId'),
-    category_id: data.get('categoryId')
+    total_amount: data.get('total_amount'),
+    date: data.get('date')
   };
+
+  console.log(importData);
 
   let url;
 
   if (method === 'PUT') {
     url =
-      'http://localhost:8000/repository/products/' + params.productId;
+      'http://localhost:8000/repository/imports/' + params.importId;
   } else {
-    url = 'http://localhost:8000/repository/products';
+    url = 'http://localhost:8000/repository/imports';
   }
 
   const response = await fetch(url, {
@@ -144,14 +116,12 @@ export async function action({ request, params }) {
       'Content-Type': 'application/json',
       Authorization: 'bearer' + token
     },
-    body: JSON.stringify(productData)
+    body: JSON.stringify(importData)
   });
 
   if (!response.ok) {
-    throw json({ message: 'Could not save product.' }, { status: 500 });
+    throw json({ message: 'Could not save import.' }, { status: 500 });
   }
 
-  const { product_id } = await response.json();
-
-  return redirect('/repository/products/new/newDetail/' + product_id);
+  return redirect('/repository/imports');
 }

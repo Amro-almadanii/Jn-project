@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { json } from 'react-router-dom';
 import { getAuthToken } from './auth';
-import groups from '../pages/Repository/product/attributeGroup/Groups';
-import suppliers from '../pages/Repository/supplier/Suppliers';
 
 export const useEvents = (id) => {
   const [events, setEvents] = useState([]);
@@ -576,9 +574,7 @@ export const useAttributesGroup = (id) => {
             { status: 500 }
           );
         }
-      } catch (error) {
-        console.error(error);
-      }
+      } catch {}
     };
 
     fetchData();
@@ -730,4 +726,70 @@ export const useAttachDetachLeadToCampaign = (id, type) => {
   }, []);
 
   return null;
+};
+
+
+export const useProductsofImport = (id) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/prdoctsImports/productsByImportId/' + id, {
+            headers: {
+              Authorization: 'bearer' + token,
+            },
+          }
+        );
+
+        const { data } = await response.json();
+        setProducts(data);
+        if (!response.ok)
+          throw json(
+            { message: 'Could not fetch products of import.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return products;
+};
+
+
+export const useProductsOfExport = (id) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/repository/prdoctsExports/productsByExportId/' + id, {
+            headers: {
+              Authorization: 'bearer' + token,
+            },
+          }
+        );
+
+        const { data } = await response.json();
+        setProducts(data);
+        if (!response.ok)
+          throw json(
+            { message: 'Could not fetch products of export.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return products;
 };

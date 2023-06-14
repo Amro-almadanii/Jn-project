@@ -54,7 +54,7 @@ export async function action({ request, params }) {
   const groupData = {
     name: data.get('name'),
   };
-  console.log(groupData);
+
   let url;
 
   if (method === 'PUT') {

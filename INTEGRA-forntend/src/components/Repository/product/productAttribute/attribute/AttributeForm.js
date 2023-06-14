@@ -110,7 +110,6 @@ export async function action({ request, params }) {
     attributeData.values = {...data.getAll('values')};
   }
 
-  console.log(attributeData);
   let url;
 
   if (method === 'PUT') {

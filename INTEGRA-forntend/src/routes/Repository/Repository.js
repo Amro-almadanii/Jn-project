@@ -40,6 +40,33 @@ import EditProductDetailPage, {
 } from '../../pages/Repository/product/productDetail/EditProductDetail';
 import { action as EditProductDetailAction } from '../../components/Repository/product/productDetail/ProductDetailEditForm';
 
+import ImportsPage , { loader as ImportsLoader } from '../../pages/Repository/import/Imports';
+import NewImportPage from '../../pages/Repository/import/NewImport';
+import { action as manipulateImportAction } from '../../components/Repository/import/ImportForm';
+import ImportDetailPage, {
+  action as deleteImportAction,
+  loader as ImportDetailLoader
+} from '../../pages/Repository/import/ImportDetail';
+import EditImportPage from '../../pages/Repository/import/EditImport';
+import AddProductsToImportPage, {
+  loader as addProductToImportLoader
+} from '../../pages/Repository/import/AddProductsToImport';
+import { action as deleteProductOfImport} from '../../components/Repository/import/ImportItem';
+
+
+import ExportsPage , { loader as ExportsLoader } from '../../pages/Repository/export/Exports';
+import NewExportPage from '../../pages/Repository/export/NewExport';
+import { action as manipulateExportAction } from '../../components/Repository/export/ExportForm';
+import ExportDetailPage, {
+  action as deleteExportAction,
+  loader as ExportDetailLoader
+} from '../../pages/Repository/export/ExportDetail';
+import EditExportPage from '../../pages/Repository/export/EditExport';
+import AddProductsToExportPage, {
+  loader as addProductToExportLoader
+} from '../../pages/Repository/export/AddProductsToExport';
+import { action as deleteProductOfExport} from '../../components/Repository/export/ExportItem';
+
 export const repositoryRoute = {
   path: '/repository',
   element: <RootLayout />,
@@ -168,6 +195,99 @@ export const repositoryRoute = {
         },
         productAttribute,
       ],
+    },
+    {
+      path: '/repository/imports',
+      children: [
+        {
+          index: true,
+          element: <ImportsPage />,
+          loader: ImportsLoader,
+        },
+        {
+          path: '/repository/imports/new',
+          element: <NewImportPage />,
+          loader: checkAuthLoader,
+          action: manipulateImportAction,
+        },
+        {
+          path: '/repository/imports/import-detail',
+          id: 'import-detail',
+          loader: ImportDetailLoader,
+          children: [
+            {
+              path: '/repository/imports/import-detail/:importId/addProducts',
+              element: <AddProductsToImportPage />,
+              loader: addProductToImportLoader,
+            },
+            {
+              path: '/repository/imports/import-detail/:importId',
+              element: <ImportDetailPage />,
+              action: deleteImportAction,
+              loader: checkAuthLoader,
+              children: [
+                {
+                  path: '/repository/imports/import-detail/:importId/:productId',
+                  action: deleteProductOfImport,
+                },
+              ],
+            },
+            {
+              path: '/repository/imports/import-detail/edit/:importId',
+              element: <EditImportPage />,
+              action: manipulateImportAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        }
+      ]
+    },
+
+    {
+      path: '/repository/exports',
+      children: [
+        {
+          index: true,
+          element: <ExportsPage />,
+          loader: ExportsLoader,
+        },
+        {
+          path: '/repository/exports/new',
+          element: <NewExportPage />,
+          loader: checkAuthLoader,
+          action: manipulateExportAction,
+        },
+        {
+          path: '/repository/exports/export-detail',
+          id: 'export-detail',
+          loader: ExportDetailLoader,
+          children: [
+            {
+              path: '/repository/exports/export-detail/:exportId/addProducts',
+              element: <AddProductsToExportPage />,
+              loader: addProductToExportLoader,
+            },
+            {
+              path: '/repository/exports/export-detail/:exportId',
+              element: <ExportDetailPage />,
+              action: deleteExportAction,
+              loader: checkAuthLoader,
+              children: [
+                {
+                  path: '/repository/exports/export-detail/:exportId/:productId',
+                  action: deleteProductOfExport,
+                },
+              ]
+            },
+            {
+              path: '/repository/exports/export-detail/edit/:exportId',
+              element: <EditExportPage />,
+              action: manipulateExportAction,
+              loader: checkAuthLoader,
+            },
+          ],
+        }
+      ]
     },
   ],
 };

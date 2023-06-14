@@ -45,7 +45,6 @@ const ProductDetailEditForm = ({ method, detail }) => {
 
       fetchData();
   }, []);
-  console.log(detail)
 
   return (
     <div className={classes.productDetailForm}>as
@@ -107,7 +106,7 @@ export async function action({ request, params }) {
 
   for (let pair of formData.entries()) {
     const [fieldName, fieldValue] = pair;
-  console.log(pair)
+
     if(Object.keys(currentAttributes).includes(fieldName)) {
       attributeData[`group${currentGroup}`] = currentAttributes;
       // attributeData = attributeData.concat(currentAttributes);
@@ -136,7 +135,7 @@ export async function action({ request, params }) {
   const details = {
     details: attributeData,
   }
-  console.log(details);
+
   const response = await fetch('http://localhost:8000/repository/productDetails/' + params.detailId, {
     method: method,
     headers: {

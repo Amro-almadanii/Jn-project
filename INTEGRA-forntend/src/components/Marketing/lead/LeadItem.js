@@ -40,9 +40,6 @@ const LeadItem = ({ lead }) => {
     setCampaigns(campaignResponse);
   }, [campaignResponse]);
 
-  console.log(customersOfLead);
-
-
   const removeById = (arr, id) => {
     const requiredIndex = arr.findIndex(el => {
       return el.id == id;
@@ -51,7 +48,7 @@ const LeadItem = ({ lead }) => {
       return false;
     }
     ;
-    console.log(arr);
+
     return !!arr.splice(requiredIndex, 1);
   };
 
@@ -89,7 +86,6 @@ const LeadItem = ({ lead }) => {
           url = 'http://localhost:8000/marketing/leads/detachLeadToCustomer/' + lead.id;
         }
 
-        console.log(url, JSON.stringify(campaignData));
         const response = await fetch(url, {
           method: 'post',
           headers: {

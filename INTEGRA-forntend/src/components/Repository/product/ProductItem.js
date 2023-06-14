@@ -2,6 +2,7 @@ import { Link, useSubmit } from 'react-router-dom';
 import classes from './ProductItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useAttributesGroup } from '../../../hooks/useApi';
 
 
 const ProductItem = ({ product }) => {
@@ -16,22 +17,24 @@ const ProductItem = ({ product }) => {
     }
   };
 
+  const idOfGroup = product.details.length > 0 ? product.details[0].attribute_group_id : 0;
+
+  const attributesGroupResponse = useAttributesGroup(idOfGroup);
+
   useEffect(() => {
     const getKeys = () => {
       const keys = [];
-      if (product.details[0]) {
-        for (const key in product.details[0].details) {
-          keys.push(key);
+        for (const key in attributesGroupResponse) {
+          keys.push(attributesGroupResponse[key].name);
         }
-      }
+
       return keys;
     };
 
     const keys = getKeys();
     setKeysOfDetail(keys);
-  }, []);
+  }, [attributesGroupResponse]);
 
-  console.log(product.details)
 
   return (
     <div className={classes.productItem}>

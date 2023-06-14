@@ -1,13 +1,13 @@
 import { Link, useSubmit, json } from 'react-router-dom';
 import classes from './CampaignItem.module.scss';
 import { Card } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { getAuthToken } from '../../../hooks/auth';
 import {
   useEvents,
   useLeadsOfCampaign,
   useSocialMedia,
-  useTvs,
+  useTvs
 } from '../../../hooks/useApi';
 import UpdateLeadsOfCampaign from './UI/UpdateLeadsOfCampaign';
 
@@ -17,7 +17,7 @@ const CampaignItem = ({ campaign }) => {
     events: [],
     tvs: [],
     socialMedia: [],
-    leads: [],
+    leads: []
   });
 
   const [editLeadCampaign, setEditLeadCampaign] = useState(false);
@@ -93,19 +93,19 @@ const CampaignItem = ({ campaign }) => {
           <div className={classes.cardItems}>
             <label>Leads of Campaign :</label>
             <p>
-              {campaignDetail.leads.map((lead) => (
-                <Link
-                  key={lead.id}
-                  className={classes.leadLink}
-                  to={`/marketing/leads/lead-detail/${lead.id}`}
-                >
-                  {lead.type}
-                </Link>
+              {campaignDetail.leads.length > 0 && campaignDetail.leads.map((lead, index) => (
+                <Fragment key={lead.id}>
+                  {index > 0 && ' - '}
+                  <Link className={classes.leadLink} to={`/marketing/leads/lead-detail/${lead.id}`}>{lead.type}</Link>
+                </Fragment>
               ))}
             </p>
           </div>
           <div className={classes.btn}>
-            <button onClick={updateLeadHandler}>Update leads</button>
+            <button onClick={updateLeadHandler}>
+              {!editLeadCampaign && <>Update leads</>}
+              {editLeadCampaign && <>Go back to Details</>}
+            </button>
             <Link
               className={classes.link}
               to={`/marketing/campaigns/campaign-detail/edit/${campaign.id}`}

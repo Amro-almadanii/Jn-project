@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { json } from 'react-router-dom';
 import { getAuthToken } from './auth';
-import groups from '../pages/Repository/product/attributeGroup/Groups';
-import suppliers from '../pages/Repository/supplier/Suppliers';
 
 export const useEvents = (id) => {
   const [events, setEvents] = useState([]);
@@ -266,6 +264,44 @@ export const useCustomersOfLead = (id) => {
 
         const response = await fetch(
           'http://localhost:8000/marketing/leads/showLeadCustomers/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setCustomers(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Customers.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return customers;
+};
+
+export const useCustomers = () => {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/marketing/customers',
           {
             headers: {
               Authorization: 'bearer ' + token,
@@ -649,9 +685,7 @@ export const useAttributesGroup = (id) => {
             { status: 500 }
           );
         }
-      } catch (error) {
-        console.error(error);
-      }
+      } catch {}
     };
 
     fetchData();
@@ -772,4 +806,114 @@ export const useProductStock = (id) => {
   }, []);
 
   return productStock;
+};
+
+export const useAttachDetachLeadToCampaign = (id, type) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        let url;
+        if (type == 'attact') {
+          url =
+            'http://localhost:8000/marketing/campaigns/attachCampaignToLead/' +
+            id;
+        } else {
+          url =
+            'http://localhost:8000/marketing/campaigns/detachCampaignToLead/' +
+            id;
+        }
+        const response = await fetch(url, {
+          headers: {
+            Authorization: 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok)
+          throw json(
+            { message: 'Could not add lead to campaign.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return null;
+};
+
+export const useProductsofImport = (id) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/repository/prdoctsImports/productsByImportId/' +
+            id,
+          {
+            headers: {
+              Authorization: 'bearer' + token,
+            },
+          }
+        );
+
+        const { data } = await response.json();
+        setProducts(data);
+        if (!response.ok)
+          throw json(
+            { message: 'Could not fetch products of import.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return products;
+};
+
+export const useProductsOfExport = (id) => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/repository/prdoctsExports/productsByExportId/' +
+            id,
+          {
+            headers: {
+              Authorization: 'bearer' + token,
+            },
+          }
+        );
+
+        const { data } = await response.json();
+        setProducts(data);
+        if (!response.ok)
+          throw json(
+            { message: 'Could not fetch products of export.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return products;
 };

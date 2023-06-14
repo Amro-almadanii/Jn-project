@@ -36,7 +36,6 @@ const ProductDetailNewForm = ({ method, attribute }) => {
 
   useEffect(() => {
     setProductStock(productStockResponse);
-    console.log(productStockResponse);
   }, [productStockResponse]);
 
   useEffect(() => {
@@ -99,7 +98,6 @@ const ProductDetailNewForm = ({ method, attribute }) => {
   useEffect(() => {
     if (stockSum > productStock) {
       setDisableSubmit(true);
-      console.log(stock);
     } else {
       setDisableSubmit(false);
     }
@@ -227,7 +225,6 @@ export async function action({ request, params }) {
     attributeData[`group${currentGroup}`] = currentAttributes;
   }
 
-  console.log(attributeData);
 
   const details = {
     details: attributeData,

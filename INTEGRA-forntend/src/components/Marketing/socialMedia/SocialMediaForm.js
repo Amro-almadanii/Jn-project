@@ -107,7 +107,7 @@ export async function action({ request, params }) {
     expected_revenue: data.get('expected_revenue'),
     campaign_id: 1,
   };
-console.log(socialMediaData);
+
   let url;
 
   if (method === 'PUT') {

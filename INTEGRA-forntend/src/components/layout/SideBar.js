@@ -38,7 +38,7 @@ function SideBar() {
       handleSystemManagmentDropdownClick(true);
   }, []);
 
-  console.log('location', location.pathname);
+
   return (
     <aside className={classes.sidebar}>
       <div
@@ -256,6 +256,28 @@ function SideBar() {
             end
           >
             Attributes Groups
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/repository/imports"
+            end
+          >
+            Imports
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/repository/exports"
+            end
+          >
+            Exports
           </NavLink>
         </div>
       </div>

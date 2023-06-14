@@ -16,7 +16,7 @@ export default SuppliersPage;
 
 export async function loader() {
   const token = getAuthToken();
-console.log(token);
+
   const response = await fetch('http://localhost:8000/repository/suppliers', {
     headers: {
       Authorization: 'bearer ' + token,
@@ -24,7 +24,6 @@ console.log(token);
       'Accept': 'application/json',
     },
   });
-  console.log(response)
 
   if (!response.ok) {
     throw json({ message: 'Could not fetch suppliers.' }, { status: 500 });

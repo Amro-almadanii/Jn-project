@@ -2,13 +2,13 @@ import MarketingInfo from '../pages/SystemManagment/MarketingInfo';
 import RootLayout from '../pages/Root';
 import ErrorPage from '../pages/Error';
 
-export const systemManagmentRoute = {
-  path: '/systemManagment',
+export const systemManagementRoute = {
+  path: '/systemManagement',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
   children: [
     {
-      path: '/systemManagment/marketing',
+      path: '/systemManagement/marketing',
       element: <MarketingInfo />,
       // loader:,
     },

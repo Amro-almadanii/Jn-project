@@ -34,10 +34,10 @@ export async function loader () {
 export async function action({ request, params }) {
   const token = getAuthToken();
   const data = request.formData();
-  const id = data.get('groupId');
-console.log(21)
+  const id = params.groupId;
+
   const response = await fetch(
-    'http://localhost:8000/repository/attributeGroups/' + id,
+    'http://localhost:8000/repository/products/attributeGroups/' + id,
     {
       method: 'delete',
       headers: {

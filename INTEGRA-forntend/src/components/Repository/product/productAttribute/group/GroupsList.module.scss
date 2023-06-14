@@ -77,4 +77,27 @@
     color: var(--second-color);
     margin: 10px;
   }
+
+  .add_category {
+    text-decoration: none;
+    display: flex;
+    justify-content: end;
+  }
+
+  .add_category_link {
+    text-decoration: none;
+    background-color: var(--second-color);
+    color: white;
+    padding: 6px;
+    margin: 4px;
+    border: 1px solid;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .add_product_link:hover {
+    background-color: var(--third-color);
+    padding: 8px;
+  }
 }

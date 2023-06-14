@@ -12,7 +12,7 @@ import { systemManagmentRoute } from './routes/SystemManagment';
 import { HrRoute } from './routes/HR';
 
 import { loader as redirectLoginLoader } from './pages/Root';
-
+import { userProfileRoute } from './routes/UserProfile';
 function App() {
   const router = createBrowserRouter([
     {
@@ -28,6 +28,7 @@ function App() {
         repositoryRoute,
         systemManagmentRoute,
         HrRoute,
+        userProfileRoute,
       ],
     },
     {

@@ -2,9 +2,10 @@ import { Link, useSubmit } from 'react-router-dom';
 import classes from './DepartmentItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
-// import { useLeadsOfCustomer } from '../../../hooks/useApi';
+import { useDepartmentEmployees } from '../../../hooks/useApi';
+import DepartmentDetailShow from './DepartmentDetailShow';
 const DepartmentItem = ({ department }) => {
-  //   const [leads, setLeads] = useState([]);
+  const [departmentEmployees, setDepartmentEmployees] = useState([]);
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -14,12 +15,11 @@ const DepartmentItem = ({ department }) => {
       submit(null, { method: 'delete' });
     }
   };
-
-  //   const leadResponse = useLeadsOfCustomer(department.id);
-
-  //   useEffect(() => {
-  //     setLeads(leadResponse);
-  //   }, [leadResponse]);
+  const departmentEmployeesResponse = useDepartmentEmployees(department.id);
+  console.log(departmentEmployeesResponse);
+  useEffect(() => {
+    setDepartmentEmployees(departmentEmployeesResponse);
+  }, [departmentEmployeesResponse]);
 
   return (
     <div className={classes.departmentItem}>
@@ -57,6 +57,7 @@ const DepartmentItem = ({ department }) => {
           </div>
         </Card>
       </div>
+      <DepartmentDetailShow employees={departmentEmployees} />
     </div>
   );
 };

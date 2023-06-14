@@ -4,7 +4,7 @@ const EmployeeControllersList = ({ employeeControllers }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.EmployeeList}>
-      <h1> HR > Employee</h1>
+      <h1> HR > Employees</h1>
       <div className={classes.add_Employee}>
         <Link className={classes.add_Employee_link} to="/hr/employees/new">
           Add New Employee
@@ -40,7 +40,9 @@ const EmployeeControllersList = ({ employeeControllers }) => {
               <td>{employeeController.lastName}</td>
               <td>{employeeController.dateOfBrith}</td>
               <td>{employeeController.gender}</td>
-              <td>{employeeController.address}</td>
+              <td>
+                <p>{employeeController.address}</p>
+              </td>
               <td>{employeeController.email}</td>
               <td>{employeeController.phone}</td>
               <td>{employeeController.dateOfHire}</td>

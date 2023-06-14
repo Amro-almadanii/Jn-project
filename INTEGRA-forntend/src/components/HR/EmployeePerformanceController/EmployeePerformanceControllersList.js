@@ -6,7 +6,7 @@ const EmployeePerformanceControllersList = ({
   const navigate = useNavigate();
   return (
     <div className={classes.EmployeePerformanceList}>
-      <h1> HR > Employee Performance </h1>
+      <h1> HR > Employees Performances </h1>
       <div className={classes.add_EmployeePerformance}>
         <Link
           className={classes.add_EmployeePerformance_link}

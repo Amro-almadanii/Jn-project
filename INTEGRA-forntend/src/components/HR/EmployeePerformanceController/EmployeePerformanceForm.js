@@ -74,7 +74,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeePerformanceData = {
-    employee_id: data.get('employee_id'),
+    employee_id: 1,
     performanceRating: data.get('performanceRating'),
     comments: data.get('comments'),
     reviewDate: data.get('reviewDate'),

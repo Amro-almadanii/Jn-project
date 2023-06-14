@@ -2,9 +2,10 @@ import { Link, useSubmit } from 'react-router-dom';
 import classes from './EmployeeItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
-// import { useLeadsOfCustomer } from '../../../hooks/useApi';
+import { useEmployeesDetails } from '../../../hooks/useApi';
+import EmployeeInfoShow from './EmployeeInfoShow';
 const EmployeeItem = ({ employee }) => {
-  //   const [leads, setLeads] = useState([]);
+  const [employeeDetails, setEmployeeDetails] = useState({});
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -15,15 +16,17 @@ const EmployeeItem = ({ employee }) => {
     }
   };
 
-  //   const leadResponse = useLeadsOfCustomer(employee.id);
+  const employeeDetailsResponse = useEmployeesDetails(employee.id);
 
-  //   useEffect(() => {
-  //     setLeads(leadResponse);
-  //   }, [leadResponse]);
+  useEffect(() => {
+    setEmployeeDetails(employeeDetailsResponse);
+  }, [employeeDetailsResponse]);
+
+  console.log(employeeDetails.length);
 
   return (
     <div className={classes.employeeItem}>
-      <h1> HR > Employee > {employee.name} </h1>
+      <h1> HR > Employees > Employee Detail</h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
@@ -101,6 +104,9 @@ const EmployeeItem = ({ employee }) => {
           </div>
         </Card>
       </div>
+      {employeeDetails.firstName && (
+        <EmployeeInfoShow employeesInfo={employeeDetails} />
+      )}
     </div>
   );
 };

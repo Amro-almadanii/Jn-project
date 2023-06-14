@@ -4,7 +4,7 @@ const EmployeeVacationControllersList = ({ employeeVacationControllers }) => {
   const navigate = useNavigate();
   return (
     <div className={classes.EmployeeVacationList}>
-      <h1> HR > Employee Vacation </h1>
+      <h1> HR > Employees Vacations </h1>
       <div className={classes.add_EmployeeVacation}>
         <Link
           className={classes.add_EmployeeVacation_link}

@@ -23,7 +23,7 @@ const EmployeePerformanceItem = ({ employeePerformance }) => {
 
   return (
     <div className={classes.employeePerformanceItem}>
-      <h1> HR > Employee Education > {employeePerformance.name} </h1>
+      <h1>HR > Employees Performances > Performance Details</h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>

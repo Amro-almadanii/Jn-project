@@ -32,7 +32,7 @@ const GroupsList = ({ groups }) => {
               Edit
             </Link>
             <Form method="delete">
-              <input type="hidden" name="groupId" value={group.id}/>
+              <input type="hidden" name="groupId" value={group.id} />
               <button type="submit">Delete</button>
             </Form>
           </div>
@@ -43,4 +43,3 @@ const GroupsList = ({ groups }) => {
 };
 
 export default GroupsList;
-

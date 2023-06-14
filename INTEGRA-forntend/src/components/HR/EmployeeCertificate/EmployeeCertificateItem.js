@@ -23,7 +23,7 @@ const EmployeeCertificateItem = ({ employeeCertificate }) => {
 
   return (
     <div className={classes.employeeCertificateItem}>
-      <h1> HR > Employee Certificate > {employeeCertificate.name} </h1>
+      <h1> HR > Employees Certificates > {employeeCertificate.name} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
@@ -31,7 +31,7 @@ const EmployeeCertificateItem = ({ employeeCertificate }) => {
             <p> {employeeCertificate.employee_id} </p>
           </div>
           <div className={classes.cardItems}>
-            <label>Name of Benefit :</label>
+            <label>Name of Certificate :</label>
             <p> {employeeCertificate.name} </p>
           </div>
           <div className={classes.cardItems}>

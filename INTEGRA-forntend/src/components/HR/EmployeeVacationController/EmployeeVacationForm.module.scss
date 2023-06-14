@@ -12,12 +12,17 @@
     font-size: 18px;
   }
   input,
-  textarea {
+  textarea,
+  select {
     display: block;
     width: 90%;
     padding: 5px;
     outline: none;
     margin: 24px;
+  }
+  option {
+    background-color: var(--second-color);
+    color: var(--text-color);
   }
   .actions {
     display: flex;

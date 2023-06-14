@@ -9,14 +9,26 @@ import {
 import classes from './EmployeeControllerForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
 import { useDepartments } from '../../../hooks/useApi';
+import { useSupervisors } from '../../../hooks/useApi';
+import { useEffect, useState } from 'react';
 
 const EmployeeControllerForm = ({ method, employee }) => {
-  const data = useActionData();
+  const [departments, setDepartments] = useState([]);
+  const [supervisors, setSupervisors] = useState([]);
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
   const isSubmitting = navigation.state === 'submitting';
-  const departments = useDepartments;
+  const departmentResponse = useDepartments();
+  const SupervisorResponse = useSupervisors();
+  useEffect(() => {
+    setDepartments(departmentResponse);
+  }, [departmentResponse]);
+
+  useEffect(() => {
+    setSupervisors(SupervisorResponse);
+  }, [SupervisorResponse]);
   const cancelHandler = () => {
     navigate('../' + employee.id);
   };
@@ -52,6 +64,7 @@ const EmployeeControllerForm = ({ method, employee }) => {
         <label htmlFor="gender">gender :</label>
         <select
           id="gender"
+          name="gender"
           required
           defaultValue={employee ? employee.gender : ''}
         >
@@ -103,34 +116,31 @@ const EmployeeControllerForm = ({ method, employee }) => {
         />
 
         <label htmlFor="status">Status :</label>
-        <select
-          id="status"
-          required
-          defaultValue={employee ? employee.status : ''}
-        >
+        <select name="status" id="status" required>
           <option value="rejected">Rejected</option>
           <option value="resigned">Resigned</option>
           <option value="actual">Actual</option>
         </select>
 
-        <label htmlFor="status">Department :</label>
-        <select
-          id="status"
-          required
-          defaultValue={employee ? employee.status : ''}
-        >
-          <option value="rejected">Rejected</option>
-          <option value="resigned">Resigned</option>
-          <option value="actual">Actual</option>
+        <label htmlFor="department">Department :</label>
+        <select id="department" name="departmentId" required>
+          <option disabled>--Choose Department--</option>
+          {departments.map((department) => (
+            <option key={department.id} value={department.id}>
+              {department.name}
+            </option>
+          ))}
         </select>
 
-        {/* <input
-          id="status"
-          type="text"
-          name="status"
-          required
-          defaultValue={employee ? employee.status : ''}
-        /> */}
+        <label htmlFor="supervisor">Supervisor :</label>
+        <select id="supervisor" name="supervisorId" required>
+          <option disabled>--Choose Supervisor--</option>
+          {supervisors.map((supervisor) => (
+            <option key={supervisor.id} value={supervisor.id}>
+              {supervisor.firstName + ' ' + supervisor.lastName}
+            </option>
+          ))}
+        </select>
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -183,6 +193,7 @@ export async function action({ request, params }) {
     body: JSON.stringify(employeeData),
   });
 
+  console.log(response.json());
   if (!response.ok) {
     throw json({ message: 'Could not save Employees.' }, { status: 500 });
   }

@@ -84,7 +84,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeEducationData = {
-    employee_id: data.get('employee_id'),
+    employee_id: 1,
     specialization: data.get('specialization'),
     degree: data.get('degree'),
     grantingBy: data.get('grantingBy'),

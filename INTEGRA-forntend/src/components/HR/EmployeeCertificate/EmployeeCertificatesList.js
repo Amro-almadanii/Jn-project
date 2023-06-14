@@ -5,7 +5,7 @@ const EmployeeCertificatesList = ({ employeeCertificates }) => {
   console.log(` the answer : ${employeeCertificates}`);
   return (
     <div className={classes.EmployeeCertificatesList}>
-      <h1> HR > Employee Certificate</h1>
+      <h1> HR > Employees Certificates </h1>
       <div className={classes.add_EmployeeCertificate}>
         <Link
           className={classes.add_EmployeeCertificate_link}

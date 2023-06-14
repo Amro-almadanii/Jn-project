@@ -62,13 +62,11 @@ const EmployeeVacationForm = ({ method, employeeVacation }) => {
         />
 
         <label htmlFor="status">Status :</label>
-        <input
-          id="status"
-          type="text"
-          name="status"
-          required
-          defaultValue={employeeVacation ? employeeVacation.status : ''}
-        />
+        <select id="status" name="status" required>
+          <option value="approved">Approved</option>
+          <option value="denied">Denied</option>
+          <option value="pending">Pending</option>
+        </select>
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -91,7 +89,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeVacationData = {
-    employee_id: data.get('employee_id'),
+    employee_id: 1,
     startDate: data.get('startDate'),
     endDate: data.get('endDate'),
     typeOfVacation: data.get('typeOfVacation'),

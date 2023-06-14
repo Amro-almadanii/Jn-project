@@ -23,7 +23,7 @@ const EmployeeVacationItem = ({ employeeVacation }) => {
 
   return (
     <div className={classes.employeeVacationItem}>
-      <h1> HR > Employee Education > {employeeVacation.name} </h1>
+      <h1> HR > Employee Vacations > Vacation Details </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>

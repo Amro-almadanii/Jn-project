@@ -475,6 +475,44 @@ export const useGroups = () => {
   return groups;
 };
 
+export const useEmployeesDetails = (id) => {
+  const [employeeDetails, setEmployeeDetails] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/hr/employees/employeeDetails/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setEmployeeDetails(data[0]);
+        } else {
+          throw json(
+            { message: 'Could not fetch Employees details.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return employeeDetails;
+};
+
 export const useDepartments = () => {
   const [departments, setDepartments] = useState([]);
 
@@ -483,7 +521,7 @@ export const useDepartments = () => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/hr/departments/', {
+        const response = await fetch('http://localhost:8000/hr/departments', {
           headers: {
             Authorization: 'bearer ' + token,
           },
@@ -508,6 +546,79 @@ export const useDepartments = () => {
   }, []);
 
   return departments;
+};
+
+export const useDepartmentEmployees = (id) => {
+  const [departmentEmployees, setDepartmentEmployees] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/hr/departments/employeesDepartment/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+        console.log(data);
+        if (response.ok) {
+          setDepartmentEmployees(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Departments Employees.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return departmentEmployees;
+};
+
+export const useSupervisors = () => {
+  const [Supervisors, setSupervisors] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/hr/employees', {
+          headers: {
+            Authorization: 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setSupervisors(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Supervisors.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return Supervisors;
 };
 
 export const useAttributesGroup = (id) => {
@@ -633,23 +744,29 @@ export const useProductStock = (id) => {
       try {
         const token = getAuthToken();
 
-        const response = await fetch('http://localhost:8000/repository/products/' + id, {
-          headers: {
-            'Authorization': 'bearer ' + token,
-          },
-        });
+        const response = await fetch(
+          'http://localhost:8000/repository/products/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           setProductStock(data.data.quantity_in_stock);
         } else {
-          throw json({ message: 'Could not fetch Products by Supplier.' }, { status: 500 });
+          throw json(
+            { message: 'Could not fetch Products by Supplier.' },
+            { status: 500 }
+          );
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
   }, []);

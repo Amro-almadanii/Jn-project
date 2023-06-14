@@ -1,7 +1,7 @@
 .EmployeeList {
   display: flex;
   flex-direction: column;
-  margin: 20px;
+
   table {
     text-align: center;
     background-color: white;
@@ -13,19 +13,24 @@
     // padding-right: 20px;
     color: var(--second-color);
     cursor: pointer;
-    padding: 12px;
-  }
-
-  th {
+    padding: 4px;
     width: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  p {
+    overflow-x: hidden;
+
+    overflow-y: auto;
+  }
+  th {
     background-color: var(--second-color);
-    padding-top: 9px;
-    padding-bottom: 9px;
+
     color: var(--text-color);
   }
 
   tr {
-    border: 2px solid var(--second-color);
+    border: 2px solid var(--text-color);
   }
 
   h1 {

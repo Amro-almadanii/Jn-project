@@ -98,6 +98,7 @@ export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
+  const campaignId = params.campaignId;
 
   const socialMediaData = {
     blogger: data.get('blogger'),
@@ -105,7 +106,7 @@ export async function action({ request, params }) {
     way: data.get('way'),
     cost: data.get('cost'),
     expected_revenue: data.get('expected_revenue'),
-    campaign_id: 1,
+    campaign_id: campaignId,
   };
 
   let url;

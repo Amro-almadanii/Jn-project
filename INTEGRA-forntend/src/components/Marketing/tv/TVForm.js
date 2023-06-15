@@ -94,6 +94,7 @@ export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
+  const campaignId = params.campaignId;
 
   const tvData = {
     channel: data.get('channel'),
@@ -102,7 +103,7 @@ export async function action({ request, params }) {
     advertising_period: data.get('advertising_period'),
     expected_revenue: data.get('expected_revenue'),
     actual_revenue: data.get('actual_revenue'),
-    campaign_id: '1',
+    campaign_id: campaignId,
   };
 
   let url;

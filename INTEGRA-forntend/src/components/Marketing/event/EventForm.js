@@ -103,6 +103,8 @@ export async function action({ request, params }) {
   const method = request.method;
   const data = await request.formData();
   const token = getAuthToken();
+  const campaignId = params.campaignId;
+
 
   const eventData = {
     name: data.get('name'),
@@ -112,7 +114,7 @@ export async function action({ request, params }) {
     place: data.get('place'),
     expected_revenue: data.get('expected_revenue'),
     actual_revenue: data.get('actual_revenue'),
-    campaign_id: 1,
+    campaign_id: campaignId,
   };
 
   let url;

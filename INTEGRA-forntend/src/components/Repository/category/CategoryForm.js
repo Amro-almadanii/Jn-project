@@ -17,7 +17,7 @@ const CategoryForm = ({ method, category }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + category.id);
+    navigate(-1);
   };
 
   return (

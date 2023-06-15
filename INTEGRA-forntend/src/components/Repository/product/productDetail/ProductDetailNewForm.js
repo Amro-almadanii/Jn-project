@@ -43,7 +43,7 @@ const ProductDetailNewForm = ({ method, attribute }) => {
   }, [groupResponse]);
 
   const cancelHandler = () => {
-    navigate('../' + attribute.id);
+    navigate(-1);
   };
 
   const choseGroupHandler = (event) => {

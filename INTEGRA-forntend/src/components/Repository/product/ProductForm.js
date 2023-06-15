@@ -33,7 +33,7 @@ const ProductForm = ({ method, product }) => {
   }, [supplierResponse]);
 
   const cancelHandler = () => {
-    navigate('../' + product.id);
+    navigate(-1);
   };
 
   return (

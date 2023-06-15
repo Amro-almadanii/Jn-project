@@ -17,7 +17,7 @@ const TVForm = ({ method, tv }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + tv.id);
+    navigate(-1);
   };
 
   return (

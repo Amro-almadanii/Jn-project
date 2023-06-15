@@ -49,10 +49,6 @@ import EditEventPage from '../pages/Marketing/event/EditEvent';
 import { action as manipulateEventAction } from '../components/Marketing/event/EventForm';
 
 import PDFsPage, { loader as PDFsLoader } from '../pages/Marketing/PDF/PDFs';
-import PDFDetailPage, {
-  action as deletePDFAction,
-  loader as PDFDetailLoader,
-} from '../pages/Marketing/PDF/PDFDetail';
 
 import LeadsPage, {
   loader as LeadsLoader,
@@ -115,19 +111,19 @@ export const marketingRoute = {
               element: <NavBar />,
               children: [
                 {
-                  path: '/marketing/campaigns/new/branch/tv',
+                  path: '/marketing/campaigns/new/branch/tv/:campaignId',
                   element: <NewTVPage />,
                   action: manipulateTVAction,
                   loader: checkAuthLoader,
                 },
                 {
-                  path: '/marketing/campaigns/new/branch/socialMedia',
+                  path: '/marketing/campaigns/new/branch/socialMedia/:campaignId',
                   element: <NewSocialMediaPage />,
                   action: manipulateSocialMediaAction,
                   loader: checkAuthLoader,
                 },
                 {
-                  path: '/marketing/campaigns/new/branch/event',
+                  path: '/marketing/campaigns/new/branch/event/:campaignId',
                   element: <NewEventPage />,
                   action: manipulateEventAction,
                   loader: checkAuthLoader,
@@ -251,19 +247,6 @@ export const marketingRoute = {
           index: true,
           element: <PDFsPage />,
           loader: PDFsLoader,
-        },
-        {
-          path: '/marketing/pdfs/pdf-detail',
-          id: 'pdf-detail',
-          loader: PDFDetailLoader,
-          children: [
-            {
-              path: '/marketing/pdfs/pdf-detail/:pdfId',
-              element: <PDFDetailPage />,
-              action: deletePDFAction,
-              loader: checkAuthLoader,
-            },
-          ],
         },
       ],
     },

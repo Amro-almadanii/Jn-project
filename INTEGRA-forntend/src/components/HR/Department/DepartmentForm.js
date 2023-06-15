@@ -17,7 +17,7 @@ const DepartmentForm = ({ method, department }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + department.id);
+    navigate(-1);
   };
 
   return (

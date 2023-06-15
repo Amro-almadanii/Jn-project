@@ -28,6 +28,7 @@ const EmployeePerformanceControllersList = ({
           {employeePerformanceControllers.map(
             (employeePerformanceController) => (
               <tr
+                key={employeePerformanceController.id}
                 onClick={() =>
                   navigate(
                     `/hr/employeePerformances/employeePerformance-detail/${employeePerformanceController.id}`

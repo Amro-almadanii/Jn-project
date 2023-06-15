@@ -1,6 +1,6 @@
-import { NavLink, Outlet, redirect, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, redirect, useLocation, useNavigate, useParams } from 'react-router-dom';
 import classes from './NavBar.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function NavBar() {
   const [bar1, setBar1] = useState(false);
@@ -24,13 +24,28 @@ function NavBar() {
     setBar3(false);
   };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.includes('event'))
+      newEvent();
+
+    if (location.pathname.includes('socialMedia'))
+      newSocialMedia();
+
+    if (location.pathname.includes('tv'))
+      newTv();
+  }, []);
+
+  const { campaignId } = useParams();
+
   return (
     <div className={classes.box}>
       <div className={classes.containar}>
         <div
           onClick={() => {
             newTv();
-            navigate('/marketing/campaigns/new/branch/tv');
+            navigate(`/marketing/campaigns/new/branch/tv/${campaignId}`);
           }}
           className={bar1 ? classes.active : classes.item}
         >
@@ -43,7 +58,7 @@ function NavBar() {
         </div>
         <div
           onClick={() => {
-            navigate('/marketing/campaigns/new/branch/socialMedia');
+            navigate(`/marketing/campaigns/new/branch/socialMedia/${campaignId}`);
             newSocialMedia();
           }}
           className={bar2 ? classes.active : classes.item}
@@ -57,7 +72,7 @@ function NavBar() {
         </div>
         <div
           onClick={() => {
-            navigate('/marketing/campaigns/new/branch/event');
+            navigate(`/marketing/campaigns/new/branch/event/${campaignId}`);
             newEvent();
           }}
           className={bar3 ? classes.active : classes.item}

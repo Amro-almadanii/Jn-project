@@ -13,7 +13,6 @@ import EditGroup, {
 } from '../../pages/Repository/product/attributeGroup/EditGroup';
 import NewAttribute from '../../pages/Repository/product/productAttribute/NewAttribute';
 import { action as manipulateAttributeAction} from '../../components/Repository/product/productAttribute/attribute/AttributeForm';
-import EditAttribute from '../../pages/Repository/product/productAttribute/EditAttribute';
 
 export const productAttribute = {
   path: '/repository/products/attributes',
@@ -29,12 +28,6 @@ export const productAttribute = {
         {
           path: '/repository/products/attributes/new/:groupId',
           element: <NewAttribute />,
-          action: manipulateAttributeAction,
-        },
-        {
-          path: '/repository/products/attributes/attribute-detail/:groupId/:attributeId',
-          id: 'attribute-detail',
-          element: <EditAttribute />,
           action: manipulateAttributeAction,
         },
       ],

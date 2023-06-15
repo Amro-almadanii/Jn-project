@@ -25,6 +25,36 @@ const ExportItem = ({ exportItem }) => {
     }
   };
 
+  const generatePdfHandler = async (id) => {
+    try {
+      const proceed = window.confirm('Are you sure to generate pdf?');
+      if (proceed) {
+        const token = getAuthToken();
+
+        const response = await fetch(`http://localhost:8000/pdfs/storeExport/${id}`, {
+          method: 'post',
+          headers: {
+            Authorization: 'bearer ' + token,
+            'Content-Type': 'application/pdf',
+            'Accept': 'application/pdf'
+          }
+        });
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = exportItem.name;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      }
+    } catch {
+    }
+  };
+
   return (
     <div className={classes.exportItem}>
       <h1>Repository > Exports > {exportItem.name}</h1>
@@ -44,7 +74,9 @@ const ExportItem = ({ exportItem }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Customer:</label>
-            <p> <Link className={classes.customerLink} to={`repository/cutomers/customer-detail/${exportItem.customer_id}`}>{exportItem.customer}</Link> </p>
+            <p><Link className={classes.customerLink}
+                     to={`repository/cutomers/customer-detail/${exportItem.customer_id}`}>{exportItem.customer}</Link>
+            </p>
           </div>
           <div className={classes.cardItems}>
             <label>Employee:</label>
@@ -63,6 +95,10 @@ const ExportItem = ({ exportItem }) => {
             >
               Add Product To Export
             </Link>
+            <button onClick={() => {
+              generatePdfHandler(exportItem.id);
+            }}>Generate PDF
+            </button>
             <button onClick={deleteHandler}>Delete</button>
           </div>
         </Card>
@@ -86,8 +122,8 @@ export async function action({ request, params }) {
       headers: {
         Authorization: 'bearer' + token,
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
+        'Accept': 'application/json'
+      }
     }
   );
 

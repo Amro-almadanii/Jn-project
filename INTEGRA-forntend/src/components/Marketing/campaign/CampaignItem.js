@@ -57,6 +57,35 @@ const CampaignItem = ({ campaign }) => {
     setCampaignDetail({ ...campaignDetail, leads: leadResponse });
   }, [leadResponse]);
 
+  const generatePdfHandler = async (id) => {
+    try {
+      const proceed = window.confirm('Are you sure to generate pdf?');
+      if (proceed) {
+        const token = getAuthToken();
+        const response = await fetch(`http://localhost:8000/pdfs/storeCampaign/${id}`, {
+          method: 'post',
+          headers: {
+            Authorization: 'bearer ' + token,
+            'Content-Type': 'application/pdf',
+            'Accept': 'application/pdf'
+          }
+        });
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = campaign.name;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      }
+    } catch {
+    }
+  };
+
   return (
     <div className={classes.campaignItem}>
       <h1> Marketing > Campaign Item > {campaign.name}:</h1>
@@ -112,7 +141,10 @@ const CampaignItem = ({ campaign }) => {
             >
               Edit
             </Link>
-
+            <button onClick={() => {
+              generatePdfHandler(campaign.id);
+            }}>Generate PDF
+            </button>
             <button onClick={deleteHandler}>Delete</button>
           </div>
         </Card>
@@ -121,6 +153,14 @@ const CampaignItem = ({ campaign }) => {
           <div className={classes.cardBox}>
             <Card className={classes.cardChildren}>
               <h2> Events:</h2>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.linkBranch}
+                  to={`/marketing/campaigns/new/branch/event/${campaign.id}`}
+                >
+                  Create New Event
+                </Link>
+              </div>
               {campaignDetail.events.map((event) => (
                 <Card className={classes.cardChildren} key={event.id}>
                   <label>Name of Event</label>
@@ -152,6 +192,14 @@ const CampaignItem = ({ campaign }) => {
 
             <Card className={classes.cardChildren}>
               <h2> TVs :</h2>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.linkBranch}
+                  to={`/marketing/campaigns/new/branch/tv/${campaign.id}`}
+                >
+                  Create New TV
+                </Link>
+              </div>
               {campaignDetail.tvs.map((tv) => (
                 <Card className={classes.cardChildren} key={tv.id}>
                   <label>Channel of TV:</label>
@@ -181,6 +229,14 @@ const CampaignItem = ({ campaign }) => {
 
             <Card className={classes.cardChildren}>
               <h2> SocialMedia: </h2>
+              <div className={classes.btn}>
+                <Link
+                  className={classes.linkBranch}
+                  to={`/marketing/campaigns/new/branch/socialMedia/${campaign.id}`}
+                >
+                  Create New Social Media
+                </Link>
+              </div>
               {campaignDetail.socialMedia.map((socialmedia) => (
                 <Card className={classes.cardChildren} key={socialmedia.id}>
                   <label>Type:</label>

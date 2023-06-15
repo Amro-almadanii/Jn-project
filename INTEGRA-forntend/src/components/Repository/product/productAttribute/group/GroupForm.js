@@ -17,7 +17,7 @@ const GroupForm = ({ method, group }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + group.id);
+    navigate(-1);
   };
 
   return (

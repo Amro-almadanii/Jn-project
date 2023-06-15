@@ -17,7 +17,7 @@ const LeadForm = ({ method, lead }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + lead.id);
+    navigate(-1);
   };
 
   return (

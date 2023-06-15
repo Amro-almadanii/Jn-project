@@ -17,7 +17,7 @@ const SupplierForm = ({ method, supplier }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + supplier.id);
+    navigate(-1);
   };
 
   return (

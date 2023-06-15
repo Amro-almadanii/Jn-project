@@ -17,7 +17,7 @@ const EventForm = ({ method, event }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + event.id);
+    navigate(-1);
   };
 
   return (

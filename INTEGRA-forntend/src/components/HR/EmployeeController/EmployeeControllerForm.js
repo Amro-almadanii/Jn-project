@@ -30,7 +30,7 @@ const EmployeeControllerForm = ({ method, employee }) => {
     setSupervisors(SupervisorResponse);
   }, [SupervisorResponse]);
   const cancelHandler = () => {
-    navigate('../' + employee.id);
+    navigate(-1);
   };
 
   return (

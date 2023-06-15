@@ -17,7 +17,7 @@ const EmployeeEducationForm = ({ method, employeeEducation }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + employeeEducation.id);
+    navigate(-1);
   };
 
   return (
@@ -84,7 +84,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeEducationData = {
-    employee_id: 1,
+    employee_id: 3,
     specialization: data.get('specialization'),
     degree: data.get('degree'),
     grantingBy: data.get('grantingBy'),

@@ -26,7 +26,7 @@ const ImportForm = ({ method, importItem }) => {
     setSuppliers(supplierResponse);
   }, [supplierResponse]);
   const cancelHandler = () => {
-    navigate('../' + importItem.id);
+    navigate(-1);
   };
 
   return (

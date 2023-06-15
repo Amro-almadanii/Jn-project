@@ -17,7 +17,7 @@ const EmailForm = ({ method, email }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + email.id);
+    navigate(-1);
   };
 
   return (

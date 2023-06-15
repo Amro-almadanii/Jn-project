@@ -26,7 +26,7 @@ const ExportForm = ({ method, exportItem }) => {
     setCustomers(customerResponse);
   }, [customerResponse]);
   const cancelHandler = () => {
-    navigate('../' + exportItem.id);
+    navigate(-1);
   };
 
   return (

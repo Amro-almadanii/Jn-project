@@ -17,7 +17,7 @@ const SocialMediaForm = ({ method, socialMedia }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + socialMedia.id);
+    navigate(-1);
   };
 
   return (

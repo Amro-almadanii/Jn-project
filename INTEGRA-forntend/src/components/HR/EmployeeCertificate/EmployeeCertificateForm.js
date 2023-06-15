@@ -17,7 +17,7 @@ const EmployeeCertificateForm = ({ method, employeeCertificate }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + employeeCertificate.id);
+    navigate(-1);
   };
 
   return (
@@ -66,7 +66,7 @@ export async function action({ request, params }) {
     name: data.get('name'),
     level: data.get('level'),
   };
-  console.log(employeeCertificateData);
+
   let url;
 
   if (method === 'PUT') {

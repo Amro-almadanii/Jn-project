@@ -23,7 +23,7 @@ const AttributeForm = ({method, attribute}) => {
   };
 
   const cancelHandler = () => {
-    navigate('../' + attribute.id);
+    navigate(-1);
   };
 
   const addValueHandler = () => {

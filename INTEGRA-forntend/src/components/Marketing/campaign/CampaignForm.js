@@ -17,7 +17,7 @@ const CampaignForm = ({ method, campaign }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + campaign.id);
+    navigate(-1);
   };
 
   return (

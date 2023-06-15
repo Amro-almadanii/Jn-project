@@ -30,6 +30,7 @@ const EmployeeControllersList = ({ employeeControllers }) => {
         <tbody>
           {employeeControllers.map((employeeController) => (
             <tr
+              key={employeeController.id}
               onClick={() =>
                 navigate(
                   `/hr/employees/employee-detail/${employeeController.id}`

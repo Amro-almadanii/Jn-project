@@ -17,7 +17,7 @@ const EmployeeVacationForm = ({ method, employeeVacation }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + employeeVacation.id);
+    navigate(-1);
   };
 
   return (
@@ -89,7 +89,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeVacationData = {
-    employee_id: 1,
+    employee_id: 3,
     startDate: data.get('startDate'),
     endDate: data.get('endDate'),
     typeOfVacation: data.get('typeOfVacation'),

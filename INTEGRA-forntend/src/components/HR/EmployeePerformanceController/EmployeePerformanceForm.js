@@ -17,7 +17,7 @@ const EmployeePerformanceForm = ({ method, employeePerformance }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + employeePerformance.id);
+    navigate(-1);
   };
 
   return (
@@ -74,7 +74,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeePerformanceData = {
-    employee_id: 1,
+    employee_id: 3,
     performanceRating: data.get('performanceRating'),
     comments: data.get('comments'),
     reviewDate: data.get('reviewDate'),

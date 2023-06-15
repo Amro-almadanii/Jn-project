@@ -18,7 +18,7 @@ const BenefitForm = ({ method, benefit }) => {
   const isSubmitting = navigation.state === 'submitting';
 
   const cancelHandler = () => {
-    navigate('../' + benefit.id);
+    navigate(-1);
   };
 
   return (

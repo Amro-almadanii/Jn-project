@@ -54,7 +54,7 @@ import EditEmployeeCertificatePage from '../pages/HR/EmployeeCertificate/EditEmp
 import EditEmployeePage from '../pages/HR/EmployeeController/EditEmployee';
 import EditEmployeeEducationPage from '../pages/HR/EmployeeEducationController/EditEmployeeEducation';
 
-import EditEmployeePerformancePage from '../pages/HR/EmployeePerformance/EdirEmployeePerformance';
+import EditEmployeePerformancePage from '../pages/HR/EmployeePerformance/EditEmployeePerformance';
 
 import EditEmployeeVacationPage from '../pages/HR/EmployeeVacation/EditEmployeeVacation';
 

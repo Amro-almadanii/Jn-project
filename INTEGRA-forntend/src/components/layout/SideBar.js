@@ -7,6 +7,8 @@ function SideBar() {
   const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
   const [showSystemManagmentDropdown, setSystemManagmentDropdown] =
     useState(false);
+  const [showAdmainistrasionDropdown, setShowAdmainistrasionDropdown] =
+    useState(false);
   const [showHrDropdown, setShowHrDropdown] = useState(false);
 
   const handleMarketingDropdownClick = () => {
@@ -22,14 +24,16 @@ function SideBar() {
     setShowHrDropdown(!showHrDropdown);
   };
 
+  const handleAdmainistrasionDropdownClick = () => {
+    setShowAdmainistrasionDropdown(!showAdmainistrasionDropdown);
+  };
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname.includes('marketing'))
       handleMarketingDropdownClick(true);
 
-    if (location.pathname.includes('hr'))
-      handleHrDropdownClick(true);
+    if (location.pathname.includes('hr')) handleHrDropdownClick(true);
 
     if (location.pathname.includes('repository'))
       handleRepositoryDropdownClick(true);
@@ -37,7 +41,6 @@ function SideBar() {
     if (location.pathname.includes('systemManagement'))
       handleSystemManagmentDropdownClick(true);
   }, []);
-
 
   return (
     <aside className={classes.sidebar}>
@@ -369,6 +372,55 @@ function SideBar() {
             end
           >
             Employee Vacations
+          </NavLink>
+        </div>
+      </div>
+      <div
+        onClick={() => {
+          handleAdmainistrasionDropdownClick();
+        }}
+        className={` ${
+          showAdmainistrasionDropdown ? classes.itemBold : classes.item
+        }`}
+      >
+        Admainistrasion
+      </div>
+      <div
+        className={` ${
+          showAdmainistrasionDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/userMangement/roles"
+            end
+          >
+            Roles
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/userMangement/permissions"
+            end
+          >
+            Permision
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to="/userMangement/users"
+            end
+          >
+            User
           </NavLink>
         </div>
       </div>

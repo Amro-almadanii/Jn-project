@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-
 import LoginPage, { action as loginUser } from './pages/Login';
 import { action as logoutUser } from './pages/Logout';
 
@@ -15,8 +14,8 @@ import { HrRoute } from './routes/HR';
 
 import { loader as redirectLoginLoader } from './pages/Root';
 import { userProfileRoute } from './routes/UserProfile';
-import imports from './pages/Repository/import/Imports';
-
+// import imports from './pages/Repository/import/Imports';
+import { AdmainistrasionRoute } from './routes/Admainistrasion';
 function App() {
   const router = createBrowserRouter([
     {
@@ -26,25 +25,26 @@ function App() {
       children: [
         {
           index: true,
-          loader: redirectLoginLoader
+          loader: redirectLoginLoader,
         },
         marketingRoute,
         repositoryRoute,
         systemManagementRoute,
         HrRoute,
-        userProfileRoute
-      ]
+        userProfileRoute,
+        AdmainistrasionRoute,
+      ],
     },
     {
       path: '/login',
       element: <LoginPage />,
       action: loginUser,
-      loader: checkLoginLoader
+      loader: checkLoginLoader,
     },
     {
       path: '/logout',
-      action: logoutUser
-    }
+      action: logoutUser,
+    },
   ]);
 
   const queryClient = new QueryClient();

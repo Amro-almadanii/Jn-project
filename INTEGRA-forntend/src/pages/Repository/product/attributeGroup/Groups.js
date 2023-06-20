@@ -47,7 +47,7 @@ export async function action({ request, params }) {
   );
 
   if (!response.ok) {
-    throw json({ message: 'Could not delete Group.' }, { status: 500 });
+    throw json({ message: 'Could not delete Group because their is products related to it.' }, { status: 500 });
   }
 
   return redirect('/repository/products/attributes/groups');

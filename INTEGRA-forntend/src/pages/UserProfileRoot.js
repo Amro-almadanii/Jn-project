@@ -38,7 +38,6 @@ const UserProfileRoot = () => {
       <div className={classes.wrapper}>
          <Header />        
           <Outlet />
-          
       </div>
     </>
   );

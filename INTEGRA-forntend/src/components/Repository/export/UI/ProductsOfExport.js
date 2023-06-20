@@ -1,5 +1,6 @@
 import classes from '../ProductsToExportList.module.scss';
 import { Link, useParams, useSubmit } from 'react-router-dom';
+import { useState } from 'react';
 
 const ProductsOfExport = ({ products }) => {
   const submit = useSubmit();
@@ -10,13 +11,17 @@ const ProductsOfExport = ({ products }) => {
       .replaceAll('\\', '');
   };
 
-  const {exportId} = useParams('exportId');
+  const { exportId } = useParams('exportId');
+  const [updatedProducts, setUpdatedProducts] = useState(products);
 
   const deleteHandler = (id) => {
     const proceed = window.confirm('Are you sure?');
 
     if (proceed) {
+      // Remove the deleted product from the updatedProducts array
       submit(null, { method: 'delete', action:  `/repository/exports/export-detail/${exportId}/${id}` });
+      const updatedList = updatedProducts.filter((product) => product.id !== id);
+      setUpdatedProducts(updatedList);
     }
   };
 
@@ -34,7 +39,7 @@ const ProductsOfExport = ({ products }) => {
         </tr>
         </thead>
         <tbody>
-        {products.map((product) => (
+        {updatedProducts.map((product) => (
           <tr key={product.id}>
             <td>{product.name}</td>
             <td>{product.quantity}</td>
@@ -43,10 +48,12 @@ const ProductsOfExport = ({ products }) => {
               <pre>{formattedDetails(product.details)}</pre>
             </td>
             <td>
-                <Link className={classes.finish_link}>Edit</Link>
+              <Link className={classes.finish_link}>Edit</Link>
             </td>
             <td>
-                <button onClick={() => {deleteHandler(product.id)}} className={classes.finish_link}>Delete</button>
+              <button onClick={() => deleteHandler(product.id)} className={classes.finish_link}>
+                Delete
+              </button>
             </td>
           </tr>
         ))}

@@ -1,4 +1,4 @@
-import RoleForm from '../../../components/Admainistrasion/Role/RoleForm';
+import RoleForm from '../../../components/Administration/Role/RoleForm';
 import classes from './NewRole.module.scss';
 const NewRolePage = () => {
   return (

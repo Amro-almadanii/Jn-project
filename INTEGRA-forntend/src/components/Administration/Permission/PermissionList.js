@@ -5,9 +5,9 @@ const PermissionsList = ({ permissions }) => {
   console.log(permissions);
   return (
     <div className={classes.permissionsList}>
-      <h1> Admainistrasion > Permission </h1>
+      <h1> Administration > Permission </h1>
       {/* <div className={classes.add_permission}>
-        <Link className={classes.add_permission_link} to="/userMangement/permissions/new">
+        <Link className={classes.add_permission_link} to="/userManagement/permissions/new">
           Add New Benefit
         </Link>
       </div> */}
@@ -24,7 +24,7 @@ const PermissionsList = ({ permissions }) => {
             <tr
               key={permission.id}
                 onClick={() =>
-                  navigate(`/userMangement/permissions/permission-detail/${permission.id}`)
+                  navigate(`/userManagement/permissions/permission-detail/${permission.id}`)
                 }
             >
               {/* <td>{permission.id}</td>

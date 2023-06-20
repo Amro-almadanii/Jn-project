@@ -1,10 +1,10 @@
 import { Link, useSubmit } from 'react-router-dom';
-import classes from './RoleItem.module.scss';
+import classes from './UserItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
 // import { useEmployeeBenefits } from '../../../hooks/useApi';
 // import BenefitEmployeeShow from './BenefitEmployeeShow';
-const RoleItem = ({ role }) => {
+const UsersItem = ({ user }) => {
   // const [employeesBenefit, setEmployeesBenefit] = useState([]);
   const submit = useSubmit();
 
@@ -16,7 +16,7 @@ const RoleItem = ({ role }) => {
     }
   };
 
-  // const employeesBenefitResponse = useEmployeeBenefits(role.id);
+  // const employeesBenefitResponse = useEmployeeBenefits(user.id);
 
   // console.log(employeesBenefitResponse);
   // useEffect(() => {
@@ -24,18 +24,30 @@ const RoleItem = ({ role }) => {
   // }, [employeesBenefitResponse]);
 
   return (
-    <div className={classes.roleItem}>
-      <h1> Admainistrasion > Role > {role.name} </h1>
+    <div className={classes.userItem}>
+      <h1> Administration > User > {user.name} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
-            <label>Name of Benefit :</label>
-            <p> {role.name} </p>
+            <label>Fullname :</label>
+            <p> {user.fullName} </p>
           </div>
           <div className={classes.cardItems}>
-            <label>Guard Name :</label>
-            <p> {role.guard_name} </p>
+            <label>Username :</label>
+            <p> {user.username} </p>
           </div>
+          <div className={classes.cardItems}>
+            <label>Email :</label>
+            <p> {user.email} </p>
+          </div>
+          <div className={classes.cardItems}>
+            <label>Password :</label>
+            <p> {user.password} </p>
+          </div>
+          {/* <div className={classes.cardItems}>
+            <label> Id :</label>
+            <p> {user.id} </p>
+          </div> */}
           {/* <div className={classes.cardItems}>
             <label>Leads of Customer:</label>
             <p>
@@ -55,7 +67,7 @@ const RoleItem = ({ role }) => {
           <div className={classes.btn}>
             <Link
               className={classes.link}
-              to={`/userMangement/roles/role-detail/edit/${role.id}`}
+              to={`/userManagement/users/users-detail/edit/${user.id}`}
             >
               Edit
             </Link>
@@ -68,4 +80,4 @@ const RoleItem = ({ role }) => {
   );
 };
 
-export default RoleItem;
+export default UsersItem;

@@ -7,7 +7,6 @@ const LeadsPage = () => {
 
   return (
     <div className="lead">
-      <h1> Marketing > Leads </h1>
       <LeadsList leads={leads} />
     </div>
   );

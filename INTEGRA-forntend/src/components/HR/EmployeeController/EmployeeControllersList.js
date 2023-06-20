@@ -50,7 +50,7 @@ const EmployeeControllersList = ({ employeeControllers }) => {
               <td>{employeeController.salary}</td>
               <td>{employeeController.supervisorId}</td>
               <td>{employeeController.status}</td>
-              <td>{employeeController.departmentId}</td>
+              <td>{employeeController.department_id}</td>
             </tr>
           ))}
         </tbody>

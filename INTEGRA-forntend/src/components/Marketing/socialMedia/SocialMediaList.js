@@ -5,14 +5,6 @@ const SocialMediasList = ({ socialMedia }) => {
   return (
     <div className={classes.socialMediaList}>
       <h1> Marketing > SocialMedia </h1>
-      <div className={classes.addNewSocialMedia}>
-        <Link
-          className={classes.socialMediaList_link}
-          to="/marketing/campaigns/new/branch/socialMedia"
-        >
-          Add New SocialMedia
-        </Link>
-      </div>
       <table>
         <thead>
           <tr>

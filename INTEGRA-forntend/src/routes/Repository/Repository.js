@@ -66,12 +66,14 @@ import AddProductsToExportPage, {
   loader as addProductToExportLoader
 } from '../../pages/Repository/export/AddProductsToExport';
 import { action as deleteProductOfExport} from '../../components/Repository/export/ExportItem';
+import { repositoryLoader } from '../../util/utils';
+import PDFsPage, { loader as PDFsLoader } from '../../pages/PDF/PDFs';
 
 export const repositoryRoute = {
   path: '/repository',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
-  loader:tokenLoader,
+  loader:repositoryLoader,
   children: [
     {
       path: '/repository/suppliers',
@@ -288,6 +290,16 @@ export const repositoryRoute = {
           ],
         }
       ]
+    },
+    {
+      path: '/repository/pdfs',
+      children: [
+        {
+          index: true,
+          element: <PDFsPage />,
+          loader: PDFsLoader,
+        },
+      ],
     },
   ],
 };

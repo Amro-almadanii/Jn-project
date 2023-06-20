@@ -5,9 +5,9 @@ const UsersList = ({ users }) => {
   console.log(users);
   return (
     <div className={classes.UserList}>
-      <h1> Admainistrasion > Users </h1>
+      <h1> Administration > Users </h1>
       <div className={classes.add_User}>
-        <Link className={classes.add_User_link} to="/userMangement/role/new">
+        <Link className={classes.add_User_link} to="/userManagement/role/new">
           Add New User
         </Link>
       </div>
@@ -26,7 +26,7 @@ const UsersList = ({ users }) => {
             <tr
               key={User.id}
               onClick={() =>
-                navigate(`/userMangement/users/User-detail/${User.id}`)
+                navigate(`/userManagement/users/User-detail/${User.id}`)
               }
             >
               {/* <td>{User.id}</td> */}

@@ -1,4 +1,4 @@
-import UserForm from '../../../components/Admainistrasion/User/UserForm';
+import UserForm from '../../../components/Administration/User/UserForm';
 import classes from './NewUser.module.scss';
 const NewUserPage = () => {
   return (

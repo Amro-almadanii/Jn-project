@@ -1,5 +1,5 @@
 import { json, useLoaderData } from 'react-router-dom';
-import PermissionsList from '../../../components/Admainistrasion/Permission/PermissionList';
+import PermissionsList from '../../../components/Administration/Permission/PermissionList';
 import { getAuthToken } from '../../../hooks/auth';
 import classes from './Permission.module.scss';
 const PermissionPage = () => {
@@ -18,7 +18,7 @@ export async function loader() {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/userMangement/permissions',
+    'http://localhost:8000/userManagement/permissions',
     {
       headers: {
         Authorization: 'bearer' + token,

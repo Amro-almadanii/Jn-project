@@ -98,9 +98,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/userMangement/users/' + params.userId;
+    url = 'http://localhost:8000/userManagement/users/' + params.userId;
   } else {
-    url = 'http://localhost:8000/userMangement/users';
+    url = 'http://localhost:8000/userManagement/users';
   }
 
   const response = await fetch(url, {
@@ -116,5 +116,5 @@ export async function action({ request, params }) {
     throw json({ message: 'Could not save Users.' }, { status: 500 });
   }
 
-  return redirect('/userMangement/users');
+  return redirect('/userManagement/users');
 }

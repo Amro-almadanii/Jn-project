@@ -77,9 +77,9 @@ export async function action({ request, params }) {
   let url;
 
   if (method === 'PUT') {
-    url = 'http://localhost:8000/userMangement/roles/' + params.roleId;
+    url = 'http://localhost:8000/userManagement/roles/' + params.roleId;
   } else {
-    url = 'http://localhost:8000/userMangement/roles';
+    url = 'http://localhost:8000/userManagement/roles';
   }
 
   const response = await fetch(url, {
@@ -95,5 +95,5 @@ export async function action({ request, params }) {
     throw json({ message: 'Could not save Roles.' }, { status: 500 });
   }
 
-  return redirect('/userMangement/roles');
+  return redirect('/userManagement/roles');
 }

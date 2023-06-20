@@ -1,4 +1,4 @@
-import UserForm from '../../../components/Admainistrasion/User/UserForm';
+import UserForm from '../../../components/Administration/User/UserForm';
 import { useRouteLoaderData } from 'react-router-dom';
 import classes from './editUser.module.scss';
 const EditUserPage = () => {

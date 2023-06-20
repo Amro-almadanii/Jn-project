@@ -1,5 +1,5 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-import RoleItem from '../../../components/Admainistrasion/Role/RoleItem';
+import RoleItem from '../../../components/Administration/Role/RoleItem';
 import { getAuthToken } from '../../../hooks/auth';
 
 const RoleDetailPage = () => {

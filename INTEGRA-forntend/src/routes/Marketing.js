@@ -48,7 +48,7 @@ import EventDetailPage, {
 import EditEventPage from '../pages/Marketing/event/EditEvent';
 import { action as manipulateEventAction } from '../components/Marketing/event/EventForm';
 
-import PDFsPage, { loader as PDFsLoader } from '../pages/Marketing/PDF/PDFs';
+import PDFsPage, { loader as PDFsLoader } from '../pages/PDF/PDFs';
 
 import LeadsPage, {
   loader as LeadsLoader,
@@ -82,12 +82,13 @@ import CustomerDetailPage, {
 } from '../pages/Marketing/customer/CustomerDetail';
 import EditCustomerPage from '../pages/Marketing/customer/EditCustomer';
 import { action as manipulateCustomerAction } from '../components/Marketing/customer/CustomerForm';
+import { marketingLoader } from '../util/utils';
 
 export const marketingRoute = {
   path: '/marketing',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
-  loader: tokenLoader,
+  loader: marketingLoader,
   children: [
     {
       path: '/marketing/campaigns',

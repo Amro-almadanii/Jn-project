@@ -46,7 +46,7 @@ import PermissionsDetailPage, {
 import { action as deletePermissionAction } from '../pages/Administration/Permission/PermissionDetail';
 import { userManagementLoader } from '../util/utils';
 
-export const AdmainistrasionRoute = {
+export const AdministrationRoute = {
   path: '/userManagement',
   element: <RootLayout />,
   errorElement: <ErrorPage />,

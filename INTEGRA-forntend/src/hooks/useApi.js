@@ -236,7 +236,7 @@ export const useEmployeeBenefits = (id) => {
         const data = await response.json();
 
         if (response.ok) {
-          setEmployees(data.data);
+          setEmployees(data);
         } else {
           throw json(
             { message: 'Could not fetch employee benefits.' },
@@ -584,6 +584,41 @@ export const useDepartments = () => {
   return departments;
 };
 
+export const useEmployees = () => {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch('http://localhost:8000/hr/employees', {
+          headers: {
+            Authorization: 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setEmployees(data.data);
+        } else {
+          throw json(
+            { message: 'Could not fetch Employees.' },
+            { status: 500 }
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return employees;
+};
+
 export const useDepartmentEmployees = (id) => {
   const [departmentEmployees, setDepartmentEmployees] = useState([]);
 
@@ -916,4 +951,44 @@ export const useProductsOfExport = (id) => {
   }, []);
 
   return products;
+};
+
+export const useAttachDetachEmployeeToBenefit = (id, type) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        let url;
+        if (type == 'attach') {
+          url =
+            'http://localhost:8000/hr/benefits/attachCustomerToBenefit/' +
+            id;
+        } else {
+          url =
+            'http://localhost:8000/hr/benefits/detachCustomerToBenefit/' +
+            id;
+        }
+        const response = await fetch(url, {
+          headers: {
+            Authorization: 'bearer ' + token,
+          },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok)
+          throw json(
+            { message: 'Could not add employee to benefit.' },
+            { status: 500 }
+          );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return null;
 };

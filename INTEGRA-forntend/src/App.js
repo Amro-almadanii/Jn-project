@@ -14,9 +14,7 @@ import { HrRoute } from './routes/HR';
 
 import { loader as redirectLoginLoader } from './pages/Root';
 import { userProfileRoute } from './routes/UserProfile';
-// import imports from './pages/Repository/import/Imports';
-import { AdmainistrasionRoute } from './routes/Admainistrasion';
-import PDFsPage, { loader as PDFsLoader } from './pages/PDF/PDFs';
+import { AdministrationRoute } from './routes/Admainistrasion';
 
 function App() {
   const router = createBrowserRouter([
@@ -34,7 +32,7 @@ function App() {
         systemManagementRoute,
         HrRoute,
         userProfileRoute,
-        AdmainistrasionRoute
+        AdministrationRoute
       ]
     },
     {

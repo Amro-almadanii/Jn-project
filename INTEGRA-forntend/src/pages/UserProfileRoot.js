@@ -10,9 +10,8 @@ import Header from '../components/layout/Header';
 import SideBar from '../components/layout/SideBar';
 import { getTokenDuration } from '../hooks/auth';
 import classes from './UserProfileRoot.module.scss';
-
+import Loader from '../components/layout/Loaders/Loader'
 const UserProfileRoot = () => {
-  //   const nav = useNavigation();
   //   const token = useLoaderData();
   //   const submit = useSubmit();
 
@@ -33,12 +32,13 @@ const UserProfileRoot = () => {
   //       submit(null, { action: '/logout', method: 'post' });
   //     }, tokenDuration);
   //   }, []);
-
+  const nav = useNavigation();
   return (
     <>
       <div className={classes.wrapper}>
          <Header />        
           <Outlet />
+          
       </div>
     </>
   );

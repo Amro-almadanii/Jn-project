@@ -1,4 +1,4 @@
-import { Card } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, Typography } from '@mui/material';
 import classes from './UserProfile.module.scss';
 // import CountUp from 'react-countup';
 import { Chart } from 'react-google-charts';
@@ -7,7 +7,8 @@ import React, { Component, useEffect, useState } from 'react';
 import { json, Link } from 'react-router-dom';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
-
+import Loader from '../layout/Loaders/UserProfileLoader';
+import { ExpandMoreIcon } from '@mui/icons-material';
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({});
   const navigate = useNavigate();
@@ -29,13 +30,39 @@ console.log(userInfo)
 
   return (
     <div className={classes.UserProfile}>
-      {isLoading && <p>is loading.....</p>}
+      {isLoading && <Loader/>}
       {!isLoading && data && (
         <div>
           <h1>
             {' '}
             User profile > {userInfo.firstName + ' ' + userInfo.lastName}
           </h1>
+
+
+
+
+
+
+          {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <Tab label="Item One" {...a11yProps(0)} />
+    <Tab label="Item Two" {...a11yProps(1)} />
+    <Tab label="Item Three" {...a11yProps(2)} />
+  </Tabs>
+</Box>
+<TabPanel value={value} index={0}>
+  Item One
+</TabPanel>
+<TabPanel value={value} index={1}>
+  Item Two
+</TabPanel>
+<TabPanel value={value} index={2}>
+  Item Three
+</TabPanel> */}
+
+
+
+
           <div className={classes.box}>
             <Card className={classes.card}>
               <label>First Name:</label>
@@ -140,6 +167,7 @@ console.log(userInfo)
   );
 };
 
+
 export default UserProfile;
 
 {
@@ -182,3 +210,17 @@ export default UserProfile;
             data={columns}
           /> */
 }
+
+// const [expanded , setExpanded] = useState<String | false>(false);
+// const handleChange =(isExpanded , panel) =>{
+//   setExpanded(isExpanded ? panel : false)
+// }
+{/* <Accordion expanded={expanded == 'panel1'} onchange={(event,isExpanded) => handleChange(isExpanded,'panel1')}>
+  <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+    <Typography>Accordion1</Typography>
+  </AccordionSummary>
+  <AccordionDetails>
+    <Typography>ksdkd dksdk
+    </Typography>
+  </AccordionDetails>
+</Accordion> */}

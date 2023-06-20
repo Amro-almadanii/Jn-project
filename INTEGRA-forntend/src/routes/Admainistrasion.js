@@ -4,46 +4,46 @@ import { checkAuthLoader, tokenLoader } from '../hooks/auth';
 
 import RolesPage, {
   loader as RoleLoader,
-} from '../pages/Admainistrasion/Role/Role';
+} from '../pages/Admainistration/Role/Role';
 
-import NewRolePage from '../pages/Admainistrasion/Role/NewRole';
+import NewRolePage from '../pages/Admainistration/Role/NewRole';
 import { action as manipulateRoleAction } from '../components/Admainistrasion/Role/RoleForm';
 
 import RoleDetailPage, {
   loader as RoleDetailLoader,
-} from '../pages/Admainistrasion/Role/RoleDetail';
+} from '../pages/Admainistration/Role/RoleDetail';
 
-import { action as deleteRoleAction } from '../pages/Admainistrasion/Role/RoleDetail';
+import { action as deleteRoleAction } from '../pages/Admainistration/Role/RoleDetail';
 
-import EditRolePage from '../pages/Admainistrasion/Role/EditRole';
+import EditRolePage from '../pages/Admainistration/Role/EditRole';
 
-// import { action as manipulateRoleAction } from '../components/Admainistrasion/Role/RoleForm';
+// import { action as manipulateRoleAction } from '../components/Admainistration/Role/RoleForm';
 
 import UsersPage, {
   loader as UserLoader,
-} from '../pages/Admainistrasion/User/User';
+} from '../pages/Admainistration/User/User';
 
-import NewUserPage from '../pages/Admainistrasion/User/NewUser';
+import NewUserPage from '../pages/Admainistration/User/NewUser';
 
 import UserDetailPage, {
   loader as UserDetailLoader,
-} from '../pages/Admainistrasion/User/UserDetail';
+} from '../pages/Admainistration/User/UserDetail';
 
-import { action as deleteUserAction } from '../pages/Admainistrasion/User/UserDetail';
+import { action as deleteUserAction } from '../pages/Admainistration/User/UserDetail';
 
-import EditUserPage from '../pages/Admainistrasion/User/EditUser';
+import EditUserPage from '../pages/Admainistration/User/EditUser';
 
 import { action as manipulateUserAction } from '../components/Admainistrasion/User/UserForm';
 
 import PermissionPage, {
   loader as PermissionLoader,
-} from '../pages/Admainistrasion/Permission/Permission';
+} from '../pages/Admainistration/Permission/Permission';
 
 import PermissionsDetailPage, {
   loader as PermissionDetailLoader,
-} from '../pages/Admainistrasion/Permission/PermissionDetail';
+} from '../pages/Admainistration/Permission/PermissionDetail';
 
-import { action as deletePermissionAction } from '../pages/Admainistrasion/Permission/PermissionDetail';
+import { action as deletePermissionAction } from '../pages/Admainistration/Permission/PermissionDetail';
 
 export const AdmainistrasionRoute = {
   path: '/userMangement',

@@ -2,12 +2,13 @@ import { Form, NavLink, useLocation, useMatch } from 'react-router-dom';
 import classes from './SideBar.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { marketingCtx } from './SideBarContext';
+
 function SideBar() {
   const [showMarketingDropdown, setShowMarketingDropdown] = useState(false);
   const [showRepositoryDropdown, setShowRepositoryDropdown] = useState(false);
-  const [showSystemManagmentDropdown, setSystemManagmentDropdown] =
+  const [showSystemManagementDropdown, setSystemManagementDropdown] =
     useState(false);
-  const [showAdmainistrasionDropdown, setShowAdmainistrasionDropdown] =
+  const [showAdministrationDropdown, setShowAdministrationDropdown] =
     useState(false);
   const [showHrDropdown, setShowHrDropdown] = useState(false);
 
@@ -17,15 +18,15 @@ function SideBar() {
   const handleRepositoryDropdownClick = () => {
     setShowRepositoryDropdown(!showRepositoryDropdown);
   };
-  const handleSystemManagmentDropdownClick = () => {
-    setSystemManagmentDropdown(!showSystemManagmentDropdown);
+  const handleSystemManagementDropdownClick = () => {
+    setSystemManagementDropdown(!showSystemManagementDropdown);
   };
   const handleHrDropdownClick = () => {
     setShowHrDropdown(!showHrDropdown);
   };
 
-  const handleAdmainistrasionDropdownClick = () => {
-    setShowAdmainistrasionDropdown(!showAdmainistrasionDropdown);
+  const handleAdministrationDropdownClick = () => {
+    setShowAdministrationDropdown(!showAdministrationDropdown);
   };
   const location = useLocation();
 
@@ -39,26 +40,28 @@ function SideBar() {
       handleRepositoryDropdownClick(true);
 
     if (location.pathname.includes('systemManagement'))
-      handleSystemManagmentDropdownClick(true);
+      handleSystemManagementDropdownClick(true);
   }, []);
+
+  const department = localStorage.getItem('department');
 
   return (
     <aside className={classes.sidebar}>
-      <div
+      {department === 'userManagement' && <div
         onClick={() => {
           {
-            handleSystemManagmentDropdownClick();
+            handleSystemManagementDropdownClick();
           }
         }}
         className={` ${
-          showSystemManagmentDropdown ? classes.itemBold : classes.item
+          showSystemManagementDropdown ? classes.itemBold : classes.item
         }`}
       >
         System Management
-      </div>
+      </div>}
       <div
         className={` ${
-          showSystemManagmentDropdown ? classes.dropdown.show : classes.dropdown
+          showSystemManagementDropdown ? classes.dropdown.show : classes.dropdown
         }`}
       >
         <div className={classes.item}>
@@ -66,7 +69,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/systemmanagment/profile"
+            to='/systemmanagment/profile'
             end
           >
             Marketing Info
@@ -77,7 +80,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/systemmanagment/profile"
+            to='/systemmanagment/profile'
             end
           >
             HR Info
@@ -88,7 +91,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/systemmanagment/profile"
+            to='/systemmanagment/profile'
             end
           >
             Repository Info
@@ -96,7 +99,57 @@ function SideBar() {
         </div>
       </div>
 
+      {department === 'userManagement' && <div
+        onClick={() => {
+          handleAdministrationDropdownClick();
+        }}
+        className={` ${
+          showAdministrationDropdown ? classes.itemBold : classes.item
+        }`}
+      >
+        Administration
+      </div>}
       <div
+        className={` ${
+          showAdministrationDropdown ? classes.dropdown.show : classes.dropdown
+        }`}
+      >
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to='/userManagement/roles'
+            end
+          >
+            Roles
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to='/userManagement/permissions'
+            end
+          >
+            Permission
+          </NavLink>
+        </div>
+        <div className={classes.item}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+            to='/userManagement/users'
+            end
+          >
+            User
+          </NavLink>
+        </div>
+      </div>
+
+      {(department === 'userManagement' || department === 'marketing') && <div
         onClick={() => {
           {
             handleMarketingDropdownClick();
@@ -107,7 +160,7 @@ function SideBar() {
         }`}
       >
         Marketing
-      </div>
+      </div>}
       <div
         className={` ${
           showMarketingDropdown ? classes.dropdown.show : classes.dropdown
@@ -118,7 +171,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/campaigns"
+            to='/marketing/campaigns'
             end
           >
             Campaigns
@@ -129,7 +182,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/tvs"
+            to='/marketing/tvs'
             end
           >
             TVs
@@ -140,7 +193,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/socialMedia"
+            to='/marketing/socialMedia'
             end
           >
             SocialMedia
@@ -151,7 +204,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/events"
+            to='/marketing/events'
             end
           >
             Events
@@ -159,7 +212,7 @@ function SideBar() {
         </div>
         <div className={classes.item}>
           <NavLink
-            to="/marketing/pdfs"
+            to='/marketing/pdfs'
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
@@ -172,7 +225,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/emails"
+            to='/marketing/emails'
             end
           >
             Emails
@@ -183,7 +236,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/customers"
+            to='/marketing/customers'
             end
           >
             Customers
@@ -194,7 +247,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/marketing/leads"
+            to='/marketing/leads'
             end
           >
             Leads
@@ -202,7 +255,7 @@ function SideBar() {
         </div>
       </div>
 
-      <div
+      {(department === 'userManagement' || department === 'repository') && <div
         onClick={() => {
           handleRepositoryDropdownClick();
         }}
@@ -211,7 +264,7 @@ function SideBar() {
         }`}
       >
         Repository
-      </div>
+      </div>}
       <div
         className={` ${
           showRepositoryDropdown ? classes.dropdown.show : classes.dropdown
@@ -222,7 +275,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/suppliers"
+            to='/repository/suppliers'
             end
           >
             Suppliers
@@ -233,7 +286,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/categories"
+            to='/repository/categories'
             end
           >
             Categories
@@ -244,7 +297,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/products"
+            to='/repository/products'
             end
           >
             Products
@@ -255,7 +308,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/products/attributes/groups"
+            to='/repository/products/attributes/groups'
             end
           >
             Attributes Groups
@@ -266,7 +319,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/imports"
+            to='/repository/imports'
             end
           >
             Imports
@@ -277,14 +330,24 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/repository/exports"
+            to='/repository/exports'
             end
           >
             Exports
           </NavLink>
         </div>
+        <div className={classes.item}>
+          <NavLink
+            to='/repository/pdfs'
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.navlink
+            }
+          >
+            PDFs
+          </NavLink>
+        </div>
       </div>
-      <div
+      {(department === 'userManagement' || department === 'hr') && <div
         onClick={() => {
           handleHrDropdownClick();
         }}
@@ -292,6 +355,7 @@ function SideBar() {
       >
         HR
       </div>
+      }
       <div
         className={` ${
           showHrDropdown ? classes.dropdown.show : classes.dropdown
@@ -302,7 +366,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/benefits"
+            to='/hr/benefits'
             end
           >
             Benefit
@@ -313,7 +377,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/departments"
+            to='/hr/departments'
             end
           >
             Departments
@@ -324,7 +388,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeeCertificates"
+            to='/hr/employeeCertificates'
             end
           >
             Employee Certificate
@@ -335,7 +399,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employees"
+            to='/hr/employees'
             end
           >
             Employee
@@ -346,7 +410,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeeEducations"
+            to='/hr/employeeEducations'
             end
           >
             Employee Education
@@ -357,7 +421,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeePerformances"
+            to='/hr/employeePerformances'
             end
           >
             Employee Performances
@@ -368,64 +432,25 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/hr/employeeVacations"
+            to='/hr/employeeVacations'
             end
           >
             Employee Vacations
           </NavLink>
         </div>
-      </div>
-      <div
-        onClick={() => {
-          handleAdmainistrasionDropdownClick();
-        }}
-        className={` ${
-          showAdmainistrasionDropdown ? classes.itemBold : classes.item
-        }`}
-      >
-        Admainistrasion
-      </div>
-      <div
-        className={` ${
-          showAdmainistrasionDropdown ? classes.dropdown.show : classes.dropdown
-        }`}
-      >
         <div className={classes.item}>
           <NavLink
+            to='/hr/pdfs'
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to="/userMangement/roles"
-            end
           >
-            Roles
-          </NavLink>
-        </div>
-        <div className={classes.item}>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? classes.active : classes.navlink
-            }
-            to="/userMangement/permissions"
-            end
-          >
-            Permision
-          </NavLink>
-        </div>
-        <div className={classes.item}>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? classes.active : classes.navlink
-            }
-            to="/userMangement/users"
-            end
-          >
-            User
+            PDFs
           </NavLink>
         </div>
       </div>
       <div className={classes.butContainar}>
-        <Form action="/Logout" method="post">
+        <Form action='/Logout' method='post'>
           <button className={classes.button}>Logout</button>
         </Form>
       </div>

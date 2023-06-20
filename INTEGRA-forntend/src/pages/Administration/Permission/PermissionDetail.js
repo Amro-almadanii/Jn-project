@@ -1,5 +1,5 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-import PermissionsItem from '../../../components/Admainistrasion/Permission/PermissionItem';
+import PermissionsItem from '../../../components/Administration/Permission/PermissionItem';
 import { getAuthToken } from '../../../hooks/auth';
 
 const PermissionsDetailPage = () => {
@@ -15,7 +15,7 @@ export async function loader({ request, params }) {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/userMangement/permissions/' + id,
+    'http://localhost:8000/userManagement/permissions/' + id,
     {
       headers: {
         Authorization: 'bearer' + token,
@@ -38,7 +38,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/userMangement/permissions/' + id,
+    'http://localhost:8000/userManagement/permissions/' + id,
     {
       method: request.method,
       headers: {
@@ -51,5 +51,5 @@ export async function action({ request, params }) {
     throw json({ message: 'Could not delete permissions.' }, { status: 500 });
   }
 
-  return redirect('/userMangement/permissions');
+  return redirect('/userManagement/permissions');
 }

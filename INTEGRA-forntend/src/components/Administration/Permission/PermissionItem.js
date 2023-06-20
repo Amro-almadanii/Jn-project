@@ -1,10 +1,10 @@
 import { Link, useSubmit } from 'react-router-dom';
-import classes from './UserItem.module.scss';
+import classes from './PermissionItem.module.scss';
 import { Card } from '@mui/material';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 // import { useEmployeeBenefits } from '../../../hooks/useApi';
 // import BenefitEmployeeShow from './BenefitEmployeeShow';
-const UsersItem = ({ user }) => {
+const PermissionItem = ({ permission }) => {
   // const [employeesBenefit, setEmployeesBenefit] = useState([]);
   const submit = useSubmit();
 
@@ -16,7 +16,7 @@ const UsersItem = ({ user }) => {
     }
   };
 
-  // const employeesBenefitResponse = useEmployeeBenefits(user.id);
+  // const employeesBenefitResponse = useEmployeeBenefits(permission.id);
 
   // console.log(employeesBenefitResponse);
   // useEffect(() => {
@@ -24,30 +24,18 @@ const UsersItem = ({ user }) => {
   // }, [employeesBenefitResponse]);
 
   return (
-    <div className={classes.userItem}>
-      <h1> Admainistrasion > User > {user.name} </h1>
+    <div className={classes.permissionItem}>
+      <h1> Administration > Permission > {permission.name} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
-            <label>Fullname :</label>
-            <p> {user.fullName} </p>
+            <label>Name of Benefit :</label>
+            {/* <p> {permission.name} </p> */}
           </div>
           <div className={classes.cardItems}>
-            <label>Username :</label>
-            <p> {user.username} </p>
+            <label>Cost :</label>
+            {/* <p> {permission.cost} </p> */}
           </div>
-          <div className={classes.cardItems}>
-            <label>Email :</label>
-            <p> {user.email} </p>
-          </div>
-          <div className={classes.cardItems}>
-            <label>Password :</label>
-            <p> {user.password} </p>
-          </div>
-          {/* <div className={classes.cardItems}>
-            <label> Id :</label>
-            <p> {user.id} </p>
-          </div> */}
           {/* <div className={classes.cardItems}>
             <label>Leads of Customer:</label>
             <p>
@@ -67,7 +55,7 @@ const UsersItem = ({ user }) => {
           <div className={classes.btn}>
             <Link
               className={classes.link}
-              to={`/userMangement/users/users-detail/edit/${user.id}`}
+              to={`/userManagement/permissions/permissions-detail/edit/${permission.id}`}
             >
               Edit
             </Link>
@@ -80,4 +68,4 @@ const UsersItem = ({ user }) => {
   );
 };
 
-export default UsersItem;
+export default PermissionItem;

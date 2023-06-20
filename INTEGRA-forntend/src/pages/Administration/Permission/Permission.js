@@ -1,5 +1,5 @@
 import { json, useLoaderData } from 'react-router-dom';
-import PermissionsList from '../../../components/Admainistrasion/Permission/PermissionList';
+import PermissionsList from '../../../components/Administration/Permission/PermissionList';
 import { getAuthToken } from '../../../hooks/auth';
 import classes from './Permission.module.scss';
 const PermissionPage = () => {

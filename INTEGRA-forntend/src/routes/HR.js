@@ -105,11 +105,14 @@ import { action as deleteEmployeeVacationAction } from '../pages/HR/EmployeeVaca
 import RootLayout from '../pages/Root';
 import ErrorPage from '../pages/Error';
 import { checkAuthLoader, tokenLoader } from '../hooks/auth';
+import { hrLoader } from '../util/utils';
+import PDFsPage, { loader as PDFsLoader } from '../pages/PDF/PDFs';
+import React from 'react';
 export const HrRoute = {
   path: '/hr',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
-  loader: tokenLoader,
+  loader: hrLoader,
   children: [
     {
       path: '/hr/benefits',
@@ -353,6 +356,16 @@ export const HrRoute = {
               loader: checkAuthLoader,
             },
           ],
+        },
+      ],
+    },
+    {
+      path: '/hr/pdfs',
+      children: [
+        {
+          index: true,
+          element: <PDFsPage />,
+          loader: PDFsLoader,
         },
       ],
     },

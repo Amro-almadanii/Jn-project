@@ -1,30 +1,30 @@
 import { json, useLoaderData } from 'react-router-dom';
-import RolesList from '../../../components/Admainistrasion/Role/RoleList';
+import UsersList from '../../../components/Administration/User/UserList';
 import { getAuthToken } from '../../../hooks/auth';
-import classes from './Role.module.scss';
-const RolesPage = () => {
+import classes from './User.module.scss';
+const UsersPage = () => {
   const { data } = useLoaderData();
   console.log(data);
   return (
-    <div className={classes.RolesPage}>
-      <RolesList roles={data} />
+    <div className={classes.UsersPage}>
+      <UsersList users={data} />
     </div>
   );
 };
 
-export default RolesPage;
+export default UsersPage;
 
 export async function loader() {
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/userManagement/roles', {
+  const response = await fetch('http://localhost:8000/userManagement/users', {
     headers: {
       Authorization: 'bearer' + token,
     },
   });
   console.log(response);
   if (!response.ok) {
-    throw json({ message: 'Could not fetch roles.' }, { status: 500 });
+    throw json({ message: 'Could not fetch users.' }, { status: 500 });
   } else {
     return response;
   }

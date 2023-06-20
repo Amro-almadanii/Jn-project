@@ -1,4 +1,4 @@
-import RoleForm from '../../../components/Admainistrasion/Role/RoleForm';
+import RoleForm from '../../../components/Administration/Role/RoleForm';
 import { useRouteLoaderData } from 'react-router-dom';
 import classes from './editRole.module.scss';
 const EditRolePage = () => {

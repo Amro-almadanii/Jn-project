@@ -1,5 +1,5 @@
 import { json, redirect, useRouteLoaderData } from 'react-router-dom';
-import UsersItem from '../../../components/Admainistrasion/User/UserItem';
+import UsersItem from '../../../components/Administration/User/UserItem';
 import { getAuthToken } from '../../../hooks/auth';
 
 const UserDetailPage = () => {

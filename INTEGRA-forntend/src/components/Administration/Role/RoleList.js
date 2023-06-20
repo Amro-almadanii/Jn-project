@@ -5,9 +5,9 @@ const RolesList = ({ roles }) => {
   console.log(roles);
   return (
     <div className={classes.rolesList}>
-      <h1> Admainistrasion > Roles </h1>
+      <h1> Administration > Roles </h1>
       <div className={classes.add_role}>
-        <Link className={classes.add_role_link} to="/userMangement/roles/new">
+        <Link className={classes.add_role_link} to="/userManagement/roles/new">
           Add New Role
         </Link>
       </div>
@@ -24,7 +24,7 @@ const RolesList = ({ roles }) => {
             <tr
               key={role.id}
               onClick={() =>
-                navigate(`/userMangement/roles/role-detail/${role.id}`)
+                navigate(`/userManagement/roles/role-detail/${role.id}`)
               }
             >
               <td>{role.id}</td>

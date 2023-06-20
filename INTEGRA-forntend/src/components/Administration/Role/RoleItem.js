@@ -1,10 +1,10 @@
 import { Link, useSubmit } from 'react-router-dom';
-import classes from './PermissionItem.module.scss';
+import classes from './RoleItem.module.scss';
 import { Card } from '@mui/material';
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { useEmployeeBenefits } from '../../../hooks/useApi';
 // import BenefitEmployeeShow from './BenefitEmployeeShow';
-const PermissionItem = ({ permission }) => {
+const RoleItem = ({ role }) => {
   // const [employeesBenefit, setEmployeesBenefit] = useState([]);
   const submit = useSubmit();
 
@@ -16,7 +16,7 @@ const PermissionItem = ({ permission }) => {
     }
   };
 
-  // const employeesBenefitResponse = useEmployeeBenefits(permission.id);
+  // const employeesBenefitResponse = useEmployeeBenefits(role.id);
 
   // console.log(employeesBenefitResponse);
   // useEffect(() => {
@@ -24,17 +24,17 @@ const PermissionItem = ({ permission }) => {
   // }, [employeesBenefitResponse]);
 
   return (
-    <div className={classes.permissionItem}>
-      <h1> Admainistrasion > Permission > {permission.name} </h1>
+    <div className={classes.roleItem}>
+      <h1> Administration > Role > {role.name} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
             <label>Name of Benefit :</label>
-            {/* <p> {permission.name} </p> */}
+            <p> {role.name} </p>
           </div>
           <div className={classes.cardItems}>
-            <label>Cost :</label>
-            {/* <p> {permission.cost} </p> */}
+            <label>Guard Name :</label>
+            <p> {role.guard_name} </p>
           </div>
           {/* <div className={classes.cardItems}>
             <label>Leads of Customer:</label>
@@ -55,7 +55,7 @@ const PermissionItem = ({ permission }) => {
           <div className={classes.btn}>
             <Link
               className={classes.link}
-              to={`/userManagement/permissions/permissions-detail/edit/${permission.id}`}
+              to={`/userManagement/roles/role-detail/edit/${role.id}`}
             >
               Edit
             </Link>
@@ -68,4 +68,4 @@ const PermissionItem = ({ permission }) => {
   );
 };
 
-export default PermissionItem;
+export default RoleItem;

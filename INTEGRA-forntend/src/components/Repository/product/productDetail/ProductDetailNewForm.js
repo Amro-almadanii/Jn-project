@@ -192,6 +192,7 @@ export async function action({ request, params }) {
   const formData = await request.formData();
   const token = getAuthToken();
   const method = request.method;
+  const productId = params.productId;
 
   const attributeData = {};
   //let attributeData = [];
@@ -244,5 +245,5 @@ export async function action({ request, params }) {
     throw json({ message: 'Could not save Details of Product.' }, { status: 500 });
   }
 
-   return redirect('/repository/products/new/newDetail/1');
+   return redirect(`/repository/products/product-detail/${productId}`);
 }

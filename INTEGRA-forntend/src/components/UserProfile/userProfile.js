@@ -22,7 +22,7 @@ const UserProfile = () => {
     return data.json();
   };
   const { data, isLoading } = useQuery('getMe', getInfo);
-console.log(userInfo)
+
   useEffect(() => {
     if (data) setUserInfo(data[0]);
   }, [data]);

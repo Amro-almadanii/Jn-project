@@ -48,7 +48,7 @@ import EventDetailPage, {
 import EditEventPage from '../pages/Marketing/event/EditEvent';
 import { action as manipulateEventAction } from '../components/Marketing/event/EventForm';
 
-import PDFsPage, { loader as PDFsLoader } from '../pages/Marketing/PDF/PDFs';
+import PDFsPage, { loader as PDFsLoader } from '../pages/PDF/PDFs';
 
 import LeadsPage, {
   loader as LeadsLoader,

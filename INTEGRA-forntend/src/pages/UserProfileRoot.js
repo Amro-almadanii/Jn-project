@@ -10,6 +10,7 @@ import Header from '../components/layout/Header';
 import SideBar from '../components/layout/SideBar';
 import { getTokenDuration } from '../hooks/auth';
 import classes from './UserProfileRoot.module.scss';
+import Loader from'../components/layout/Loader'
 
 const UserProfileRoot = () => {
   //   const nav = useNavigation();

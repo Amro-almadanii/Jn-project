@@ -18,7 +18,7 @@ export async function loader() {
   const token = getAuthToken();
 
   const response = await fetch(
-    'http://localhost:8000/userMangement/permissions',
+    'http://localhost:8000/userManagement/permissions',
     {
       headers: {
         Authorization: 'bearer' + token,

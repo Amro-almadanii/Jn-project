@@ -5,14 +5,6 @@ const TVsList = ({ tvs }) => {
   return (
     <div className={classes.tvList}>
       <h1> Marketing > TVs </h1>
-      <div className={classes.addNewTv}>
-        <Link
-          className={classes.tvList_link}
-          to="/marketing/campaigns/new/branch/tv"
-        >
-          Add New TV
-        </Link>
-      </div>
       <table>
         <thead>
           <tr>

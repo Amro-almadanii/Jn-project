@@ -7,7 +7,6 @@ const EventsPage = () => {
 
   return (
     <div className={classes.Events}>
-      <h1>Events page</h1>
       <EventsList events={events} />
     </div>
   );

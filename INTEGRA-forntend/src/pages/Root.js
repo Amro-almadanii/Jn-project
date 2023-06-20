@@ -8,6 +8,7 @@ import {
 import Header from '../components/layout/Header';
 import SideBar from '../components/layout/SideBar';
 import { getTokenDuration } from '../hooks/auth';
+import Loader from '../components/layout/Loader';
 import './root.css';
 
 const RootLayout = () => {
@@ -21,14 +22,14 @@ const RootLayout = () => {
     }
 
     if (token === 'EXPIRED') {
-      submit(null, { action: '/logout', method: 'post' });
+      submit(null, { action: '/logout'});
       return;
     }
 
     const tokenDuration = getTokenDuration();
 
     setTimeout(() => {
-      submit(null, { action: '/logout', method: 'post' });
+      submit(null, { action: '/logout'});
     }, tokenDuration);
   }, []);
 
@@ -37,7 +38,7 @@ const RootLayout = () => {
       <Header />
       <div className="wrapper">
         <SideBar />
-        <main>{nav.state === 'loading' && <p>Loading...</p>}
+        <main>{nav.state === 'loading' && <Loader/>}
         <Outlet />
         </main>
       </div>

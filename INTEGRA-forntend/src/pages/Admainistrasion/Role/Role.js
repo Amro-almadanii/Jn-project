@@ -17,7 +17,7 @@ export default RolesPage;
 export async function loader() {
   const token = getAuthToken();
 
-  const response = await fetch('http://localhost:8000/userMangement/roles', {
+  const response = await fetch('http://localhost:8000/userManagement/roles', {
     headers: {
       Authorization: 'bearer' + token,
     },

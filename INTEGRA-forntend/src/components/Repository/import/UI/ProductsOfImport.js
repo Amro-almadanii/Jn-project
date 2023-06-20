@@ -35,7 +35,6 @@ const ProductsOfImport = ({ products }) => {
           <th>Quantity</th>
           <th>Price</th>
           <th>Details</th>
-          <th>Edit</th>
           <th>Delete</th>
         </tr>
         </thead>
@@ -49,9 +48,6 @@ const ProductsOfImport = ({ products }) => {
               <pre>{formattedDetails(product.details)}</pre>
             </td>
             <td>
-              <Link className={classes.finish_link}>Edit</Link>
-            </td>
-            <td>
               <button onClick={() => {deleteHandler(product.id)}} className={classes.finish_link}>Delete</button>
             </td>
           </tr>
@@ -63,7 +59,6 @@ const ProductsOfImport = ({ products }) => {
           <th>Quantity</th>
           <th>Price</th>
           <th>Details</th>
-          <th>Edit</th>
           <th>Delete</th>
         </tr>
         </tfoot>

@@ -1,6 +1,10 @@
 import { redirect } from 'react-router-dom';
+import { checkAuthLoader, getAuthToken } from '../hooks/auth';
 
 export function marketingLoader() {
+  const token = getAuthToken();
+  if(!token)
+    return redirect('/login');
 
   const department = localStorage.getItem('department');
 
@@ -12,6 +16,9 @@ export function marketingLoader() {
 }
 
 export function hrLoader() {
+  const token = getAuthToken();
+  if(!token)
+    return redirect('/login');
 
   const department = localStorage.getItem('department');
 
@@ -23,6 +30,9 @@ export function hrLoader() {
 }
 
 export function repositoryLoader() {
+  const token = getAuthToken();
+  if(!token)
+    return redirect('/login');
 
   const department = localStorage.getItem('department');
 
@@ -34,6 +44,9 @@ export function repositoryLoader() {
 }
 
 export function userManagementLoader() {
+  const token = getAuthToken();
+  if(!token)
+    return redirect('/login');
 
   const department = localStorage.getItem('department');
 

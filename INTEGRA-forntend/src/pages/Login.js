@@ -57,7 +57,7 @@ export async function action({ request }) {
 
   localStorage.setItem('token', token);
   const expiration = new Date();
-  expiration.setMinutes(expiration.getMinutes() + 100);
+  expiration.setMinutes(expiration.getMinutes() + 579);
   localStorage.setItem('expiration', expiration.getTime().toString());
   localStorage.setItem('department', resData.permission);
   return redirect(`/${resData.permission}`);

@@ -21,7 +21,7 @@ function App() {
     {
       path: '/',
       id: 'root',
-     // loader: checkAuthLoader,
+      loader: tokenLoader,
       children: [
         {
           index: true,

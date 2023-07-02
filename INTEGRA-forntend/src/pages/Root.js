@@ -2,7 +2,7 @@ import { Fragment, useEffect } from 'react';
 import {
   Outlet, redirect,
   useLoaderData,
-  useNavigation,
+  useNavigation, useRouteLoaderData,
   useSubmit
 } from 'react-router-dom';
 import Header from '../components/layout/Header';
@@ -13,7 +13,7 @@ import './root.css';
 
 const RootLayout = () => {
   const nav = useNavigation();
-  const token = useLoaderData();
+  const token = useRouteLoaderData('root');
   const submit = useSubmit();
 
   useEffect(() => {
@@ -21,15 +21,10 @@ const RootLayout = () => {
       return;
     }
 
-    if (token === 'EXPIRED') {
-      submit(null, { action: '/logout'});
-      return;
-    }
-
     const tokenDuration = getTokenDuration();
 
     setTimeout(() => {
-      submit(null, { action: '/logout'});
+      submit(null, { method: 'post', action: '/logout'});
     }, tokenDuration);
   }, []);
 

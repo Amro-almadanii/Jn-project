@@ -14,16 +14,14 @@ import { HrRoute } from './routes/HR';
 
 import { loader as redirectLoginLoader } from './pages/Root';
 import { userProfileRoute } from './routes/UserProfile';
-// import imports from './pages/Repository/import/Imports';
-import { AdmainistrasionRoute } from './routes/Admainistrasion';
-import PDFsPage, { loader as PDFsLoader } from './pages/PDF/PDFs';
+import { AdmainstrationRoute } from './routes/Admainistrasion';
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
       id: 'root',
-     // loader: checkAuthLoader,
+      loader: tokenLoader,
       children: [
         {
           index: true,
@@ -34,7 +32,7 @@ function App() {
         systemManagementRoute,
         HrRoute,
         userProfileRoute,
-        AdmainistrasionRoute
+        AdmainstrationRoute
       ]
     },
     {

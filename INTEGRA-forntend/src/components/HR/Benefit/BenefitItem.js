@@ -4,9 +4,15 @@ import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useEmployeeBenefits } from '../../../hooks/useApi';
 import BenefitEmployeeShow from './BenefitEmployeeShow';
+import UpdateEmployeesOfBenefit from './UI/UpdateEmployeesOfBenefit';
 const BenefitItem = ({ benefit }) => {
   const [employeesBenefit, setEmployeesBenefit] = useState([]);
+  const [editEmployeeBenefit, setEditEmployeeBenefit] = useState(false);
   const submit = useSubmit();
+
+  const updateEmployeeHandler = () => {
+    setEditEmployeeBenefit(!editEmployeeBenefit);
+  };
 
   const deleteHandler = () => {
     const proceed = window.confirm('Are you sure?');
@@ -18,11 +24,11 @@ const BenefitItem = ({ benefit }) => {
 
   const employeesBenefitResponse = useEmployeeBenefits(benefit.id);
 
-  console.log(employeesBenefitResponse);
   useEffect(() => {
     setEmployeesBenefit(employeesBenefitResponse);
   }, [employeesBenefitResponse]);
 
+    console.log(employeesBenefit);
   return (
     <div className={classes.benefitItem}>
       <h1> HR > Benefit > {benefit.name} </h1>
@@ -36,23 +42,11 @@ const BenefitItem = ({ benefit }) => {
             <label>Cost :</label>
             <p> {benefit.cost} </p>
           </div>
-          {/* <div className={classes.cardItems}>
-            <label>Leads of Customer:</label>
-            <p>
-              {' '}
-              {leads.map((lead) => (
-                <Link
-                  key={lead.id}
-                  className={classes.leadLink}
-                  to={`/marketing/leads/lead-detail/${lead.id}`}
-                >
-                  {' '}
-                  {lead.type}{' '}
-                </Link>
-              ))}{' '}
-            </p>
-          </div> */}
           <div className={classes.btn}>
+            <button onClick={updateEmployeeHandler}>
+              {!editEmployeeBenefit && <>Update employees</>}
+              {editEmployeeBenefit && <>Go back to Details</>}
+            </button>
             <Link
               className={classes.link}
               to={`/hr/benefits/benefits-detail/edit/${benefit.id}`}
@@ -63,7 +57,10 @@ const BenefitItem = ({ benefit }) => {
           </div>
         </Card>
       </div>
-      <BenefitEmployeeShow data={employeesBenefit} />
+      {!editEmployeeBenefit && <BenefitEmployeeShow data={employeesBenefit} />}
+      {editEmployeeBenefit && (
+        <UpdateEmployeesOfBenefit employeesOfBenefit={employeesBenefit} />
+      )}
     </div>
   );
 };

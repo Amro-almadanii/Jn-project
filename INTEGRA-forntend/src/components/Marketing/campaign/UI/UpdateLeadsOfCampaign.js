@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useAttachDetachLeadToCampaign, useLeads } from '../../../../hooks/useApi';
+import { useLeads } from '../../../../hooks/useApi';
 import classes from '../../lead/LeadsList.module.scss';
 import { getAuthToken } from '../../../../hooks/auth';
 import { json, useNavigate, useParams } from 'react-router-dom';
@@ -101,7 +101,7 @@ const UpdateLeadsOfCampaign = ({ leadsOfCampaign }) => {
           >
             <td>{lead.id}</td>
             <td>{lead.type}</td>
-            <td onClick={(event) => event.stopPropagation()}><input type='checkbox' value={lead.id}
+            <td style={{cursor: 'auto'}} onClick={(event) => event.stopPropagation()}><input type='checkbox' value={lead.id}
                        checked={JSON.stringify(leadsOfCampaign).includes(JSON.stringify(lead))}
                        onChange={checkHandler}
             />

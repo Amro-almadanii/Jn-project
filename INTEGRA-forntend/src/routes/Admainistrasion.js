@@ -46,8 +46,7 @@ import PermissionsDetailPage, {
 import { action as deletePermissionAction } from '../pages/Administration/Permission/PermissionDetail';
 import { userManagementLoader } from '../util/utils';
 
-import RolesPermissions from '../pages/Administration/Role/RolesPermissions'
-export const AdmainistrasionRoute = {
+export const AdmainstrationRoute = {
   path: '/userManagement',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
@@ -66,11 +65,6 @@ export const AdmainistrasionRoute = {
           element: <NewRolePage />,
           action: manipulateRoleAction,
           loader: checkAuthLoader,
-        },
-        {
-          path: '/userManagement/roles/permission',
-          element: <RolesPermissions />,
-          // loader:
         },
         {
           path: '/userManagement/roles/role-detail',

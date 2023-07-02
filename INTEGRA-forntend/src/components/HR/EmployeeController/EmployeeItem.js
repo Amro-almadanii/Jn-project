@@ -75,7 +75,7 @@ const EmployeeItem = ({ employee }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Department Id :</label>
-            <p> {employee.departmentId} </p>
+            <p> {employee.department_id} </p>
           </div>
           {/* <div className={classes.cardItems}>
             <label>Leads of Customer:</label>

@@ -9,13 +9,14 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loader from '../layout/Loaders/UserProfileLoader';
 import { ExpandMoreIcon } from '@mui/icons-material';
+
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({});
   const navigate = useNavigate();
 
   const getInfo = async () => {
     const token = getAuthToken();
-    const data = await fetch('http://localhost:8000/getMe', {
+    const data = await fetch('http://localhost:8000/userManagement/getMe', {
       headers: {
         Authorization: 'bearer ' + token,
       },

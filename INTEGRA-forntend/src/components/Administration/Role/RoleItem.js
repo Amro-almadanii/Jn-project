@@ -11,6 +11,7 @@ import {
   useNavigate,
   useNavigation,
 } from 'react-router-dom';
+import RolesSelectPermissions from './RolesSelectPermissions';
 // import { useEmployeeBenefits } from '../../../hooks/useApi';
 // import BenefitEmployeeShow from './BenefitEmployeeShow';
 const RoleItem = ({ role }) => {
@@ -24,19 +25,15 @@ const RoleItem = ({ role }) => {
       submit(null, { method: 'delete' });
     }
   };
-//   const [rolePermissionInfo,setRolePermissionInfo] = useState([])
-// const rolesPermission = useRolesPermission(role.id);
+  
+  const [rolePermissionInfo,setRolePermissionInfo] = useState([])
+  const rolesPermission = useRolesPermission(role.id);
 
-  // useEffect(() => {
-  //   setRolePermissionInfo(rolesPermission);
-  // }, [rolesPermission]);
-
-  const permissionInfo = usePermission(); 
-  const [permissions,setPermissions] = useState([])
   useEffect(() => {
-      setPermissions(permissionInfo);
-  }, [permissionInfo])
-  console.log(permissionInfo)
+    setRolePermissionInfo(rolesPermission);
+  }, [rolesPermission]);
+
+  
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
@@ -50,9 +47,9 @@ const RoleItem = ({ role }) => {
           </div>
           <div className={classes.cardItems}>
             <label>Role Permissions :</label>
-            {/* {rolePermissionInfo.map((rolePermission)=>(
+            {rolePermissionInfo.map((rolePermission)=>(
             <p> {rolePermission.name} </p>
-            ))} */}
+            ))}
           </div>
           {/* <div className={classes.cardItems}>
             <label>Guard Name :</label>
@@ -89,38 +86,8 @@ const RoleItem = ({ role }) => {
   
       <h2>Give Permission :</h2>
    
-     <button disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Save'}
-     </button>
      </div>
- <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Give/Not</th>
-          </tr>
-        </thead>
-        <tbody>
-          {permissions.map((permission) => (
-            <tr
-              key={permission.id}
-            >
-              <td>{permission.id}</td>
-              <td>{permission.name}</td>
-              <td><input type="checkbox" id={permission.name}
-               value={permission.name}/></td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Give/Not</th>
-          </tr>
-        </tfoot>
-      </table>
+          <RolesSelectPermissions rolePermission={rolePermissionInfo} />
     </div>
       </div>
       {/* <BenefitEmployeeShow data={employeesBenefit} /> */}

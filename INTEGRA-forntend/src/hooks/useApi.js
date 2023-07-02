@@ -143,6 +143,40 @@ export const usePermission = () => {
   return permission;
 };
 
+export const useRole = () => {
+  const [roles, setRoles] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/userManagement/roles',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setRoles(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Roles.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return roles;
+};
 
 
 
@@ -183,6 +217,42 @@ export const useRolesPermission = (id) => {
 
   return rolePermission;
 };
+
+export const useUserRole = (id) => {
+  const [userRole, setUserRole] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/userManagement/users/userRoles/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setUserRole(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Roles of user.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return userRole;
+};
+
 
 export const useTvs = (id) => {
   const [tvs, setTvs] = useState([]);
@@ -372,7 +442,7 @@ export const useEmployeeBenefits = (id) => {
         const token = getAuthToken();
 
         const response = await fetch(
-          'http://localhost:8000/hr/benefits/employeesBenefit/' + id,
+          'http://localhost:8000/hr/benefitEmployees/' + id,
           {
             headers: {
               Authorization: 'bearer ' + token,

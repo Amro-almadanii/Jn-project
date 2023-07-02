@@ -2,10 +2,11 @@ import { Link, useSubmit } from 'react-router-dom';
 import classes from './UserItem.module.scss';
 import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
-// import { useEmployeeBenefits } from '../../../hooks/useApi';
-// import BenefitEmployeeShow from './BenefitEmployeeShow';
+import UserSelectRole from './UserSelectRole';
+import { useUserRole } from '../../../hooks/useApi';
+
 const UsersItem = ({ user }) => {
-  // const [employeesBenefit, setEmployeesBenefit] = useState([]);
+  const [userRoles, setUserRoles] = useState([]);
   const submit = useSubmit();
 
   const deleteHandler = () => {
@@ -16,12 +17,11 @@ const UsersItem = ({ user }) => {
     }
   };
 
-  // const employeesBenefitResponse = useEmployeeBenefits(user.id);
+  const userRoleResponse = useUserRole(user.id);
 
-  // console.log(employeesBenefitResponse);
-  // useEffect(() => {
-  //   setEmployeesBenefit(employeesBenefitResponse);
-  // }, [employeesBenefitResponse]);
+  useEffect(() => {
+    setUserRoles(userRoleResponse);
+  }, [userRoleResponse]);
 
   return (
     <div className={classes.userItem}>
@@ -71,7 +71,7 @@ const UsersItem = ({ user }) => {
           </div>
         </Card>
       </div>
-      {/* <BenefitEmployeeShow data={employeesBenefit} /> */}
+      <UserSelectRole userRoles={userRoles} />
     </div>
   );
 };

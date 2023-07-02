@@ -94,7 +94,7 @@ const TVItem = ({ tv }) => {
           </div>
           <div className={classes.btn}>
             <Link
-              className={classes.linkbtn}
+              className={classes.link}
               to={`/marketing/campaigns/campaign-detail/${campaign.id}`}
             >
               Go To Campaign

@@ -1,5 +1,5 @@
 import ProductForm from '../../../components/Repository/product/ProductForm';
-import classes from './newProduct.module.scss';
+import classes from './NewProduct.module.scss';
 const NewProductPage = () => {
   return(
     <div className={classes.newProduct}>

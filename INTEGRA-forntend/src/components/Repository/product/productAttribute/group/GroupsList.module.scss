@@ -1,8 +1,8 @@
 .groupsList {
   width: calc(100vw - 270px);
   height: calc(100vh - 70px);
-  //overflow-y: auto;
-  //overflow-x: auto;
+  overflow-y: none;
+  overflow-x: auto;
 }
 
 .groupsList {
@@ -96,7 +96,7 @@
     transition: 0.2s;
   }
 
-  .add_product_link:hover {
+  .add_category_link:hover {
     background-color: var(--third-color);
     padding: 8px;
   }

@@ -40,14 +40,14 @@ const RoleForm = ({ method, role }) => {
           defaultValue={role ? role.name : ''}
         />
 
-        <label htmlFor="guard_name">Guard Name :</label>
+        {/* <label htmlFor="guard_name">Guard Name :</label>
         <input
           id="guard_name"
           type="text"
           name="guard_name"
           required
           defaultValue={role ? role.guard_name : ''}
-        />
+        /> */}
 
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>

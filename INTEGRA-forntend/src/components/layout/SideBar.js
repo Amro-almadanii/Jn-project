@@ -69,7 +69,7 @@ function SideBar() {
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
             }
-            to='/systemmanagment/profile'
+            to='/systemManagement/marketing'
             end
           >
             Marketing Info

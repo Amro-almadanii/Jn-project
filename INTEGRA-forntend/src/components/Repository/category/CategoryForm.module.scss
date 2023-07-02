@@ -1,63 +1,39 @@
-.categoryForm {
-  width: calc(100vw - 250px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: calc(100vh - 70px);
-  display: flex;
-}
 
-.categoryForm {
   .form {
-    padding-top: 200px;
-    margin: 0 auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-width: 70%;
-  }
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+  
 
-  .form input,
-  .form textarea {
+  input,textarea {
+    display: block;
     width: 90%;
-    color: var(--second-color);
-    margin: 4px;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 15px;
+    padding: 5px;
     outline: none;
+    margin: 24px;
   }
 
-  .form label {
+   label {
+    margin: 25px;
     color: var(--second-color);
-    padding: 10px;
-    margin: 4px;
-    font-weight: bold;
+    font-size: 18px;
   }
 
   .actions {
     display: flex;
     justify-content: flex-end;
-    color: var(--text-color);
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    
   }
 
   .actions button {
-    font-weight: 700;
     cursor: pointer;
     padding: 0.5rem 1.5rem;
+    margin: 40px;
     border-radius: 4px;
-    color: white;
+    background-color: var(--second-color);
+    color: var(--text-color);
     border: none;
-    transition-duration: 0.2s;
-    font-size: 18px;
-    background-color: var(--second-color);
-  }
-
-  .actions button {
-    color: white;
-    background-color: var(--second-color);
-    margin: 4px;
+    transition: 0.4s;
   }
 
   .actions button:hover {
@@ -68,11 +44,5 @@
   .actions button[type='button']:hover {
     color: white;
     background-color: var(--third-color);
-  }
-
-  h1 {
-    margin: 20px;
-    font-size: 35px;
-    color: var(--second-color);
   }
 }

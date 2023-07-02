@@ -37,6 +37,153 @@ export const useEvents = (id) => {
   return events;
 };
 
+export const useMarketingChart = () => {
+  const [marketingChart1, setMarketingChart1] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignsRevenues',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setMarketingChart1(data);
+         
+        } else {
+          throw json({ message: 'Could not fetch Chart.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return marketingChart1;
+};
+
+export const useCampaignInfo = () => {
+  const [marketingChart, setMarketingChart] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/marketing/campaigns/showCampaignsDetailsRevenue',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setMarketingChart(data);
+        } else {
+          throw json({ message: 'Could not fetch Chart.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return marketingChart;
+};
+
+export const usePermission = () => {
+  const [permission, setPermission] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/userManagement/permissions',
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setPermission(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Permission.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return permission;
+};
+
+
+
+
+
+
+
+export const useRolesPermission = (id) => {
+  const [rolePermission, setRolePermission] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = getAuthToken();
+
+        const response = await fetch(
+          'http://localhost:8000/userManagement/roles/rolePermissions/' + id,
+          {
+            headers: {
+              Authorization: 'bearer ' + token,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setRolePermission(data.data);
+        } else {
+          throw json({ message: 'Could not fetch Roles Permissions.' }, { status: 500 });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return rolePermission;
+};
+
 export const useTvs = (id) => {
   const [tvs, setTvs] = useState([]);
 

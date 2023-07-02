@@ -1,6 +1,6 @@
 import GroupForm from '../../../../components/Repository/product/productAttribute/group/GroupForm';
 import { json, useRouteLoaderData } from 'react-router-dom';
-import classes from './NewGroup.module.scss';
+import classes from './EditGroup.module.scss';
 import { getAuthToken } from '../../../../hooks/auth';
 
 const EditGroupPage = () => {

@@ -16,20 +16,19 @@ const RolesList = ({ roles }) => {
           <tr>
             <th>Role Id</th>
             <th>Name</th>
-            <th>guard_name</th>
+            <th>Permissions</th>
           </tr>
         </thead>
         <tbody>
           {roles.map((role) => (
             <tr
               key={role.id}
-              onClick={() =>
-                navigate(`/userManagement/roles/role-detail/${role.id}`)
-              }
             >
               <td>{role.id}</td>
               <td>{role.name}</td>
-              <td>{role.guard_name}</td>
+              <td><button onClick={() =>
+                  navigate(`/userManagement/roles/role-detail/${role.id}`)
+              }>Give Permission</button></td>
             </tr>
           ))}
         </tbody>
@@ -37,7 +36,7 @@ const RolesList = ({ roles }) => {
           <tr>
             <th>Role Id</th>
             <th>Name</th>
-            <th>guard_name</th>
+            <th>Permissions</th>
           </tr>
         </tfoot>
       </table>

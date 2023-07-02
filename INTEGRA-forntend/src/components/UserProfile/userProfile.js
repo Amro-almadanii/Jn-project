@@ -24,6 +24,7 @@ const UserProfile = () => {
   };
   const { data, isLoading } = useQuery('getMe', getInfo);
 
+  console.log(data)
   useEffect(() => {
     if (data) setUserInfo(data[0]);
   }, [data]);
@@ -34,7 +35,6 @@ const UserProfile = () => {
       {!isLoading && data && (
         <div>
           <h1>
-            {' '}
             User profile > {userInfo.firstName + ' ' + userInfo.lastName}
           </h1>
 

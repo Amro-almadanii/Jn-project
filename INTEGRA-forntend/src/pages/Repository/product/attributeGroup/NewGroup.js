@@ -2,7 +2,7 @@ import GroupForm from '../../../../components/Repository/product/productAttribut
 import classes from './NewGroup.module.scss';
 const NewGroupPage = () => {
   return (
-    <div className={classes.editGroup}>
+    <div className={classes.NewGroupPage}>
       <h1>Repository > Product > Create Group</h1>
       <GroupForm method="post"/>
     </div>

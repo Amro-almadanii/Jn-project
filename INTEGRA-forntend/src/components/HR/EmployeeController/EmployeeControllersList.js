@@ -15,16 +15,13 @@ const EmployeeControllersList = ({ employeeControllers }) => {
           <tr>
             <th>FirstName</th>
             <th>LastName</th>
-            <th>Date Of Brith</th>
             <th>Gender</th>
-            <th>Address</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Date Of Hire</th>
             <th>Salary</th>
             <th>Supervisor Id</th>
             <th>Status</th>
-            <th>Department Id</th>
           </tr>
         </thead>
         <tbody>
@@ -39,18 +36,13 @@ const EmployeeControllersList = ({ employeeControllers }) => {
             >
               <td>{employeeController.firstName}</td>
               <td>{employeeController.lastName}</td>
-              <td>{employeeController.dateOfBrith}</td>
               <td>{employeeController.gender}</td>
-              <td>
-                <p>{employeeController.address}</p>
-              </td>
               <td>{employeeController.email}</td>
               <td>{employeeController.phone}</td>
               <td>{employeeController.dateOfHire}</td>
               <td>{employeeController.salary}</td>
               <td>{employeeController.supervisorId}</td>
               <td>{employeeController.status}</td>
-              <td>{employeeController.department_id}</td>
             </tr>
           ))}
         </tbody>
@@ -58,16 +50,13 @@ const EmployeeControllersList = ({ employeeControllers }) => {
           <tr>
             <th>FirstName</th>
             <th>LastName</th>
-            <th>Date Of Brith</th>
             <th>Gender</th>
-            <th>Address</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Date Of Hire</th>
             <th>Salary</th>
             <th>Supervisor Id</th>
             <th>Status</th>
-            <th>Department Id</th>
           </tr>
         </tfoot>
       </table>

@@ -30,8 +30,9 @@ const ExportForm = ({ method, exportItem }) => {
   };
 
   return (
-    <div className={classes.exportForm}>
+    
       <Form method={method} className={classes.form}>
+        <div>
         <p>
           <label htmlFor='name'>Name</label>
           <input
@@ -80,8 +81,8 @@ const ExportForm = ({ method, exportItem }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
-      </Form>
     </div>
+      </Form>
   );
 };
 

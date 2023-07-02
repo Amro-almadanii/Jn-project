@@ -1,7 +1,7 @@
 .EmployeeList {
   display: flex;
   flex-direction: column;
-
+  margin: 20px;
   table {
     text-align: center;
     background-color: white;
@@ -10,7 +10,6 @@
   }
 
   td {
-    // padding-right: 20px;
     color: var(--second-color);
     cursor: pointer;
     padding: 4px;
@@ -20,12 +19,10 @@
   }
   p {
     overflow-x: hidden;
-
     overflow-y: auto;
   }
   th {
     background-color: var(--second-color);
-
     color: var(--text-color);
   }
 
@@ -35,6 +32,7 @@
 
   h1 {
     color: var(--second-color);
+    margin: 20px;
   }
 
   .add_Employee {

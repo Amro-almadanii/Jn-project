@@ -86,7 +86,7 @@ const CampaignForm = ({ method, campaign }) => {
         <p>
           <label htmlFor="actual_revenue">Actual Revenue</label>
           <input
-            id="actual_revenue  "
+            id="actual_revenue"
             type="text"
             name="actual_revenue"
             required

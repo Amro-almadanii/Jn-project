@@ -46,19 +46,19 @@
       background-color: var(--third-color);
     }
 
-    //   .link {
-    //     text-decoration: none;
-    //     color: var(--text-color);
-    //     background-color: var(--second-color);
-    //     border-radius: 4px;
-    //     border-style: none;
-    //     padding: 10px;
-    //     margin-right: 10px;
-    //     transition: 0.4s;
-    //   }
-    //   .link:hover {
-    //     background-color: var(--third-color);
-    //   }
+      .link {
+        text-decoration: none;
+        color: var(--text-color);
+        background-color: var(--second-color);
+        border-radius: 4px;
+        border-style: none;
+        padding: 10px;
+        margin-right: 10px;
+        transition: 0.4s;
+      }
+      .link:hover {
+        background-color: var(--third-color);
+      }
   }
   h1 {
     color: var(--second-color);

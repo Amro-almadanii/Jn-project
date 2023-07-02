@@ -14,9 +14,9 @@ const PermissionsList = ({ permissions }) => {
       <table>
         <thead>
           <tr>
-            <th>Benefit Id</th>
+            <th>Id</th>
             <th>Name</th>
-            <th>Cost</th>
+            <th>Guard Name</th>
           </tr>
         </thead>
         <tbody>
@@ -27,17 +27,17 @@ const PermissionsList = ({ permissions }) => {
                   navigate(`/userManagement/permissions/permission-detail/${permission.id}`)
                 }
             >
-              {/* <td>{permission.id}</td>
+              <td>{permission.id}</td>
               <td>{permission.name}</td>
-              <td>{permission.cost}</td> */}
+              <td>{permission.guard_name}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
-            <th>Benefit Id</th>
+            <th>Id</th>
             <th>Name</th>
-            <th>Cost</th>
+            <th>Guard Name</th>
           </tr>
         </tfoot>
       </table>

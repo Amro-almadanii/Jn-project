@@ -30,8 +30,9 @@ const ImportForm = ({ method, importItem }) => {
   };
 
   return (
-    <div className={classes.importForm}>
+   
       <Form method={method} className={classes.form}>
+        <div>
         <p>
           <label htmlFor='name'>Name</label>
           <input
@@ -80,8 +81,8 @@ const ImportForm = ({ method, importItem }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
+        </div>
       </Form>
-    </div>
   );
 };
 

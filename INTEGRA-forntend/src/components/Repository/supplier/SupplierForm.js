@@ -21,8 +21,8 @@ const SupplierForm = ({ method, supplier }) => {
   };
 
   return (
-    <div className={classes.supplierForm}>
       <Form method={method} className={classes.form}>
+        <div>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -71,8 +71,9 @@ const SupplierForm = ({ method, supplier }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
+        </div>
       </Form>
-    </div>
+    
   );
 };
 

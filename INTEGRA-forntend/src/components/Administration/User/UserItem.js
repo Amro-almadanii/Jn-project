@@ -25,7 +25,7 @@ const UsersItem = ({ user }) => {
 
   return (
     <div className={classes.userItem}>
-      <h1> Administration > User > {user.name} </h1>
+      <h1> Administration > User > {user.username} </h1>
       <div className={classes.box}>
         <Card className={classes.card}>
           <div className={classes.cardItems}>
@@ -39,10 +39,6 @@ const UsersItem = ({ user }) => {
           <div className={classes.cardItems}>
             <label>Email :</label>
             <p> {user.email} </p>
-          </div>
-          <div className={classes.cardItems}>
-            <label>Password :</label>
-            <p> {user.password} </p>
           </div>
           {/* <div className={classes.cardItems}>
             <label> Id :</label>

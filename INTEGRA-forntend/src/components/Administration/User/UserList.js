@@ -7,7 +7,7 @@ const UsersList = ({ users }) => {
     <div className={classes.UserList}>
       <h1> Administration > Users </h1>
       <div className={classes.add_User}>
-        <Link className={classes.add_User_link} to="/userManagement/role/new">
+        <Link className={classes.add_User_link} to="/userManagement/users/new">
           Add New User
         </Link>
       </div>
@@ -18,7 +18,6 @@ const UsersList = ({ users }) => {
             <th>Fullname</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Password</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +32,6 @@ const UsersList = ({ users }) => {
               <td>{User.fullName}</td>
               <td>{User.username}</td>
               <td>{User.email}</td>
-              <td>{User.password}</td>
             </tr>
           ))}
         </tbody>
@@ -43,7 +41,6 @@ const UsersList = ({ users }) => {
             <th>Fullname</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Password</th>
           </tr>
         </tfoot>
       </table>

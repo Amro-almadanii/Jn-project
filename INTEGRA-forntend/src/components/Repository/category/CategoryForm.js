@@ -21,8 +21,8 @@ const CategoryForm = ({ method, category }) => {
   };
 
   return (
-    <div className={classes.categoryForm}>
       <Form method={method} className={classes.form}>
+        <div>
         <p>
           <label htmlFor="name">Name</label>
           <input
@@ -42,8 +42,9 @@ const CategoryForm = ({ method, category }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
+      </div>
       </Form>
-    </div>
+    
   );
 };
 

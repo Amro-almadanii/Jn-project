@@ -21,8 +21,9 @@ const GroupForm = ({ method, group }) => {
   };
 
   return (
-    <div className={classes.groupForm}>
+    
       <Form method={method} className={classes.form}>
+        <div>
         <label htmlFor="name">Name :</label>
         <input
           id="name"
@@ -39,8 +40,9 @@ const GroupForm = ({ method, group }) => {
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
+        </div>
       </Form>
-    </div>
+ 
   );
 };
 

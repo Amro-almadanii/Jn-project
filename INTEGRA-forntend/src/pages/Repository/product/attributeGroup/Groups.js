@@ -1,11 +1,11 @@
 import GroupsList from '../../../../components/Repository/product/productAttribute/group/GroupsList';
 import { getAuthToken } from '../../../../hooks/auth';
 import { json, redirect, useLoaderData } from 'react-router-dom';
-
+import classes from './Groups.module.scss'
 const GroupsPage = () => {
   const { data } = useLoaderData();
   return (
-    <div>
+    <div className={classes.GroupsPage}>
       <h1>Repository > Groups of Attributes</h1>
       <GroupsList groups={data}/>
     </div>

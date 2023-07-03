@@ -1,4 +1,4 @@
-.RolesSelectPermissions {
+.UserSelectRole {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -10,7 +10,9 @@
     }
   
     td {
+      // padding-right: 20px;
       color: var(--second-color);
+      cursor: pointer;
       padding: 12px;
     }
   

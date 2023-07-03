@@ -72,10 +72,10 @@ function SideBar() {
             to='/systemManagement/marketing'
             end
           >
-            Marketing Info
+            Marketing Charts
           </NavLink>
         </div>
-        <div className={classes.item}>
+        {/* <div className={classes.item}>
           <NavLink
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
@@ -85,8 +85,8 @@ function SideBar() {
           >
             HR Info
           </NavLink>
-        </div>
-        <div className={classes.item}>
+        </div> */}
+        {/* <div className={classes.item}>
           <NavLink
             className={({ isActive }) =>
               isActive ? classes.active : classes.navlink
@@ -96,7 +96,7 @@ function SideBar() {
           >
             Repository Info
           </NavLink>
-        </div>
+        </div> */}
       </div>
 
       {department === 'userManagement' && <div

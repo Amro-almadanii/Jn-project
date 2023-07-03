@@ -1,6 +1,6 @@
 import { getAuthToken } from '../../../../hooks/auth';
 import { Form, json, redirect, useNavigate, useNavigation, useParams } from 'react-router-dom';
-import classes from './ProductDetailForm.module.scss';
+import classes from './ProductDetailNewForm.module.scss';
 import { useEffect, useState } from 'react';
 import { useAttributesGroup, useGroups, useProductStock } from '../../../../hooks/useApi';
 import Input from './UI/Input';
@@ -11,7 +11,7 @@ import TextAreaInput from './UI/TextAreaInput';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import Wrapper from './Helpers/Wrapper';
-
+import { Card } from '@mui/material';
 const ProductDetailNewForm = ({ method, attribute }) => {
   const [groups, setGroups] = useState([]);
   const [attributesGroup, setAttributesGroup] = useState([]);
@@ -124,19 +124,28 @@ const ProductDetailNewForm = ({ method, attribute }) => {
 
   return (
     <div className={classes.productDetailForm}>
-      <p>
+      <div className={classes.group}>
+      <Card className={classes.card}>
         <label htmlFor='group'> Choose Group </label>
+        
         <select id='group' name='type' onChange={choseGroupHandler}>
           <option value=''>--Choose an option--</option>
           {groups.map((group) => (
             <option key={group.id} value={group.id}>{group.name}</option>
           ))}
         </select>
+     
+        <div className={classes.iconBox}>
         <RemoveIcon className={classes.addIcon} onClick={removeValueHandler} />
         <AddIcon className={classes.addIcon} onClick={addValueHandler} />
-      </p>
+        </div>
+ 
+        </Card>
+      </div>
+      <div>
       <Form method={method} className={classes.form}>
-        <table style={{ border: 'black solid 1px' }}>
+        <table>
+          <Card className={classes.card}>
           <thead>
           <tr>
             <th>stock</th>
@@ -171,6 +180,7 @@ const ProductDetailNewForm = ({ method, attribute }) => {
             </tr>
           ))}
           </tbody>
+          </Card>
         </table>
         <div className={classes.actions}>
           <button onClick={cancelHandler} disabled={isSubmitting}>
@@ -182,6 +192,7 @@ const ProductDetailNewForm = ({ method, attribute }) => {
           </button>
         </div>
       </Form>
+      </div>
     </div>
   );
 };

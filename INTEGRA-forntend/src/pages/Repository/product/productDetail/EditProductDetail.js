@@ -1,11 +1,11 @@
 import { json, useLoaderData } from 'react-router-dom';
 import ProductDetailEditForm from '../../../../components/Repository/product/productDetail/ProductDetailEditForm';
 import { getAuthToken } from '../../../../hooks/auth';
-
+import classes from './EditProductDetail.module.scss'
 const EditProductDetailPage = () => {
    const { data } = useLoaderData();
   return (
-    <div>
+    <div className={classes.EditProductDetailPage}>
       <h1>Repository > Product > Edit Detail</h1>
       <ProductDetailEditForm method='put' detail={data}/>
     </div>

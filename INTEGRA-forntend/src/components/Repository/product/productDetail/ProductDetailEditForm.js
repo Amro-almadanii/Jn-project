@@ -1,6 +1,6 @@
 import { getAuthToken } from '../../../../hooks/auth';
 import { Form, json, redirect, useNavigate, useNavigation, useParams } from 'react-router-dom';
-import classes from './ProductDetailForm.module.scss';
+import classes from './ProductDetailNewForm.module.scss';
 import { useEffect, useState } from 'react';
 import { useAttributesGroup, useGroups, useProductStock } from '../../../../hooks/useApi';
 import Input from './UI/Input';
@@ -11,6 +11,7 @@ import TextAreaInput from './UI/TextAreaInput';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import Wrapper from './Helpers/Wrapper';
+import { Card } from '@mui/material';
 
 const ProductDetailEditForm = ({ method, detail }) => {
   const [attributesGroup, setAttributesGroup] = useState([]);
@@ -47,17 +48,18 @@ const ProductDetailEditForm = ({ method, detail }) => {
   }, []);
 
   return (
-    <div className={classes.productDetailForm}>as
+    <div className={classes.productDetailForm}>
+      <Card className={classes.card}>
       <Form method={method} className={classes.form}>
-        <table style={{ border: 'black solid 1px' }}>
+        <table>
           <thead>
           <tr>
             <th>stock</th>
-            {
+            {/* {
               attributesGroup.map((attribute) => (
                 <th key={attribute.id}>{attribute.name}</th>
               ))
-            }
+            } */}
           </tr>
           </thead>
           <tbody>
@@ -81,12 +83,21 @@ const ProductDetailEditForm = ({ method, detail }) => {
             </tr>
           </tbody>
         </table>
-        <div className={classes.actions}>
+        <div className={classes.editActions}>
           <button disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Save'}
           </button>
         </div>
       </Form>
+      <div>
+        <h3>Name of Attribute :</h3>
+        {
+              attributesGroup.map((attribute,index) => (
+                <p className={classes.p} key={attribute.id}>{index + 1}) {attribute.name}</p>
+              ))
+            }
+      </div>
+          </Card>
     </div>
   );
 };

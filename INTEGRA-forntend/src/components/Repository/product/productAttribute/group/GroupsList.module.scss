@@ -26,6 +26,23 @@
     }
   }
 
+  .arrowIcon{
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    margin-top: 6px;
+  }
+  .arrow{
+    background-color: var(--second-color);
+    border-radius: 50px;
+    color: var(--text-color);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .arrow:hover{
+    background-color: var(--third-color);
+  }
   .box {
     width: calc(100vw - 300px);
     margin-left: 10px;

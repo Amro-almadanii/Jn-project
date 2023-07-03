@@ -28,6 +28,20 @@
     width: calc(100vw - 300px);
     margin-left: 10px;
   }
+
+  select{
+    margin: 10px;
+    outline: none;
+    border: 2px solid var(--third-color);
+    border-radius: 4px;
+  }
+  
+  option{
+    background-color: var(--second-color);
+    text-align: center;
+    outline: none;
+  }
+
   .btn {
     display: flex;
     justify-content: flex-end;

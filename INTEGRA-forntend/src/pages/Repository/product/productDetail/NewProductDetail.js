@@ -1,8 +1,9 @@
 import ProductDetailNewForm from '../../../../components/Repository/product/productDetail/ProductDetailNewForm';
+import classes from './NewProductDetail.module.scss'
 const NewProductDetailPage = () => {
   return (
-    <div>
-      <h1>Repository > Product > Create Poduct Detail</h1>
+    <div className={classes.NewProductDetailPage}>
+      <h1>Repository > Product > Create Product Detail</h1>
       <ProductDetailNewForm method="post"/>
     </div>
   );

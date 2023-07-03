@@ -53,11 +53,12 @@ const GroupsList = ({ groups }) => {
         <Card className={classes.card} key={group.id}>
           <label>Name of Group:</label>
           <p> {group.name} </p>
-          <ArrowDropDownIcon onClick={() => (attributesOfGroupHandler(group.id))} />
-          <ArrowDropUpIcon onClick={() => {
+          <div className={classes.arrowIcon}>
+          <ArrowDropDownIcon className={classes.arrow} onClick={() => (attributesOfGroupHandler(group.id))} />
+          <ArrowDropUpIcon className={classes.arrow} onClick={() => {
             if ((attributesOfGroup.length > 0) && (attributesOfGroup[0].group_id == group.id)) setAttributesOfGroup([]);
           }} />
-
+</div>
           {(attributesOfGroup.length > 0) && (attributesOfGroup[0].group_id == group.id) &&
             <div>
               <h4> Details of Group</h4>

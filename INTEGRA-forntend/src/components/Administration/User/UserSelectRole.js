@@ -1,6 +1,6 @@
 import { useState , useEffect } from "react";
-import { usePermission } from "../../../hooks/useApi";
-import classes from './RolesSelectPermissions.module.scss'
+import { usePermission, useRole } from "../../../hooks/useApi";
+import classes from './UserSelectRole.module.scss'
 import {
   Form,
   json,
@@ -11,16 +11,15 @@ import {
   useParams,
 } from 'react-router-dom';
 import { getAuthToken } from "../../../hooks/auth";
-const RolesSelectPermissions = ({rolePermission})=>{
-    const [editPermission, setEditPermission] = useState({ id: 0, type: '' });
+const UserSelectRole = ({userRoles})=>{
+    const [editRole, setEditRole] = useState({ id: 0, type: '' });
     const [applyEdit, setApplyEdit] = useState(false);
-    const [permissions,setPermissions] = useState([]);
-    console.log(rolePermission)
+    const [roles,setRoles] = useState([]);
 
     const navigation = useNavigation();
-    const permissionInfo = usePermission();
+    const roleResponse = useRole();
 
-    const { roleId } = useParams('roleId');
+    const { userId } = useParams('userId');
 
     const removeById = (arr, id) => {
       const requiredIndex = arr.findIndex(el => el.id == id);
@@ -32,21 +31,21 @@ const RolesSelectPermissions = ({rolePermission})=>{
     };
   
     const addById = (arr, id) => {
-      const permission = permissions.find(permission => permission.id == id);
-      if (permission) {
-        arr.push(permission);
+      const role = roles.find(role => role.id == id);
+      if (role) {
+        arr.push(role);
       }
     };
   
     const checkHandler = (event) => {
       const { value, checked } = event.target;
       if (checked) {
-        addById(rolePermission, value);
-        setEditPermission({ id: value, type: 'attach' });
+        addById(userRoles, value);
+        setEditRole({ id: value, type: 'attach' });
         setApplyEdit(!applyEdit);
       } else {
-        removeById(rolePermission, value);
-        setEditPermission({ id: value, type: 'detach' });
+        removeById(userRoles, value);
+        setEditRole({ id: value, type: 'detach' });
         setApplyEdit(!applyEdit);
       }
     };
@@ -55,51 +54,52 @@ const RolesSelectPermissions = ({rolePermission})=>{
       const fetchData = async () => {
         try {
           const token = getAuthToken();
-          const permissionData = {
-            permissionId: editPermission.id,
+          const roleData = {
+            role: editRole.id,
           };
           
           let url;
-          if (editPermission.type === 'attach') {
-            url = `http://localhost:8000/userManagement/roles/attach/${roleId}`;
+          if (editRole.type === 'attach') {
+            url = `http://localhost:8000/userManagement/roles/assignRole/${userId}`;
           } else {
-            url = `http://localhost:8000/userManagement/roles/detach/${roleId}`;
+            url = `http://localhost:8000/userManagement/roles/unassignRole/${userId}`;
           }
-          
+          console.log(url)
+          console.log(roleData)
           const response = await fetch(url, {
             method: 'post',
             headers: {
               Authorization: 'bearer ' + token,
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(permissionData),
+            body: JSON.stringify(roleData),
           });
   
   
           if (!response.ok) {
-            throw json({ message: 'Could not add permission to role.' }, { status: 500 });
+            throw json({ message: 'Could not add role to user.' }, { status: 500 });
           }
         } catch (error) {
           console.error(error);
         }
       };
   
-      if (editPermission.id > 0) {
+      if (editRole.id > 0) {
         fetchData();
       }
-    }, [editPermission, applyEdit]);
+    }, [editRole, applyEdit]);
   
     const verifyCheckHandler = (id) => {
-      return rolePermission.some(permission => permission.id === id);
+      return userRoles.some(role => role.id === id);
     };
 
 
     useEffect(() => {
-        setPermissions(permissionInfo);
-    }, [permissionInfo]);
+        setRoles(roleResponse);
+    }, [roleResponse]);
 
     return(
-    <div className={classes.RolesSelectPermissions}>
+    <div className={classes.UserSelectRole}>
       <table>
         <thead>
           <tr>
@@ -109,16 +109,16 @@ const RolesSelectPermissions = ({rolePermission})=>{
           </tr>
         </thead>
         <tbody>
-          {permissions.map((permission) => (
+          {roles.map((role) => (
             <tr
-              key={permission.id}
+              key={role.id}
             >
-              <td>{permission.id}</td>
-              <td>{permission.name}</td>
+              <td>{role.id}</td>
+              <td>{role.name}</td>
               <td style={{cursor: 'auto'}} onClick={(event) => event.stopPropagation()}><input type="checkbox" 
-              name="permissionId"
-               value={permission.id}
-               checked={verifyCheckHandler(permission.id)}
+              name="roleId"
+               value={role.id}
+               checked={verifyCheckHandler(role.id)}
                onChange={checkHandler}
                /></td>
             </tr>
@@ -136,4 +136,4 @@ const RolesSelectPermissions = ({rolePermission})=>{
     )
 }
 
-export default RolesSelectPermissions;
+export default UserSelectRole;

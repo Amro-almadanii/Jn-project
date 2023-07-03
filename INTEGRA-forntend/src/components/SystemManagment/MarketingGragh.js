@@ -111,7 +111,7 @@ width={400}
 height={550}
 series={chartActualRevenue ? chartActualRevenue :[1,1,1] }
 options={{
-    labels:[...chartItemName],
+    labels:chartItemName ? [...chartItemName] : ['A' , 'B' , 'C'],
     title:{
         text:'Actual Revenue'
     },

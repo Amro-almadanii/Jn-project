@@ -4,7 +4,6 @@ import { Card } from '@mui/material';
 import { useEffect, useState } from 'react';
 import UserSelectRole from './UserSelectRole';
 import { useUserRole } from '../../../hooks/useApi';
-
 const UsersItem = ({ user }) => {
   const [userRoles, setUserRoles] = useState([]);
   const submit = useSubmit();
@@ -39,6 +38,15 @@ const UsersItem = ({ user }) => {
           <div className={classes.cardItems}>
             <label>Email :</label>
             <p> {user.email} </p>
+          </div>
+          <label>User Roles :</label>
+          <div className={classes.cardItems}>
+            <select>
+              <option>-- Your Roles --</option>
+            {userRoles.map((userRole)=>(
+            <option disabled> {userRole.name} </option>
+            ))}
+            </select>
           </div>
           {/* <div className={classes.cardItems}>
             <label> Id :</label>

@@ -45,32 +45,16 @@ const RoleItem = ({ role }) => {
             <label>Name of Benefit :</label>
             <p> {role.name} </p>
           </div>
-          <div className={classes.cardItems}>
             <label>Role Permissions :</label>
+          <div className={classes.cardItems}>
+            <select>
+              <option>-- Your Permissions --</option>
             {rolePermissionInfo.map((rolePermission)=>(
-            <p> {rolePermission.name} </p>
+            <option disabled> {rolePermission.name} </option>
             ))}
+            </select>
           </div>
-          {/* <div className={classes.cardItems}>
-            <label>Guard Name :</label>
-            <p> {role.guard_name} </p>
-          </div> */}
-          {/* <div className={classes.cardItems}>
-            <label>Leads of Customer:</label>
-            <p>
-              {' '}
-              {leads.map((lead) => (
-                <Link
-                  key={lead.id}
-                  className={classes.leadLink}
-                  to={`/marketing/leads/lead-detail/${lead.id}`}
-                >
-                  {' '}
-                  {lead.type}{' '}
-                </Link>
-              ))}{' '}
-            </p>
-          </div> */}
+       
           <div className={classes.btn}>
             <Link
               className={classes.link}
@@ -90,7 +74,6 @@ const RoleItem = ({ role }) => {
           <RolesSelectPermissions rolePermission={rolePermissionInfo} />
     </div>
       </div>
-      {/* <BenefitEmployeeShow data={employeesBenefit} /> */}
     </div>
   );
 };

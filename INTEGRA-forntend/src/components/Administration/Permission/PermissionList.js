@@ -16,20 +16,15 @@ const PermissionsList = ({ permissions }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Guard Name</th>
           </tr>
         </thead>
         <tbody>
           {permissions.map((permission) => (
             <tr
               key={permission.id}
-                onClick={() =>
-                  navigate(`/userManagement/permissions/permission-detail/${permission.id}`)
-                }
             >
               <td>{permission.id}</td>
               <td>{permission.name}</td>
-              <td>{permission.guard_name}</td>
             </tr>
           ))}
         </tbody>
@@ -37,7 +32,6 @@ const PermissionsList = ({ permissions }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Guard Name</th>
           </tr>
         </tfoot>
       </table>

@@ -30,54 +30,53 @@ const UserProfile = () => {
     if (data) setUserInfo(data[0]);
   }, [data]);
 
-  return (
-    <div className={classes.UserProfile}>
+  return (<>
+    
       {isLoading && <Loader/>}
-      {!isLoading && data && (
-        <div>
-          <h1>
-            User profile > {userInfo.firstName + ' ' + userInfo.lastName}
-          </h1>
-
-
-
-
-
-
-          {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-    <Tab label="Item One" {...a11yProps(0)} />
-    <Tab label="Item Two" {...a11yProps(1)} />
-    <Tab label="Item Three" {...a11yProps(2)} />
-  </Tabs>
-</Box>
-<TabPanel value={value} index={0}>
-  Item One
-</TabPanel>
-<TabPanel value={value} index={1}>
-  Item Two
-</TabPanel>
-<TabPanel value={value} index={2}>
-  Item Three
-</TabPanel> */}
-
-
-
-
+      {!isLoading  && (<div className={classes.UserProfile}>
+        <Card className={classes.sidebar}>
           <div className={classes.box}>
-            <Card className={classes.card}>
-              <label>First Name:</label>
-              <p>{userInfo.firstName}</p>
-              <label>Last Name:</label>
-              <p>{userInfo.lastName}</p>
-              <div className={classes.button}>
-                <button onClick={() => navigate(-1)}>Go Back</button>
-              </div>
-              <label>Certificate Info :</label>
-              {userInfo.certificates &&
-                userInfo.certificates.map((Info, index) => (
-                  <Card className={classes.childCard}>
-                    <label>Number Of Certificates :{index + 1} </label>
+        <label>Email</label>
+        <p>{userInfo.email}</p>
+        <label>Gender</label>
+        <p>{userInfo.gender}</p>
+        <label>Address</label>
+        <p>{userInfo.address}</p>
+        <label>Phone</label>
+        <p>{userInfo.phone}</p>
+        <label>Salary</label>
+        <p>{userInfo.salary}</p>
+        <label>Status</label>
+        <p>{userInfo.status}</p>
+        <label>Date Of Brith</label>
+        <p>{userInfo.dateOfBrith}</p>
+        <label>Date Of Hire</label>
+        <p>{userInfo.dateOfHire}</p>
+        <label>Department</label>
+        <p>{userInfo.department}</p>
+        </div>
+        <p className={classes.adv}>Increase in salary...work hard😉</p>
+        </Card>
+
+        <div className={classes.content}>
+        <h1>
+        User profile > {userInfo.firstName + ' ' + userInfo.lastName}
+        </h1>
+        <div className={classes.button}>
+          
+<button onClick={()=>{navigate(-1)}}>Go Back</button>
+</div>
+<div className={classes.wrapper}>
+  <div className={classes.accordionBox}>
+<Accordion className={classes.accordion}>
+  <AccordionSummary >
+    <Typography className={classes.label}>Certificate Info </Typography>
+  </AccordionSummary>
+  <AccordionDetails>
+    <Typography className={classes.info}>
+         {userInfo.certificates && userInfo.certificates.map((Info, index) => (
+                    <div>
+                    <label>Number Of Certificates : {index + 1} </label>
                     <div className={classes.cardItems}>
                       <label>Certificates Name :</label>
                       <p>{Info.name}</p>
@@ -86,13 +85,21 @@ const UserProfile = () => {
                       <label>Certificates Level :</label>
                       <p>{Info.level}</p>
                     </div>
-                  </Card>
+                    </div>
                 ))}
+                </Typography>
+  </AccordionDetails>
+</Accordion>
 
-              <label>Educations Info :</label>
-              {userInfo.educations &&
+<Accordion className={classes.accordion}>
+  <AccordionSummary >
+    <Typography className={classes.label}>Educations Info</Typography>
+  </AccordionSummary>
+  <AccordionDetails>
+    <Typography className={classes.info}>
+  {userInfo.educations &&
                 userInfo.educations.map((Info, index) => (
-                  <Card className={classes.childCard}>
+                  <div>
                     <label>Number Of Educations : {index + 1}</label>
                     <div className={classes.cardItems}>
                       <label>Educations Degree :</label>
@@ -110,14 +117,22 @@ const UserProfile = () => {
                       <label>Educations Specialization :</label>
                       <p>{Info.specialization}</p>
                     </div>
-                  </Card>
-                ))}
+                    </div>
+                ))} 
+                  </Typography>
+  </AccordionDetails>
+</Accordion>
 
-              <label>Performances Info :</label>
-              {userInfo.performances &&
+  <Accordion className={classes.accordion}>
+  <AccordionSummary >
+    <Typography className={classes.label}>Performances Info </Typography>
+  </AccordionSummary>
+  <AccordionDetails>
+    <Typography className={classes.info}>
+  {userInfo.performances &&
                 userInfo.performances.map((Info, index) => (
-                  <Card className={classes.childCard}>
-                    <label>Number Of Performances :{index + 1} </label>
+                    <div>
+                    <label>Number Of Performances : {index + 1} </label>
                     <div className={classes.cardItems}>
                       <label>Performances Rating :</label>
                       <p>{Info.performanceRating}</p>
@@ -130,13 +145,21 @@ const UserProfile = () => {
                       <label>Performances Comments :</label>
                       <p>{Info.comments}</p>
                     </div>
-                  </Card>
-                ))}
+                    </div>
+                ))} 
+                  </Typography>
+  </AccordionDetails>
+</Accordion>
 
-              <label>Vacations Info :</label>
-              {userInfo.vacations &&
+<Accordion className={classes.accordion}>
+  <AccordionSummary >
+    <Typography className={classes.label}>Vacations Info  </Typography>
+  </AccordionSummary>
+  <AccordionDetails>
+    <Typography className={classes.info}>
+  {userInfo.vacations &&
                 userInfo.vacations.map((Info, index) => (
-                  <Card className={classes.childCard}>
+                  <div>
                     <label>Number Of Vacations : {index + 1}</label>
                     <div className={classes.cardItems}>
                       <label>Vacations Status :</label>
@@ -158,70 +181,17 @@ const UserProfile = () => {
                       <label>Vacations Reason :</label>
                       <p>{Info.reasonOfVacation}</p>
                     </div>
-                  </Card>
-                ))}
-            </Card>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-
-export default UserProfile;
-
-{
-  /* <div>
-            <CountUp end={100} start={0} duration={3} />%
-          </div> */
-}
-
-// const info = [
-//   ['Task', 'Hours per Day', 'style'],
-//   ['amro', 11],
-//   ['Eat', 2],
-//   ['Commute', 2],
-//   ['Watch TV', 2],
-// ];
-
-// const columns = [
-//   ['Element', 'Density', { role: 'style' }],
-//   ['amro', 8.94, '#b87333'],
-//   ['Silver', 10.49, 'silver'],
-//   ['Gold', 19.3, 'gold'],
-//   ['Platinum', 21.45, 'color: #e5e4e2'],
-// ];
-
-{
-  /* <Chart
-            chartType="PieChart"
-            data={info}
-            loader={<div>Loading Chart..</div>}
-            options={{ title: 'Motivation Level Throughout the Day' }}
-            width={'100%'}
-            height={'400px'}
-          /> */
-}
-{
-  /* <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={columns}
-          /> */
-}
-
-// const [expanded , setExpanded] = useState<String | false>(false);
-// const handleChange =(isExpanded , panel) =>{
-//   setExpanded(isExpanded ? panel : false)
-// }
-{/* <Accordion expanded={expanded == 'panel1'} onchange={(event,isExpanded) => handleChange(isExpanded,'panel1')}>
-  <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-    <Typography>Accordion1</Typography>
-  </AccordionSummary>
-  <AccordionDetails>
-    <Typography>ksdkd dksdk
-    </Typography>
+                    </div>
+                ))} 
+                </Typography>         
   </AccordionDetails>
-</Accordion> */}
+</Accordion>
+</div>
+</div>
+        </div>
+        </div>
+        )}
+    </>);
+  };
+
+  export default UserProfile;

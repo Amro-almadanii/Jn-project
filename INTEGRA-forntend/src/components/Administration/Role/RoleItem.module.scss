@@ -20,6 +20,18 @@
     display: flex;
   }
 
+select{
+  margin: 10px;
+  outline: none;
+  border: 2px solid var(--third-color);
+  border-radius: 4px;
+}
+
+option{
+  background-color: var(--second-color);
+  text-align: center;
+  outline: none;
+}
   .card {
     border: 2px solid var(--third-color);
   }

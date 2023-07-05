@@ -8,11 +8,19 @@ import {
 } from 'react-router-dom';
 import classes from './EmployeePerformanceForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
+import { useEffect, useState } from 'react';
+import { useSupervisors } from '../../../hooks/useApi';
 
 const EmployeePerformanceForm = ({ method, employeePerformance }) => {
+  const [supervisors, setSupervisors] = useState([]);
+  const SupervisorResponse = useSupervisors();
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setSupervisors(SupervisorResponse);
+  }, [SupervisorResponse]);
 
   const isSubmitting = navigation.state === 'submitting';
 
@@ -53,6 +61,16 @@ const EmployeePerformanceForm = ({ method, employeePerformance }) => {
           }
         />
 
+        <label htmlFor="supervisor">Employee :</label>
+        <select id="supervisor" name="supervisorId" required>
+          <option disabled>--Choose Supervisor--</option>
+          {supervisors.map((supervisor) => (
+            <option key={supervisor.id} value={supervisor.id}>
+              {supervisor.firstName + ' ' + supervisor.lastName}
+            </option>
+          ))}
+        </select>
+
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
@@ -74,7 +92,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeePerformanceData = {
-    employee_id: 3,
+    employee_id: data.get('supervisorId'),
     performanceRating: data.get('performanceRating'),
     comments: data.get('comments'),
     reviewDate: data.get('reviewDate'),

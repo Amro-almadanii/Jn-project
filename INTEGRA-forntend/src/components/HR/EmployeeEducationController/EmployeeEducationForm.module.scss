@@ -11,6 +11,19 @@
     color: var(--second-color);
     font-size: 18px;
   }
+
+  select {
+    display: block;
+    width: 90%;
+    padding: 5px;
+    outline: none;
+    margin: 24px;
+  }
+  option {
+    color: var(--text-color);
+    background-color: var(--second-color);
+  }
+
   input {
     display: block;
     width: 90%;

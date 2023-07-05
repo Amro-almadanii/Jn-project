@@ -8,11 +8,19 @@ import {
 } from 'react-router-dom';
 import classes from './EmployeeCertificateForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
+import { useEffect, useState } from 'react';
+import { useSupervisors } from '../../../hooks/useApi';
 
 const EmployeeCertificateForm = ({ method, employeeCertificate }) => {
+  const [supervisors, setSupervisors] = useState([]);
+  const SupervisorResponse = useSupervisors();
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setSupervisors(SupervisorResponse);
+  }, [SupervisorResponse]);
 
   const isSubmitting = navigation.state === 'submitting';
 
@@ -41,6 +49,16 @@ const EmployeeCertificateForm = ({ method, employeeCertificate }) => {
           defaultValue={employeeCertificate ? employeeCertificate.level : ''}
         />
 
+        <label htmlFor="supervisor">Employee :</label>
+        <select id="supervisor" name="supervisorId" required>
+          <option disabled>--Choose Supervisor--</option>
+          {supervisors.map((supervisor) => (
+            <option key={supervisor.id} value={supervisor.id}>
+              {supervisor.firstName + ' ' + supervisor.lastName}
+            </option>
+          ))}
+        </select>
+
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
@@ -62,7 +80,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeCertificateData = {
-    employee_id: 1,
+    employee_id: data.get('supervisorId'),
     name: data.get('name'),
     level: data.get('level'),
   };
@@ -85,7 +103,7 @@ export async function action({ request, params }) {
     },
     body: JSON.stringify(employeeCertificateData),
   });
-
+console.log(employeeCertificateData)
   if (!response.ok) {
     throw json(
       { message: 'Could not save EmployeeCertificates.' },

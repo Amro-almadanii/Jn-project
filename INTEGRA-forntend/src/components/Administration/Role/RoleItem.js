@@ -50,7 +50,7 @@ const RoleItem = ({ role }) => {
             <select>
               <option>-- Your Permissions --</option>
             {rolePermissionInfo.map((rolePermission)=>(
-            <option disabled> {rolePermission.name} </option>
+            <option key={rolePermission.id} disabled> {rolePermission.name} </option>
             ))}
             </select>
           </div>

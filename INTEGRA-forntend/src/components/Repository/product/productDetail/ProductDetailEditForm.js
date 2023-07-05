@@ -54,20 +54,16 @@ const ProductDetailEditForm = ({ method, detail }) => {
         <table>
           <thead>
           <tr>
-            <th>stock</th>
-            {/* {
-              attributesGroup.map((attribute) => (
-                <th key={attribute.id}>{attribute.name}</th>
-              ))
-            } */}
           </tr>
           </thead>
           <tbody>
             <tr>
+              <label>Stock</label>
               <td><input type="number" name="stock"  required min="0" defaultValue={detail.stock}/></td>
               {
                 attributesGroup.map((attribute) => (
                   <Wrapper key={attribute.id}>
+                    {<label>{attribute.name}</label>}
                     {attribute.type == 'select' && <td><SelectInput props={attribute} key={attribute.id} /></td>}
                     {attribute.type == 'checkbox' && <td><CheckboxInput props={attribute} key={attribute.id} /></td>}
                     {attribute.type == 'radio' && <td><CheckboxInput props={attribute} key={attribute.id} /></td>}
@@ -89,14 +85,6 @@ const ProductDetailEditForm = ({ method, detail }) => {
           </button>
         </div>
       </Form>
-      <div>
-        <h3>Name of Attribute :</h3>
-        {
-              attributesGroup.map((attribute,index) => (
-                <p className={classes.p} key={attribute.id}>{index + 1}) {attribute.name}</p>
-              ))
-            }
-      </div>
           </Card>
     </div>
   );
@@ -108,7 +96,7 @@ export async function action({ request, params }) {
   const formData = await request.formData();
   const token = getAuthToken();
   const method = request.method;
-
+console.log(params)
   const attributeData = {};
   //let attributeData = [];
 
@@ -160,6 +148,6 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: 'Could not save Details of Product.' }, { status: 500 });
   }
-return null;
-  // return redirect('/repository/products/new/newDetail/1');
+
+  return redirect(`/repository/products`);
 }

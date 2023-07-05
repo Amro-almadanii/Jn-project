@@ -12,11 +12,11 @@
     font-size: 18px;
   }
   input {
-    display: block;
     width: 90%;
     padding: 5px;
     outline: none;
     margin: 14px;
+    display: inline;
   }
 
   table{
@@ -33,7 +33,7 @@
     
   }
   select {
-    display: block;
+    display: inline;
     width: 250px;
     padding: 6px;
     outline: none;
@@ -61,7 +61,11 @@
 
   }
 
+  tr{
+    display: inline;
+  }
   th{
+    padding: 20px;
     color: var(--second-color);
   }
 

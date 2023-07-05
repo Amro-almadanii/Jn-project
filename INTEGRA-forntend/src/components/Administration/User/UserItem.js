@@ -44,30 +44,10 @@ const UsersItem = ({ user }) => {
             <select>
               <option>-- Your Roles --</option>
             {userRoles.map((userRole)=>(
-            <option disabled> {userRole.name} </option>
+            <option key={userRole.id} disabled> {userRole.name} </option>
             ))}
             </select>
           </div>
-          {/* <div className={classes.cardItems}>
-            <label> Id :</label>
-            <p> {user.id} </p>
-          </div> */}
-          {/* <div className={classes.cardItems}>
-            <label>Leads of Customer:</label>
-            <p>
-              {' '}
-              {leads.map((lead) => (
-                <Link
-                  key={lead.id}
-                  className={classes.leadLink}
-                  to={`/marketing/leads/lead-detail/${lead.id}`}
-                >
-                  {' '}
-                  {lead.type}{' '}
-                </Link>
-              ))}{' '}
-            </p>
-          </div> */}
           <div className={classes.btn}>
             <Link
               className={classes.link}

@@ -442,7 +442,7 @@ export const useEmployeeBenefits = (id) => {
         const token = getAuthToken();
 
         const response = await fetch(
-          'http://localhost:8000/hr/benefitEmployees/' + id,
+          'http://localhost:8000/hr/benefits/employeesBenefit/' + id,
           {
             headers: {
               Authorization: 'bearer ' + token,

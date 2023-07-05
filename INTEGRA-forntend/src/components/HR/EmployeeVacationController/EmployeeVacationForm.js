@@ -8,13 +8,22 @@ import {
 } from 'react-router-dom';
 import classes from './EmployeeVacationForm.module.scss';
 import { getAuthToken } from '../../../hooks/auth';
+import { useEffect, useState } from 'react';
+import { useSupervisors } from '../../../hooks/useApi';
 
 const EmployeeVacationForm = ({ method, employeeVacation }) => {
+  const [supervisors, setSupervisors] = useState([]);
+  const SupervisorResponse = useSupervisors();
   //const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
+  useEffect(() => {
+    setSupervisors(SupervisorResponse);
+  }, [SupervisorResponse]);
+
   const isSubmitting = navigation.state === 'submitting';
+
 
   const cancelHandler = () => {
     navigate(-1);
@@ -68,6 +77,17 @@ const EmployeeVacationForm = ({ method, employeeVacation }) => {
           <option value="pending">Pending</option>
         </select>
 
+        <label htmlFor="supervisor">Employee :</label>
+        <select id="supervisor" name="supervisorId" required>
+          <option disabled>--Choose Supervisor--</option>
+          {supervisors.map((supervisor) => (
+            <option key={supervisor.id} value={supervisor.id}>
+              {supervisor.firstName + ' ' + supervisor.lastName}
+            </option>
+          ))}
+        </select>
+
+
         <div className={classes.actions}>
           <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
             Cancel
@@ -89,7 +109,7 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const employeeVacationData = {
-    employee_id: 3,
+    employee_id: data.get('supervisorId'),
     startDate: data.get('startDate'),
     endDate: data.get('endDate'),
     typeOfVacation: data.get('typeOfVacation'),
